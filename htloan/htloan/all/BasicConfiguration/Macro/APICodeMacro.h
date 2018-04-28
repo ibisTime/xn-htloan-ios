@@ -10,13 +10,15 @@
 #define APICodeMacro_h
 
 //验证码
-#define CAPTCHA_CODE @"805950"
+#define CAPTCHA_CODE @"630080"
 
 //用户
-#define USER_REG_CODE @"805041"//注册
+#define USER_BIZ_CODE @"630080"//biz
+#define USER_REG_CODE @"630200"//注册
+
 #define USER_INVITE_REG_CODE @"805154"//邀请注册
-#define USER_LOGIN_CODE @"805173"//登录
-#define USER_FIND_PWD_CODE @"805063"//忘记密码
+#define USER_LOGIN_CODE @"630201"//登录
+#define USER_FIND_PWD_CODE @"630202"//忘记密码
 
 #define USER_CAHNGE_MOBILE @"805061"//修改手机号
 #define USER_CHANGE_LOGIN_NAME @"805150"//修改登录名
@@ -33,7 +35,7 @@
 #define IMG_UPLOAD_CODE @"805951"
 
 //用户信息
-#define USER_INFO @"805121"
+#define USER_INFO @"630207"
 //AppKind
 #define APP_KIND @"C"
 

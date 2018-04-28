@@ -16,6 +16,8 @@
 #import "calculatorVC.h"
 @interface XIRecommendCarView()
 //@property (nonatomic, strong) XIRecommendCarView *recommendCarView;
+
+
 @end
 @implementation XIRecommendCarView
 - (instancetype)initWithFrame:(CGRect)frame
@@ -66,38 +68,12 @@
        make.centerY.equalTo(car.mas_centerY);
         make.right.offset(-15);
     }];
-    
-    
-    
-    //*****汽车展示********************
-    //布局参数
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
-    //设置cell的间距
-    CGFloat cellW = (kScreenWidth-10)/3-2;
-    CGFloat cellH = 125;
-    flowLayout.itemSize = CGSizeMake(cellW, cellH);//size
-    flowLayout.minimumLineSpacing =15;//行间距
-    flowLayout.minimumInteritemSpacing = 1;//cell间距
-//    flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;//水平滚动
-//    flowLayout.sectionInset = UIEdgeInsetsMake(37, 5, 0, 5);//每一组间距
-    
-    XICarShowCollectionView * carShow = [[XICarShowCollectionView alloc]initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:flowLayout];
-//    carShow.collectionViewLayout   = flowLayout;
-    
-    carShow.backgroundColor = [UIColor whiteColor];
-    [self addSubview:carShow];
-    [carShow mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.offset(37);
-        make.left.offset(5);
-         make.right.offset(-5);
-        make.bottom.equalTo(self.mas_bottom);
-    }];
-    
-    
-    
-    
-    
+
 }
+
+
+
+
 
 
 

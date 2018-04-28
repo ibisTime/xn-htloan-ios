@@ -27,7 +27,8 @@
 
 
 //设置Label的 title 字体
-+ (UILabel *)labelWithTitle:(NSString *)title BackgroundColor:(UIColor *)color textColor:(UIColor *)textColor font:(CGFloat)font;
++ (UILabel *)labelWithTitle:(NSString *)title font:( UIFont *)font BackgroundColor:(UIColor *)color textColor:(UIColor *)textColor;
++ (UILabel *)labelWithTitle:(NSString *)title  BackgroundColor:(UIColor *)color textColor:(UIColor *)textColor font:( UIFont *)font;
 
 /**
  黑色Label，带frame

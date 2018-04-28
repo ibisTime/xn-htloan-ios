@@ -19,7 +19,7 @@
 @interface CircleGuideView ()
 
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIPageControl *pageControl;
+
 
 
 
@@ -112,11 +112,12 @@
         make.bottom.mas_equalTo(-10);
     }];
     
-    UIImage *placeHoldler = [UIImage imageNamed:@"placeholder_icon"];
+    UIImage *placeHoldler = [UIImage imageNamed:@"1"];
     UIImageView *lastImgView = nil;
     for (NSInteger i = 0; i < _imageNames.count + 2; i++) {
         
         UIImageView *imageView =[[UIImageView alloc] init];
+        
         if (i == 0) {
             
             [imageView sd_setImageWithURL:[NSURL URLWithString:[_imageNames lastObject]]
@@ -153,8 +154,11 @@
         }];
         
         lastImgView = imageView;
+       
     }
     
+    
+
     _scrollView.contentSize = CGSizeMake(self.width * (_imageNames.count+2), 0);
     CGPoint point = CGPointMake(self.width, 0);
     _scrollView.contentOffset = point;
@@ -163,6 +167,19 @@
     
 
     _pageControl.hidden = _imageNames.count< 2;
+    
+    //右下角页显示
+    self.page = [[UILabel alloc] init];
+    self.page.backgroundColor=kClearColor ;
+    self.page.textColor=kBlackColor;
+    
+    [self addSubview:self.page];
+    [self.page mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.offset(-15);
+        make.bottom.offset(-15);
+    }];
+    
+    
 }
 
 #pragma mark - Setter
@@ -222,11 +239,18 @@
     
    // _pageCounter = (_pageCounter < _imageNames.count) ? _pageCounter : 0;
    // _pageControl.currentPage = _pageCounter;
+    
 
+    
+    
     // 滑动之后再计算page, 这里计算有问题
     [_scrollView setContentOffset:CGPointMake(self.width * (_pageCounter + 1),0) animated:YES];
     
-    _pageCounter++;
+  
+    
+   _pageCounter++;
+//    self.page.text = [NSString stringWithFormat:@"%ld / %ld",i, self.imageNames.count];
+
 }
 
 // UIPagecontrol翻页
@@ -240,6 +264,7 @@
          [_scrollView setContentOffset:CGPointMake(self.width * (_pageCounter + 1), 0) animated:YES];
      } completion:^(BOOL finished) {
         
+
          [self startTimer];
      }];
 }
@@ -259,6 +284,18 @@
     NSInteger page = self.scrollView.contentOffset.x / self.frame.size.width - 1;
     _pageControl.currentPage = page;
     _pageCounter = page;
+    
+    
+    NSInteger i =page;
+    
+    if (page==0) {
+        i=1;
+        self.page.text = [NSString stringWithFormat:@"%ld / %ld",i, self.imageNames.count];
+    }else{
+        
+       self.page.text = [NSString stringWithFormat:@"%ld / %ld",i, self.imageNames.count];
+    };
+    
 }
 
 // 开始拖拽

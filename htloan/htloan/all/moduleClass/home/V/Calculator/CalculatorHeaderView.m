@@ -15,7 +15,6 @@
 //M
 #import "TLUser.h"
 @interface CalculatorHeaderView()
-
 @property (nonatomic, strong) UILabel *totalPrice;
 
 @property (nonatomic, strong) UILabel *payment;
@@ -48,7 +47,8 @@
 #pragma mark - Init
 - (void)initSubviews {
    //1
-self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" BackgroundColor:kClearColor textColor:kWhiteColor font:14];
+
+    self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" font:Font(14) BackgroundColor:kClearColor textColor:kWhiteColor];
      [self addSubview:self.totalPrice];
     
     [self.totalPrice mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -64,7 +64,7 @@ self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" BackgroundColor:kClea
         make.left.offset(20);
     }];
     //3
-    self.payment = [UILabel labelWithTitle:@"首付(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:14];
+    self.payment = [UILabel labelWithTitle:@"首付(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:Font(14)];
     [self addSubview:self.payment];
     
     [self.payment mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -82,7 +82,7 @@ self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" BackgroundColor:kClea
     }];
 
         //5
-    self.monthlyPayment = [UILabel labelWithTitle:@"月供(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:14];
+    self.monthlyPayment = [UILabel labelWithTitle:@"月供(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:Font(14)];
     [self addSubview:self.monthlyPayment];
     
     [self.monthlyPayment mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -99,7 +99,7 @@ self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" BackgroundColor:kClea
         make.bottom.offset(-15);
     }];
     //7
-    self.morePayment = [UILabel labelWithTitle:@"多花(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:14];
+    self.morePayment = [UILabel labelWithTitle:@"多花(元)" BackgroundColor:kClearColor textColor:kWhiteColor font:Font(14)];
     [self addSubview:self.morePayment];
     
     [self.morePayment mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,6 +132,8 @@ self.totalPrice = [UILabel labelWithTitle:@"总价  (元)" BackgroundColor:kClea
     self.monthlyPaymentNub.text = calculatorModel.monthlyPaymentNub;
     self.totalPriceNub.text = calculatorModel.totalPriceNub;
 }
+
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -7,6 +7,8 @@
 //
 
 #import "calculatorVC.h"
+//c
+#import "XIMyApplyForVC.h"
 //m
 #import "CalculatorGounp.h"
 //v
@@ -30,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title =@"车贷计算器";
-    self.view.backgroundColor =XIMineBackGroundColor;
+    self.view.backgroundColor =kMineBackGroundColor;
 
     // Do any additional setup after loading the view.
     [self initTableView];
@@ -61,6 +63,10 @@
 }
 -(void)ApplyForCar
 {
+    XIMyApplyForVC * MyApplyForVC = [[XIMyApplyForVC alloc] init];
+    
+    [self.navigationController pushViewController:MyApplyForVC animated:YES];
+    
     NSLog(@"申请分期购车");
 }
 
@@ -78,7 +84,7 @@
     brand.text = @"品牌";
     brand.carText = @"奥迪";
     brand.action = ^{
-        
+       
         NSLog(@"品牌");
     };
     

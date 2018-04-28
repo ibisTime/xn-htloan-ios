@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180FD3072093199600449F4E /* repaymentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD3062093199600449F4E /* repaymentListCell.m */; };
+		180FD30B2093294600449F4E /* repaymentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD30A2093294600449F4E /* repaymentDetailVC.m */; };
+		180FD30F20932AF900449F4E /* carOrdersSubmittedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */; };
+		184197302091B0C10010E8A7 /* CarTextImgV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841972F2091B0C10010E8A7 /* CarTextImgV.m */; };
+		184197332092FB540010E8A7 /* repaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197322092FB540010E8A7 /* repaymentModel.m */; };
+		184197362093049B0010E8A7 /* repaymentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197352093049B0010E8A7 /* repaymentVC.m */; };
+		1841973C20930AB60010E8A7 /* repaymentListV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841973B20930AB60010E8A7 /* repaymentListV.m */; };
 		1879B0D72080531D00639B2A /* htloanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B0D62080531D00639B2A /* htloanTests.m */; };
 		1879B0E22080531D00639B2A /* htloanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B0E12080531D00639B2A /* htloanUITests.m */; };
 		1879B66C2080755000639B2A /* AppDelegate+BaiduMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B52B2080755000639B2A /* AppDelegate+BaiduMap.m */; };
@@ -170,10 +177,13 @@
 		188A7B032088C57F006220E8 /* CalculatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A7B022088C57F006220E8 /* CalculatorCell.m */; };
 		188A7B072088C69F006220E8 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A7B062088C69F006220E8 /* CalculatorModel.m */; };
 		188A7B0A2088E2A0006220E8 /* CalculatorGounp.m in Sources */ = {isa = PBXBuildFile; fileRef = 188A7B092088E2A0006220E8 /* CalculatorGounp.m */; };
+		18911CDC20907086000CBB2C /* carImgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18911CDB20907086000CBB2C /* carImgModel.m */; };
+		189DAB0C208E29C200BFAE06 /* detailsOfCarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 189DAB0B208E29C200BFAE06 /* detailsOfCarVC.m */; };
 		18F3A559208588A7000EEE4F /* XIMyApplyForVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3A558208588A7000EEE4F /* XIMyApplyForVC.m */; };
 		18F3A5662085DC01000EEE4F /* XIMyApplyForTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3A5652085DC01000EEE4F /* XIMyApplyForTableView.m */; };
 		18F3A5692085DDBC000EEE4F /* XIMyApplyForCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3A5682085DDBC000EEE4F /* XIMyApplyForCell.m */; };
 		18F3A56D2085DF02000EEE4F /* XIMyApplyForModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F3A56C2085DF02000EEE4F /* XIMyApplyForModel.m */; };
+		18F600C520902E52009C140F /* CarTextV.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F600C420902E52009C140F /* CarTextV.m */; };
 		518810908679F65CED266292 /* libPods-htloan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E859D91AEB60C921B323FC3 /* libPods-htloan.a */; };
 /* End PBXBuildFile section */
 
@@ -196,6 +206,20 @@
 
 /* Begin PBXFileReference section */
 		111BA7636E3B80100BE86DDA /* Pods-htloan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htloan.release.xcconfig"; path = "Pods/Target Support Files/Pods-htloan/Pods-htloan.release.xcconfig"; sourceTree = "<group>"; };
+		180FD3052093199600449F4E /* repaymentListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentListCell.h; sourceTree = "<group>"; };
+		180FD3062093199600449F4E /* repaymentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentListCell.m; sourceTree = "<group>"; };
+		180FD3092093294600449F4E /* repaymentDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentDetailVC.h; sourceTree = "<group>"; };
+		180FD30A2093294600449F4E /* repaymentDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentDetailVC.m; sourceTree = "<group>"; };
+		180FD30D20932AF900449F4E /* carOrdersSubmittedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = carOrdersSubmittedVC.h; sourceTree = "<group>"; };
+		180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carOrdersSubmittedVC.m; sourceTree = "<group>"; };
+		1841972E2091B0C10010E8A7 /* CarTextImgV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTextImgV.h; sourceTree = "<group>"; };
+		1841972F2091B0C10010E8A7 /* CarTextImgV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTextImgV.m; sourceTree = "<group>"; };
+		184197312092FB540010E8A7 /* repaymentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentModel.h; sourceTree = "<group>"; };
+		184197322092FB540010E8A7 /* repaymentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentModel.m; sourceTree = "<group>"; };
+		184197342093049B0010E8A7 /* repaymentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentVC.h; sourceTree = "<group>"; };
+		184197352093049B0010E8A7 /* repaymentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentVC.m; sourceTree = "<group>"; };
+		1841973A20930AB60010E8A7 /* repaymentListV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentListV.h; sourceTree = "<group>"; };
+		1841973B20930AB60010E8A7 /* repaymentListV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentListV.m; sourceTree = "<group>"; };
 		1879B0BA2080531B00639B2A /* htloan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = htloan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D22080531D00639B2A /* htloanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = htloanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D62080531D00639B2A /* htloanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = htloanTests.m; sourceTree = "<group>"; };
@@ -516,6 +540,10 @@
 		188A7B062088C69F006220E8 /* CalculatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
 		188A7B082088E2A0006220E8 /* CalculatorGounp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorGounp.h; sourceTree = "<group>"; };
 		188A7B092088E2A0006220E8 /* CalculatorGounp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorGounp.m; sourceTree = "<group>"; };
+		18911CDA20907086000CBB2C /* carImgModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = carImgModel.h; sourceTree = "<group>"; };
+		18911CDB20907086000CBB2C /* carImgModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carImgModel.m; sourceTree = "<group>"; };
+		189DAB0A208E29C200BFAE06 /* detailsOfCarVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = detailsOfCarVC.h; sourceTree = "<group>"; };
+		189DAB0B208E29C200BFAE06 /* detailsOfCarVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = detailsOfCarVC.m; sourceTree = "<group>"; };
 		18F3A557208588A7000EEE4F /* XIMyApplyForVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIMyApplyForVC.h; sourceTree = "<group>"; };
 		18F3A558208588A7000EEE4F /* XIMyApplyForVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIMyApplyForVC.m; sourceTree = "<group>"; };
 		18F3A5642085DC01000EEE4F /* XIMyApplyForTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIMyApplyForTableView.h; sourceTree = "<group>"; };
@@ -524,6 +552,8 @@
 		18F3A5682085DDBC000EEE4F /* XIMyApplyForCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIMyApplyForCell.m; sourceTree = "<group>"; };
 		18F3A56B2085DF02000EEE4F /* XIMyApplyForModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XIMyApplyForModel.h; sourceTree = "<group>"; };
 		18F3A56C2085DF02000EEE4F /* XIMyApplyForModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XIMyApplyForModel.m; sourceTree = "<group>"; };
+		18F600C320902E52009C140F /* CarTextV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTextV.h; sourceTree = "<group>"; };
+		18F600C420902E52009C140F /* CarTextV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTextV.m; sourceTree = "<group>"; };
 		8BBB73CE3FA05955AEB75716 /* Pods-htloan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-htloan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-htloan/Pods-htloan.debug.xcconfig"; sourceTree = "<group>"; };
 		9E859D91AEB60C921B323FC3 /* libPods-htloan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-htloan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -554,6 +584,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180FD308209328E900449F4E /* repaymentDetail */ = {
+			isa = PBXGroup;
+			children = (
+				180FD3092093294600449F4E /* repaymentDetailVC.h */,
+				180FD30A2093294600449F4E /* repaymentDetailVC.m */,
+			);
+			path = repaymentDetail;
+			sourceTree = "<group>";
+		};
+		180FD30C20932AAC00449F4E /* carOrdersSubmitted */ = {
+			isa = PBXGroup;
+			children = (
+				180FD30D20932AF900449F4E /* carOrdersSubmittedVC.h */,
+				180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */,
+			);
+			path = carOrdersSubmitted;
+			sourceTree = "<group>";
+		};
 		1879B0B12080531B00639B2A = {
 			isa = PBXGroup;
 			children = (
@@ -1363,6 +1411,8 @@
 			children = (
 				188A7AC120870F73006220E8 /* home */,
 				188A7AF32088A1C0006220E8 /* CalculatorForCar */,
+				189DAB06208E28B600BFAE06 /* detailsOfCar */,
+				180FD30C20932AAC00449F4E /* carOrdersSubmitted */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1372,6 +1422,7 @@
 			children = (
 				188A7ADE2087681D006220E8 /* home */,
 				188A7B042088C65D006220E8 /* Calculator */,
+				189DAB17208E393D00BFAE06 /* detailsOfCar */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1379,8 +1430,9 @@
 		1879B6F02080788200639B2A /* V */ = {
 			isa = PBXGroup;
 			children = (
-				188A7AFA2088B741006220E8 /* Calculator */,
 				188A7AC6208710AE006220E8 /* home */,
+				188A7AFA2088B741006220E8 /* Calculator */,
+				189DAB0D208E36C100BFAE06 /* detailsOfCar */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1400,6 +1452,9 @@
 			children = (
 				1879B7D72081CB6D00639B2A /* XIRepaymentVC.h */,
 				1879B7D82081CB6D00639B2A /* XIRepaymentVC.m */,
+				184197342093049B0010E8A7 /* repaymentVC.h */,
+				184197352093049B0010E8A7 /* repaymentVC.m */,
+				180FD308209328E900449F4E /* repaymentDetail */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -1407,6 +1462,8 @@
 		1879B6F72080788200639B2A /* M */ = {
 			isa = PBXGroup;
 			children = (
+				184197312092FB540010E8A7 /* repaymentModel.h */,
+				184197322092FB540010E8A7 /* repaymentModel.m */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -1414,6 +1471,10 @@
 		1879B6F82080788200639B2A /* V */ = {
 			isa = PBXGroup;
 			children = (
+				1841973A20930AB60010E8A7 /* repaymentListV.h */,
+				1841973B20930AB60010E8A7 /* repaymentListV.m */,
+				180FD3052093199600449F4E /* repaymentListCell.h */,
+				180FD3062093199600449F4E /* repaymentListCell.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -1637,10 +1698,8 @@
 		188A7ADE2087681D006220E8 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				188A7AE020876913006220E8 /* homeCarShowModel.m */,
-				188A7ADF20876913006220E8 /* homeCarShowModel.h */,
-				188A7AED2088521C006220E8 /* stagingModel.h */,
-				188A7AEE2088521C006220E8 /* stagingModel.m */,
+				188A7B0C208D7CCD006220E8 /* recommendCarType */,
+				188A7B0B208D7C97006220E8 /* recommendedStaging */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1702,6 +1761,53 @@
 				188A7B092088E2A0006220E8 /* CalculatorGounp.m */,
 			);
 			path = Calculator;
+			sourceTree = "<group>";
+		};
+		188A7B0B208D7C97006220E8 /* recommendedStaging */ = {
+			isa = PBXGroup;
+			children = (
+				188A7AED2088521C006220E8 /* stagingModel.h */,
+				188A7AEE2088521C006220E8 /* stagingModel.m */,
+			);
+			path = recommendedStaging;
+			sourceTree = "<group>";
+		};
+		188A7B0C208D7CCD006220E8 /* recommendCarType */ = {
+			isa = PBXGroup;
+			children = (
+				188A7AE020876913006220E8 /* homeCarShowModel.m */,
+				188A7ADF20876913006220E8 /* homeCarShowModel.h */,
+			);
+			path = recommendCarType;
+			sourceTree = "<group>";
+		};
+		189DAB06208E28B600BFAE06 /* detailsOfCar */ = {
+			isa = PBXGroup;
+			children = (
+				189DAB0A208E29C200BFAE06 /* detailsOfCarVC.h */,
+				189DAB0B208E29C200BFAE06 /* detailsOfCarVC.m */,
+			);
+			path = detailsOfCar;
+			sourceTree = "<group>";
+		};
+		189DAB0D208E36C100BFAE06 /* detailsOfCar */ = {
+			isa = PBXGroup;
+			children = (
+				18F600C320902E52009C140F /* CarTextV.h */,
+				18F600C420902E52009C140F /* CarTextV.m */,
+				1841972E2091B0C10010E8A7 /* CarTextImgV.h */,
+				1841972F2091B0C10010E8A7 /* CarTextImgV.m */,
+			);
+			path = detailsOfCar;
+			sourceTree = "<group>";
+		};
+		189DAB17208E393D00BFAE06 /* detailsOfCar */ = {
+			isa = PBXGroup;
+			children = (
+				18911CDA20907086000CBB2C /* carImgModel.h */,
+				18911CDB20907086000CBB2C /* carImgModel.m */,
+			);
+			path = detailsOfCar;
 			sourceTree = "<group>";
 		};
 		18F3A55620858847000EEE4F /* myApplyFor */ = {
@@ -1974,6 +2080,7 @@
 				1879B6C72080755000639B2A /* UIView+Responder.m in Sources */,
 				1879B7E22081E6B300639B2A /* TabbarViewController.m in Sources */,
 				1879B69A2080755000639B2A /* SGScanningQRCodeVC.m in Sources */,
+				184197362093049B0010E8A7 /* repaymentVC.m in Sources */,
 				1879B6752080755000639B2A /* TLBaseModel.m in Sources */,
 				1879B66C2080755000639B2A /* AppDelegate+BaiduMap.m in Sources */,
 				188A7AE92088379F006220E8 /* stagingCell.m in Sources */,
@@ -2006,6 +2113,7 @@
 				1879B6C62080755000639B2A /* UIView+Extension.m in Sources */,
 				1879B8D72084426800639B2A /* TLPwdRelatedVC.m in Sources */,
 				1879B6AD2080755000639B2A /* HttpRequestService.m in Sources */,
+				18911CDC20907086000CBB2C /* carImgModel.m in Sources */,
 				1879B6712080755000639B2A /* BaseModel.m in Sources */,
 				1879B6D02080755000639B2A /* HourPickerView.m in Sources */,
 				1879B6D52080755000639B2A /* TLProgressHUD.m in Sources */,
@@ -2026,6 +2134,7 @@
 				1879B6DE2080755000639B2A /* UINavigationController+MethodSwizzling.m in Sources */,
 				1879B6922080755000639B2A /* TLChooseResultManager.m in Sources */,
 				1879B8D82084426800639B2A /* UserEditModel.m in Sources */,
+				180FD30F20932AF900449F4E /* carOrdersSubmittedVC.m in Sources */,
 				1879B6B52080755000639B2A /* NSObject+Extension.m in Sources */,
 				1879B68E2080755000639B2A /* WTReParser.m in Sources */,
 				1879B69D2080755000639B2A /* SGQRCodeTool.m in Sources */,
@@ -2061,9 +2170,11 @@
 				1879B6E02080755000639B2A /* DetailWebView.m in Sources */,
 				1879B6C32080755000639B2A /* UILabel+Extension.m in Sources */,
 				1879B6852080755000639B2A /* City.m in Sources */,
+				189DAB0C208E29C200BFAE06 /* detailsOfCarVC.m in Sources */,
 				1879B8DB2084426800639B2A /* TLUserExt.m in Sources */,
 				188A7B072088C69F006220E8 /* CalculatorModel.m in Sources */,
 				1879B6732080755000639B2A /* KeyValueModel.m in Sources */,
+				180FD30B2093294600449F4E /* repaymentDetailVC.m in Sources */,
 				1879B6BF2080755000639B2A /* UIColor+Extension.m in Sources */,
 				1879B8CF2084426800639B2A /* EditVC.m in Sources */,
 				188A7AE120876913006220E8 /* homeCarShowModel.m in Sources */,
@@ -2083,16 +2194,21 @@
 				1879B6CB2080755000639B2A /* TLTimeButton.m in Sources */,
 				1879B67C2080755000639B2A /* BaseTableViewCell.m in Sources */,
 				1879B6942080755000639B2A /* TLImagePickerController.m in Sources */,
+				1841973C20930AB60010E8A7 /* repaymentListV.m in Sources */,
 				1879B6962080755000639B2A /* TLPhotoChooseItem.m in Sources */,
+				184197302091B0C10010E8A7 /* CarTextImgV.m in Sources */,
 				1879B8D42084426800639B2A /* BindMobileVC.m in Sources */,
 				1879B8E92084450800639B2A /* MineGroup.m in Sources */,
 				1879B6D32080755000639B2A /* TLPickerTextField.m in Sources */,
 				1879B67A2080755000639B2A /* BarButton.m in Sources */,
+				180FD3072093199600449F4E /* repaymentListCell.m in Sources */,
 				1879B6782080755000639B2A /* NavigationController.m in Sources */,
 				1879B8D52084426800639B2A /* TLAccountSetBaseVC.m in Sources */,
 				1879B6C22080755000639B2A /* UIImage+Tint.m in Sources */,
 				1879B6EA2080755000639B2A /* main.m in Sources */,
+				184197332092FB540010E8A7 /* repaymentModel.m in Sources */,
 				1879B6C82080755000639B2A /* UIViewController+Extension.m in Sources */,
+				18F600C520902E52009C140F /* CarTextV.m in Sources */,
 				1879B6C02080755000639B2A /* UIColor+theme.m in Sources */,
 				1879B6772080755000639B2A /* BaseWKWebViewController.m in Sources */,
 				188A7AE620879378006220E8 /* stagingTableView.m in Sources */,
@@ -2264,7 +2380,7 @@
 			baseConfigurationReference = 8BBB73CE3FA05955AEB75716 /* Pods-htloan.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YR49JTF7X4;
+				DEVELOPMENT_TEAM = ZKTVZ75A59;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/allClass/Extension/QQ",
@@ -2292,7 +2408,7 @@
 			baseConfigurationReference = 111BA7636E3B80100BE86DDA /* Pods-htloan.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YR49JTF7X4;
+				DEVELOPMENT_TEAM = ZKTVZ75A59;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/allClass/Extension/QQ",

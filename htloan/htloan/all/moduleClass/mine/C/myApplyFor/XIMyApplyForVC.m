@@ -37,7 +37,9 @@
     
     self.tableView.refreshDelegate = self;
     
-    self.tableView.placeHolderView = [TLPlaceholderView placeholderViewWithImage:@"" text:@"暂无申请"];
+    TLPlaceholderView * place = [TLPlaceholderView placeholderViewWithImage:@"" text:@"暂无申请"];
+    
+        self.tableView.placeHolderView = place ;
     
     [self.view addSubview:self.tableView];
     //frame
@@ -58,8 +60,9 @@
     BaseWeakSelf;
     
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+   #pragma mark - 未完成
+    helper.code = @"630430";
     
-    helper.code = @"628207";
     helper.parameters[@"userId"] = [TLUser user].userId;
     
     helper.tableView = self.tableView;
@@ -78,7 +81,7 @@
             
         } failure:^(NSError *error) {
             
-           NSLog([error.userInfo objectForKey:NSLocalizedDescriptionKey]) ;
+//           NSLog([error.userInfo objectForKey:NSLocalizedDescriptionKey]) ;
             
         }];
     }];

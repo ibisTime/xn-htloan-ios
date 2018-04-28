@@ -8,10 +8,12 @@
 
 #import "BaseView.h"
 
+#import "XICarShowCollectionView.h"
 @interface XIRecommendCarView : BaseView
 
 
 //车贷计算器
 @property (nonatomic, strong) UIButton *calculatorForCar;
+
 
 @end

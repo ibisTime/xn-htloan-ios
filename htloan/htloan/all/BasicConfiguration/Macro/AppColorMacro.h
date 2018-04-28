@@ -14,6 +14,9 @@
 
 #pragma mark - UIMacros
 
+#define kAFNWriteToPlist(filename) [responseObject writeToFile:[NSString stringWithFormat:@"/Users/apple/Desktop/%@.plist",@#filename] atomically:YES];
+#define kObjsWriteToPlist(filename) [objs writeToFile:[NSString stringWithFormat:@"/Users/apple/Desktop/%@.plist",@#filename] atomically:YES];
+
 #define RGB(r, g, b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1]
 
 // 主色
@@ -52,10 +55,14 @@
 #define kPlaceholderColor       [UIColor colorWithHexString:@"#CCCCCC"]
     //占位颜色
 #define kClearColor [UIColor clearColor]           //透明
+#define kYellowColor [UIColor yellowColor]           //透明
+#define kBlueColor [UIColor blueColor]           //透明
+
 #define kWhiteColor RGB(255, 255, 255)             //白色   #ffffff
 #define kBlackColor RGB(0, 0, 0)                   //黑色   #000000
+
 //我的背景色
-#define XIMineBackGroundColor      [UIColor colorWithHexString:@"#f7f7f7"]
+#define kMineBackGroundColor      [UIColor colorWithHexString:@"#f7f7f7"]
 #pragma mark - 界面尺寸
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -65,7 +72,8 @@
 #define XIImageHeight 110
 //计算器头部图片高度
 #define CalculatorHeardHeight 164
-#define    PublicMargin 10
+#define    kPublicMargin 10
+#define    kPublictextMargin 15
 //************
 
 #define kWidth(x) (x)*(kScreenWidth)/375.0
@@ -93,7 +101,7 @@
 
 #define USER_PLACEHOLDER_SMALL [UIImage imageNamed:@"我的头像"]
 #define PLACEHOLDER_SMALL @"占位图"
-#define kCancelIcon @"cancel"
+#define kCancelIcon @"关掉"
 #define GOOD_PLACEHOLDER_SMALL [UIImage imageNamed:@"占位图"]
 #define APP_ICON @"app_icon"
 

@@ -8,6 +8,9 @@
 
 #import "XICarShowCell.h"
 
+#import <UIImageView+WebCache.h>
+
+
 #import "CoinHeader.h"
 #import "homeCarShowModel.h"
 @interface XICarShowCell()
@@ -28,7 +31,7 @@
     if (self) {
         
         self.carImageView = [[UIImageView alloc] init];
-        self.carImageView.backgroundColor =[UIColor greenColor];
+        self.carImageView.backgroundColor =kWhiteColor;
         [self.contentView addSubview:self.carImageView];
         
     
@@ -48,17 +51,17 @@
         self.carName =[[UILabel alloc ] init];
         [self.contentView addSubview: self.carName];
         
-        self.carName.backgroundColor = [UIColor yellowColor];
+        self.carName.backgroundColor = kWhiteColor;
         
         [self.carName mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.offset(10);
+            make.top.equalTo(self.carImageView.mas_bottom).offset(5);
             make.centerX.equalTo(self.carImageView.mas_centerX);
         }];
         
         self.carPayment =[[UILabel alloc ] init];
         [self.contentView addSubview: self.carPayment];
         
-        self.carPayment.backgroundColor = [UIColor yellowColor];
+        self.carPayment.backgroundColor = kWhiteColor;
         
         [self.carPayment mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(self.mas_bottom);
@@ -77,9 +80,14 @@
 //数据
 -(void)setCarShowModel:(homeCarShowModel*)carShowModel
 {   _carShowModel =carShowModel;
-    self.carImageView.image = [UIImage imageNamed:carShowModel.carImgName];
-    self.carName.text = carShowModel.carName;
-    self.carPayment.text =[NSString stringWithFormat:@"首付%@万",carShowModel.carPayment] ;
+//    self.carImageView.image = [UIImage imageNamed:carShowModel.advPic];
+    
+    self.code = carShowModel.code;
+    [self.carImageView sd_setImageWithURL:[NSURL URLWithString:carShowModel.pic]];
+    
+    self.carName.text = carShowModel.name;
+//    self.carName.text = @"宝马";
+    self.carPayment.text =[NSString stringWithFormat:@"首付%@万",carShowModel.originalPrice] ;
     
 
 }

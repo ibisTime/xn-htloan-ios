@@ -33,6 +33,7 @@
 #import "TLUserLoginVC.h"
 #import "UserDetailEditVC.h"
 #import "XIMyApplyForVC.h"
+#import "TLUserRegisterVC.h"
 //#import "CircleCommentVC.h"
 //#import "MyCollectionListVC.h"
 
@@ -42,7 +43,7 @@
 @property (nonatomic, strong) MineGroup *items;
 
 //退出登录
-//@property (nonatomic, strong) BaseView *logoutView;
+@property (nonatomic, strong) BaseView *logoutView;
 //
 @property (nonatomic, strong) MineTableView *tableView;
 //头部
@@ -53,20 +54,10 @@
 
 @implementation XIMineVC
 
-//-(void)viewWillAppear:(BOOL)animated {
-//
-//    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:YES animated:YES];
-//
-//}
-//-(void)viewWillDisappear:(BOOL)animated{
-//
-//    [super viewWillDisappear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-self.view.backgroundColor =XIMineBackGroundColor;
+self.view.backgroundColor =kMineBackGroundColor;
     //
 //    [self hidNav];
     self.title = @"我的";
@@ -115,6 +106,7 @@ self.view.backgroundColor =XIMineBackGroundColor;
     } else {
         
         [self.headerView.nameBtn setTitle:[TLUser user].nickname forState:UIControlStateNormal];
+        [self.headerView.phoneNub setTitle:[TLUser user].mobile forState:UIControlStateNormal];
         
         self.tableView.tableFooterView.hidden = NO;
         //编辑
@@ -141,6 +133,8 @@ self.view.backgroundColor =XIMineBackGroundColor;
     if(![TLUser user].isLogin) {
         
         TLUserLoginVC *loginVC = [TLUserLoginVC new];
+        //不同方案 ：注册后直接登入
+//        TLUserRegisterVC *loginVC =[TLUserRegisterVC new];
         
         loginVC.loginSuccess = loginSuccess;
         
@@ -169,7 +163,7 @@ self.view.backgroundColor =XIMineBackGroundColor;
 }
 
 /**
- 编辑资料
+ 个人设置
  */
 - (void)editInfo {
     
@@ -185,14 +179,17 @@ self.view.backgroundColor =XIMineBackGroundColor;
 
 
 #pragma mark - Init
+
+//个人设置
 - (void)addEditItem {
     
-    [UIBarButtonItem addRightItemWithTitle:@"编辑"
+    [UIBarButtonItem addRightItemWithTitle:@"个人设置"
                                 titleColor:kWhiteColor
-                                     frame:CGRectMake(0, 0, 60, 40)
+                                     frame:CGRectMake(0, 0, 80, 40)
                                         vc:self
                                     action:@selector(editInfo)];
 }
+
 
 
 
@@ -259,7 +256,32 @@ self.view.backgroundColor =XIMineBackGroundColor;
         
     }];
 }
+//
 
+//退出登入
+- (BaseView *)logoutView {
+    
+    if (!_logoutView) {
+        
+        _logoutView = [[BaseView alloc] initWithFrame:CGRectMake(0, 35, kScreenWidth, 100)];
+        
+        UIButton *logoutBtn = [UIButton buttonWithTitle:@"退出登录"
+                                             titleColor:kThemeColor
+                                        backgroundColor:kWhiteColor
+                                              titleFont:18.0];
+        
+        [logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_logoutView addSubview:logoutBtn];
+        [logoutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.right.equalTo(@0);
+            make.top.equalTo(@20);
+            make.height.equalTo(@60);
+        }];
+    }
+    return _logoutView;
+}
 - (void)initGroup {
     
     BaseWeakSelf;
@@ -314,15 +336,15 @@ self.view.backgroundColor =XIMineBackGroundColor;
     myApplyFor.imgName = @"车贷申请";
     myApplyFor.action = ^{
         
-//                [weakSelf checkLogin:^{
+                [weakSelf checkLogin:^{
         
                     XIMyApplyForVC *myApplyForVC = [XIMyApplyForVC new];
         
                     [weakSelf.navigationController pushViewController:myApplyForVC animated:YES];
-//}];
+}];
 
         
-//                }];
+
     };
    
     //
@@ -395,9 +417,10 @@ self.view.backgroundColor =XIMineBackGroundColor;
     
     
     self.tableView = [[MineTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kTabBarHeight) style:UITableViewStyleGrouped];
-    
- //   self.tableView.tableFooterView = self.logoutView;
-    
+ //*****************当前页要不要显示退出登入*****************§
+//    self.tableView.tableFooterView = self.logoutView;
+//*****************当前页要不要显示退出登入*****************§
+
     [self.view addSubview:self.tableView];
     
     //d顶部个人信息
@@ -408,6 +431,11 @@ self.view.backgroundColor =XIMineBackGroundColor;
     self.tableView.tableHeaderView = self.headerView;
     
 }
+
+
+
+
+
 
 
 #pragma mark - MineHeaderSeletedDelegate

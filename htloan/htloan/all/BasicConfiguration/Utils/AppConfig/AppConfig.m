@@ -39,8 +39,8 @@ void TLLog(NSString *format, ...) {
     
     _runEnv = runEnv;
     
-    self.companyCode = @"CD-BCINF0019";
-    self.systemCode = @"CD-BCINF0019";
+//    self.companyCode = @"CD-BCINF0019";
+//    self.systemCode = @"CD-BCINF0019";
     
     switch (_runEnv) {
             
@@ -58,7 +58,9 @@ void TLLog(NSString *format, ...) {
             
         case RunEnvTest: {
             
-            self.addr = @"http://47.96.161.183:2201";
+//            self.addr = @"http://39.104.89.43:2401/forward-service/api";
+            self.addr = @"http://39.104.89.43:2401";
+
             self.qiniuDomain = @"http://p6aev1fk1.bkt.clouddn.com";
         }break;
     }

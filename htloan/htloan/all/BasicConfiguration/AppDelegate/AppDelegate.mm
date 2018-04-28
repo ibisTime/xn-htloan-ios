@@ -11,7 +11,7 @@
 
 //Manager
 #import "AppConfig.h"
-//#import "TLUser.h"
+#import "TLUser.h"
 //#import "QQManager.h"
 //#import "TLWXManager.h"
 //Extension
@@ -22,7 +22,7 @@
 //C
 #import "NavigationController.h"
 #import "TabbarViewController.h"
-//#import "TLUserLoginVC.h"
+#import "TLUserLoginVC.h"
 #import "TLUpdateVC.h"
 //禁止IQKeyboardManager的VC类
 //#import "InfoDetailVC.h"
@@ -42,7 +42,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     //服务器环境
-    //[self configServiceAddress];
+    [self configServiceAddress];
     //键盘
 //    [self configIQKeyboard];
     //配置极光
@@ -103,12 +103,12 @@
 - (void)configServiceAddress {
     
     //配置环境
-    [AppConfig config].runEnv = RunEnvRelease;
+    [AppConfig config].runEnv = RunEnvTest;
 }
 
 - (void)configIQKeyboard {
     
-    //
+    
 //    [IQKeyboardManager sharedManager].enable = YES;
 //    [[IQKeyboardManager sharedManager].disabledToolbarClasses addObject:[InfoDetailVC class]];
 //    [[IQKeyboardManager sharedManager].disabledToolbarClasses addObject:[InfoCommentDetailVC class]];
@@ -133,31 +133,33 @@
     self.window.rootViewController = tabbarCtrl;
     
     [self.window makeKeyAndVisible];
-    
+
+
 //    if (1) {
-//        //先配置到，检查更新的VC,开启更新检查
+  #warning    新特性展示
+        //先配置到，检查更新的VC,开启更新检查
 //        TLUpdateVC *updateVC = [[TLUpdateVC alloc] init];
 //        self.window.rootViewController = updateVC;
-//
+
 //    } else {
     
-//        TabbarViewController *tabbarCtrl = [[TabbarViewController alloc] init];
+//        TabbarViewController * tabbarCtrl = [[TabbarViewController alloc] init];
 //        self.window.rootViewController = tabbarCtrl;
- //   }
-//    //重新登录
-//    if([TLUser user].checkLogin) {
-//
-//        [[TLUser user] updateUserInfo];
-//        // 登录时间变更到，didBecomeActive中
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification
-//                                                            object:nil];
+//    }
+    //重新登录
+    if([TLUser user].checkLogin) {
+
+        [[TLUser user] updateUserInfo];
+        // 登录时间变更到，didBecomeActive中
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification
+                                                            object:nil];
+
+    };
     
- //   };
-    
-//    //登出
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOut) name:kUserLoginOutNotification object:nil];
-//    //Token失效
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenExpried) name:kUserTokenExpiredNotification object:nil];
+    //登出
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginOut) name:kUserLoginOutNotification object:nil];
+    //Token失效
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenExpried) name:kUserTokenExpiredNotification object:nil];
 
 }
 
@@ -165,19 +167,19 @@
 - (void)loginOut {
     
     //user 退出
-//    [[TLUser user] loginOut];
+    [[TLUser user] loginOut];
 }
 
 #pragma mark - Token失效
 - (void)tokenExpried {
     
-   // UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    UIViewController *vc = [UIApplication sharedApplication].keyWindow.rootViewController;
     
-//    TLUserLoginVC *loginVC = [TLUserLoginVC new];
+    TLUserLoginVC *loginVC = [TLUserLoginVC new];
     
-//    NavigationController *nav = [[NavigationController alloc] initWithRootViewController:loginVC];
+    NavigationController *nav = [[NavigationController alloc] initWithRootViewController:loginVC];
     
-//    [vc presentViewController:nav animated:YES completion:nil];
+    [vc presentViewController:nav animated:YES completion:nil];
 }
 
 @end

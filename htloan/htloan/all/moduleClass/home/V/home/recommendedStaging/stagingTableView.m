@@ -46,12 +46,12 @@ static NSString *identifierCell = @"stagingCell";
 }
 
 #pragma mark - UITableViewDataSource;
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-//    return self.mineGroup.sections.count;
-        return 1;
-}
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    
+////    return self.mineGroup.sections.count;
+//        return 1;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     

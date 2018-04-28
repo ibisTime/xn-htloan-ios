@@ -6,9 +6,12 @@
 //  Copyright © 2015年 蔡卓越. All rights reserved.
 //
 
+
 #ifndef AppMacro_h
 #define AppMacro_h
 #pragma mark - ToolsMacros
+
+
 
 // 如果数据为NULL，设为nil
 #define PASS_NULL_TO_NIL(instance) (([instance isKindOfClass:[NSNull class]]) ? nil : instance)

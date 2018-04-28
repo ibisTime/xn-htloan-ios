@@ -10,6 +10,7 @@
 @class homeCarShowModel;
 @interface XICarShowCell : UICollectionViewCell
 
+@property (nonatomic, copy) NSString *code;
 @property (nonatomic, strong) homeCarShowModel *carShowModel;
 
 @end

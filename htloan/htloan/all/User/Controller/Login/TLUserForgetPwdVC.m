@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"找回密码";
+    self.title = @"修改密码";
     
     self.view.backgroundColor = kWhiteColor;
     
@@ -170,7 +170,7 @@
     http.parameters[@"mobile"] = self.phoneTf.text;
     http.parameters[@"smsCaptcha"] = self.captchaView.captchaTf.text;
     http.parameters[@"newLoginPwd"] = self.pwdTf.text;
-    http.parameters[@"kind"] = APP_KIND;
+//    http.parameters[@"kind"] = APP_KIND;
     
     [http postWithSuccess:^(id responseObject) {
         
@@ -178,8 +178,8 @@
         
         //保存用户账号和密码
         [[TLUser user] saveUserName:self.phoneTf.text pwd:self.pwdTf.text];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //DISPATCH_TIME_NOW
+        dispatch_after(dispatch_time(1, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
             [self.navigationController popViewControllerAnimated:YES];
             

@@ -14,8 +14,7 @@
 @property (nonatomic, copy) NSString *carPayments;
 @property (nonatomic, copy) NSString *carMonthlyPayments;
 
-//@property (nonatomic, assign) BOOL isSpecial;
-////是否隐藏箭头
+
 //@property (nonatomic, assign) BOOL isHiddenArrow;
 
 @property (nonatomic,strong) void(^action)();

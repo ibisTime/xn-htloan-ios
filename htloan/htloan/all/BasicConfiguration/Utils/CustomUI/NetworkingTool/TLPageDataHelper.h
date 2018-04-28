@@ -24,11 +24,11 @@
 @property (nonatomic, assign) BOOL isList;
 //账户
 @property (nonatomic, assign) BOOL isCurrency;
-
-//设置改值后外界只需要 调用reloadData
+//*****************厉害*****************§
+//设置改值后外界只需要 调用reloadData--lihai
 @property (nonatomic,weak) TLTableView *tableView;
 @property (nonatomic, weak) BaseCollectionView *collectionView;
-
+//**********************************§
 //对得到的每个数据模型进行加工
 @property (nonatomic, copy) id(^dealWithPerModel)(id model);
 

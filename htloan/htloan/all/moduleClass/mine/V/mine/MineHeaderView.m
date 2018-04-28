@@ -66,7 +66,7 @@
 //
 //    [self.userPhoto addGestureRecognizer:tapGR];
     //名字
-    self.nameBtn = [UIButton buttonWithTitle:@"王敏"
+    self.nameBtn = [UIButton buttonWithTitle:@"占位"
                                   titleColor:kWhiteColor
                              backgroundColor:kClearColor
                                    titleFont:14.0];
@@ -80,7 +80,7 @@
     }];
     
     //手机号码
-    self.phoneNub = [UIButton buttonWithTitle:@"15890988458"
+    self.phoneNub = [UIButton buttonWithTitle:@" "
                                   titleColor:kWhiteColor
                              backgroundColor:kClearColor
                                    titleFont:14.0];
@@ -92,7 +92,7 @@
         make.left.equalTo(self.userPhoto.mas_right).offset(10);
     }];
 // 更多
-    self.more = [UIButton buttonWithImageName:@"更多白"];
+    self.more = [UIButton buttonWithImageName:@" "];
     [self addSubview:self.more];
     [self.more mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -104,7 +104,7 @@
 }
 
 #pragma mark - Events
-- (void)clickLogin {
+- (void) clickLogin {
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectedWithType:idx:)] && ![TLUser user].isLogin) {
         

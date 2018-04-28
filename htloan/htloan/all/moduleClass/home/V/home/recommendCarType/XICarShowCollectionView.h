@@ -7,6 +7,13 @@
 //
 
 #import "BaseCollectionView.h"
+//m
 
+#import "homeCarShowModel.h"
 @interface XICarShowCollectionView : BaseCollectionView
+
+@property (nonatomic, strong) NSString *code;
+
+@property (nonatomic, strong) NSArray <homeCarShowModel*> *carShows;
+
 @end

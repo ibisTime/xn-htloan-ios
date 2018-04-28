@@ -15,6 +15,8 @@ typedef void (^ImageOnClicked) (NSInteger index);
 @interface CircleGuideView : UIView <UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSTimer *timer;
+//
+@property (nonatomic, strong) UILabel * page ;
 
 // 更新图片数据
 @property (nonatomic, strong) NSArray  *imageNames;
@@ -24,6 +26,10 @@ typedef void (^ImageOnClicked) (NSInteger index);
 @property (nonatomic, assign) NSTimeInterval timeInterval;
 // 指定初始页面
 @property (nonatomic, assign) NSInteger pageCounter;
+
+@property (nonatomic, assign) NSInteger pageNub;
+
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 // 开启定时器滚动
 - (void)startTimer;
