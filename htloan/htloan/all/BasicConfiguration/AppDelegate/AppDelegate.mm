@@ -136,7 +136,7 @@
 
 
 //    if (1) {
-  #warning    新特性展示
+  
         //先配置到，检查更新的VC,开启更新检查
 //        TLUpdateVC *updateVC = [[TLUpdateVC alloc] init];
 //        self.window.rootViewController = updateVC;
