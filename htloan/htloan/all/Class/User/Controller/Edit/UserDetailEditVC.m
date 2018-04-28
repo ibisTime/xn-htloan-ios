@@ -25,10 +25,14 @@
 #import "QNConfiguration.h"
 //M
 #import "UserEditModel.h"
+
+#import "TLUser.h"
+
 //V
 #import "UserEditCell.h"
 #import "TLTextView.h"
 #import "TLTableView.h"
+#import "BaseView.h"
 //C
 #import "EditVC.h"
 
@@ -39,6 +43,10 @@
 @property (nonatomic, strong) TLImagePicker *imagePicker;
 @property (nonatomic, strong) TLTableView *tableView;
 @property (nonatomic, strong) TLDatePicker *datePicker;
+
+
+//退出登录
+@property (nonatomic, strong) BaseView *logoutView;
 
 @end
 
@@ -54,7 +62,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"编辑资料";
+    self.title = @"设置";
     //
     [self initTableView];
     //模型
@@ -70,13 +78,47 @@
     self.tableView.dataSource = self;
     self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //*****************当前页要不要显示退出登入*****************§
+        self.tableView.tableFooterView = self.logoutView;
+    //*****************当前页要不要显示退出登入*****************§
+
     [self.view addSubview:self.tableView];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.edges.mas_equalTo(UIEdgeInsetsZero);
     }];
+    
+    
 }
+//添加退出登入按钮
+
+//退出登入
+- (BaseView *)logoutView {
+    
+    if (!_logoutView) {
+        
+        _logoutView = [[BaseView alloc] initWithFrame:CGRectMake(0, 35, kScreenWidth, 100)];
+        
+        UIButton *logoutBtn = [UIButton buttonWithTitle:@"退出登录"
+                                             titleColor:kThemeColor
+                                        backgroundColor:kWhiteColor
+                                              titleFont:18.0];
+        
+        [logoutBtn addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_logoutView addSubview:logoutBtn];
+        [logoutBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.right.equalTo(@0);
+            make.top.equalTo(@20);
+            make.height.equalTo(@60);
+        }];
+    }
+    return _logoutView;
+}
+
 
 - (void)initGroup {
     
@@ -407,5 +449,26 @@
     
     return 0.1;
 }
+
+
+#pragma mark - Events
+- (void)logout {
+    
+    [TLAlert alertWithTitle:@"" msg:@"是否确认退出" confirmMsg:@"确认" cancleMsg:@"取消" cancle:^(UIAlertAction *action) {
+        
+    } confirm:^(UIAlertAction *action) {
+        
+        self.tableView.tableFooterView.hidden = YES;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginOutNotification object:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+             [self.navigationController popToRootViewControllerAnimated:YES];
+        });
+       
+    }];
+  
+}
+
 
 @end

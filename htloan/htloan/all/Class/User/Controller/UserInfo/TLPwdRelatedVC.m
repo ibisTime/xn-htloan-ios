@@ -9,7 +9,7 @@
 #import "TLPwdRelatedVC.h"
 #import "CaptchaView.h"
 #import "APICodeMacro.h"
-
+#import "TLUser.h"
 #import "NSString+Check.h"
 
 @interface TLPwdRelatedVC ()

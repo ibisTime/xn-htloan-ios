@@ -11,7 +11,7 @@
 #import "ZHAddAddressVC.h"
 
 #import "TLPlaceholderView.h"
-
+#import "TLUser.h"
 @interface ZHAddressChooseVC ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -62,6 +62,9 @@
     
     self.addBtn = addBtn;
 }
+
+
+
 
 - (void)initTableView {
     

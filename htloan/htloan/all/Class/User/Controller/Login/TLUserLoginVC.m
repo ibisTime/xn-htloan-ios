@@ -23,10 +23,16 @@
 #import "TLPickerTextField.h"
 #import "CaptchaView.h"
 #import "BaseView.h"
+#import "TLUser.h"
+//C
+#import "TLUserRegisterVC.h"
+#import "TLUserForgetPwdVC.h"
 
 @interface TLUserLoginVC ()
 
-@property (nonatomic, strong) TLTextField *phoneTf;
+@property (nonatomic, strong) TLTextField *phoneTf;//手机号
+@property (nonatomic,strong) TLTextField *pwdTf;//密码
+
 @property (nonatomic,strong) CaptchaView *captchaView;
 //第三方登录
 @property (nonatomic, strong) BaseView *thirdLoginView;
@@ -49,7 +55,7 @@
     //取消和注册
     [self setBarButtonItem];
     //
-    [self setUpUI];
+    [self setUpUI1];
     //登录成功回调
     [self setUpNotification];
 }
@@ -67,7 +73,110 @@
     [self.view addSubview:backBtn];
 }
 
-- (void)setUpUI {
+
+- (void)setUpUI1
+{
+    
+    self.view.backgroundColor = kWhiteColor;
+    
+    CGFloat margin = 32;
+    CGFloat w = kScreenWidth - 2*margin;
+    CGFloat h = ACCOUNT_HEIGHT;
+    
+    UIView *bgView = [[UIView alloc] init];
+    
+    bgView.backgroundColor = kWhiteColor;
+    
+    [self.view addSubview:bgView];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(@(kWidth(155)));
+        make.left.equalTo(@(margin));
+        make.height.equalTo(@(2*h+1));
+        make.width.equalTo(@(w));
+    }];
+    
+    //账号
+    TLTextField *phoneTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, 0, w, h) leftTitle:@"+86  |" titleWidth:70 placeholder:@"手机号码"];
+    
+    phoneTf.keyboardType = UIKeyboardTypeNumberPad;
+    
+    [bgView addSubview:phoneTf];
+    self.phoneTf = phoneTf;
+    
+    //密码
+    TLTextField *pwdTf = [[TLTextField alloc] initWithFrame:CGRectMake(0, h, w, h) leftTitle:@"密码" titleWidth:70 placeholder:@"请输入密码"];
+    pwdTf.secureTextEntry = YES;
+    
+    [bgView  addSubview:pwdTf];
+    self.pwdTf = pwdTf;
+    
+    
+    
+   
+    
+    
+    
+    for (int i = 0; i < 2; i++) {
+        
+        UIView *line = [[UIView alloc] init];
+        
+        line.backgroundColor = kLineColor;
+        
+        [bgView addSubview:line];
+        [line mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.equalTo(@0);
+            make.right.equalTo(@0);
+            make.height.equalTo(@0.5);
+            make.top.equalTo(@((i+1)*h));
+        }];
+    }
+    
+    
+    //登录
+    UIButton *loginBtn = [UIButton buttonWithTitle:@"快速登录" titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:17.0 cornerRadius:5];
+    [loginBtn addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:loginBtn];
+    [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.centerX.equalTo(@0);
+        make.height.equalTo(@(h - 5));
+        make.width.equalTo(@(kWidth(245)));
+        make.top.equalTo(bgView.mas_bottom).offset(28);
+    }];
+    
+    
+    
+    //注册
+    UIButton *registerBtn = [UIButton buttonWithTitle:@"立即注册" titleColor:kBlackColor backgroundColor:kClearColor titleFont:14.0 cornerRadius:1];
+    [registerBtn addTarget:self action:@selector(goRegister) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:registerBtn];
+    [registerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(loginBtn.mas_bottom).offset(28);
+        make.left.equalTo(self.view.mas_left).offset(15);
+    }];
+    //找回密码
+    UIButton *forgetPwdBtn = [UIButton buttonWithTitle:@"找回密码" titleColor:kBlackColor backgroundColor:kClearColor titleFont:14.0 cornerRadius:1];
+    [forgetPwdBtn addTarget:self action:@selector(goforgetPwd) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:forgetPwdBtn];
+    [forgetPwdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(loginBtn.mas_bottom).offset(28);
+        make.right.equalTo(self.view.mas_right).offset(-15);
+    }];
+    
+    
+    
+    
+    //第三方登录
+    //    [self initThirdLoginView];
+
+}
+
+
+
+
+- (void)setUpUI2 {
     
     self.view.backgroundColor = kWhiteColor;
     
@@ -99,6 +208,8 @@
     [bgView addSubview:phoneTf];
     self.phoneTf = phoneTf;
     
+    
+    
     //验证码
     CaptchaView *captchaView = [[CaptchaView alloc] initWithFrame:CGRectMake(0, phoneTf.yy + 1, w, h)];
     [captchaView.captchaBtn addTarget:self action:@selector(sendCaptcha) forControlEvents:UIControlEventTouchUpInside];
@@ -122,6 +233,8 @@
             make.top.equalTo(@((i+1)*h));
         }];
     }
+    
+    
     //登录
     UIButton *loginBtn = [UIButton buttonWithTitle:@"快速登录" titleColor:kWhiteColor backgroundColor:kAppCustomMainColor titleFont:17.0 cornerRadius:5];
     [loginBtn addTarget:self action:@selector(goLogin) forControlEvents:UIControlEventTouchUpInside];
@@ -137,6 +250,7 @@
 //    [self initThirdLoginView];
     
 }
+
 
 /**
  第三方登录
@@ -253,6 +367,21 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//注册
+-(void)goRegister
+{
+    //注册
+    TLUserRegisterVC * RegisterVC = [[TLUserRegisterVC alloc] init];
+    [self.navigationController pushViewController:RegisterVC animated:YES];
+}
+
+//找回密码
+-(void)goforgetPwd
+{
+    //找回密码
+    TLUserForgetPwdVC * forgetPwdVC = [[TLUserForgetPwdVC alloc] init];
+    [self.navigationController pushViewController:forgetPwdVC animated:YES];
+}
 //登录成功
 - (void)login {
 
@@ -289,7 +418,7 @@
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     http.code = CAPTCHA_CODE;
-    http.parameters[@"bizType"] = USER_LOGIN_CODE;
+    http.parameters[@"bizType"] = USER_BIZ_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
     
     [http postWithSuccess:^(id responseObject) {
@@ -319,21 +448,25 @@
         return;
     }
     
-    if (!(self.captchaView.captchaTf.text && self.captchaView.captchaTf.text.length > 3)) {
-        [TLAlert alertWithInfo:@"请输入正确的验证码"];
+    if (!(self.pwdTf.text &&self.pwdTf.text.length > 5)) {
         
+        [TLAlert alertWithInfo:@"请输入正确的密码"];
         return;
     }
     
     [self.view endEditing:YES];
-
+   //630201
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     http.code = USER_LOGIN_CODE;
     
-    http.parameters[@"mobile"] = self.phoneTf.text;
-    http.parameters[@"smsCaptcha"] = self.captchaView.captchaTf.text;
-    http.parameters[@"kind"] = APP_KIND;
+//    http.parameters[@"mobile"] = self.phoneTf.text;
+    
+    http.parameters[@"loginName"] = self.phoneTf.text;
+
+    http.parameters[@"loginPwd"] = self.pwdTf.text;
+    
+//    http.parameters[@"kind"] = APP_KIND;
 
     [http postWithSuccess:^(id responseObject) {
         

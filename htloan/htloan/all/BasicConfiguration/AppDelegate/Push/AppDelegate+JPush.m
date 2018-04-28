@@ -18,7 +18,7 @@
 #import "TLAlert.h"
 #import "NSString+Extension.h"
 //C
-#import "NewsFlashDetailVC.h"
+//#import "NewsFlashDetailVC.h"
 #import "TabbarViewController.h"
 
 @implementation AppDelegate (JPush)

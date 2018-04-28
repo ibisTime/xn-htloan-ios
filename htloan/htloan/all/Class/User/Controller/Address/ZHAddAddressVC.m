@@ -18,6 +18,7 @@
 #import "AddressPickerView.h"
 #import "TLTextField.h"
 
+#import "TLUser.h"
 @interface ZHAddAddressVC ()<UIScrollViewDelegate>
 
 @property (nonatomic,strong) TLTextField *nameTf;
@@ -164,8 +165,8 @@
         http.code = @"805160";
     }
     
-   // http.parameters[@"userId"] = [TLUser user].userId;
-   // http.parameters[@"token"] = [TLUser user].token;
+    http.parameters[@"userId"] = [TLUser user].userId;
+    http.parameters[@"token"] = [TLUser user].token;
     http.parameters[@"addressee"] = self.nameTf.text;
     http.parameters[@"mobile"] = self.mobileTf.text;
     http.parameters[@"province"] = self.proviceTf.text;

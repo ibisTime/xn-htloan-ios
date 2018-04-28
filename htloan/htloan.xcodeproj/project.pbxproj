@@ -14,6 +14,30 @@
 		184197332092FB540010E8A7 /* repaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197322092FB540010E8A7 /* repaymentModel.m */; };
 		184197362093049B0010E8A7 /* repaymentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197352093049B0010E8A7 /* repaymentVC.m */; };
 		1841973C20930AB60010E8A7 /* repaymentListV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841973B20930AB60010E8A7 /* repaymentListV.m */; };
+		187341532094698B000BC406 /* TLAlipayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873414D2094698B000BC406 /* TLAlipayManager.m */; };
+		187341542094698B000BC406 /* TLAuthHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1873414F2094698B000BC406 /* TLAuthHelper.m */; };
+		187341DE20946F8F000BC406 /* ZHAddAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341A920946F8E000BC406 /* ZHAddAddressVC.m */; };
+		187341DF20946F8F000BC406 /* ZHAddressChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341AB20946F8E000BC406 /* ZHAddressChooseVC.m */; };
+		187341E020946F8F000BC406 /* ZHReceivingAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341AD20946F8E000BC406 /* ZHReceivingAddress.m */; };
+		187341E120946F8F000BC406 /* TLAccountBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341B020946F8E000BC406 /* TLAccountBaseVC.m */; };
+		187341E220946F8F000BC406 /* EditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341B320946F8E000BC406 /* EditVC.m */; };
+		187341E320946F8F000BC406 /* UserDetailEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341B520946F8E000BC406 /* UserDetailEditVC.m */; };
+		187341E420946F8F000BC406 /* TLUserForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341B820946F8E000BC406 /* TLUserForgetPwdVC.m */; };
+		187341E520946F8F000BC406 /* TLUserLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341BA20946F8E000BC406 /* TLUserLoginVC.m */; };
+		187341E620946F8F000BC406 /* TLUserRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341BC20946F8E000BC406 /* TLUserRegisterVC.m */; };
+		187341E720946F8F000BC406 /* BindMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341BF20946F8E000BC406 /* BindMobileVC.m */; };
+		187341E820946F8F000BC406 /* TLAccountSetBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341C120946F8E000BC406 /* TLAccountSetBaseVC.m */; };
+		187341E920946F8F000BC406 /* TLChangeMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341C320946F8E000BC406 /* TLChangeMobileVC.m */; };
+		187341EA20946F8F000BC406 /* TLPwdRelatedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341C520946F8E000BC406 /* TLPwdRelatedVC.m */; };
+		187341EB20946F8F000BC406 /* UserEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341C920946F8E000BC406 /* UserEditModel.m */; };
+		187341EC20946F8F000BC406 /* ThirdLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341CC20946F8E000BC406 /* ThirdLoginModel.m */; };
+		187341ED20946F8F000BC406 /* TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341CE20946F8E000BC406 /* TLUser.m */; };
+		187341EE20946F8F000BC406 /* TLUserExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341D020946F8E000BC406 /* TLUserExt.m */; };
+		187341EF20946F8F000BC406 /* UserDefaultsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341D220946F8E000BC406 /* UserDefaultsUtil.m */; };
+		187341F020946F8F000BC406 /* ZHAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341D620946F8E000BC406 /* ZHAddressCell.m */; };
+		187341F120946F8F000BC406 /* ZHAddressChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341D820946F8E000BC406 /* ZHAddressChooseView.m */; };
+		187341F220946F8F000BC406 /* CaptchaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341DA20946F8E000BC406 /* CaptchaView.m */; };
+		187341F320946F8F000BC406 /* UserEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 187341DD20946F8E000BC406 /* UserEditCell.m */; };
 		1879B0D72080531D00639B2A /* htloanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B0D62080531D00639B2A /* htloanTests.m */; };
 		1879B0E22080531D00639B2A /* htloanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B0E12080531D00639B2A /* htloanUITests.m */; };
 		1879B66C2080755000639B2A /* AppDelegate+BaiduMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B52B2080755000639B2A /* AppDelegate+BaiduMap.m */; };
@@ -136,28 +160,6 @@
 		1879B88B2084363900639B2A /* XIMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B88A2084363900639B2A /* XIMineVC.m */; };
 		1879B88E208440A600639B2A /* MineTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B88D208440A500639B2A /* MineTableView.m */; };
 		1879B8912084414E00639B2A /* MineHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B88F2084414D00639B2A /* MineHeaderView.m */; };
-		1879B8CB2084426800639B2A /* ZHAddAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8962084426700639B2A /* ZHAddAddressVC.m */; };
-		1879B8CC2084426800639B2A /* ZHAddressChooseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8982084426700639B2A /* ZHAddressChooseVC.m */; };
-		1879B8CD2084426800639B2A /* ZHReceivingAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B89A2084426700639B2A /* ZHReceivingAddress.m */; };
-		1879B8CE2084426800639B2A /* TLAccountBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B89D2084426700639B2A /* TLAccountBaseVC.m */; };
-		1879B8CF2084426800639B2A /* EditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8A02084426700639B2A /* EditVC.m */; };
-		1879B8D02084426800639B2A /* UserDetailEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8A22084426700639B2A /* UserDetailEditVC.m */; };
-		1879B8D12084426800639B2A /* TLUserForgetPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8A52084426700639B2A /* TLUserForgetPwdVC.m */; };
-		1879B8D22084426800639B2A /* TLUserLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8A72084426700639B2A /* TLUserLoginVC.m */; };
-		1879B8D32084426800639B2A /* TLUserRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8A92084426700639B2A /* TLUserRegisterVC.m */; };
-		1879B8D42084426800639B2A /* BindMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8AC2084426700639B2A /* BindMobileVC.m */; };
-		1879B8D52084426800639B2A /* TLAccountSetBaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8AE2084426700639B2A /* TLAccountSetBaseVC.m */; };
-		1879B8D62084426800639B2A /* TLChangeMobileVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8B02084426700639B2A /* TLChangeMobileVC.m */; };
-		1879B8D72084426800639B2A /* TLPwdRelatedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8B22084426700639B2A /* TLPwdRelatedVC.m */; };
-		1879B8D82084426800639B2A /* UserEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8B62084426700639B2A /* UserEditModel.m */; };
-		1879B8D92084426800639B2A /* ThirdLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8B92084426700639B2A /* ThirdLoginModel.m */; };
-		1879B8DA2084426800639B2A /* TLUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8BB2084426700639B2A /* TLUser.m */; };
-		1879B8DB2084426800639B2A /* TLUserExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8BD2084426700639B2A /* TLUserExt.m */; };
-		1879B8DC2084426800639B2A /* UserDefaultsUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8BF2084426700639B2A /* UserDefaultsUtil.m */; };
-		1879B8DD2084426800639B2A /* ZHAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8C32084426700639B2A /* ZHAddressCell.m */; };
-		1879B8DE2084426800639B2A /* ZHAddressChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8C52084426700639B2A /* ZHAddressChooseView.m */; };
-		1879B8DF2084426800639B2A /* CaptchaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8C72084426700639B2A /* CaptchaView.m */; };
-		1879B8E02084426800639B2A /* UserEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8CA2084426700639B2A /* UserEditCell.m */; };
 		1879B8E82084450800639B2A /* CurrencyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8E32084450800639B2A /* CurrencyModel.m */; };
 		1879B8E92084450800639B2A /* MineGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8E52084450800639B2A /* MineGroup.m */; };
 		1879B8EA2084450800639B2A /* MineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1879B8E72084450800639B2A /* MineModel.m */; };
@@ -220,6 +222,54 @@
 		184197352093049B0010E8A7 /* repaymentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentVC.m; sourceTree = "<group>"; };
 		1841973A20930AB60010E8A7 /* repaymentListV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentListV.h; sourceTree = "<group>"; };
 		1841973B20930AB60010E8A7 /* repaymentListV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentListV.m; sourceTree = "<group>"; };
+		1873414C2094698B000BC406 /* TLAlipayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAlipayManager.h; sourceTree = "<group>"; };
+		1873414D2094698B000BC406 /* TLAlipayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAlipayManager.m; sourceTree = "<group>"; };
+		1873414E2094698B000BC406 /* TLAuthHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAuthHelper.h; sourceTree = "<group>"; };
+		1873414F2094698B000BC406 /* TLAuthHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAuthHelper.m; sourceTree = "<group>"; };
+		187341A820946F8E000BC406 /* ZHAddAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddAddressVC.h; sourceTree = "<group>"; };
+		187341A920946F8E000BC406 /* ZHAddAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddAddressVC.m; sourceTree = "<group>"; };
+		187341AA20946F8E000BC406 /* ZHAddressChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressChooseVC.h; sourceTree = "<group>"; };
+		187341AB20946F8E000BC406 /* ZHAddressChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressChooseVC.m; sourceTree = "<group>"; };
+		187341AC20946F8E000BC406 /* ZHReceivingAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHReceivingAddress.h; sourceTree = "<group>"; };
+		187341AD20946F8E000BC406 /* ZHReceivingAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHReceivingAddress.m; sourceTree = "<group>"; };
+		187341AF20946F8E000BC406 /* TLAccountBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountBaseVC.h; sourceTree = "<group>"; };
+		187341B020946F8E000BC406 /* TLAccountBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountBaseVC.m; sourceTree = "<group>"; };
+		187341B220946F8E000BC406 /* EditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditVC.h; sourceTree = "<group>"; };
+		187341B320946F8E000BC406 /* EditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditVC.m; sourceTree = "<group>"; };
+		187341B420946F8E000BC406 /* UserDetailEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailEditVC.h; sourceTree = "<group>"; };
+		187341B520946F8E000BC406 /* UserDetailEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailEditVC.m; sourceTree = "<group>"; };
+		187341B720946F8E000BC406 /* TLUserForgetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserForgetPwdVC.h; sourceTree = "<group>"; };
+		187341B820946F8E000BC406 /* TLUserForgetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserForgetPwdVC.m; sourceTree = "<group>"; };
+		187341B920946F8E000BC406 /* TLUserLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserLoginVC.h; sourceTree = "<group>"; };
+		187341BA20946F8E000BC406 /* TLUserLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserLoginVC.m; sourceTree = "<group>"; };
+		187341BB20946F8E000BC406 /* TLUserRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserRegisterVC.h; sourceTree = "<group>"; };
+		187341BC20946F8E000BC406 /* TLUserRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserRegisterVC.m; sourceTree = "<group>"; };
+		187341BE20946F8E000BC406 /* BindMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindMobileVC.h; sourceTree = "<group>"; };
+		187341BF20946F8E000BC406 /* BindMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindMobileVC.m; sourceTree = "<group>"; };
+		187341C020946F8E000BC406 /* TLAccountSetBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountSetBaseVC.h; sourceTree = "<group>"; };
+		187341C120946F8E000BC406 /* TLAccountSetBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountSetBaseVC.m; sourceTree = "<group>"; };
+		187341C220946F8E000BC406 /* TLChangeMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChangeMobileVC.h; sourceTree = "<group>"; };
+		187341C320946F8E000BC406 /* TLChangeMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChangeMobileVC.m; sourceTree = "<group>"; };
+		187341C420946F8E000BC406 /* TLPwdRelatedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPwdRelatedVC.h; sourceTree = "<group>"; };
+		187341C520946F8E000BC406 /* TLPwdRelatedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPwdRelatedVC.m; sourceTree = "<group>"; };
+		187341C820946F8E000BC406 /* UserEditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditModel.h; sourceTree = "<group>"; };
+		187341C920946F8E000BC406 /* UserEditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditModel.m; sourceTree = "<group>"; };
+		187341CB20946F8E000BC406 /* ThirdLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginModel.h; sourceTree = "<group>"; };
+		187341CC20946F8E000BC406 /* ThirdLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginModel.m; sourceTree = "<group>"; };
+		187341CD20946F8E000BC406 /* TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUser.h; sourceTree = "<group>"; };
+		187341CE20946F8E000BC406 /* TLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUser.m; sourceTree = "<group>"; };
+		187341CF20946F8E000BC406 /* TLUserExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserExt.h; sourceTree = "<group>"; };
+		187341D020946F8E000BC406 /* TLUserExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserExt.m; sourceTree = "<group>"; };
+		187341D120946F8E000BC406 /* UserDefaultsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtil.h; sourceTree = "<group>"; };
+		187341D220946F8E000BC406 /* UserDefaultsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtil.m; sourceTree = "<group>"; };
+		187341D520946F8E000BC406 /* ZHAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressCell.h; sourceTree = "<group>"; };
+		187341D620946F8E000BC406 /* ZHAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressCell.m; sourceTree = "<group>"; };
+		187341D720946F8E000BC406 /* ZHAddressChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressChooseView.h; sourceTree = "<group>"; };
+		187341D820946F8E000BC406 /* ZHAddressChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressChooseView.m; sourceTree = "<group>"; };
+		187341D920946F8E000BC406 /* CaptchaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaView.h; sourceTree = "<group>"; };
+		187341DA20946F8E000BC406 /* CaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaView.m; sourceTree = "<group>"; };
+		187341DC20946F8E000BC406 /* UserEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditCell.h; sourceTree = "<group>"; };
+		187341DD20946F8E000BC406 /* UserEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditCell.m; sourceTree = "<group>"; };
 		1879B0BA2080531B00639B2A /* htloan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = htloan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D22080531D00639B2A /* htloanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = htloanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D62080531D00639B2A /* htloanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = htloanTests.m; sourceTree = "<group>"; };
@@ -459,50 +509,6 @@
 		1879B88D208440A500639B2A /* MineTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableView.m; sourceTree = "<group>"; };
 		1879B88F2084414D00639B2A /* MineHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineHeaderView.m; sourceTree = "<group>"; };
 		1879B8902084414E00639B2A /* MineHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineHeaderView.h; sourceTree = "<group>"; };
-		1879B8952084426700639B2A /* ZHAddAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddAddressVC.h; sourceTree = "<group>"; };
-		1879B8962084426700639B2A /* ZHAddAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddAddressVC.m; sourceTree = "<group>"; };
-		1879B8972084426700639B2A /* ZHAddressChooseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressChooseVC.h; sourceTree = "<group>"; };
-		1879B8982084426700639B2A /* ZHAddressChooseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressChooseVC.m; sourceTree = "<group>"; };
-		1879B8992084426700639B2A /* ZHReceivingAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHReceivingAddress.h; sourceTree = "<group>"; };
-		1879B89A2084426700639B2A /* ZHReceivingAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHReceivingAddress.m; sourceTree = "<group>"; };
-		1879B89C2084426700639B2A /* TLAccountBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountBaseVC.h; sourceTree = "<group>"; };
-		1879B89D2084426700639B2A /* TLAccountBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountBaseVC.m; sourceTree = "<group>"; };
-		1879B89F2084426700639B2A /* EditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditVC.h; sourceTree = "<group>"; };
-		1879B8A02084426700639B2A /* EditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditVC.m; sourceTree = "<group>"; };
-		1879B8A12084426700639B2A /* UserDetailEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailEditVC.h; sourceTree = "<group>"; };
-		1879B8A22084426700639B2A /* UserDetailEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailEditVC.m; sourceTree = "<group>"; };
-		1879B8A42084426700639B2A /* TLUserForgetPwdVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserForgetPwdVC.h; sourceTree = "<group>"; };
-		1879B8A52084426700639B2A /* TLUserForgetPwdVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserForgetPwdVC.m; sourceTree = "<group>"; };
-		1879B8A62084426700639B2A /* TLUserLoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserLoginVC.h; sourceTree = "<group>"; };
-		1879B8A72084426700639B2A /* TLUserLoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserLoginVC.m; sourceTree = "<group>"; };
-		1879B8A82084426700639B2A /* TLUserRegisterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserRegisterVC.h; sourceTree = "<group>"; };
-		1879B8A92084426700639B2A /* TLUserRegisterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserRegisterVC.m; sourceTree = "<group>"; };
-		1879B8AB2084426700639B2A /* BindMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BindMobileVC.h; sourceTree = "<group>"; };
-		1879B8AC2084426700639B2A /* BindMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BindMobileVC.m; sourceTree = "<group>"; };
-		1879B8AD2084426700639B2A /* TLAccountSetBaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAccountSetBaseVC.h; sourceTree = "<group>"; };
-		1879B8AE2084426700639B2A /* TLAccountSetBaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAccountSetBaseVC.m; sourceTree = "<group>"; };
-		1879B8AF2084426700639B2A /* TLChangeMobileVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLChangeMobileVC.h; sourceTree = "<group>"; };
-		1879B8B02084426700639B2A /* TLChangeMobileVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLChangeMobileVC.m; sourceTree = "<group>"; };
-		1879B8B12084426700639B2A /* TLPwdRelatedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLPwdRelatedVC.h; sourceTree = "<group>"; };
-		1879B8B22084426700639B2A /* TLPwdRelatedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLPwdRelatedVC.m; sourceTree = "<group>"; };
-		1879B8B52084426700639B2A /* UserEditModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditModel.h; sourceTree = "<group>"; };
-		1879B8B62084426700639B2A /* UserEditModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditModel.m; sourceTree = "<group>"; };
-		1879B8B82084426700639B2A /* ThirdLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginModel.h; sourceTree = "<group>"; };
-		1879B8B92084426700639B2A /* ThirdLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginModel.m; sourceTree = "<group>"; };
-		1879B8BA2084426700639B2A /* TLUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUser.h; sourceTree = "<group>"; };
-		1879B8BB2084426700639B2A /* TLUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUser.m; sourceTree = "<group>"; };
-		1879B8BC2084426700639B2A /* TLUserExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUserExt.h; sourceTree = "<group>"; };
-		1879B8BD2084426700639B2A /* TLUserExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLUserExt.m; sourceTree = "<group>"; };
-		1879B8BE2084426700639B2A /* UserDefaultsUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultsUtil.h; sourceTree = "<group>"; };
-		1879B8BF2084426700639B2A /* UserDefaultsUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultsUtil.m; sourceTree = "<group>"; };
-		1879B8C22084426700639B2A /* ZHAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressCell.h; sourceTree = "<group>"; };
-		1879B8C32084426700639B2A /* ZHAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressCell.m; sourceTree = "<group>"; };
-		1879B8C42084426700639B2A /* ZHAddressChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAddressChooseView.h; sourceTree = "<group>"; };
-		1879B8C52084426700639B2A /* ZHAddressChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAddressChooseView.m; sourceTree = "<group>"; };
-		1879B8C62084426700639B2A /* CaptchaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaView.h; sourceTree = "<group>"; };
-		1879B8C72084426700639B2A /* CaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaView.m; sourceTree = "<group>"; };
-		1879B8C92084426700639B2A /* UserEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditCell.h; sourceTree = "<group>"; };
-		1879B8CA2084426700639B2A /* UserEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditCell.m; sourceTree = "<group>"; };
 		1879B8E22084450800639B2A /* CurrencyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyModel.h; sourceTree = "<group>"; };
 		1879B8E32084450800639B2A /* CurrencyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyModel.m; sourceTree = "<group>"; };
 		1879B8E42084450800639B2A /* MineGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineGroup.h; sourceTree = "<group>"; };
@@ -602,6 +608,172 @@
 			path = carOrdersSubmitted;
 			sourceTree = "<group>";
 		};
+		187341482094698B000BC406 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				187341492094698B000BC406 /* BaseManager */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		187341492094698B000BC406 /* BaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				1873414C2094698B000BC406 /* TLAlipayManager.h */,
+				1873414D2094698B000BC406 /* TLAlipayManager.m */,
+				1873414E2094698B000BC406 /* TLAuthHelper.h */,
+				1873414F2094698B000BC406 /* TLAuthHelper.m */,
+			);
+			path = BaseManager;
+			sourceTree = "<group>";
+		};
+		187341A520946F8E000BC406 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				187341A620946F8E000BC406 /* Controller */,
+				187341C620946F8E000BC406 /* Model */,
+				187341D320946F8E000BC406 /* View */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		187341A620946F8E000BC406 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				187341A720946F8E000BC406 /* Address */,
+				187341AE20946F8E000BC406 /* Base */,
+				187341B120946F8E000BC406 /* Edit */,
+				187341B620946F8E000BC406 /* Login */,
+				187341BD20946F8E000BC406 /* UserInfo */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		187341A720946F8E000BC406 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				187341A820946F8E000BC406 /* ZHAddAddressVC.h */,
+				187341A920946F8E000BC406 /* ZHAddAddressVC.m */,
+				187341AA20946F8E000BC406 /* ZHAddressChooseVC.h */,
+				187341AB20946F8E000BC406 /* ZHAddressChooseVC.m */,
+				187341AC20946F8E000BC406 /* ZHReceivingAddress.h */,
+				187341AD20946F8E000BC406 /* ZHReceivingAddress.m */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		187341AE20946F8E000BC406 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				187341AF20946F8E000BC406 /* TLAccountBaseVC.h */,
+				187341B020946F8E000BC406 /* TLAccountBaseVC.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		187341B120946F8E000BC406 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				187341B220946F8E000BC406 /* EditVC.h */,
+				187341B320946F8E000BC406 /* EditVC.m */,
+				187341B420946F8E000BC406 /* UserDetailEditVC.h */,
+				187341B520946F8E000BC406 /* UserDetailEditVC.m */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		187341B620946F8E000BC406 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				187341B720946F8E000BC406 /* TLUserForgetPwdVC.h */,
+				187341B820946F8E000BC406 /* TLUserForgetPwdVC.m */,
+				187341B920946F8E000BC406 /* TLUserLoginVC.h */,
+				187341BA20946F8E000BC406 /* TLUserLoginVC.m */,
+				187341BB20946F8E000BC406 /* TLUserRegisterVC.h */,
+				187341BC20946F8E000BC406 /* TLUserRegisterVC.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		187341BD20946F8E000BC406 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				187341BE20946F8E000BC406 /* BindMobileVC.h */,
+				187341BF20946F8E000BC406 /* BindMobileVC.m */,
+				187341C020946F8E000BC406 /* TLAccountSetBaseVC.h */,
+				187341C120946F8E000BC406 /* TLAccountSetBaseVC.m */,
+				187341C220946F8E000BC406 /* TLChangeMobileVC.h */,
+				187341C320946F8E000BC406 /* TLChangeMobileVC.m */,
+				187341C420946F8E000BC406 /* TLPwdRelatedVC.h */,
+				187341C520946F8E000BC406 /* TLPwdRelatedVC.m */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
+		187341C620946F8E000BC406 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				187341C720946F8E000BC406 /* Edit */,
+				187341CA20946F8E000BC406 /* User */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		187341C720946F8E000BC406 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				187341C820946F8E000BC406 /* UserEditModel.h */,
+				187341C920946F8E000BC406 /* UserEditModel.m */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		187341CA20946F8E000BC406 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				187341CB20946F8E000BC406 /* ThirdLoginModel.h */,
+				187341CC20946F8E000BC406 /* ThirdLoginModel.m */,
+				187341CD20946F8E000BC406 /* TLUser.h */,
+				187341CE20946F8E000BC406 /* TLUser.m */,
+				187341CF20946F8E000BC406 /* TLUserExt.h */,
+				187341D020946F8E000BC406 /* TLUserExt.m */,
+				187341D120946F8E000BC406 /* UserDefaultsUtil.h */,
+				187341D220946F8E000BC406 /* UserDefaultsUtil.m */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		187341D320946F8E000BC406 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				187341D420946F8E000BC406 /* Address */,
+				187341D920946F8E000BC406 /* CaptchaView.h */,
+				187341DA20946F8E000BC406 /* CaptchaView.m */,
+				187341DB20946F8E000BC406 /* Edit */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		187341D420946F8E000BC406 /* Address */ = {
+			isa = PBXGroup;
+			children = (
+				187341D520946F8E000BC406 /* ZHAddressCell.h */,
+				187341D620946F8E000BC406 /* ZHAddressCell.m */,
+				187341D720946F8E000BC406 /* ZHAddressChooseView.h */,
+				187341D820946F8E000BC406 /* ZHAddressChooseView.m */,
+			);
+			path = Address;
+			sourceTree = "<group>";
+		};
+		187341DB20946F8E000BC406 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				187341DC20946F8E000BC406 /* UserEditCell.h */,
+				187341DD20946F8E000BC406 /* UserEditCell.m */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		1879B0B12080531B00639B2A = {
 			isa = PBXGroup;
 			children = (
@@ -653,7 +825,7 @@
 		1879B5272080754F00639B2A /* all */ = {
 			isa = PBXGroup;
 			children = (
-				1879B6EC2080788200639B2A /* moduleClass */,
+				1879B6EC2080788200639B2A /* Class */,
 				1879B5282080754F00639B2A /* BasicConfiguration */,
 				1879B6612080755000639B2A /* Resource */,
 			);
@@ -669,6 +841,7 @@
 				1879B56A2080755000639B2A /* Section */,
 				1879B5BE2080755000639B2A /* Update */,
 				1879B5C32080755000639B2A /* Utils */,
+				187341482094698B000BC406 /* Manager */,
 			);
 			path = BasicConfiguration;
 			sourceTree = "<group>";
@@ -1385,15 +1558,15 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
-		1879B6EC2080788200639B2A /* moduleClass */ = {
+		1879B6EC2080788200639B2A /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				187341A520946F8E000BC406 /* User */,
 				1879B6ED2080788200639B2A /* home */,
 				1879B6F52080788200639B2A /* repayment */,
 				1879B87F2084353000639B2A /* mine */,
-				1879B8922084426700639B2A /* User */,
 			);
-			path = moduleClass;
+			path = Class;
 			sourceTree = "<group>";
 		};
 		1879B6ED2080788200639B2A /* home */ = {
@@ -1514,154 +1687,6 @@
 				18F3A5612085CCAC000EEE4F /* mine */,
 			);
 			path = V;
-			sourceTree = "<group>";
-		};
-		1879B8922084426700639B2A /* User */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8932084426700639B2A /* Controller */,
-				1879B8B32084426700639B2A /* Model */,
-				1879B8C02084426700639B2A /* View */,
-			);
-			name = User;
-			path = ../User;
-			sourceTree = "<group>";
-		};
-		1879B8932084426700639B2A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8942084426700639B2A /* Address */,
-				1879B89B2084426700639B2A /* Base */,
-				1879B89E2084426700639B2A /* Edit */,
-				1879B8A32084426700639B2A /* Login */,
-				1879B8AA2084426700639B2A /* UserInfo */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		1879B8942084426700639B2A /* Address */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8952084426700639B2A /* ZHAddAddressVC.h */,
-				1879B8962084426700639B2A /* ZHAddAddressVC.m */,
-				1879B8972084426700639B2A /* ZHAddressChooseVC.h */,
-				1879B8982084426700639B2A /* ZHAddressChooseVC.m */,
-				1879B8992084426700639B2A /* ZHReceivingAddress.h */,
-				1879B89A2084426700639B2A /* ZHReceivingAddress.m */,
-			);
-			path = Address;
-			sourceTree = "<group>";
-		};
-		1879B89B2084426700639B2A /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				1879B89C2084426700639B2A /* TLAccountBaseVC.h */,
-				1879B89D2084426700639B2A /* TLAccountBaseVC.m */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		1879B89E2084426700639B2A /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				1879B89F2084426700639B2A /* EditVC.h */,
-				1879B8A02084426700639B2A /* EditVC.m */,
-				1879B8A12084426700639B2A /* UserDetailEditVC.h */,
-				1879B8A22084426700639B2A /* UserDetailEditVC.m */,
-			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
-		1879B8A32084426700639B2A /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8A42084426700639B2A /* TLUserForgetPwdVC.h */,
-				1879B8A52084426700639B2A /* TLUserForgetPwdVC.m */,
-				1879B8A62084426700639B2A /* TLUserLoginVC.h */,
-				1879B8A72084426700639B2A /* TLUserLoginVC.m */,
-				1879B8A82084426700639B2A /* TLUserRegisterVC.h */,
-				1879B8A92084426700639B2A /* TLUserRegisterVC.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		1879B8AA2084426700639B2A /* UserInfo */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8AB2084426700639B2A /* BindMobileVC.h */,
-				1879B8AC2084426700639B2A /* BindMobileVC.m */,
-				1879B8AD2084426700639B2A /* TLAccountSetBaseVC.h */,
-				1879B8AE2084426700639B2A /* TLAccountSetBaseVC.m */,
-				1879B8AF2084426700639B2A /* TLChangeMobileVC.h */,
-				1879B8B02084426700639B2A /* TLChangeMobileVC.m */,
-				1879B8B12084426700639B2A /* TLPwdRelatedVC.h */,
-				1879B8B22084426700639B2A /* TLPwdRelatedVC.m */,
-			);
-			path = UserInfo;
-			sourceTree = "<group>";
-		};
-		1879B8B32084426700639B2A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8B42084426700639B2A /* Edit */,
-				1879B8B72084426700639B2A /* User */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		1879B8B42084426700639B2A /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8B52084426700639B2A /* UserEditModel.h */,
-				1879B8B62084426700639B2A /* UserEditModel.m */,
-			);
-			path = Edit;
-			sourceTree = "<group>";
-		};
-		1879B8B72084426700639B2A /* User */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8B82084426700639B2A /* ThirdLoginModel.h */,
-				1879B8B92084426700639B2A /* ThirdLoginModel.m */,
-				1879B8BA2084426700639B2A /* TLUser.h */,
-				1879B8BB2084426700639B2A /* TLUser.m */,
-				1879B8BC2084426700639B2A /* TLUserExt.h */,
-				1879B8BD2084426700639B2A /* TLUserExt.m */,
-				1879B8BE2084426700639B2A /* UserDefaultsUtil.h */,
-				1879B8BF2084426700639B2A /* UserDefaultsUtil.m */,
-			);
-			path = User;
-			sourceTree = "<group>";
-		};
-		1879B8C02084426700639B2A /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8C12084426700639B2A /* Address */,
-				1879B8C62084426700639B2A /* CaptchaView.h */,
-				1879B8C72084426700639B2A /* CaptchaView.m */,
-				1879B8C82084426700639B2A /* Edit */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1879B8C12084426700639B2A /* Address */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8C22084426700639B2A /* ZHAddressCell.h */,
-				1879B8C32084426700639B2A /* ZHAddressCell.m */,
-				1879B8C42084426700639B2A /* ZHAddressChooseView.h */,
-				1879B8C52084426700639B2A /* ZHAddressChooseView.m */,
-			);
-			path = Address;
-			sourceTree = "<group>";
-		};
-		1879B8C82084426700639B2A /* Edit */ = {
-			isa = PBXGroup;
-			children = (
-				1879B8C92084426700639B2A /* UserEditCell.h */,
-				1879B8CA2084426700639B2A /* UserEditCell.m */,
-			);
-			path = Edit;
 			sourceTree = "<group>";
 		};
 		1879B8E12084450800639B2A /* Mine */ = {
@@ -2071,35 +2096,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				1879B68F2080755000639B2A /* WTReTextField.m in Sources */,
-				1879B8DF2084426800639B2A /* CaptchaView.m in Sources */,
 				1879B8E82084450800639B2A /* CurrencyModel.m in Sources */,
 				1879B6D22080755000639B2A /* TLImagePicker.m in Sources */,
-				1879B8DA2084426800639B2A /* TLUser.m in Sources */,
 				188A7B032088C57F006220E8 /* CalculatorCell.m in Sources */,
 				1879B6C42080755000639B2A /* UILable+convience.m in Sources */,
 				1879B6C72080755000639B2A /* UIView+Responder.m in Sources */,
+				187341F320946F8F000BC406 /* UserEditCell.m in Sources */,
 				1879B7E22081E6B300639B2A /* TabbarViewController.m in Sources */,
+				187341542094698B000BC406 /* TLAuthHelper.m in Sources */,
+				187341ED20946F8F000BC406 /* TLUser.m in Sources */,
 				1879B69A2080755000639B2A /* SGScanningQRCodeVC.m in Sources */,
+				187341DE20946F8F000BC406 /* ZHAddAddressVC.m in Sources */,
 				184197362093049B0010E8A7 /* repaymentVC.m in Sources */,
 				1879B6752080755000639B2A /* TLBaseModel.m in Sources */,
 				1879B66C2080755000639B2A /* AppDelegate+BaiduMap.m in Sources */,
 				188A7AE92088379F006220E8 /* stagingCell.m in Sources */,
 				1879B88B2084363900639B2A /* XIMineVC.m in Sources */,
-				1879B8D12084426800639B2A /* TLUserForgetPwdVC.m in Sources */,
+				187341EB20946F8F000BC406 /* UserEditModel.m in Sources */,
 				1879B6952080755000639B2A /* TLPhotoCell.m in Sources */,
 				1879B66D2080755000639B2A /* AppDelegate+Launch.m in Sources */,
 				1879B6CD2080755000639B2A /* TLPageDataHelper.m in Sources */,
 				1879B6AF2080755000639B2A /* HttpSign.m in Sources */,
+				187341F220946F8F000BC406 /* CaptchaView.m in Sources */,
+				187341E820946F8F000BC406 /* TLAccountSetBaseVC.m in Sources */,
 				1879B6BD2080755000639B2A /* UIButton+Custom.m in Sources */,
 				1879B6D42080755000639B2A /* TLPlaceholderView.m in Sources */,
-				1879B8CE2084426800639B2A /* TLAccountBaseVC.m in Sources */,
 				1879B6B72080755000639B2A /* NSString+Check.m in Sources */,
 				18F3A5662085DC01000EEE4F /* XIMyApplyForTableView.m in Sources */,
 				188A7AEF2088521C006220E8 /* stagingModel.m in Sources */,
 				1879B6BC2080755000639B2A /* UIBarButtonItem+convience.m in Sources */,
 				1879B6DD2080755000639B2A /* TLTextView.m in Sources */,
 				1879B6A62080755000639B2A /* MovieAddComment.m in Sources */,
-				1879B8DC2084426800639B2A /* UserDefaultsUtil.m in Sources */,
 				1879B6872080755000639B2A /* BannerCell.m in Sources */,
 				1879B6C12080755000639B2A /* UIControl+Block.m in Sources */,
 				1879B6932080755000639B2A /* TLDisplayPhotoVC.m in Sources */,
@@ -2110,8 +2137,8 @@
 				1879B6B92080755000639B2A /* NSString+Extension.m in Sources */,
 				1879B7D92081CB6D00639B2A /* XIRepaymentVC.m in Sources */,
 				1879B67B2080755000639B2A /* BaseCollectionView.m in Sources */,
+				187341EC20946F8F000BC406 /* ThirdLoginModel.m in Sources */,
 				1879B6C62080755000639B2A /* UIView+Extension.m in Sources */,
-				1879B8D72084426800639B2A /* TLPwdRelatedVC.m in Sources */,
 				1879B6AD2080755000639B2A /* HttpRequestService.m in Sources */,
 				18911CDC20907086000CBB2C /* carImgModel.m in Sources */,
 				1879B6712080755000639B2A /* BaseModel.m in Sources */,
@@ -2129,16 +2156,18 @@
 				1879B6AB2080755000639B2A /* HttpLogger.m in Sources */,
 				1879B6892080755000639B2A /* CircleGuideView.m in Sources */,
 				188A7ACF208712A0006220E8 /* XIRecommendCarView.m in Sources */,
+				187341E720946F8F000BC406 /* BindMobileVC.m in Sources */,
 				1879B6AC2080755000639B2A /* HttpRequestObject.m in Sources */,
 				1879B6E12080755000639B2A /* HTMLStrVC.m in Sources */,
 				1879B6DE2080755000639B2A /* UINavigationController+MethodSwizzling.m in Sources */,
 				1879B6922080755000639B2A /* TLChooseResultManager.m in Sources */,
-				1879B8D82084426800639B2A /* UserEditModel.m in Sources */,
 				180FD30F20932AF900449F4E /* carOrdersSubmittedVC.m in Sources */,
 				1879B6B52080755000639B2A /* NSObject+Extension.m in Sources */,
+				187341E120946F8F000BC406 /* TLAccountBaseVC.m in Sources */,
 				1879B68E2080755000639B2A /* WTReParser.m in Sources */,
 				1879B69D2080755000639B2A /* SGQRCodeTool.m in Sources */,
 				1879B6A32080755000639B2A /* SGScanningQRCodeView.m in Sources */,
+				187341F120946F8F000BC406 /* ZHAddressChooseView.m in Sources */,
 				1879B6842080755000639B2A /* AddressPickerView.m in Sources */,
 				1879B6C92080755000639B2A /* TLAlert.m in Sources */,
 				1879B6DA2080755000639B2A /* TLTableView.m in Sources */,
@@ -2148,11 +2177,9 @@
 				1879B6BE2080755000639B2A /* UIButton+EnLargeEdge.m in Sources */,
 				1879B6BB2080755000639B2A /* UIApplication+Custom.m in Sources */,
 				1879B6722080755000639B2A /* DataDictionaryModel.m in Sources */,
-				1879B8DD2084426800639B2A /* ZHAddressCell.m in Sources */,
 				1879B8912084414E00639B2A /* MineHeaderView.m in Sources */,
 				1879B6B22080755000639B2A /* NSArray+Custom.m in Sources */,
 				1879B6CC2080755000639B2A /* TLNetworking.m in Sources */,
-				1879B8D02084426800639B2A /* UserDetailEditVC.m in Sources */,
 				1879B6D12080755000639B2A /* TLDatePicker.m in Sources */,
 				1879B6882080755000639B2A /* TLBannerView.m in Sources */,
 				1879B8ED208446D500639B2A /* MineCell.m in Sources */,
@@ -2160,69 +2187,68 @@
 				1879B68A2080755000639B2A /* YYImageClipViewController.m in Sources */,
 				1879B6DB2080755000639B2A /* TLTextField.m in Sources */,
 				1879B6D72080755000639B2A /* SelectScrollView.m in Sources */,
-				1879B8D32084426800639B2A /* TLUserRegisterVC.m in Sources */,
-				1879B8E02084426800639B2A /* UserEditCell.m in Sources */,
 				1879B6982080755000639B2A /* ScanSuccessJumpVC.m in Sources */,
 				1879B66E2080755000639B2A /* AppDelegate.mm in Sources */,
-				1879B8CD2084426800639B2A /* ZHReceivingAddress.m in Sources */,
+				187341EF20946F8F000BC406 /* UserDefaultsUtil.m in Sources */,
+				187341E520946F8F000BC406 /* TLUserLoginVC.m in Sources */,
 				1879B6762080755000639B2A /* BaseViewController.m in Sources */,
 				188A7AD1208713F6006220E8 /* XIHomeVC.m in Sources */,
 				1879B6E02080755000639B2A /* DetailWebView.m in Sources */,
 				1879B6C32080755000639B2A /* UILabel+Extension.m in Sources */,
 				1879B6852080755000639B2A /* City.m in Sources */,
 				189DAB0C208E29C200BFAE06 /* detailsOfCarVC.m in Sources */,
-				1879B8DB2084426800639B2A /* TLUserExt.m in Sources */,
 				188A7B072088C69F006220E8 /* CalculatorModel.m in Sources */,
 				1879B6732080755000639B2A /* KeyValueModel.m in Sources */,
 				180FD30B2093294600449F4E /* repaymentDetailVC.m in Sources */,
 				1879B6BF2080755000639B2A /* UIColor+Extension.m in Sources */,
-				1879B8CF2084426800639B2A /* EditVC.m in Sources */,
 				188A7AE120876913006220E8 /* homeCarShowModel.m in Sources */,
-				1879B8CC2084426800639B2A /* ZHAddressChooseVC.m in Sources */,
-				1879B8CB2084426800639B2A /* ZHAddAddressVC.m in Sources */,
 				188A7AF92088A530006220E8 /* calculatorVC.m in Sources */,
-				1879B8D22084426800639B2A /* TLUserLoginVC.m in Sources */,
 				1879B6C52080755000639B2A /* UIScrollView+SnapShot.m in Sources */,
 				18F3A5692085DDBC000EEE4F /* XIMyApplyForCell.m in Sources */,
 				1879B6BA2080755000639B2A /* LKViewAttribute.m in Sources */,
+				187341E320946F8F000BC406 /* UserDetailEditVC.m in Sources */,
 				1879B6D62080755000639B2A /* SegmentUnil.m in Sources */,
+				187341E220946F8F000BC406 /* EditVC.m in Sources */,
 				1879B6B12080755000639B2A /* Foundation+Log.m in Sources */,
 				1879B68C2080755000639B2A /* LinkLabel.m in Sources */,
 				188A7B0A2088E2A0006220E8 /* CalculatorGounp.m in Sources */,
-				1879B8DE2084426800639B2A /* ZHAddressChooseView.m in Sources */,
+				187341EE20946F8F000BC406 /* TLUserExt.m in Sources */,
 				1879B68B2080755000639B2A /* InputTextView.m in Sources */,
 				1879B6CB2080755000639B2A /* TLTimeButton.m in Sources */,
 				1879B67C2080755000639B2A /* BaseTableViewCell.m in Sources */,
+				187341DF20946F8F000BC406 /* ZHAddressChooseVC.m in Sources */,
 				1879B6942080755000639B2A /* TLImagePickerController.m in Sources */,
 				1841973C20930AB60010E8A7 /* repaymentListV.m in Sources */,
 				1879B6962080755000639B2A /* TLPhotoChooseItem.m in Sources */,
 				184197302091B0C10010E8A7 /* CarTextImgV.m in Sources */,
-				1879B8D42084426800639B2A /* BindMobileVC.m in Sources */,
 				1879B8E92084450800639B2A /* MineGroup.m in Sources */,
 				1879B6D32080755000639B2A /* TLPickerTextField.m in Sources */,
 				1879B67A2080755000639B2A /* BarButton.m in Sources */,
 				180FD3072093199600449F4E /* repaymentListCell.m in Sources */,
 				1879B6782080755000639B2A /* NavigationController.m in Sources */,
-				1879B8D52084426800639B2A /* TLAccountSetBaseVC.m in Sources */,
 				1879B6C22080755000639B2A /* UIImage+Tint.m in Sources */,
 				1879B6EA2080755000639B2A /* main.m in Sources */,
 				184197332092FB540010E8A7 /* repaymentModel.m in Sources */,
 				1879B6C82080755000639B2A /* UIViewController+Extension.m in Sources */,
+				187341532094698B000BC406 /* TLAlipayManager.m in Sources */,
 				18F600C520902E52009C140F /* CarTextV.m in Sources */,
+				187341E920946F8F000BC406 /* TLChangeMobileVC.m in Sources */,
 				1879B6C02080755000639B2A /* UIColor+theme.m in Sources */,
+				187341EA20946F8F000BC406 /* TLPwdRelatedVC.m in Sources */,
 				1879B6772080755000639B2A /* BaseWKWebViewController.m in Sources */,
 				188A7AE620879378006220E8 /* stagingTableView.m in Sources */,
+				187341E020946F8F000BC406 /* ZHReceivingAddress.m in Sources */,
 				1879B6D92080755000639B2A /* TopLabelUtil.m in Sources */,
 				1879B68D2080755000639B2A /* PasswordView.m in Sources */,
+				187341E620946F8F000BC406 /* TLUserRegisterVC.m in Sources */,
 				188A7AFD2088B792006220E8 /* CalculatorTableView.m in Sources */,
 				18F3A56D2085DF02000EEE4F /* XIMyApplyForModel.m in Sources */,
 				188A7B002088B957006220E8 /* CalculatorHeaderView.m in Sources */,
 				1879B6B02080755000639B2A /* AppConfig.m in Sources */,
-				1879B8D62084426800639B2A /* TLChangeMobileVC.m in Sources */,
 				1879B6AE2080755000639B2A /* HttpRequestTool.m in Sources */,
+				187341E420946F8F000BC406 /* TLUserForgetPwdVC.m in Sources */,
 				188A7AF220886602006220E8 /* stagingHeadView.m in Sources */,
 				1879B6B82080755000639B2A /* NSString+Date.m in Sources */,
-				1879B8D92084426800639B2A /* ThirdLoginModel.m in Sources */,
 				1879B6992080755000639B2A /* SGGenerateQRCodeVC.m in Sources */,
 				1879B69B2080755000639B2A /* SGAlertView.m in Sources */,
 				1879B6A92080755000639B2A /* GengXinModel.m in Sources */,
@@ -2230,6 +2256,7 @@
 				1879B6A82080755000639B2A /* ZipImg.m in Sources */,
 				1879B6DC2080755000639B2A /* CustomTextView.m in Sources */,
 				1879B6CF2080755000639B2A /* CustomPickerView.m in Sources */,
+				187341F020946F8F000BC406 /* ZHAddressCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

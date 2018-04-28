@@ -23,7 +23,7 @@
 //ios10 -> ios7 收到本地推送
 - (void)jpushDidReceiveLocalNotification:(UILocalNotification *)notification;
 
-- (void)checkMessageTypeWithModel:(JPushModel *)model vc:(UIViewController *)vc;
+//- (void)checkMessageTypeWithModel:(JPushModel *)model vc:(UIViewController *)vc;
 
 //获取当前控制器
 - (UIViewController *)topViewController;

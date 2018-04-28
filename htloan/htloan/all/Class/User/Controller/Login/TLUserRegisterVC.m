@@ -18,6 +18,7 @@
 #import "APICodeMacro.h"
 #import "NSString+Check.h"
 
+#import "TLUser.h"
 @interface TLUserRegisterVC ()<CLLocationManagerDelegate>
 
 @property (nonatomic,strong) CaptchaView *captchaView;
@@ -188,7 +189,7 @@
 
 #pragma mark - Events
 
-//--//
+//--验证码//
 - (void)sendCaptcha {
     
     if (![self.phoneTf.text isPhoneNum]) {
@@ -201,7 +202,7 @@
     TLNetworking *http = [TLNetworking new];
     http.showView = self.view;
     http.code = CAPTCHA_CODE;
-    http.parameters[@"bizType"] = USER_REG_CODE;
+    http.parameters[@"bizType"] = CAPTCHA_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
     
     [http postWithSuccess:^(id responseObject) {
@@ -266,47 +267,50 @@
     http.code = USER_REG_CODE;
     http.parameters[@"mobile"] = self.phoneTf.text;
     http.parameters[@"loginPwd"] = self.pwdTf.text;
+    http.parameters[@"confirmPwd"] = self.pwdTf.text;
 //    http.parameters[@"isRegHx"] = @"0";
     http.parameters[@"smsCaptcha"] = self.captchaView.captchaTf.text;
-    http.parameters[@"kind"] = APP_KIND;
-    http.parameters[@"nickname"] = self.nickNameTF.text;
+//    http.parameters[@"kind"] = APP_KIND;
+//    http.parameters[@"nickname"] = self.nickNameTF.text;
     
     [http postWithSuccess:^(id responseObject) {
         
         [self.view endEditing:YES];
         
         [TLAlert alertWithSucces:@"注册成功"];
-        NSString *token = responseObject[@"data"][@"token"];
+//        NSString *token = responseObject[@"data"][@"token"];
         NSString *userId = responseObject[@"data"][@"userId"];
         
         //保存用户账号和密码
         [[TLUser user] saveUserName:self.phoneTf.text pwd:self.pwdTf.text];
+   
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            //获取用户信息
-            TLNetworking *http = [TLNetworking new];
-            http.showView = self.view;
-            http.code = USER_INFO;
-            http.parameters[@"userId"] = userId;
-            http.parameters[@"token"] = token;
-            [http postWithSuccess:^(id responseObject) {
-                
-                NSDictionary *userInfo = responseObject[@"data"];
-                [TLUser user].userId = userId;
-                [TLUser user].token = token;
-                
-                //保存信息
-                [[TLUser user] saveUserInfo:userInfo];
-                [[TLUser user] setUserInfoWithDict:userInfo];
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
-                
-            } failure:^(NSError *error) {
-                
-            }];
-            
-        });
+        //*****************直接登入*****************§
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//
+//            //获取用户信息
+//            TLNetworking *http = [TLNetworking new];
+//            http.showView = self.view;
+//            http.code = USER_INFO;
+//            http.parameters[@"userId"] = userId;
+////            http.parameters[@"token"] = token;
+//            [http postWithSuccess:^(id responseObject) {
+//
+//                NSDictionary *userInfo = responseObject[@"data"];
+//                [TLUser user].userId = userId;
+////                [TLUser user].token = token;
+//
+//                //保存信息
+//                [[TLUser user] saveUserInfo:userInfo];
+//                [[TLUser user] setUserInfoWithDict:userInfo];
+//
+//                [[NSNotificationCenter defaultCenter] postNotificationName:kUserLoginNotification object:nil];
+//
+//            } failure:^(NSError *error) {
+//
+//            }];
+//
+//        });
         
         
     } failure:^(NSError *error) {
@@ -324,8 +328,10 @@
 - (void)readProtocal {
     
     HTMLStrVC *htmlVC = [[HTMLStrVC alloc] init];
-    
-    htmlVC.type = HTMLTypeRegProtocol;
+  
+
+#warning 注意点
+//    htmlVC.type = HTMLTypeRegProtocol;
     
     [self.navigationController pushViewController:htmlVC animated:YES];
     
