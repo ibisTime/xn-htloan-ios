@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		180FD3072093199600449F4E /* repaymentListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD3062093199600449F4E /* repaymentListCell.m */; };
 		180FD30B2093294600449F4E /* repaymentDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD30A2093294600449F4E /* repaymentDetailVC.m */; };
-		180FD30F20932AF900449F4E /* carOrdersSubmittedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */; };
 		184197302091B0C10010E8A7 /* CarTextImgV.m in Sources */ = {isa = PBXBuildFile; fileRef = 1841972F2091B0C10010E8A7 /* CarTextImgV.m */; };
 		184197332092FB540010E8A7 /* repaymentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197322092FB540010E8A7 /* repaymentModel.m */; };
 		184197362093049B0010E8A7 /* repaymentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184197352093049B0010E8A7 /* repaymentVC.m */; };
@@ -212,8 +211,6 @@
 		180FD3062093199600449F4E /* repaymentListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentListCell.m; sourceTree = "<group>"; };
 		180FD3092093294600449F4E /* repaymentDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentDetailVC.h; sourceTree = "<group>"; };
 		180FD30A2093294600449F4E /* repaymentDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = repaymentDetailVC.m; sourceTree = "<group>"; };
-		180FD30D20932AF900449F4E /* carOrdersSubmittedVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = carOrdersSubmittedVC.h; sourceTree = "<group>"; };
-		180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = carOrdersSubmittedVC.m; sourceTree = "<group>"; };
 		1841972E2091B0C10010E8A7 /* CarTextImgV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarTextImgV.h; sourceTree = "<group>"; };
 		1841972F2091B0C10010E8A7 /* CarTextImgV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarTextImgV.m; sourceTree = "<group>"; };
 		184197312092FB540010E8A7 /* repaymentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = repaymentModel.h; sourceTree = "<group>"; };
@@ -270,6 +267,10 @@
 		187341DA20946F8E000BC406 /* CaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaView.m; sourceTree = "<group>"; };
 		187341DC20946F8E000BC406 /* UserEditCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEditCell.h; sourceTree = "<group>"; };
 		187341DD20946F8E000BC406 /* UserEditCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEditCell.m; sourceTree = "<group>"; };
+		187341FA20947414000BC406 /* CoinHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinHeader.h; sourceTree = "<group>"; };
+		187341FB20947414000BC406 /* CustomUIHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIHeader.h; sourceTree = "<group>"; };
+		187341FC20947414000BC406 /* FoundationHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundationHeader.h; sourceTree = "<group>"; };
+		187341FD20947414000BC406 /* TLUIHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIHeader.h; sourceTree = "<group>"; };
 		1879B0BA2080531B00639B2A /* htloan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = htloan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D22080531D00639B2A /* htloanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = htloanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1879B0D62080531D00639B2A /* htloanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = htloanTests.m; sourceTree = "<group>"; };
@@ -491,10 +492,6 @@
 		1879B6542080755000639B2A /* WebVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebVC.h; sourceTree = "<group>"; };
 		1879B6552080755000639B2A /* WebVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebVC.m; sourceTree = "<group>"; };
 		1879B6622080755000639B2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1879B6642080755000639B2A /* CoinHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinHeader.h; sourceTree = "<group>"; };
-		1879B6652080755000639B2A /* CustomUIHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIHeader.h; sourceTree = "<group>"; };
-		1879B6662080755000639B2A /* FoundationHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoundationHeader.h; sourceTree = "<group>"; };
-		1879B6672080755000639B2A /* TLUIHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLUIHeader.h; sourceTree = "<group>"; };
 		1879B6692080755000639B2A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1879B66A2080755000639B2A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1879B66B2080755000639B2A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -599,13 +596,11 @@
 			path = repaymentDetail;
 			sourceTree = "<group>";
 		};
-		180FD30C20932AAC00449F4E /* carOrdersSubmitted */ = {
+		180FD30C20932AAC00449F4E /* goodsOrdersSubmitted */ = {
 			isa = PBXGroup;
 			children = (
-				180FD30D20932AF900449F4E /* carOrdersSubmittedVC.h */,
-				180FD30E20932AF900449F4E /* carOrdersSubmittedVC.m */,
 			);
-			path = carOrdersSubmitted;
+			path = goodsOrdersSubmitted;
 			sourceTree = "<group>";
 		};
 		187341482094698B000BC406 /* Manager */ = {
@@ -773,6 +768,18 @@
 			);
 			path = Edit;
 			sourceTree = "<group>";
+		};
+		187341F920947414000BC406 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				187341FA20947414000BC406 /* CoinHeader.h */,
+				187341FB20947414000BC406 /* CustomUIHeader.h */,
+				187341FC20947414000BC406 /* FoundationHeader.h */,
+				187341FD20947414000BC406 /* TLUIHeader.h */,
+			);
+			name = Header;
+			path = htloan/all/Resource/Header;
+			sourceTree = SOURCE_ROOT;
 		};
 		1879B0B12080531B00639B2A = {
 			isa = PBXGroup;
@@ -1537,8 +1544,8 @@
 		1879B6612080755000639B2A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				187341F920947414000BC406 /* Header */,
 				1879B6622080755000639B2A /* Assets.xcassets */,
-				1879B6632080755000639B2A /* Header */,
 				1879B6692080755000639B2A /* LaunchScreen.storyboard */,
 				1879B7C62081A31400639B2A /* Info.plist */,
 				1879B66A2080755000639B2A /* main.m */,
@@ -1547,24 +1554,13 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		1879B6632080755000639B2A /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				1879B6642080755000639B2A /* CoinHeader.h */,
-				1879B6652080755000639B2A /* CustomUIHeader.h */,
-				1879B6662080755000639B2A /* FoundationHeader.h */,
-				1879B6672080755000639B2A /* TLUIHeader.h */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
 		1879B6EC2080788200639B2A /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				187341A520946F8E000BC406 /* User */,
 				1879B6ED2080788200639B2A /* home */,
 				1879B6F52080788200639B2A /* repayment */,
 				1879B87F2084353000639B2A /* mine */,
+				187341A520946F8E000BC406 /* User */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -1585,7 +1581,7 @@
 				188A7AC120870F73006220E8 /* home */,
 				188A7AF32088A1C0006220E8 /* CalculatorForCar */,
 				189DAB06208E28B600BFAE06 /* detailsOfCar */,
-				180FD30C20932AAC00449F4E /* carOrdersSubmitted */,
+				180FD30C20932AAC00449F4E /* goodsOrdersSubmitted */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -2161,7 +2157,6 @@
 				1879B6E12080755000639B2A /* HTMLStrVC.m in Sources */,
 				1879B6DE2080755000639B2A /* UINavigationController+MethodSwizzling.m in Sources */,
 				1879B6922080755000639B2A /* TLChooseResultManager.m in Sources */,
-				180FD30F20932AF900449F4E /* carOrdersSubmittedVC.m in Sources */,
 				1879B6B52080755000639B2A /* NSObject+Extension.m in Sources */,
 				187341E120946F8F000BC406 /* TLAccountBaseVC.m in Sources */,
 				1879B68E2080755000639B2A /* WTReParser.m in Sources */,

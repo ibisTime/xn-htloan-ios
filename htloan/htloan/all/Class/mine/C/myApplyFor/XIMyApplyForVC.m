@@ -61,10 +61,12 @@
     
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
    #pragma mark - 未完成
-    helper.code = @"630430";
+    helper.code = @"630437";
     
-    helper.parameters[@"userId"] = [TLUser user].userId;
-    
+//    helper.parameters[@"userId"] = [TLUser user].userId;
+
+    helper.parameters[@"code"] = self.code;
+
     helper.tableView = self.tableView;
     
     [helper modelClass:[XIMyApplyForModel class]];

@@ -59,6 +59,7 @@
         }];
         
         self.carPayment =[[UILabel alloc ] init];
+        self.carPayment.textColor = kHexColor(@"#fc712a");
         [self.contentView addSubview: self.carPayment];
         
         self.carPayment.backgroundColor = kWhiteColor;

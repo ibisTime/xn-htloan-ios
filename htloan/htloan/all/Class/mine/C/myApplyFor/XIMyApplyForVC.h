@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface XIMyApplyForVC : BaseViewController
-
+@property (nonatomic, strong) NSString *code;
 @end

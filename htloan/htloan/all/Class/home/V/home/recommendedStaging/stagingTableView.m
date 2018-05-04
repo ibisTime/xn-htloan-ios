@@ -72,6 +72,7 @@ static NSString *identifierCell = @"stagingCell";
     cell.staModel=self.stagings[indexPath.row];
     
     return cell;
+    
 }
 
 #pragma mark - UITableViewDelegate

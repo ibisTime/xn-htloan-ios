@@ -8,7 +8,7 @@
 
 #import "detailsOfCarVC.h"
 //C
-#import "carOrdersSubmittedVC.h"
+#import "calculatorVC.h"
 //m
 #import "carImgModel.h"
 
@@ -77,8 +77,8 @@
 -(void)applyToBuy
 {
     NSLog(@"点击购买");
-    carOrdersSubmittedVC * carOrdSubVC = [[carOrdersSubmittedVC alloc ] init];
-    [self.navigationController pushViewController:carOrdSubVC animated:YES];
+    calculatorVC * calVC = [[calculatorVC alloc ] init];
+    [self.navigationController pushViewController:calVC animated:YES];
     
 }
 

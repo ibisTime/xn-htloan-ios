@@ -31,9 +31,9 @@
     [self addNotification];
     
     
-        //快讯
+        //
         [self initFlashTableView];
-        //获取快讯列表
+        //获取
         [self requestFlashList];
         //刷新
     
