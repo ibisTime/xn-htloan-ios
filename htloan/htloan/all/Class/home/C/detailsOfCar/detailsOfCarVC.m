@@ -147,7 +147,7 @@
 
 //        [TLProgressHUD dismiss];
 
-//        [TLAlert alertWithSucces:@"图片刷新成功"];
+
 
 
         NSDictionary*adDict=responseObject[@"data"];
