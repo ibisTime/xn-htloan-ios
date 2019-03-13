@@ -23,6 +23,8 @@
 #define AccountSettings @"AccountSettingsCell"
 
 #import "TLUploadManager.h"
+
+#import "BaseTabBarViewController.h"
 @interface AccountSettingsVC ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate
 >
 @property (nonatomic , strong)UITableView *tableView;
@@ -44,7 +46,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[AccountSettingsCell class] forCellReuseIdentifier:AccountSettings];
-    
+        
         
     }
     return _tableView;
@@ -61,7 +63,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 #pragma mark -- 行数
@@ -71,11 +73,11 @@
         return 2;
     }
     if (section == 1) {
-        return 3;
-    }
-    if (section == 2) {
         return 2;
     }
+    //    if (section == 2) {
+    //        return 2;
+    //    }
     return 1;
 }
 
@@ -97,7 +99,7 @@
                 }
             }else
             {
-
+                
                 cell.nameLabel.text = @"昵称";
                 cell.contactLabel.text = [USERDEFAULTS objectForKey:NICKNAME];
             }
@@ -107,39 +109,39 @@
         {
             NSLog(@" ========= %@",[USERDEFAULTS objectForKey:PAYPASSWORD]);
             if ([[USERDEFAULTS objectForKey:PAYPASSWORD] integerValue] == 0) {
-                NSArray *nameArray = @[@"修改手机号",@"修改登录密码",@"设置支付密码"];
+                NSArray *nameArray = @[@"修改手机号",@"修改登录密码"];
                 cell.nameLabel.text = nameArray[indexPath.row];
             }else
             {
-                NSArray *nameArray = @[@"修改手机号",@"修改登录密码",@"修改支付密码"];
+                NSArray *nameArray = @[@"修改手机号",@"修改登录密码"];
                 cell.nameLabel.text = nameArray[indexPath.row];
             }
-
+            
             if (indexPath.row == 0) {
                 cell.contactLabel.text = [USERDEFAULTS objectForKey:MOBILE];
-//                cell.contactLabel.hidden = NO;
+                //                cell.contactLabel.hidden = NO;
             }
         }
             break;
         case 2:
         {
-            NSArray *nameArray = @[@"收货地址",@"银行卡管理"];
+            NSArray *nameArray = @[@"退出登录"];
             cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
-        case 3:
-        {
-            cell.youImage.hidden = YES;
-            cell.nameLabel.text = @"退出登录";
-        }
-            break;
-
+            //        case 3:
+            //        {
+            //            cell.youImage.hidden = YES;
+            //            cell.nameLabel.text = @"退出登录";
+            //        }
+            //            break;
+            
         default:
             break;
     }
-
+    
     return cell;
-
+    
 }
 
 
@@ -154,7 +156,7 @@
                     [action setValue:HGColor(138, 138, 138) forKey:@"titleTextColor"];
                 }];
                 UIAlertAction* fromPhotoAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault                                                                 handler:^(UIAlertAction * action) {
-
+                    
                     //创建UIImagePickerController对象，并设置代理和可编辑
                     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
                     imagePicker.editing = YES;
@@ -167,13 +169,13 @@
                     imagePicker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
                     //跳转到UIImagePickerController控制器弹出相机
                     [self presentViewController:imagePicker animated:YES completion:nil];
-
-
-
+                    
+                    
+                    
                 }];
                 UIAlertAction* fromPhotoAction1 = [UIAlertAction actionWithTitle:@"从手机相册选择" style:UIAlertActionStyleDefault                                                                 handler:^(UIAlertAction * action) {
-
-
+                    
+                    
                     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
                     imagePicker.editing = YES;
                     imagePicker.delegate = self;
@@ -181,7 +183,7 @@
                     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                     //跳转到UIImagePickerController控制器弹出相册
                     [self presentViewController:imagePicker animated:YES completion:nil];
-
+                    
                 }];
                 [cancelAction setValue:GaryTextColor forKey:@"_titleTextColor"];
                 [fromPhotoAction setValue:MainColor forKey:@"_titleTextColor"];
@@ -211,46 +213,49 @@
                 ChangePasswordVC *vc = [[ChangePasswordVC alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
             }
-            if (indexPath.row == 2) {
-                ModifyayPasswordVC *vc = [[ModifyayPasswordVC alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+            //            if (indexPath.row == 2) {
+            //                ModifyayPasswordVC *vc = [[ModifyayPasswordVC alloc]init];
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
         }
             break;
         case 2:
         {
-            if (indexPath.row == 0) {
-                ShippingAddressVC *vc = [[ShippingAddressVC alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            if (indexPath.row == 1) {
-                BankCardVC *vc = [[BankCardVC alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
-            }
+//            [[USERXX user]loginOut];
+            BaseTabBarViewController * tabBarCtrl = [[BaseTabBarViewController alloc] init];
+            [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
+            //            if (indexPath.row == 0) {
+            //                ShippingAddressVC *vc = [[ShippingAddressVC alloc]init];
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
+            //            if (indexPath.row == 1) {
+            //                BankCardVC *vc = [[BankCardVC alloc]init];
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
         }
             break;
-        case 3:
-        {
-
-            [TLAlert alertWithTitle:@"提示" msg:@"是否退出登录" confirmMsg:@"取消" cancleMsg:@"确认" cancle:^(UIAlertAction *action) {
-                LoginViewController *vc = [[LoginViewController alloc]init];
-                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-                vc.state = @"100";
-                [USERDEFAULTS removeObjectForKey:USER_ID];
-                [USERDEFAULTS removeObjectForKey:TOKEN_ID];
-                [rootViewController presentViewController:nav animated:YES completion:nil];
-            } confirm:^(UIAlertAction *action) {
-
-            }];
-
-        }
-            break;
-
+            //        case 3:
+            //        {
+            //
+            //            [TLAlert alertWithTitle:@"提示" msg:@"是否退出登录" confirmMsg:@"取消" cancleMsg:@"确认" cancle:^(UIAlertAction *action) {
+            //                LoginViewController *vc = [[LoginViewController alloc]init];
+            //                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            //                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+            //                vc.state = @"100";
+            //                [USERDEFAULTS removeObjectForKey:USER_ID];
+            //                [USERDEFAULTS removeObjectForKey:TOKEN_ID];
+            //                [rootViewController presentViewController:nav animated:YES completion:nil];
+            //            } confirm:^(UIAlertAction *action) {
+            //
+            //            }];
+            //
+            //        }
+            //            break;
+            
         default:
             break;
     }
-
+    
 }
 
 #pragma mark -- 获取图片代理方法
@@ -265,40 +270,40 @@
     manager.imgData = imgData;
     manager.image = image;
     [manager getTokenShowView:weakSelf.view succes:^(NSString *key) {
-
+        
         [weakSelf changeHeadIconWithKey:key imgData:imgData];
-
+        
     } failure:^(NSError *error) {
-
+        
     }];
-
-
+    
+    
 }
 
 - (void)changeHeadIconWithKey:(NSString *)key imgData:(NSData *)imgData {
-
+    
     TLNetworking *http = [TLNetworking new];
-
+    
     http.showView = self.view;
     http.code = @"805080";
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     http.parameters[@"photo"] = key;
     http.parameters[@"token"] = [USERDEFAULTS objectForKey:TOKEN_ID];
     [http postWithSuccess:^(id responseObject) {
-
+        
         [TLAlert alertWithSucces:@"修改头像成功"];
-
+        
         [USERDEFAULTS setObject:key forKey:PHOTO];
         [self.tableView reloadData];
-
-
+        
+        
     } failure:^(NSError *error) {
-
-
+        
+        
     }];
-
     
-
+    
+    
 }
 
 
@@ -358,7 +363,7 @@
         }
         [USERDEFAULTS setObject:responseObject[@"data"][@"mobile"] forKey:MOBILE];
         [weakSelf.tableView reloadData];
-
+        
     } failure:^(NSError *error) {
         WGLog(@"%@",error);
     }];
