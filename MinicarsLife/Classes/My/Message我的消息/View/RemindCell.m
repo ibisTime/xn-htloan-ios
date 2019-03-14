@@ -9,6 +9,8 @@
 #import "RemindCell.h"
 
 @implementation RemindCell{
+    UILabel * titlelab;
+    UILabel * contentlab;
     
 }
 
@@ -28,10 +30,12 @@
         UILabel * title = [UILabel labelWithFrame:CGRectMake(15, 20, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
         title.text = @"APP更新";
         [self addSubview:title];
+        titlelab = title;
         
         UILabel * content = [UILabel labelWithFrame:CGRectMake(15, title.yy + 5, SCREEN_WIDTH - 30, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
         content.text = @"V1.0版本正式上线，如遇问题欢迎使用智能客服";
         [self addSubview:content];
+        contentlab = content;
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, content.yy + 5, SCREEN_WIDTH - 30, 1)];
         v1.backgroundColor = kLineColor;
@@ -47,5 +51,10 @@
         
     }
     return self;
+}
+-(void)setModel:(MessageModel *)model{
+    _model = model;
+    titlelab.text = model.title;
+    contentlab.text = model.content;
 }
 @end

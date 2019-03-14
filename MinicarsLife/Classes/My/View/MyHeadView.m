@@ -78,7 +78,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        _backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 140 + kStatusBarHeight)];
+        _backImage = [[UIImageView alloc]init];
         _backImage.image = HGImage(@"myback");
         [self addSubview:_backImage];
 

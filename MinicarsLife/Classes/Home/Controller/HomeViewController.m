@@ -21,6 +21,10 @@
 //推荐分期
 #import "GoodsListVC.h"
 #import "BannerWebViewVC.h"
+
+
+#import "HomeHeadVC.h"
+
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate>
 @property (nonatomic , strong)HomeTableView *tableView;
 @property (nonatomic , strong)UIWebView *webView;
@@ -37,10 +41,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"首页";
-    [self.view addSubview:self.tableView];
-    [self initTableView];
-
-    [self LoadData];
+//    [self.view addSubview:self.tableView];
+//    [self initTableView];
+//
+//    [self LoadData];
+    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH/2 + 100)];
+    [self.view addSubview:view];
+    
 }
 
 

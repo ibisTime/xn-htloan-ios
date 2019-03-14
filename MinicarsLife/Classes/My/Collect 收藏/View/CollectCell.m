@@ -15,6 +15,7 @@
 @property (nonatomic,strong) UILabel * timelab;
 @property (nonatomic,strong) UILabel * moneylab;
 @property (nonatomic,strong) UILabel * contentlab;
+@property (nonatomic,strong) UIView * view;
 @end
 
 
@@ -25,15 +26,14 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated{
+    return;
 }
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.selectionStyle = UITableViewCellSelectionStyleDefault;
         
         UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 110, 82.5)];
         [self addSubview:img];
@@ -67,9 +67,56 @@
         view.backgroundColor = kHexColor(@"#F5F5F5");
         [view addSubview:content];
         [self addSubview:view];
+        self.view = view;
         self.contentlab = content;
     }
     return self;
 }
 
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+    if (!self.editing) {
+        return;
+    }
+    [super setSelected:selected animated:animated];
+    
+    if (self.editing) {
+        
+        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
+        //        self.textLabel.backgroundColor = [UIColor clearColor];
+        //        self.detailTextLabel.backgroundColor = [UIColor clearColor];
+//        self.label.backgroundColor = [UIColor clearColor];
+        
+        
+    }
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{
+    [super setEditing:editing animated:animated];
+    CGFloat moveSpace = 38;//一般移动距离是38
+    if (editing) {
+        self.image.frame = CGRectMake(15 + moveSpace, 15, 110, 82.5);
+        self.titlelab.frame = CGRectMake(self.image.xx + 15, 15, SCREEN_WIDTH - 155, 40);
+        self.describdlab.frame = CGRectMake(self.image.xx + 15, self.titlelab.yy + 5, SCREEN_WIDTH - 120, 16.5);
+        self.timelab.frame = CGRectMake(self.image.xx + 15, self.describdlab.yy + 5, 74, 16.5);
+        self.view.frame = CGRectMake(15 + moveSpace, self.image.yy + 10, SCREEN_WIDTH - 30, 50);
+    }
+    else{
+        self.image.frame = CGRectMake(15, 15, 110, 82.5);
+        self.titlelab.frame = CGRectMake(self.image.xx + 15, 15, SCREEN_WIDTH - 155, 40);
+        self.describdlab.frame = CGRectMake(self.image.xx + 15, self.titlelab.yy + 5, SCREEN_WIDTH - 120, 16.5);
+        self.timelab.frame = CGRectMake(self.image.xx + 15, self.describdlab.yy + 5, 74, 16.5);
+        self.view.frame = CGRectMake(15, self.image.yy + 10, SCREEN_WIDTH - 30, 50);
+    }
+}
+-(void)setModel:(CollectModel *)model{
+    _model = model;
+    CarModel * car = [CarModel mj_objectWithKeyValues:model.car];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[car.salePrice floatValue]/10000];
+    self.timelab.text = [car.updateDatetime convertToDetailDateWithoutHour];
+    self.contentlab.text = car.Description;
+    self.describdlab.text = car.brandName;
+    self.titlelab.text = car.name;
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[car.pic convertImageUrl]]];
+}
 @end

@@ -52,7 +52,12 @@
 
 - (NSString *)convertDate;
 
-
+-(NSString *)convertDateWithYear;
+-(NSString *)convertDateWithMonth;
+-(NSString *)convertDateWithDay;
+-(NSString*)getCurrentTimes;
+-(NSString *)convertToChineseDate;
+- (NSString *)convertToDetailDateWithoutHour;
 
 - (NSDate *)convertToSysDate;
 //转为指定格式

@@ -103,6 +103,16 @@
 		1F19A9E7220191CD0090BF84 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F19A984220191CD0090BF84 /* ILiveSDK.framework */; };
 		1F19A9E8220191CD0090BF84 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F19A985220191CD0090BF84 /* ILiveLogReport.framework */; };
 		1F19A9E9220191CE0090BF84 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F19A986220191CD0090BF84 /* TILLiveSDK.framework */; };
+		36030CD12239E8D70096C5F0 /* CollectBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36030CD02239E8D70096C5F0 /* CollectBottomView.m */; };
+		36030CD42239F9430096C5F0 /* HomeHeadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36030CD32239F9430096C5F0 /* HomeHeadVC.m */; };
+		366ADDC8223A204F00623EC6 /* CalculatorVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDC7223A204F00623EC6 /* CalculatorVC.m */; };
+		366ADDCB223A2B9700623EC6 /* LeftHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDCA223A2B9700623EC6 /* LeftHeadCell.m */; };
+		366ADDCE223A300200623EC6 /* CollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDCD223A300200623EC6 /* CollectModel.m */; };
+		366ADDD1223A301B00623EC6 /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDD0223A301B00623EC6 /* CarModel.m */; };
+		366ADDD4223A387100623EC6 /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDD3223A387100623EC6 /* CommonCell.m */; };
+		366ADDD7223A3A2E00623EC6 /* LeftFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDD6223A3A2E00623EC6 /* LeftFootCell.m */; };
+		366ADDDA223A443D00623EC6 /* RightHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDD9223A443D00623EC6 /* RightHeaderCell.m */; };
+		366ADDDD223A4EFD00623EC6 /* MessageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 366ADDDC223A4EFD00623EC6 /* MessageInfoVC.m */; };
 		36AC10E52238F2D200861133 /* RemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC10E42238F2D200861133 /* RemindCell.m */; };
 		36AC10E82238F8DF00861133 /* RemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC10E72238F8DF00861133 /* RemindVC.m */; };
 		36AC10EB2238FC4700861133 /* NotifyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AC10EA2238FC4700861133 /* NotifyVC.m */; };
@@ -529,6 +539,26 @@
 		1F19A984220191CD0090BF84 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1F19A985220191CD0090BF84 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1F19A986220191CD0090BF84 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		36030CCF2239E8D70096C5F0 /* CollectBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectBottomView.h; sourceTree = "<group>"; };
+		36030CD02239E8D70096C5F0 /* CollectBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectBottomView.m; sourceTree = "<group>"; };
+		36030CD22239F9430096C5F0 /* HomeHeadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeHeadVC.h; sourceTree = "<group>"; };
+		36030CD32239F9430096C5F0 /* HomeHeadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeHeadVC.m; sourceTree = "<group>"; };
+		366ADDC6223A204F00623EC6 /* CalculatorVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorVC.h; sourceTree = "<group>"; };
+		366ADDC7223A204F00623EC6 /* CalculatorVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorVC.m; sourceTree = "<group>"; };
+		366ADDC9223A2B9700623EC6 /* LeftHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftHeadCell.h; sourceTree = "<group>"; };
+		366ADDCA223A2B9700623EC6 /* LeftHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftHeadCell.m; sourceTree = "<group>"; };
+		366ADDCC223A300200623EC6 /* CollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectModel.h; sourceTree = "<group>"; };
+		366ADDCD223A300200623EC6 /* CollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectModel.m; sourceTree = "<group>"; };
+		366ADDCF223A301B00623EC6 /* CarModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarModel.h; sourceTree = "<group>"; };
+		366ADDD0223A301B00623EC6 /* CarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
+		366ADDD2223A387100623EC6 /* CommonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonCell.h; sourceTree = "<group>"; };
+		366ADDD3223A387100623EC6 /* CommonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommonCell.m; sourceTree = "<group>"; };
+		366ADDD5223A3A2E00623EC6 /* LeftFootCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftFootCell.h; sourceTree = "<group>"; };
+		366ADDD6223A3A2E00623EC6 /* LeftFootCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftFootCell.m; sourceTree = "<group>"; };
+		366ADDD8223A443D00623EC6 /* RightHeaderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightHeaderCell.h; sourceTree = "<group>"; };
+		366ADDD9223A443D00623EC6 /* RightHeaderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightHeaderCell.m; sourceTree = "<group>"; };
+		366ADDDB223A4EFD00623EC6 /* MessageInfoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageInfoVC.h; sourceTree = "<group>"; };
+		366ADDDC223A4EFD00623EC6 /* MessageInfoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageInfoVC.m; sourceTree = "<group>"; };
 		36AC10E32238F2D200861133 /* RemindCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemindCell.h; sourceTree = "<group>"; };
 		36AC10E42238F2D200861133 /* RemindCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RemindCell.m; sourceTree = "<group>"; };
 		36AC10E62238F8DF00861133 /* RemindVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RemindVC.h; sourceTree = "<group>"; };
@@ -1453,6 +1483,47 @@
 			path = ILiveSDK;
 			sourceTree = "<group>";
 		};
+		366ADDC2223A201300623EC6 /* Calculator 计算器 */ = {
+			isa = PBXGroup;
+			children = (
+				366ADDC5223A203C00623EC6 /* Model */,
+				366ADDC4223A203700623EC6 /* View */,
+				366ADDC3223A203100623EC6 /* Controller */,
+			);
+			path = "Calculator 计算器";
+			sourceTree = "<group>";
+		};
+		366ADDC3223A203100623EC6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				366ADDC6223A204F00623EC6 /* CalculatorVC.h */,
+				366ADDC7223A204F00623EC6 /* CalculatorVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		366ADDC4223A203700623EC6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				366ADDC9223A2B9700623EC6 /* LeftHeadCell.h */,
+				366ADDCA223A2B9700623EC6 /* LeftHeadCell.m */,
+				366ADDD2223A387100623EC6 /* CommonCell.h */,
+				366ADDD3223A387100623EC6 /* CommonCell.m */,
+				366ADDD5223A3A2E00623EC6 /* LeftFootCell.h */,
+				366ADDD6223A3A2E00623EC6 /* LeftFootCell.m */,
+				366ADDD8223A443D00623EC6 /* RightHeaderCell.h */,
+				366ADDD9223A443D00623EC6 /* RightHeaderCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		366ADDC5223A203C00623EC6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		36AC10EF223901DE00861133 /* Collect 收藏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1477,6 +1548,8 @@
 			children = (
 				36AC10F62239051800861133 /* CollectCell.h */,
 				36AC10F72239051800861133 /* CollectCell.m */,
+				36030CCF2239E8D70096C5F0 /* CollectBottomView.h */,
+				36030CD02239E8D70096C5F0 /* CollectBottomView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1484,6 +1557,10 @@
 		36AC10F2223901F600861133 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				366ADDCC223A300200623EC6 /* CollectModel.h */,
+				366ADDCD223A300200623EC6 /* CollectModel.m */,
+				366ADDCF223A301B00623EC6 /* CarModel.h */,
+				366ADDD0223A301B00623EC6 /* CarModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1679,13 +1756,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		7A22CD9420ECC2440010059D /* AboutUs关于我们 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "AboutUs关于我们";
-			sourceTree = "<group>";
-		};
 		7A22CD9520ECC2460010059D /* Contact联系客服 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1822,6 +1892,8 @@
 				36AC10EA2238FC4700861133 /* NotifyVC.m */,
 				36AC10EC2238FC5500861133 /* NoticeVC.h */,
 				36AC10ED2238FC5500861133 /* NoticeVC.m */,
+				366ADDDB223A4EFD00623EC6 /* MessageInfoVC.h */,
+				366ADDDC223A4EFD00623EC6 /* MessageInfoVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2535,6 +2607,8 @@
 				7A8A5B1820E35B47002D9A48 /* HomeViewController.m */,
 				B8A70AFE21CE4FCA00E97EFD /* BannerWebViewVC.h */,
 				B8A70AFF21CE4FCA00E97EFD /* BannerWebViewVC.m */,
+				36030CD22239F9430096C5F0 /* HomeHeadVC.h */,
+				36030CD32239F9430096C5F0 /* HomeHeadVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2607,6 +2681,7 @@
 		7A8A5B0920E35A1A002D9A48 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				366ADDC2223A201300623EC6 /* Calculator 计算器 */,
 				36AC10EF223901DE00861133 /* Collect 收藏 */,
 				B885CB342171F11B001A1258 /* Search Credit  征信查询 */,
 				7AB29D7C20FC85C20014FCB3 /* AboutUs关于我们 */,
@@ -2619,7 +2694,6 @@
 				7A22CD8920ECC0760010059D /* MyCarLoanApplication我的车贷申请 */,
 				7A22CD9620ECC2480010059D /* TheOrder我的订单 */,
 				7A22CD9520ECC2460010059D /* Contact联系客服 */,
-				7A22CD9420ECC2440010059D /* AboutUs关于我们 */,
 				7A8A5B0A20E35A1A002D9A48 /* Controller */,
 				7A8A5B0B20E35A1A002D9A48 /* Model */,
 				7A8A5B0C20E35A1A002D9A48 /* View */,
@@ -3769,6 +3843,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				366ADDD4223A387100623EC6 /* CommonCell.m in Sources */,
+				366ADDDD223A4EFD00623EC6 /* MessageInfoVC.m in Sources */,
 				7A8A5B1C20E35B52002D9A48 /* ReimbursementViewController.m in Sources */,
 				7A3CBD6920F0CA7300D795E5 /* TheDetailVC.m in Sources */,
 				7A22CDB620ECCF5B0010059D /* ModifyPhoneVC.m in Sources */,
@@ -3848,10 +3924,12 @@
 				7A8A5C5C20E492F7002D9A48 /* UIColor+Extension.m in Sources */,
 				7A81BEFA20F735F2005699F0 /* OrderTableView.m in Sources */,
 				7A8A5B2520E35BDC002D9A48 /* BaseTabBarViewController.m in Sources */,
+				36030CD42239F9430096C5F0 /* HomeHeadVC.m in Sources */,
 				7A3CBDA120F3228B00D795E5 /* HomeTableView.m in Sources */,
 				7AB29D1B20FC34670014FCB3 /* QNFile.m in Sources */,
 				7AA906BA20EF14AA004F2B12 /* HaveTheGoodsVC.m in Sources */,
 				7A81BEEE20F7222D005699F0 /* MyCarLoanDetailsVC.m in Sources */,
+				366ADDD1223A301B00623EC6 /* CarModel.m in Sources */,
 				7A3CBDBA20F4458A00D795E5 /* UITableView+AddForPlaceholder.m in Sources */,
 				7AA906B720EF148D004F2B12 /* HasBeenShippedVC.m in Sources */,
 				7A3CBD7720F0E29100D795E5 /* WithdrawalVC.m in Sources */,
@@ -3884,6 +3962,7 @@
 				7A8A5CCB20E6009F002D9A48 /* ExhibitionCenterVC.m in Sources */,
 				7A3CBDB320F3647D00D795E5 /* VehicleDetailsTbaleView.m in Sources */,
 				7A3CBDFD20F4AE3100D795E5 /* SelectedListView.m in Sources */,
+				366ADDCE223A300200623EC6 /* CollectModel.m in Sources */,
 				7A8A5B2820E35EE4002D9A48 /* LoginViewController.m in Sources */,
 				7AB29D1A20FC34670014FCB3 /* QNEtag.m in Sources */,
 				B834010621D75A350089D4DE /* QNDes.m in Sources */,
@@ -3947,6 +4026,7 @@
 				7A3CBE2C20F5F52F00D795E5 /* AddBankCardCell.m in Sources */,
 				7A22CDC420EDABC70010059D /* ChangePasswordVC.m in Sources */,
 				7A3CBDA720F3312B00D795E5 /* ExhibitionCenterModel.m in Sources */,
+				36030CD12239E8D70096C5F0 /* CollectBottomView.m in Sources */,
 				7A22CDCF20EDB17A0010059D /* ShippingAddressVC.m in Sources */,
 				B834010C21D75A350089D4DE /* QNTxtResolver.m in Sources */,
 				B8B4DB7B2174923800BC3DE2 /* MoblePhoneCodeVC.m in Sources */,
@@ -3956,6 +4036,8 @@
 				B885CB0D2171C9ED001A1258 /* WSDatePickerView.m in Sources */,
 				36AC10E82238F8DF00861133 /* RemindVC.m in Sources */,
 				7A3CBE2620F5F40B00D795E5 /* AddBankCardVC.m in Sources */,
+				366ADDD7223A3A2E00623EC6 /* LeftFootCell.m in Sources */,
+				366ADDCB223A2B9700623EC6 /* LeftHeadCell.m in Sources */,
 				7A8A5C4220E3DC92002D9A48 /* UIView+Banner.m in Sources */,
 				7A3CBD6020F0C42D00D795E5 /* TheBalanceOfVC.m in Sources */,
 				7AA906AE20EF1436004F2B12 /* AllOrderVC.m in Sources */,
@@ -4011,7 +4093,9 @@
 				B885CB452171F15F001A1258 /* UIView+CZHExtension.m in Sources */,
 				7A3CBDFC20F4AE3100D795E5 /* SelectedListModel.m in Sources */,
 				7A8A5AC420E35905002D9A48 /* AppDelegate.m in Sources */,
+				366ADDC8223A204F00623EC6 /* CalculatorVC.m in Sources */,
 				7A8A5B1920E35B47002D9A48 /* HomeViewController.m in Sources */,
+				366ADDDA223A443D00623EC6 /* RightHeaderCell.m in Sources */,
 				B834010721D75A350089D4DE /* QNHex.m in Sources */,
 				7A8A5CAE20E52B4E002D9A48 /* RecordVC.m in Sources */,
 				7A8A5C1220E3C801002D9A48 /* UILable+convience.m in Sources */,

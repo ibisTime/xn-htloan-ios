@@ -26,6 +26,8 @@
 #import "PersionalCreditVC.h"
 //收藏
 #import "CollectVC.h"
+
+#import "CalculatorVC.h"
 //#import "CalculatorVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
@@ -60,7 +62,7 @@
 -(MyHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 130 + kStatusBarHeight)];
+        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 155)];
         _headView.delegate = self;
     }
     return _headView;
@@ -71,6 +73,7 @@
     if (tag == 0)
     {
         NSLog(@"账户");
+        
         TheBalanceOfVC *vc = [[TheBalanceOfVC alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -97,7 +100,7 @@
     if (_tableView == nil) {
         CGRect tableView_frame;
         NSLog(@"%d",kStatusBarHeight);
-        tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kTabBarHeight);
+        tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor=BackColor;
@@ -112,7 +115,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.translucent = NO;
     [self.view addSubview:self.tableView];
@@ -189,10 +191,10 @@
             }
             //购车计算器
             else if (indexPath.row == 1){
-                [TLAlert alertWithInfo:@"购车计算器"];
-//                CalculatorVC * vc = [[CalculatorVC alloc]init];
-//                vc.hidesBottomBarWhenPushed = YES;
-//                [self.navigationController pushViewController:vc animated:YES];
+//                [TLAlert alertWithInfo:@"购车计算器"];
+                CalculatorVC * vc = [[CalculatorVC alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
                 //                PersionalCreditVC *vc = [[PersionalCreditVC alloc]init];
                 //                vc.hidesBottomBarWhenPushed = YES;
                 //                vc.accountNumber = accountNumber;
@@ -228,7 +230,9 @@
         {
             //联系客服
             if (indexPath.row == 0) {
-                [TLAlert alertWithInfo:@"联系客服"];
+                ContactVC *vc = [[ContactVC alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             }
             //关于我们
             else{
@@ -259,9 +263,9 @@
             //                [self.navigationController pushViewController:vc animated:YES];
             //            }
             //            if (indexPath.row == 3) {
-            //                ContactVC *vc = [[ContactVC alloc]init];
-            //                vc.hidesBottomBarWhenPushed = YES;
-            //                [self.navigationController pushViewController:vc animated:YES];
+//                            ContactVC *vc = [[ContactVC alloc]init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
             //            }
             //        }
             //            break;
@@ -641,9 +645,9 @@
     // 下拉 纵向偏移量变小 变成负的
     if ( Offset_y < 0) {
         // 拉伸后图片的高度
-        CGFloat totalOffset = 170 + kStatusBarHeight - Offset_y;
+        CGFloat totalOffset =155 - Offset_y;
         // 图片放大比例
-        CGFloat scale = totalOffset / (170 + kStatusBarHeight);
+        CGFloat scale = totalOffset / 155;
         CGFloat width = SCREEN_WIDTH;
         // 拉伸后图片位置
         self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);

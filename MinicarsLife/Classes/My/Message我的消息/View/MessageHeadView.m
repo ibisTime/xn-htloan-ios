@@ -29,7 +29,7 @@
 
 -(void)setModel:(MessageModel *)model
 {
-    _timeLabel.text = [model.updateDatetime convertDate];
+    _timeLabel.text = [model.createDatetime convertDate];
 }
 
 @end
