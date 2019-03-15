@@ -14,6 +14,7 @@
 #import "LeftFootCell.h"
 #define leftfoot @"LeftFootCell"
 #import "RightHeaderCell.h"
+#import "ChooseCarVC.h"
 @interface CalculatorVC ()<UITableViewDelegate,UITableViewDataSource>{
     int tag;
 }
@@ -165,7 +166,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tag == 0) {
         if (indexPath.row == 0) {
-            return 100;
+            return 101;
         }
         else if (indexPath.row == 1||indexPath.row == 2){
             return 50;
@@ -182,8 +183,16 @@
     
     return 50;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tag == 0) {
+        if (indexPath.row == 1) {
+            ChooseCarVC * vc = [ChooseCarVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+}
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 15)];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     view.backgroundColor = kWhiteColor;
     UILabel * label = [UILabel labelWithFrame:view.frame textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
     label.text = @"*此结果仅供参考";

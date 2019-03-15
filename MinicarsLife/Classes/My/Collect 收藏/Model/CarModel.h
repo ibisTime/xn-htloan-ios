@@ -51,6 +51,28 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * updater;
 @property (nonatomic,copy) NSString * updateDatetime;
 @property (nonatomic,copy) NSString * remark;
+@property (nonatomic,copy) NSString * letter;
+@property (nonatomic,copy) NSString * logo;
+@property (nonatomic,copy) NSString * picNumber;
+@property (nonatomic,copy) NSString * price;
+@property (nonatomic,copy) NSString * highest;
+@property (nonatomic,copy) NSString * lowest;
+@property (nonatomic,copy) NSString * level;
+@property (nonatomic,copy) NSString * isReferee;
+
+/**
+ "price": 0,
+ "highest": 0,
+ "lowest": 0,
+ "level": "4",
+ "isReferee": "1",
+ "status": "0",
+ "updater": "U201806131315524345485",
+ "updateDatetime": "Mar 15, 2019 10:51:12 AM",
+ "remark": "小皮卡真棒",
+ "updaterName": "洪仁飞"
+ */
+
 +(NSDictionary *)mj_replacedKeyFromPropertyName;
 @end
 

@@ -27,11 +27,11 @@
         self.TitleLab.text = @"预计总花费（裸车价格+必要花费+商业保险）";
         [self addSubview:self.TitleLab];
         
-        self.ContentLab = [UILabel labelWithFrame:CGRectMake(90, 10, SCREEN_WIDTH - 105, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
+        self.ContentLab = [UILabel labelWithFrame:CGRectMake(90, 10, SCREEN_WIDTH - 105 - 15, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
         self.ContentLab.text = @"410，000元";
         [self addSubview:self.ContentLab];
         
-        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, (self.contentView.height - 30) / 2, 15, 15)];
+        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, 17.5, 13, 15)];
         img.image = kImage(@"you");
         [self addSubview:img];
         

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ZJAnimationPopView.h"
 @interface USERXX : NSObject
 
 + (instancetype)user;
@@ -25,7 +25,7 @@
 @property (nonatomic , copy)NSString *nickname;
 
 @property (nonatomic , copy)NSString *idNo;
-
+@property (nonatomic , strong)ZJAnimationPopView *cusPopView;
 //是否为需要登录，如果已登录，取出用户信息
 - (BOOL)isLogin;
 //字符串是否为空
@@ -36,4 +36,5 @@
 
 - (void)updateUserInfoWithNotification;
 
+-(void)showPopAnimationWithAnimationStyle:(NSInteger)style showView:(UIView *)showView BGAlpha:(CGFloat)alpha isClickBGDismiss:(BOOL)dismiss;
 @end

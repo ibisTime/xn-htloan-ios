@@ -9,9 +9,14 @@
 #import "BaseViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol ClickBtn <NSObject>
 
+-(void)ClickBtn:(UIButton *)sender;
+-(void)ClickCollection:(NSInteger)index;
+
+@end
 @interface HomeHeadVC : UIView
-
+@property (nonatomic,weak) id<ClickBtn> delegate;
 @end
 
 NS_ASSUME_NONNULL_END
