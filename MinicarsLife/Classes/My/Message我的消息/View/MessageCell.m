@@ -44,10 +44,10 @@
 
 -(void)setModel:(MessageModel *)model
 {
-    self.nameLabel.text = model.smsTitle;
-    self.contentLabel.frame = CGRectMake(20, 50, SCREEN_WIDTH - 40, 0);
-    self.contentLabel.text = model.smsContent;
-    [_contentLabel sizeToFit];
+//    self.nameLabel.text = model.smsTitle;
+//    self.contentLabel.frame = CGRectMake(20, 50, SCREEN_WIDTH - 40, 0);
+//    self.contentLabel.text = model.smsContent;
+//    [_contentLabel sizeToFit];
 }
 
 @end

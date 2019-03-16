@@ -42,7 +42,7 @@
 
 //151, 215, 76 RGB(195, 207, 72)
 #define kNavBarBackgroundColor  RGB(241, 241, 241)
-
+#define kHexColor(color) [UIColor colorWithHexString:color]
 #define MoneyColor        [UIColor colorWithHexString:@"#ff5000"]
 
 #define kBackgroundColor  RGB(247.0, 247.0, 247.0)   //背景色

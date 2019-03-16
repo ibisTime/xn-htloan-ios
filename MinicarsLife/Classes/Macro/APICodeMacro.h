@@ -11,9 +11,9 @@
 
 
 //研发
-//#define APPURL @"http://120.26.6.213:2401/forward-service//api"
+#define APPURL @"http://120.26.6.213:2401/forward-service//api"
 //测试
-#define APPURL @"http://47.99.163.139:2401/forward-service//api"
+//#define APPURL @"http://47.99.163.139:2401/forward-service//api"
 //线上
 //#define APPURL @"http://39.104.89.43:2401/forward-service//api"
 
@@ -50,7 +50,7 @@
 #define CancelTheOrderURL @"808053"//取消订单
 #define TheOrderDetailsURL @"808066"//订单详情
 #define TheOrderDetailsURL @"808066"//订单详情
-#define MyNewsURL @"804040"//我的消息
+#define MyNewsURL @"805305"//我的消息
 
 
 

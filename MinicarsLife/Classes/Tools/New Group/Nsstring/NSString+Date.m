@@ -281,4 +281,94 @@ NSString  * const kCDSysTimeFormat = @"MMM dd, yyyy hh:mm:ss aa";
     
 }
 
+- (NSString *)convertToDetailDateWithoutHour {
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"yyyy.MM.dd";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+    
+}
+-(NSString *)convertToChineseDate{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"yyyy年MM月dd日";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+}
+
+-(NSString *)convertDateWithoutYear{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"MM-dd hh:mm";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+}
+-(NSString *)convertDateWithYear{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"yyyy";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+}
+-(NSString *)convertDateWithMonth{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"MM";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+}
+-(NSString *)convertDateWithDay{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MMM dd, yyyy hh:mm:ss aa";
+    formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    
+    NSDate *date01 = [formatter dateFromString:self];
+    formatter.dateFormat = @"dd";
+    formatter.locale = [NSLocale currentLocale];
+    
+    return [formatter stringFromDate:date01];
+}
+-(NSString*)getCurrentTimes{
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    
+    // ----------设置你想要的格式,hh与HH的区别:分别表示12小时制,24小时制
+    
+    [formatter setDateFormat:@"YYYY-MM-dd"];
+    
+    //现在时间,你可以输出来看下是什么格式
+    
+    NSDate *datenow = [NSDate date];
+    
+    //----------将nsdate按formatter格式转成nsstring
+    
+    NSString *currentTimeString = [formatter stringFromDate:datenow];
+    
+    NSLog(@"currentTimeString =  %@",currentTimeString);
+    
+    return currentTimeString;
+    
+}
 @end

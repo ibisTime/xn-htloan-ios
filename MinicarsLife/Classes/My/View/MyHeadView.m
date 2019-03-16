@@ -43,29 +43,29 @@
     return _phoneLabel;
 }
 
--(UIButton *)balanceButton
-{
-    if (!_balanceButton) {
-        _balanceButton = [UIButton buttonWithTitle:@"账户余额:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
-        _balanceButton.frame = CGRectMake(0, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
-        [_balanceButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        _balanceButton.tag = 100;
-        
-    }
-    return _balanceButton;
-}
-
--(UIButton *)integralButton
-{
-    if (!_integralButton) {
-        _integralButton = [UIButton buttonWithTitle:@"账户积分:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
-        _integralButton.frame = CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
-        [_integralButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        _integralButton.tag = 101;
-        
-    }
-    return _integralButton;
-}
+//-(UIButton *)balanceButton
+//{
+//    if (!_balanceButton) {
+//        _balanceButton = [UIButton buttonWithTitle:@"账户余额:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
+//        _balanceButton.frame = CGRectMake(0, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
+//        [_balanceButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//        _balanceButton.tag = 100;
+//
+//    }
+//    return _balanceButton;
+//}
+//
+//-(UIButton *)integralButton
+//{
+//    if (!_integralButton) {
+//        _integralButton = [UIButton buttonWithTitle:@"账户积分:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
+//        _integralButton.frame = CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
+//        [_integralButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//        _integralButton.tag = 101;
+//
+//    }
+//    return _integralButton;
+//}
 
 -(void)ButtonClick:(UIButton *)sender
 {
@@ -78,7 +78,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        _backImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 170 + kStatusBarHeight)];
+        _backImage = [[UIImageView alloc]init];
         _backImage.image = HGImage(@"myback");
         [self addSubview:_backImage];
 
@@ -90,12 +90,12 @@
         youImage.image = HGImage(@"whiteYOU");
         [self addSubview:youImage];
 
-        [self addSubview:self.balanceButton];
-        [self addSubview:self.integralButton];
-
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, 1, 20)];
-        lineView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:lineView];
+//        [self addSubview:self.balanceButton];
+//        [self addSubview:self.integralButton];
+//
+//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, 1, 20)];
+//        lineView.backgroundColor = [UIColor whiteColor];
+//        [self addSubview:lineView];
 
         UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
         button.frame = CGRectMake(0, kStatusBarHeight + 60, SCREEN_WIDTH, 50);

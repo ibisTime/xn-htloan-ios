@@ -24,6 +24,11 @@
 #import "FaceToFaceSignVC.h"
 
 #import "PersionalCreditVC.h"
+//收藏
+#import "CollectVC.h"
+
+#import "CalculatorVC.h"
+//#import "CalculatorVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
 {
@@ -57,7 +62,7 @@
 -(MyHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 170 + kStatusBarHeight)];
+        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 155)];
         _headView.delegate = self;
     }
     return _headView;
@@ -68,6 +73,7 @@
     if (tag == 0)
     {
         NSLog(@"账户");
+        
         TheBalanceOfVC *vc = [[TheBalanceOfVC alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -94,7 +100,7 @@
     if (_tableView == nil) {
         CGRect tableView_frame;
         NSLog(@"%d",kStatusBarHeight);
-        tableView_frame = CGRectMake(0, -kStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT + 44 + kStatusBarHeight - kTabBarHeight);
+        tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor=BackColor;
@@ -109,8 +115,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-
+    
     self.navigationController.navigationBar.translucent = NO;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.titleLabel];
@@ -121,16 +126,19 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return 3;
 }
 
 #pragma mark -- 行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 3) {
-        return 4;
+    if (section == 0) {
+        return 2;
     }
-    return 1;
+    else if (section == 1){
+        return 3;
+    }
+    return 2;
 }
 
 #pragma mark -- tableView
@@ -141,104 +149,136 @@
     switch (indexPath.section) {
         case 0:
         {
-            cell.iconImage.image = HGImage(@"myicon1");
-            cell.nameLabel.text = @"征信查询";
-        }
-            break;
-        case 1:
-        {
-            cell.iconImage.image = HGImage(@"myicon1");
-            cell.nameLabel.text = @"信用报告";
-        }
-            break;
-        case 2:
-        {
-            cell.iconImage.image = HGImage(@"myicon2");
-            cell.nameLabel.text = @"开始面签";
-        }
-            break;
-        case 3:
-        {
-            NSArray *nameArray = @[@"我的消息",@"我的车贷申请",@"我的商品订单",@"联系客服"];
-            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3"),HGImage(@"myicon3"),HGImage(@"myicon5")];
+            NSArray *nameArray = @[@"开始面签",@"购车计算器"];
+            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
             cell.iconImage.image = imageArray[indexPath.row];
             cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
-        case 4:
-        {
-            cell.iconImage.image = HGImage(@"myicon6");
-            cell.nameLabel.text = @"关于我们";
-        }
-            break;
-
-        default:
-            break;
-    }
-
-    return cell;
-
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
-    switch (indexPath.section) {
-        case 0:
-        {
-            PersionalCreditVC *vc = [[PersionalCreditVC alloc]init];
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.accountNumber = accountNumber;
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
         case 1:
         {
-            CreditReportVC *vc = [[CreditReportVC alloc]init];
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.accountNumber = accountNumber;
-            [self.navigationController pushViewController:vc animated:YES];
+            NSArray *nameArray = @[@"我的消息",@"我的收藏",@"我的足迹"];
+            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3"),HGImage(@"myicon3")];
+            cell.iconImage.image = imageArray[indexPath.row];
+            cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
         case 2:
         {
-            [self AlertControllerView];
+            NSArray *nameArray = @[@"联系客服",@"关于我们"];
+            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
+            cell.iconImage.image = imageArray[indexPath.row];
+            cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
-        case 3:
+        default:
+            break;
+    }
+    
+    return cell;
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    switch (indexPath.section) {
+        case 0:
         {
+            //面签
+            if (indexPath.row == 0) {
+                [self AlertControllerView];
+            }
+            //购车计算器
+            else if (indexPath.row == 1){
+//                [TLAlert alertWithInfo:@"购车计算器"];
+                CalculatorVC * vc = [[CalculatorVC alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                //                PersionalCreditVC *vc = [[PersionalCreditVC alloc]init];
+                //                vc.hidesBottomBarWhenPushed = YES;
+                //                vc.accountNumber = accountNumber;
+                //                [self.navigationController pushViewController:vc animated:YES];
+            }
+        }
+            break;
+        case 1:
+        {
+            //我的消息
             if (indexPath.row == 0) {
                 MessageVC *vc = [[MessageVC alloc]init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
-            if (indexPath.row == 1) {
-                MyCarLoanApplicationVC *vc = [[MyCarLoanApplicationVC alloc]init];
+            //我的收藏
+            else if (indexPath.row == 1){
+                CollectVC * vc = [[CollectVC alloc]init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
-            if (indexPath.row == 2) {
-                TheOrderVC *vc = [[TheOrderVC alloc]init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
+            //我的足迹
+            else{
+                [TLAlert alertWithInfo:@"我的足迹"];
             }
-            if (indexPath.row == 3) {
+            //            CreditReportVC *vc = [[CreditReportVC alloc]init];
+            //            vc.hidesBottomBarWhenPushed = YES;
+            //            vc.accountNumber = accountNumber;
+            //            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 2:
+        {
+            //联系客服
+            if (indexPath.row == 0) {
                 ContactVC *vc = [[ContactVC alloc]init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
+            //关于我们
+            else{
+                AboutUsVC *vc = [[AboutUsVC alloc]init];
+                vc.hidesBottomBarWhenPushed = YES;
+                vc.titleStr = @"关于我们";
+                vc.ckey = @"about_us";
+                [self.navigationController pushViewController:vc animated:YES];
+                
+            }
         }
             break;
-        case 4:
-        { 
-            AboutUsVC *vc = [[AboutUsVC alloc]init];
-            vc.hidesBottomBarWhenPushed = YES;
-            vc.titleStr = @"关于我们";
-            vc.ckey = @"about_us";
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-
+            //        case 3:
+            //        {
+            //            if (indexPath.row == 0) {
+            //                MessageVC *vc = [[MessageVC alloc]init];
+            //                vc.hidesBottomBarWhenPushed = YES;
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
+            //            if (indexPath.row == 1) {
+            //                MyCarLoanApplicationVC *vc = [[MyCarLoanApplicationVC alloc]init];
+            //                vc.hidesBottomBarWhenPushed = YES;
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
+            //            if (indexPath.row == 2) {
+            //                TheOrderVC *vc = [[TheOrderVC alloc]init];
+            //                vc.hidesBottomBarWhenPushed = YES;
+            //                [self.navigationController pushViewController:vc animated:YES];
+            //            }
+            //            if (indexPath.row == 3) {
+//                            ContactVC *vc = [[ContactVC alloc]init];
+//                            vc.hidesBottomBarWhenPushed = YES;
+//                            [self.navigationController pushViewController:vc animated:YES];
+            //            }
+            //        }
+            //            break;
+            //        case 4:
+            //        {
+            //            AboutUsVC *vc = [[AboutUsVC alloc]init];
+            //            vc.hidesBottomBarWhenPushed = YES;
+            //            vc.titleStr = @"关于我们";
+            //            vc.ckey = @"about_us";
+            //            [self.navigationController pushViewController:vc animated:YES];
+            //        }
+            //            break;
+            
         default:
             break;
     }
@@ -251,7 +291,7 @@
     ht.code = @"632953";
     ht.parameters[@"roomId"] = self.strid;
     ht.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
-
+    
     ht.showView = self.view;
     [ht postWithSuccess:^(id responseObject) {
         
@@ -270,184 +310,184 @@
 - (void)checkCount
 {
     
-//    TLNetworking *ht = [TLNetworking new];
-//    ht.code = @"632953";
-//    ht.parameters[@"roomId"] = self.strid;
-//    ht.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
-//
-//    ht.showView = self.view;
-//    [ht postWithSuccess:^(id responseObject) {
-//        NSNumber *num = responseObject[@"data"];
-//
-//        if ([num longValue] >= 3) {
-//            [TLAlert alertWithMsg:@"房间已满"];
-//        }else{
+    //    TLNetworking *ht = [TLNetworking new];
+    //    ht.code = @"632953";
+    //    ht.parameters[@"roomId"] = self.strid;
+    //    ht.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    //
+    //    ht.showView = self.view;
+    //    [ht postWithSuccess:^(id responseObject) {
+    //        NSNumber *num = responseObject[@"data"];
+    //
+    //        if ([num longValue] >= 3) {
+    //            [TLAlert alertWithMsg:@"房间已满"];
+    //        }else{
     
+    
+    if ([faceStr isEqualToString:@""]) {
+        [SVProgressHUD showWithStatus:@""];
+        TLNetworking *http = [TLNetworking new];
+        http.code = @"630800";
+        http.showView = self.view;
+        http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+        
+        [http postWithSuccess:^(id responseObject) {
             
-            if ([faceStr isEqualToString:@""]) {
-                [SVProgressHUD showWithStatus:@""];
-                TLNetworking *http = [TLNetworking new];
-                http.code = @"630800";
-                http.showView = self.view;
-                http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
-                
-                [http postWithSuccess:^(id responseObject) {
-                    
-                    [SVProgressHUD showWithStatus:@""];
-                    [[ILiveSDK getInstance] initSdk:[responseObject[@"data"][@"txAppCode"] intValue] accountType:[responseObject[@"data"][@"accountType"] intValue]];
-                    
-                    [[ILiveLoginManager getInstance] iLiveLogin:[USERDEFAULTS objectForKey:USER_ID] sig:responseObject[@"data"][@"sign"] succ:^{
-                        faceStr = responseObject[@"data"][@"txAppCode"];
-                        [SVProgressHUD dismiss];
-                        //提示框添加文本输入框
-//                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
-//
-//                        UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-//                            for(UITextField *text in alert.textFields){
-//                                NSLog(@"text = %@", text.text);
-//                                [self  checkIsRoom:text.text];
-                        
-                                // 1. 创建live房间页面
-                                FaceToFaceSignVC *liveRoomVC = [[FaceToFaceSignVC alloc] init];
-                                liveRoomVC.hidesBottomBarWhenPushed = YES;
-                                // 2. 创建房间配置对象
-                                ILiveRoomOption *option = [ILiveRoomOption defaultHostLiveOption];
-                                option.imOption.imSupport = NO;
-                                // 不自动打开摄像头
-                                option.avOption.autoCamera = NO;
-                                // 不自动打开mic
-                                option.avOption.autoMic = NO;
-                                // 设置房间内音视频监听
-                                option.memberStatusListener = liveRoomVC;
-                                // 设置房间中断事件监听
-                                option.roomDisconnectListener = liveRoomVC;
-                                
-                                // 该参数代表进房之后使用什么规格音视频参数，参数具体值为客户在腾讯云实时音视频控制台画面设定中配置的角色名（例如：默认角色名为user, 可设置controlRole = @"user"）
-                                option.controlRole = @"cd_room";
-                                
-                                // 3. 调用创建房间接口，传入房间ID和房间配置对象
-                                [[ILiveRoomManager getInstance] joinRoom:[self.strid intValue] option:option succ:^{
-                                    // 加入房间成功，跳转到房间页
-                                    [self.navigationController pushViewController:liveRoomVC animated:YES];
-                                } failed:^(NSString *module, int errId, NSString *errMsg) {
-                                    // 加入房间失败
-                                    self.alertCtrl.title = @"加入房间失败";
-                                    self.alertCtrl.message = [NSString stringWithFormat:@"errId:%d errMsg:%@",errId, errMsg];
-                                    [self presentViewController:self.alertCtrl animated:YES completion:nil];
-                                }];
-                                
-//
-//                            }
-//                        }];
-//                        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-//                            NSLog(@"action = %@", alert.textFields);
-//                        }];
-//                        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//                            textField.placeholder = @"请输入面签房间号";
-//                            textField.borderStyle = UITextBorderStyleRoundedRect;
-//                            textField.frame = CGRectMake(0, 0, textField.frame.size.width, 50);
-//                        }];
-//                        [alert addAction:okAction];
-//                        [alert addAction:cancelAction];
-//                        [self presentViewController:alert animated:YES completion:nil];
-                        
-                        // 登录成功，跳转到创建房间页
-                        
-                    } failed:^(NSString *module, int errId, NSString *errMsg) {
-                        NSLog(@"%@",errMsg);
-                        [SVProgressHUD dismiss];
-                        [TLAlert alertWithError:[NSString stringWithFormat:@"%@",errMsg]];
-                    }];
-                    NSLog(@"%@",responseObject);
-                    
-                } failure:^(NSError *error) {
-                    WGLog(@"%@",error);
-                    [SVProgressHUD dismiss];
-                }];
-            }else
-            {
+            [SVProgressHUD showWithStatus:@""];
+            [[ILiveSDK getInstance] initSdk:[responseObject[@"data"][@"txAppCode"] intValue] accountType:[responseObject[@"data"][@"accountType"] intValue]];
+            
+            [[ILiveLoginManager getInstance] iLiveLogin:[USERDEFAULTS objectForKey:USER_ID] sig:responseObject[@"data"][@"sign"] succ:^{
+                faceStr = responseObject[@"data"][@"txAppCode"];
+                [SVProgressHUD dismiss];
                 //提示框添加文本输入框
-//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
-//
-//                UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-//                    for(UITextField *text in alert.textFields){
-//                        NSLog(@"text = %@", text.text);
-//
-                        // 1. 创建live房间页面
-                        FaceToFaceSignVC *liveRoomVC = [[FaceToFaceSignVC alloc] init];
-                        liveRoomVC.hidesBottomBarWhenPushed = YES;
-                        // 2. 创建房间配置对象
-                        ILiveRoomOption *option = [ILiveRoomOption defaultHostLiveOption];
-                        option.imOption.imSupport = NO;
-                        // 不自动打开摄像头
-                        option.avOption.autoCamera = NO;
-                        // 不自动打开mic
-                        option.avOption.autoMic = NO;
-                        // 设置房间内音视频监听
-                        option.memberStatusListener = liveRoomVC;
-                        // 设置房间中断事件监听
-                        option.roomDisconnectListener = liveRoomVC;
-                        
-                        // 该参数代表进房之后使用什么规格音视频参数，参数具体值为客户在腾讯云实时音视频控制台画面设定中配置的角色名（例如：默认角色名为user, 可设置controlRole = @"user"）
-                        option.controlRole = @"cd_room";
-                        
-                        // 3. 调用创建房间接口，传入房间ID和房间配置对象
-                        [[ILiveRoomManager getInstance] joinRoom:[self.strid intValue] option:option succ:^{
-                            // 加入房间成功，跳转到房间页
-                            [self.navigationController pushViewController:liveRoomVC animated:YES];
-                        } failed:^(NSString *module, int errId, NSString *errMsg) {
-                            // 加入房间失败
-                            self.alertCtrl.title = @"加入房间失败";
-                            self.alertCtrl.message = [NSString stringWithFormat:@"errId:%d errMsg:%@",errId, errMsg];
-                            [self presentViewController:self.alertCtrl animated:YES completion:nil];
-                        }];
-                        
-//                        
-//                    }
-//                }];
-//                UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-//                    NSLog(@"action = %@", alert.textFields);
-//                }];
-//                [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-//                    textField.placeholder = @"请输入面签房间号";
-//                    textField.borderStyle = UITextBorderStyleRoundedRect;
-//                    textField.frame = CGRectMake(0, 0, textField.frame.size.width, 50);
-//                }];
-//                [alert addAction:okAction];
-//                [alert addAction:cancelAction];
-//                [self presentViewController:alert animated:YES completion:nil];
-            }
+                //                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                //
+                //                        UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+                //                            for(UITextField *text in alert.textFields){
+                //                                NSLog(@"text = %@", text.text);
+                //                                [self  checkIsRoom:text.text];
+                
+                // 1. 创建live房间页面
+                FaceToFaceSignVC *liveRoomVC = [[FaceToFaceSignVC alloc] init];
+                liveRoomVC.hidesBottomBarWhenPushed = YES;
+                // 2. 创建房间配置对象
+                ILiveRoomOption *option = [ILiveRoomOption defaultHostLiveOption];
+                option.imOption.imSupport = NO;
+                // 不自动打开摄像头
+                option.avOption.autoCamera = NO;
+                // 不自动打开mic
+                option.avOption.autoMic = NO;
+                // 设置房间内音视频监听
+                option.memberStatusListener = liveRoomVC;
+                // 设置房间中断事件监听
+                option.roomDisconnectListener = liveRoomVC;
+                
+                // 该参数代表进房之后使用什么规格音视频参数，参数具体值为客户在腾讯云实时音视频控制台画面设定中配置的角色名（例如：默认角色名为user, 可设置controlRole = @"user"）
+                option.controlRole = @"cd_room";
+                
+                // 3. 调用创建房间接口，传入房间ID和房间配置对象
+                [[ILiveRoomManager getInstance] joinRoom:[self.strid intValue] option:option succ:^{
+                    // 加入房间成功，跳转到房间页
+                    [self.navigationController pushViewController:liveRoomVC animated:YES];
+                } failed:^(NSString *module, int errId, NSString *errMsg) {
+                    // 加入房间失败
+                    self.alertCtrl.title = @"加入房间失败";
+                    self.alertCtrl.message = [NSString stringWithFormat:@"errId:%d errMsg:%@",errId, errMsg];
+                    [self presentViewController:self.alertCtrl animated:YES completion:nil];
+                }];
+                
+                //
+                //                            }
+                //                        }];
+                //                        UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+                //                            NSLog(@"action = %@", alert.textFields);
+                //                        }];
+                //                        [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+                //                            textField.placeholder = @"请输入面签房间号";
+                //                            textField.borderStyle = UITextBorderStyleRoundedRect;
+                //                            textField.frame = CGRectMake(0, 0, textField.frame.size.width, 50);
+                //                        }];
+                //                        [alert addAction:okAction];
+                //                        [alert addAction:cancelAction];
+                //                        [self presentViewController:alert animated:YES completion:nil];
+                
+                // 登录成功，跳转到创建房间页
+                
+            } failed:^(NSString *module, int errId, NSString *errMsg) {
+                NSLog(@"%@",errMsg);
+                [SVProgressHUD dismiss];
+                [TLAlert alertWithError:[NSString stringWithFormat:@"%@",errMsg]];
+            }];
+            NSLog(@"%@",responseObject);
             
-//        }
+        } failure:^(NSError *error) {
+            WGLog(@"%@",error);
+            [SVProgressHUD dismiss];
+        }];
+    }else
+    {
+        //提示框添加文本输入框
+        //                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        //
+        //                UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        //                    for(UITextField *text in alert.textFields){
+        //                        NSLog(@"text = %@", text.text);
+        //
+        // 1. 创建live房间页面
+        FaceToFaceSignVC *liveRoomVC = [[FaceToFaceSignVC alloc] init];
+        liveRoomVC.hidesBottomBarWhenPushed = YES;
+        // 2. 创建房间配置对象
+        ILiveRoomOption *option = [ILiveRoomOption defaultHostLiveOption];
+        option.imOption.imSupport = NO;
+        // 不自动打开摄像头
+        option.avOption.autoCamera = NO;
+        // 不自动打开mic
+        option.avOption.autoMic = NO;
+        // 设置房间内音视频监听
+        option.memberStatusListener = liveRoomVC;
+        // 设置房间中断事件监听
+        option.roomDisconnectListener = liveRoomVC;
+        
+        // 该参数代表进房之后使用什么规格音视频参数，参数具体值为客户在腾讯云实时音视频控制台画面设定中配置的角色名（例如：默认角色名为user, 可设置controlRole = @"user"）
+        option.controlRole = @"cd_room";
+        
+        // 3. 调用创建房间接口，传入房间ID和房间配置对象
+        [[ILiveRoomManager getInstance] joinRoom:[self.strid intValue] option:option succ:^{
+            // 加入房间成功，跳转到房间页
+            [self.navigationController pushViewController:liveRoomVC animated:YES];
+        } failed:^(NSString *module, int errId, NSString *errMsg) {
+            // 加入房间失败
+            self.alertCtrl.title = @"加入房间失败";
+            self.alertCtrl.message = [NSString stringWithFormat:@"errId:%d errMsg:%@",errId, errMsg];
+            [self presentViewController:self.alertCtrl animated:YES completion:nil];
+        }];
+        
+        //
+        //                    }
+        //                }];
+        //                UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
+        //                    NSLog(@"action = %@", alert.textFields);
+        //                }];
+        //                [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        //                    textField.placeholder = @"请输入面签房间号";
+        //                    textField.borderStyle = UITextBorderStyleRoundedRect;
+        //                    textField.frame = CGRectMake(0, 0, textField.frame.size.width, 50);
+        //                }];
+        //                [alert addAction:okAction];
+        //                [alert addAction:cancelAction];
+        //                [self presentViewController:alert animated:YES completion:nil];
+    }
     
-//    } failure:^(NSError *error) {
-//
-//    }];
+    //        }
+    
+    //    } failure:^(NSError *error) {
+    //
+    //    }];
 }
 
 -(void)AlertControllerView
 {
-   
-        
-//        TLNetworking *ht = [TLNetworking new];
-//        ht.code = @"632950";
-//        ht.showView = self.view;
-//        [ht postWithSuccess:^(id responseObject) {
-//            self.strid = responseObject[@"data"];;
-//            NSLog(@"strid%@",self.strid);
-//            [self checkCount];
-//        } failure:^(NSError *error) {
-//
-//        }];
     
-        
+    
+    //        TLNetworking *ht = [TLNetworking new];
+    //        ht.code = @"632950";
+    //        ht.showView = self.view;
+    //        [ht postWithSuccess:^(id responseObject) {
+    //            self.strid = responseObject[@"data"];;
+    //            NSLog(@"strid%@",self.strid);
+    //            [self checkCount];
+    //        } failure:^(NSError *error) {
+    //
+    //        }];
+    
+    
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
         for(UITextField *text in alert.textFields){
             self.strid = text.text;
             [self checkCount];
-
+            
         }
     }];
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
@@ -468,7 +508,7 @@
     if (!_alertCtrl) {
         _alertCtrl = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-
+            
         }] ;
         [_alertCtrl addAction:action];
     }
@@ -519,8 +559,8 @@
 {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
+    //    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
 }
 
 -(void)loadData
@@ -549,11 +589,11 @@
         _headView.nameLabel.text = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:NICKNAME]];
         _headView.phoneLabel.text = [USERDEFAULTS objectForKey:MOBILE];
         [weakSelf.tableView reloadData];
-
+        
     } failure:^(NSError *error) {
         WGLog(@"%@",error);
     }];
-
+    
     TLNetworking *http1 = [TLNetworking new];
     http1.code = AccountsCheckingListURL;
     http1.showView = self.view;
@@ -585,12 +625,12 @@
             [_headView.integralButton setTitle:[NSString stringWithFormat:@"账户积分:%.2f",[[USERDEFAULTS objectForKey:JF] floatValue]/1000] forState:(UIControlStateNormal)];
         }
         [weakSelf.tableView reloadData];
-
+        
     } failure:^(NSError *error) {
         WGLog(@"%@",error);
     }];
-
-
+    
+    
 }
 
 
@@ -605,9 +645,9 @@
     // 下拉 纵向偏移量变小 变成负的
     if ( Offset_y < 0) {
         // 拉伸后图片的高度
-        CGFloat totalOffset = 170 + kStatusBarHeight - Offset_y;
+        CGFloat totalOffset =155 - Offset_y;
         // 图片放大比例
-        CGFloat scale = totalOffset / (170 + kStatusBarHeight);
+        CGFloat scale = totalOffset / 155;
         CGFloat width = SCREEN_WIDTH;
         // 拉伸后图片位置
         self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);

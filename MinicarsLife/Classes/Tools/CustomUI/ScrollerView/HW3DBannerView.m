@@ -234,7 +234,7 @@
 
 #pragma mark -- action
 -(void)leftTapGes{
-    WGLog(@"1");
+//    WGLog(@"1");
 }
 
 -(void)rightTapGes{
