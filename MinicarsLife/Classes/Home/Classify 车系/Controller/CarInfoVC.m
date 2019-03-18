@@ -12,7 +12,8 @@
 #import "DeployFirstCell.h"
 #import "DeployLastCell.h"
 #import "CallNowView.h"
-@interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
+#import "AskSuccessView.h"
+@interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) UIView * bottomview;
@@ -70,6 +71,7 @@
     
     UIButton * asknow = [UIButton buttonWithTitle:@"询底价" titleColor:kWhiteColor backgroundColor:kHexColor(@"#028EFF") titleFont:16 cornerRadius:2];
     asknow.tag = 2;
+    [asknow addTarget:self action:@selector(ClickBottomBtn:) forControlEvents:(UIControlEventTouchUpInside)];
     asknow.frame = CGRectMake(callnow.xx + 15, 16, SCREEN_WIDTH / 2 - 30, 45);
     [self.bottomview addSubview:asknow];
     
@@ -79,12 +81,23 @@
     
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
-    if (sender.tag == 1) {
+    if (sender.tag == 2) {
         CallNowView * vc = [[CallNowView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        vc.delegate = self;
         [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
     }
 }
-
+-(void)askmoney{
+    [[USERXX user].cusPopView dismiss];
+    AskSuccessView * vc = [[AskSuccessView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    vc.delegate = self;
+    [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
+    
+}
+-(void)BackToHomeClick{
+    BaseTabBarViewController *tabBarCtrl = [[BaseTabBarViewController alloc] init];
+    [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
+}
 -(void)HW3DBannerViewClick:(NSInteger)currentImageIndex{
     //    NSLog(@"%ld",currentImageIndex);
 }
@@ -165,7 +178,7 @@
         UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 20, 3, 14)];
         v2.backgroundColor = MainColor;
         [view addSubview:v2];
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx, v1.yy + 15, 65, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx, v1.yy + 10, 65, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         if (section == 1) {
             label.text = @"库存信息";
         }

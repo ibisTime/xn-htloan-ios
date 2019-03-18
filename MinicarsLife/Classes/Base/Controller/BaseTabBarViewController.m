@@ -25,7 +25,7 @@
 }
 - (void)createTabBar{
     [self createControllerWithTitle:@"首页" image:@"home1"selectedimage:@"home2" className:[HomeViewController class]];
-    [self createControllerWithTitle:@"车型库" image:@"reimbursement1"selectedimage:@"reimbursement2" className:[ReimbursementViewController class]];
+    [self createControllerWithTitle:@"车型库" image:@"车型库-未选中"selectedimage:@"车型库-选中" className:[ReimbursementViewController class]];
     [self createControllerWithTitle:@"我的" image:@"my1"selectedimage:@"my2" className:[MyViewController class]];
 
 }

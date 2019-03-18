@@ -59,6 +59,8 @@
 #define kBottomItemGrayColor    [UIColor colorWithHexString:@"#FAFAFA"]   //底栏灰色
 #define kCommentSecondColor     [UIColor colorWithHexString:@"#FAFAFA"]   //评论二级颜色
 #define kPlaceholderColor       [UIColor colorWithHexString:@"#CCCCCC"]
+
+#define kTabbarColor   kHexColor(@"#22A079")
     //占位颜色
 /****颜色列表***/
 
@@ -110,6 +112,10 @@
 #pragma mark - 轮播图
 
 #define kCarouselHeight (kScreenWidth/5*3)
+#pragma mark - 界面尺寸
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+
 
 //View圆角和加边框
 
