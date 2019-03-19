@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
-
+#import "CarModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ClassifyListVC : BaseViewController
-
+@property (nonatomic,strong) NSMutableArray<CarModel*> * CarModels;
 @end
 
 NS_ASSUME_NONNULL_END

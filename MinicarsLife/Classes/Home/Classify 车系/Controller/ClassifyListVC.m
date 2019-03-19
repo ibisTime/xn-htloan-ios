@@ -34,7 +34,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.CarModels.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -46,6 +46,7 @@
         cell=[[ClassifyCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         
     }
+    cell.carmodel = [CarModel mj_objectWithKeyValues:self.CarModels[indexPath.row]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -53,7 +54,24 @@
     return 110;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ClassifyInfoVC * vc = [ClassifyInfoVC new];
-    [self.navigationController pushViewController:vc animated:YES];
+    [self getClassifyData:self.CarModels[indexPath.row].code];
+}
+-(void)getClassifyData:(NSString*)code{
+    //列表查询车型
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630426";
+    http2.parameters[@"seriesCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        //        if (vc.models.count > 0) {
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        //        }
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end

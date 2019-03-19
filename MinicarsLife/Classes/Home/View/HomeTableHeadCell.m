@@ -110,11 +110,6 @@
         [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
         button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/4 * j, self.scrollView.yy + 3.5 + 50, (SCREEN_WIDTH-30)/4, 20);
         [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
-        
-        //        [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
-        //            [button setImage:kImage(logoarray[j]) forState:(UIControlStateNormal)];
-        //        }];
-        
         [self addSubview:button];
         
         if (j < 3) {
@@ -214,6 +209,7 @@
 }
 -(void)setCarStyleModels:(NSMutableArray<CarModel *> *)CarStyleModels{
     _CarStyleModels = CarStyleModels;
+    
     if (CarStyleModels.count > 0) {
         for (int j = 0; j < 3; j++) {
             UIButton * button = [self viewWithTag:(8 + j)];

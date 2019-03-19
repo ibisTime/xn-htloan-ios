@@ -99,6 +99,7 @@
 {
     self.selectArray = [NSMutableArray array];
     [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    self.ResultLab.text = @"您选择的条件会显示在这";
     [self.collectionView reloadData];
 }
 
@@ -213,6 +214,7 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    
     [self.collectionView reloadData];
 
 }

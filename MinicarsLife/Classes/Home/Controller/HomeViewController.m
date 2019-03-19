@@ -139,26 +139,61 @@
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsInfoVC * vc = [NewsInfoVC new];
-    vc.code = self.NewsModels[indexPath.row].code;
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.section == 1) {
+        NewsInfoVC * vc = [NewsInfoVC new];
+        vc.code = self.NewsModels[indexPath.row].code;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 //点击上面的分类按钮
 -(void)ClickBtn:(UIButton *)sender{
     NSLog(@"tag%ld",sender.tag);
     if (sender.tag < 4) {
-        BrandListVC * vc = [BrandListVC new];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        switch (sender.tag) {
+            case 0:
+                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
+                break;
+                case 1:
+                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
+                break;
+                case 2:
+                [self GetClassifyByPrice:@"700000" priceEnd:@""];
+                break;
+            default:
+                break;
+        }
     }
-    if (sender.tag>3 && sender.tag < 7) {
+    if (sender.tag>3 && sender.tag < 8) {
         ClassifyListVC * vc = [ClassifyListVC new];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    if (sender.tag > 7) {
+         [self getClassifyData:self.CarClassifyModels[sender.tag - 8].code];
+    }
+}
+//根据价格选择
+-(void)GetClassifyByPrice:(NSString *)priceStart priceEnd:(NSString *)priceEnd{
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630426";
+    http2.parameters[@"priceStart"] =priceStart;
+    http2.parameters[@"priceEnd"] =priceEnd;
+    [http2 postWithSuccess:^(id responseObject) {      
+        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
+        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    } failure:^(NSError *error) {
+        
+    }];
     
-    [self getClassifyData:self.CarClassifyModels[sender.tag - 8].code];
+    
+    
+
 }
 -(void)getClassifyData:(NSString*)code{
     //列表查询车型
@@ -169,7 +204,11 @@
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
         vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        if (vc.models.count > 0) {
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+//        }
+        
     } failure:^(NSError *error) {
         
     }];
