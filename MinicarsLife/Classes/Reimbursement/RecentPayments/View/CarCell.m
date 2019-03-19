@@ -34,14 +34,14 @@
 //        self.TitleLab.textColor = kBlackColor;
 //    }
 //}
--(void)setIsselect:(BOOL *)isselect{
-    if (isselect) {
-        self.layer.borderColor = MainColor.CGColor;
-        self.TitleLab.textColor = MainColor;
-    }
-    else{
-        self.layer.borderColor = kLineColor.CGColor;
-        self.TitleLab.textColor = kBlackColor;
-    }
-}
+//-(void)setIsselect:(BOOL *)isselect{
+//    if (isselect) {
+//        self.layer.borderColor = MainColor.CGColor;
+//        self.TitleLab.textColor = MainColor;
+//    }
+//    else{
+//        self.layer.borderColor = kLineColor.CGColor;
+//        self.TitleLab.textColor = kBlackColor;
+//    }
+//}
 @end

@@ -149,7 +149,7 @@
     manager.image = image;
     [manager getTokenShowViewimage:weakSelf.view succes:^(NSString *key) {
         [SVProgressHUD showWithStatus:@""];
-
+        [SVProgressHUD dismissWithDelay:2];
         TLNetworking *http = [TLNetworking new];
         http.code = @"630544";
         http.parameters[@"code"] = self.model.code;
