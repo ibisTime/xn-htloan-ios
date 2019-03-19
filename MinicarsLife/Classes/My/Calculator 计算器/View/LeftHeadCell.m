@@ -28,7 +28,7 @@
         self.titlelab.text = @"预计总花费（裸车价格+必要花费+商业保险）";
         [self addSubview:self.titlelab];
         
-        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kWhiteColor];
+        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(20) textColor:kWhiteColor];
 //        self.moneylab.text = @"410，000元";
         self.moneylab.attributedText = [self getPriceAttribute:@"410，000元"];
         [self addSubview:self.moneylab];
@@ -42,7 +42,7 @@
     NSRange range = [string rangeOfString:@"元"];
     NSRange pointRange = NSMakeRange(0, range.location);
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[NSFontAttributeName] = boldFont(20);
+    dic[NSFontAttributeName] = boldFont(40);
     //赋值
     [attribut addAttributes:dic range:pointRange];
     return attribut;

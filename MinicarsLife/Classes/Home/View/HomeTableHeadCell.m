@@ -1,34 +1,35 @@
 //
-//  HomeHeadVC.m
+//  HomeTableHeadCell.m
 //  MinicarsLife
 //
-//  Created by 梅敏杰 on 2019/3/14.
+//  Created by 梅敏杰 on 2019/3/19.
 //  Copyright © 2019年 QinBao Zheng. All rights reserved.
 //
 
-#import "HomeHeadVC.h"
+#import "HomeTableHeadCell.h"
 #import "HotCarCollectionCell.h"
 #import "NewsModel.h"
 #import "ChooseCarVC.h"
-@interface HomeHeadVC ()<HW3DBannerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic , strong)HW3DBannerView *scrollView;
+@implementation HomeTableHeadCell
 
-@property (nonatomic,strong) UICollectionView * collection;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 
-@end
-
-@implementation HomeHeadVC
-
-
--(instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
+    // Configure the view for the selected state
+}
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        [self loadData];
         self.backgroundColor = kWhiteColor;
         [self bannerLoadData];
         [self addSubview:self.scrollView];
         [self createbtn];
+        
         [self addSubview:self.collection];
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.collection.yy + 20 , SCREEN_WIDTH, 20)];
@@ -47,11 +48,11 @@
         // 设置列间距
         layout.minimumInteritemSpacing = 15;
         // 设置行间距
-//        layout.minimumLineSpacing = 1;
+        //        layout.minimumLineSpacing = 1;
         //每个分区的四边间距UIEdgeInsetsMake
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
         // 设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
-//        layout.estimatedItemSize = CGSizeMake(width , 338.00 / 226.00 * width);
+        //        layout.estimatedItemSize = CGSizeMake(width , 338.00 / 226.00 * width);
         // 设置布局方向(滚动方向)
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
@@ -77,7 +78,7 @@
         _scrollView.placeHolderImage = [UIImage imageNamed:@""]; // 设置占位图片
         
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
-//            NSLog(@"%ld",currentIndex);
+            //            NSLog(@"%ld",currentIndex);
             [weakSelf clickImage:currentIndex];
         };
         _scrollView.delegate = self;
@@ -89,7 +90,7 @@
 -(void)createbtn{
     NSArray * titlearray = @[@"30-50万",@"50-70万",@"70万以上",@"更多",@"奔驰",@"保时捷",@"丰田",@"奥迪"];
     NSArray * logoarray = @[@"1",@"2",@"3",@"1"];
-
+    
     for (int j = 0; j < 4; j ++) {
         UIButton * button = [UIButton buttonWithTitle:titlearray[j] titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
         button.tag = j;
@@ -110,9 +111,9 @@
         button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/4 * j, self.scrollView.yy + 3.5 + 50, (SCREEN_WIDTH-30)/4, 20);
         [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
         
-//        [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(logoarray[j]) forState:(UIControlStateNormal)];
-//        }];
+        //        [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
+        //            [button setImage:kImage(logoarray[j]) forState:(UIControlStateNormal)];
+        //        }];
         
         [self addSubview:button];
         
@@ -133,7 +134,9 @@
         button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/3 * j, self.scrollView.yy + 90, (SCREEN_WIDTH-30)/3, 76.5);
         [button SG_imagePositionStyle:SGImagePositionStyleTop spacing:0 imagePositionBlock:^(UIButton *button) {
             [button setImage:kImage(imgarray[j]) forState:(UIControlStateNormal)];
+            
         }];
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 20, 0);
         [self addSubview:button];
     }
     UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 185, SCREEN_WIDTH, 10)];
@@ -160,7 +163,7 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%ld",indexPath.row);
+    //    NSLog(@"%ld",indexPath.row);
     if (self.delegate) {
         [self.delegate ClickCollection:indexPath.row];
     }
@@ -179,7 +182,7 @@
     
 }
 -(void)HW3DBannerViewClick:(NSInteger)currentImageIndex{
-//    NSLog(@"%ld",currentImageIndex);
+    //    NSLog(@"%ld",currentImageIndex);
 }
 
 #pragma mark - 获取数据
@@ -209,38 +212,13 @@
         WGLog(@"%@",error);
     }];
 }
--(void)loadData{
-    //列表查询品牌
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.showView = self;
-    http.code = @"630406";
-    http.parameters[@"isReferee"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    //列表查询车系
-    TLNetworking * http1 = [[TLNetworking alloc]init];
-    http1.showView = self;
-    http1.code = @"630416";
-    http1.parameters[@"isReferee"] = @"1";
-    [http1 postWithSuccess:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self;
-    http2.code = @"630426";
-    http2.parameters[@"isReferee"] = @"1";
-    [http2 postWithSuccess:^(id responseObject) {
-        self.CarStyleModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-    } failure:^(NSError *error) {
-        
-    }];
+-(void)setCarStyleModels:(NSMutableArray<CarModel *> *)CarStyleModels{
+    _CarStyleModels = CarStyleModels;
+    for (int j = 0; j < 3; j++) {
+        UIButton * button = [self viewWithTag:(8 + j)];
+        CarModel * model = CarStyleModels[j];
+        [button setTitle:model.name forState:(UIControlStateNormal)];
+        [button.imageView sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]]];
+    }
 }
 @end

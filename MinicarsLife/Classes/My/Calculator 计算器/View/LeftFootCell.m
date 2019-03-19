@@ -33,9 +33,9 @@
         label.frame = CGRectMake((self.leftview.width - label.width) / 2, self.leftmoney.yy + 10, label.width, 25);
         [self.leftview addSubview:label];
         
-        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.leftview.height - 15) / 2, 13, 15)];
-        img.image = kImage(@"you");
-        [self.leftview addSubview:img];
+//        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.leftview.height - 15) / 2, 13, 15)];
+//        img.image = kImage(@"you");
+//        [self.leftview addSubview:img];
         [self addSubview:self.leftview];
         
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 20, 1, 40)];
@@ -53,9 +53,9 @@
         label1.frame = CGRectMake((self.rightview.width - label1.width) / 2, self.rightmoney.yy + 10, label1.width, 25);
         [self.rightview addSubview:label1];
         
-        UIImageView * img1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.rightview.height - 15) / 2, 13, 15)];
-        img1.image = kImage(@"you");
-        [self.rightview addSubview:img1];
+//        UIImageView * img1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.rightview.height - 15) / 2, 13, 15)];
+//        img1.image = kImage(@"you");
+//        [self.rightview addSubview:img1];
         
         [self addSubview:self.rightview];
         

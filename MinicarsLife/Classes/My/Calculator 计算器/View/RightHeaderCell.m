@@ -25,12 +25,13 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = MainColor;
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 20, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
         self.titlelab.text = @"预计首付款（裸车价格+必要花费+商业保险）";
         [self addSubview:self.titlelab];
         
-        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 70) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
-        self.moneylab.text = @"289，000元";
+        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 70) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(20) textColor:kWhiteColor];
+//        self.moneylab.text = @"289，000元";
+        self.moneylab.attributedText = [self getPriceAttribute:@"410，000元"];
         [self addSubview:self.moneylab];
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, self.moneylab.yy + 5, SCREEN_WIDTH - 30, 1)];
@@ -41,6 +42,7 @@
             UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0 + SCREEN_WIDTH / 3 * i, self.moneylab.yy + 10, SCREEN_WIDTH / 3, 70)];
             UILabel * money = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH / 3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
             money.text = @"123456";
+            
             [view addSubview:money];
             
             UILabel * title = [UILabel labelWithFrame:CGRectMake(15, money.yy + 5, SCREEN_WIDTH / 3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
@@ -58,5 +60,17 @@
         
     }
     return self;
+}
+-(NSMutableAttributedString *)getPriceAttribute:(NSString *)string{
+    
+    NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:string];
+    //目的是想改变 ‘/’前面的字体的属性，所以找到目标的range
+    NSRange range = [string rangeOfString:@"元"];
+    NSRange pointRange = NSMakeRange(0, range.location);
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[NSFontAttributeName] = boldFont(40);
+    //赋值
+    [attribut addAttributes:dic range:pointRange];
+    return attribut;
 }
 @end

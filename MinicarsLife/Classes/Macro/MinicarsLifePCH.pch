@@ -30,6 +30,7 @@
 #import "UIView+Frame.h"
 #import "TLTableView.h"
 #import "ZJAnimationPopView.h"
+#import "BaseTabBarViewController.h"
 #define kDeviceStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 #define USERDEFAULTS [NSUserDefaults standardUserDefaults]
 

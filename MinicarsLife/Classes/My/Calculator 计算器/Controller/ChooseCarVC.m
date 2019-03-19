@@ -27,6 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"选择品牌";
     [self getBrand];
     [self.view addSubview:self.tableview];
     

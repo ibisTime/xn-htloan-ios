@@ -28,6 +28,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"选择车型";
     [self getClassify];
     [self.view addSubview:self.tableview];
     // Do any additional setup after loading the view.
