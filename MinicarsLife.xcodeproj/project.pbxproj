@@ -131,6 +131,8 @@
 		367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF8F3223F858100C9921D /* BrandTableViewCell.m */; };
 		367EF90A223F8DAC00C9921D /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF909223F8DAC00C9921D /* SearchVC.m */; };
 		367EF90D223F91B400C9921D /* HotBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF90C223F91B400C9921D /* HotBrandCell.m */; };
+		368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368650662240FA0D00FC39CD /* SelectCarCell.m */; };
+		3686506A2240FA2000FC39CD /* SelectcarFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368650692240FA2000FC39CD /* SelectcarFootCell.m */; };
 		36E3A366223B3B9200B26F4F /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A365223B3B9200B26F4F /* CollectVC.m */; };
 		36E3A36B223B3B9A00B26F4F /* CollectBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A368223B3B9900B26F4F /* CollectBottomView.m */; };
 		36E3A36C223B3B9A00B26F4F /* CollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A36A223B3B9A00B26F4F /* CollectCell.m */; };
@@ -624,6 +626,10 @@
 		367EF909223F8DAC00C9921D /* SearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
 		367EF90B223F91B400C9921D /* HotBrandCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotBrandCell.h; sourceTree = "<group>"; };
 		367EF90C223F91B400C9921D /* HotBrandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotBrandCell.m; sourceTree = "<group>"; };
+		368650652240FA0D00FC39CD /* SelectCarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectCarCell.h; sourceTree = "<group>"; };
+		368650662240FA0D00FC39CD /* SelectCarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCarCell.m; sourceTree = "<group>"; };
+		368650682240FA2000FC39CD /* SelectcarFootCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectcarFootCell.h; sourceTree = "<group>"; };
+		368650692240FA2000FC39CD /* SelectcarFootCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectcarFootCell.m; sourceTree = "<group>"; };
 		36E3A364223B3B9200B26F4F /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
 		36E3A365223B3B9200B26F4F /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
 		36E3A367223B3B9900B26F4F /* CollectBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectBottomView.h; sourceTree = "<group>"; };
@@ -2837,6 +2843,10 @@
 				363B6122223B7B9A00585061 /* NewsCell.m */,
 				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
 				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
+				368650652240FA0D00FC39CD /* SelectCarCell.h */,
+				368650662240FA0D00FC39CD /* SelectCarCell.m */,
+				368650682240FA2000FC39CD /* SelectcarFootCell.h */,
+				368650692240FA2000FC39CD /* SelectcarFootCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4130,6 +4140,7 @@
 				7A81BF0D20F7572C005699F0 /* OrderDetailsModel.m in Sources */,
 				7A3CBD9B20F3217300D795E5 /* CDCommon.m in Sources */,
 				7AB29D7520FC65270014FCB3 /* RecentPaymentsDetailsVC.m in Sources */,
+				3686506A2240FA2000FC39CD /* SelectcarFootCell.m in Sources */,
 				7A8A5C9520E4A7FE002D9A48 /* NSString+MJExtension.m in Sources */,
 				7A22CDD520EDBBDE0010059D /* EditorAddressVC.m in Sources */,
 				7A8A5CE220E61915002D9A48 /* GoodsDetailsBottomView.m in Sources */,
@@ -4209,6 +4220,7 @@
 				7A22CE1220EE24680010059D /* MessageVC.m in Sources */,
 				367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */,
 				7A8A5BFE20E37FCA002D9A48 /* TermsOfServiceView.m in Sources */,
+				368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */,
 				7A3CBD9A20F3217300D795E5 /* UIScrollView+TLAdd.m in Sources */,
 				36E3A37E223B3BBD00B26F4F /* LeftFootCell.m in Sources */,
 				B834010B21D75A350089D4DE /* QNIpModel.m in Sources */,

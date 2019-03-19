@@ -124,8 +124,6 @@
     
     return CGSizeMake((SCREEN_WIDTH - 75) /4, 35);
     
-    
-    
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {

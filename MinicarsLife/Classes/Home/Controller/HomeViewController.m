@@ -59,10 +59,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"微车生活";
-//    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 1208.00/750.00 * SCREEN_WIDTH)];
-//    view.CarStyleModels = self.CarStyleModels;
-//    view.delegate = self;
-//    self.tableview.tableHeaderView = view;
+    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
+    view.CarStyleModels = self.CarClassifyModels;
+    view.delegate = self;
+    self.tableview.tableHeaderView = view;
     [self.view addSubview:self.tableview];
     [self getnewsadta];
 }
@@ -103,22 +103,38 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+
     if (indexPath.section == 0) {
-        return 1208.00/750.00 * SCREEN_WIDTH;
+        return 130.00 / 375.00 * SCREEN_WIDTH + 20;
     }
     return 105;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 0.01;
+        return 57.5;
     }
     return 57.5;
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+        v1.backgroundColor = kLineColor;
+        [view addSubview:v1];
+        view.backgroundColor = kWhiteColor;
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 25, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        label.text = @"精选车源";
+        [view addSubview:label];
+        return view;
+    }
     if (section == 1) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+        v1.backgroundColor = kLineColor;
+        [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 20, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 25, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         label.text = @"新车资讯";
         [view addSubview:label];
         
@@ -219,6 +235,10 @@
     ChooseCarVC * vc = [ChooseCarVC new];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)ClickCollectionClassify:(NSIndexPath *)index{
+    
 }
 #pragma mark - 获取数据
 -(void)getnewsadta{

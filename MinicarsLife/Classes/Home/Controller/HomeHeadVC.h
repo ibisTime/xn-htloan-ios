@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ClickBtn <NSObject>
 
 -(void)ClickBtn:(UIButton *)sender;
--(void)ClickCollection:(NSInteger)index;
+-(void)ClickCollectionClassify:(NSIndexPath *)index;
 
 @end
 @interface HomeHeadVC : UIView
