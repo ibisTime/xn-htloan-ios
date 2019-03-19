@@ -62,7 +62,7 @@
 -(MyHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 155)];
+        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 155 - 64 + kNavigationBarHeight)];
         _headView.delegate = self;
     }
     return _headView;
@@ -326,6 +326,7 @@
     
     if ([faceStr isEqualToString:@""]) {
         [SVProgressHUD showWithStatus:@""];
+        [SVProgressHUD dismissWithDelay:2];
         TLNetworking *http = [TLNetworking new];
         http.code = @"630800";
         http.showView = self.view;
@@ -334,6 +335,7 @@
         [http postWithSuccess:^(id responseObject) {
             
             [SVProgressHUD showWithStatus:@""];
+            [SVProgressHUD dismissWithDelay:2];
             [[ILiveSDK getInstance] initSdk:[responseObject[@"data"][@"txAppCode"] intValue] accountType:[responseObject[@"data"][@"accountType"] intValue]];
             
             [[ILiveLoginManager getInstance] iLiveLogin:[USERDEFAULTS objectForKey:USER_ID] sig:responseObject[@"data"][@"sign"] succ:^{
@@ -645,9 +647,9 @@
     // 下拉 纵向偏移量变小 变成负的
     if ( Offset_y < 0) {
         // 拉伸后图片的高度
-        CGFloat totalOffset =155 - Offset_y;
+        CGFloat totalOffset =(155 - 64 + kNavigationBarHeight) - Offset_y;
         // 图片放大比例
-        CGFloat scale = totalOffset / 155;
+        CGFloat scale = totalOffset / (155 - 64 + kNavigationBarHeight);
         CGFloat width = SCREEN_WIDTH;
         // 拉伸后图片位置
         self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);

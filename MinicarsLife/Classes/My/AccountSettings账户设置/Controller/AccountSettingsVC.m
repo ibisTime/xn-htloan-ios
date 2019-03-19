@@ -213,44 +213,26 @@
                 ChangePasswordVC *vc = [[ChangePasswordVC alloc]init];
                 [self.navigationController pushViewController:vc animated:YES];
             }
-            //            if (indexPath.row == 2) {
-            //                ModifyayPasswordVC *vc = [[ModifyayPasswordVC alloc]init];
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //            }
+
         }
             break;
         case 2:
         {
-//            [[USERXX user]loginOut];
-            BaseTabBarViewController * tabBarCtrl = [[BaseTabBarViewController alloc] init];
-            [UIApplication sharedApplication].keyWindow.rootViewController = tabBarCtrl;
-            //            if (indexPath.row == 0) {
-            //                ShippingAddressVC *vc = [[ShippingAddressVC alloc]init];
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //            }
-            //            if (indexPath.row == 1) {
-            //                BankCardVC *vc = [[BankCardVC alloc]init];
-            //                [self.navigationController pushViewController:vc animated:YES];
-            //            }
+            [TLAlert alertWithTitle:@"提示" msg:@"是否退出登录" confirmMsg:@"取消" cancleMsg:@"确认" cancle:^(UIAlertAction *action) {
+                LoginViewController *vc = [[LoginViewController alloc]init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+                vc.state = @"100";
+                [USERDEFAULTS removeObjectForKey:USER_ID];
+                [USERDEFAULTS removeObjectForKey:TOKEN_ID];
+                [rootViewController presentViewController:nav animated:YES completion:nil];
+            } confirm:^(UIAlertAction *action) {
+                
+            }];
+
         }
             break;
-            //        case 3:
-            //        {
-            //
-            //            [TLAlert alertWithTitle:@"提示" msg:@"是否退出登录" confirmMsg:@"取消" cancleMsg:@"确认" cancle:^(UIAlertAction *action) {
-            //                LoginViewController *vc = [[LoginViewController alloc]init];
-            //                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-            //                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-            //                vc.state = @"100";
-            //                [USERDEFAULTS removeObjectForKey:USER_ID];
-            //                [USERDEFAULTS removeObjectForKey:TOKEN_ID];
-            //                [rootViewController presentViewController:nav animated:YES completion:nil];
-            //            } confirm:^(UIAlertAction *action) {
-            //
-            //            }];
-            //
-            //        }
-            //            break;
+
             
         default:
             break;

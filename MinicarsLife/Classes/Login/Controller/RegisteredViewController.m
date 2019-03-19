@@ -196,13 +196,12 @@
             http.parameters[@"mobile"] = textField1.text;
             http.parameters[@"smsCaptcha"] = textField2.text;
             http.parameters[@"loginPwd"] = textField3.text;
-            http.parameters[@"nickname"] = @"暂无";
+//            http.parameters[@"nickname"] = @"暂无";
 
             [http postWithSuccess:^(id responseObject) {
                 WGLog(@"%@",responseObject);
                 [TLAlert alertWithSucces:@"注册成功"];
                 [self dismissViewControllerAnimated:YES completion:nil];
-
             } failure:^(NSError *error) {
                 WGLog(@"%@",error);
             }];

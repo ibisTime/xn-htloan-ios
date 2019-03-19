@@ -15,10 +15,11 @@
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(13, 15, 3, 20)];
         v1.backgroundColor = MainColor;
+        kViewRadius(v1, 1.5);
         [self addSubview:v1];
         
         
-        self.leftlab = [UILabel labelWithFrame:CGRectMake(23, 015, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+        self.leftlab = [UILabel labelWithFrame:CGRectMake(23, 15, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         [self addSubview:self.leftlab];
     }
     return self;

@@ -71,7 +71,6 @@
     [self.collectionView registerClass:[HotBrandCell class] forCellWithReuseIdentifier:@"cell"];
     [self.view addSubview:self.collectionView];
     
-    // Do any additional setup after loading the view.
 }
 
 - (UIImage*) GetImageWithColor:(UIColor*)color andHeight:(CGFloat)height{

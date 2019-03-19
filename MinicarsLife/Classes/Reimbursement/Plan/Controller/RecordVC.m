@@ -33,13 +33,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIView * headview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 215)];
+    UIView * headview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 205)];
     headview.backgroundColor = kWhiteColor;
     UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 23, 3, 14)];
     v1.backgroundColor = MainColor;
+    kViewRadius(v1, 1.5);
     [headview addSubview:v1];
     
-    UILabel * label = [UILabel labelWithFrame:CGRectMake(v1.xx + 5, 21, 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+    UILabel * label = [UILabel labelWithFrame:CGRectMake(v1.xx + 5, 21, 60, 18) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
     label.text = @"热门品牌";
     [headview addSubview:label];
     
@@ -47,50 +48,68 @@
     UIButton * button = [UIButton buttonWithTitle:@"更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
     [button addTarget:self action:@selector(moreBrand) forControlEvents:(UIControlEventTouchUpInside)];
     button.frame = CGRectMake(SCREEN_WIDTH - 15 - 40, 23, 40, 17);
-    [button SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:0 imagePositionBlock:^(UIButton *button) {
-        [button setImage:kImage(@"you") forState:(UIControlStateNormal)];
+    [button SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:3 imagePositionBlock:^(UIButton *button) {
+        [button setImage:kImage(@"more") forState:(UIControlStateNormal)];
     }];
     [headview addSubview:button];
+
     
+    NSArray * titlearray = @[@"丰田",@"路虎",@"奔驰",@"宝马",@"福特",@"奥迪",@"日产",@"玛莎拉蒂",@"保时捷",@"雷克萨斯"];
+
     
-    NSArray * titlearray = @[@"30-50万",@"50-70万",@"70万以上",@"更多",@"奔驰",@"保时捷",@"丰田",@"奥迪",@"50-70万",@"70万以上"];
-    NSArray * logoarray = @[@"1",@"2",@"3",@"1",@"2",@"3",@"1",@"2",@"3",@"1"];
-    
-    for (int j = 0; j < 5; j ++) {
-        UIButton * button = [UIButton buttonWithTitle:titlearray[j] titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-        button.tag = j;
+    for (int i= 0; i < 10; i ++) {
+        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
+        button.tag = i;
         [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 17, (SCREEN_WIDTH-30)/5, 53);
-        
-//        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(logoarray[j]) forState:(UIControlStateNormal)];
-//        }];
-        if (j < 4) {
-            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/5 * (j+1), label.yy + 15, 1, 20)];
-            v1.backgroundColor = kLineColor;
-            [headview addSubview:v1];
-        }
-        [headview addSubview:button];
-    }
-    for (int j = 0; j < 5; j ++) {
-        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-        button.tag = j + 4;
-        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 3.5 + 100, (SCREEN_WIDTH-30)/5, 53);
-        [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
-        
-//        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(logoarray[j + 5]) forState:(UIControlStateNormal)];
-//        }];
-        
+        button.frame = CGRectMake(i % 5 * (kScreenWidth/5),label.yy + 16 + i / 5 * (56.5 + 20), SCREEN_WIDTH/5, 56.5);
         [headview addSubview:button];
         
-        if (j < 4) {
-            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/5 * (j+1), label.yy + 3.5 + 100, 1, 20)];
-            v1.backgroundColor = kLineColor;
-            [headview addSubview:v1];
-        }
+//        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:0 imagePositionBlock:^(UIButton *button) {
+//            [button setImage:kImage(@"车型库-选中") forState:(UIControlStateNormal)];
+//        }];
+        
+        UIImageView *iconImgae = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH/5, 30)];
+        iconImgae.image = kImage(@"车型库-选中");
+//        [iconImgae setContentScaleFactor:[[UIScreen mainScreen] scale]];
+        iconImgae.contentMode =  UIViewContentModeScaleAspectFit;
+//        iconImgae.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+//        iconImgae.clipsToBounds  = YES;
+        [button addSubview:iconImgae];
+        
+        UILabel *iconLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH/5, 16.5)];
+        iconLbl.text = titlearray[i];
+        iconLbl.textAlignment = NSTextAlignmentCenter;
+        iconLbl.textColor = kHexColor(@"#333333");
+        iconLbl.font = Font(12);
+        [button addSubview:iconLbl];
     }
+    
+//    for (int j = 0; j < 5; j ++) {
+//        UIButton * button = [UIButton buttonWithTitle:titlearray[j] titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
+//        button.tag = j;
+//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
+//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 17, (SCREEN_WIDTH-30)/5, 53);
+//        [headview addSubview:button];
+//    }
+//    for (int j = 0; j < 5; j ++) {
+//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
+//        button.tag = j + 4;
+//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
+//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 3.5 + 100, (SCREEN_WIDTH-30)/5, 53);
+//        [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
+//
+////        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
+////            [button setImage:kImage(logoarray[j + 5]) forState:(UIControlStateNormal)];
+////        }];
+//
+//        [headview addSubview:button];
+//
+//        if (j < 4) {
+//            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/5 * (j+1), label.yy + 3.5 + 100, 1, 20)];
+//            v1.backgroundColor = kLineColor;
+//            [headview addSubview:v1];
+//        }
+//    }
     
     
 //    [self.view addSubview:headview];

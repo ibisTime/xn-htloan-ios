@@ -22,7 +22,8 @@
 
 @property (nonatomic,strong) UICollectionView * collectionView;
 @property (nonatomic,strong) UILabel * ResultLab;
-@property (nonatomic,strong) NSMutableArray * titlearray;
+@property (nonatomic,strong) NSArray * titlearray;
+@property (nonatomic,strong)NSMutableArray *selectArray;
 @end
 
 @implementation RecentPaymentsVC
@@ -30,14 +31,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titlearray = [NSMutableArray array];
+//    self.titlearray = [NSMutableArray array];
     self.titlearray = @[@[@"35万以下",@"35-50万",@"50-70万",@"70-90万",@"90-110万",@"110-150万",@"150万以上"],
                         @[@[@"1",@"2",@"3",@"3",@"2",@"1"],@[@"SUV",@"轿车",@"MPV",@"跑车",@"皮卡",@"房车"]],
                         @[@"中东",@"美规",@"加规",@"墨版",@"欧规"],
                         @[@"两厢",@"三厢",@"掀背",@"旅行版",@"硬顶敞篷",@"软顶敞篷",@"硬顶跑车"],
                         @[@"2.0L以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
-    
-    
+    self.selectArray = [NSMutableArray array];
+    [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     
     
     self.ResultLab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
@@ -63,7 +64,7 @@
     // 设置布局方向(滚动方向)
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 42, SCREEN_WIDTH, SCREEN_HEIGHT - 40 - 45 - kNavigationBarHeight - 50)collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 42, SCREEN_WIDTH, SCREEN_HEIGHT - 40 - kTabBarHeight - kNavigationBarHeight - 50)collectionViewLayout:layout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
@@ -78,11 +79,10 @@
     
     
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, self.collectionView.yy, SCREEN_WIDTH, 50)];
-    
     UIButton * reset = [UIButton buttonWithTitle:@"重置" titleColor:kWhiteColor backgroundColor:kHexColor(@"#313131") titleFont:14 cornerRadius:2];
     reset.frame = CGRectMake(15, 7.5, 85, 35);
+    [reset addTarget:self action:@selector(resetClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:reset];
-    
     UIButton * resultBtn = [UIButton buttonWithTitle:@"有1684款车型符合要求" titleColor:kWhiteColor backgroundColor:MainColor titleFont:14 cornerRadius:2];
     resultBtn.frame = CGRectMake(reset.xx + 15, 7.5, SCREEN_WIDTH - reset.xx - 15  -15, 35);
     [view addSubview:resultBtn];
@@ -93,6 +93,14 @@
     
     [self LoadData];
 }
+
+-(void)resetClick
+{
+    self.selectArray = [NSMutableArray array];
+    [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    [self.collectionView reloadData];
+}
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 5;
 }
@@ -122,6 +130,22 @@
         CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
 //        cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
         cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
+        if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
+            cell.layer.borderColor = kLineColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }else
+        {
+            if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+                cell.layer.borderColor = MainColor.CGColor;
+                cell.layer.borderWidth = 1;
+            }else
+            {
+                cell.layer.borderColor = kLineColor.CGColor;
+                cell.layer.borderWidth = 1;
+            }
+        }
+        
+        
         return cell;
     }
     
@@ -129,12 +153,37 @@
         CarlevelCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"level" forIndexPath:indexPath];
         cell.name.text = self.titlearray[indexPath.section][1][indexPath.row];
         cell.logo.image = kImage(self.titlearray[indexPath.section][0][indexPath.row]);
+        if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
+            cell.name.textColor = kTextColor;
+        }else
+        {
+            if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+                cell.name.textColor = MainColor;
+            }else
+            {
+                cell.name.textColor = kTextColor;
+            }
+        }
         return cell;
     }
     
     CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
 //    cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
     cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
+    if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
+        cell.layer.borderColor = kLineColor.CGColor;
+        cell.layer.borderWidth = 1;
+    }else
+    {
+        if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+            cell.layer.borderColor = MainColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }else
+        {
+            cell.layer.borderColor = kLineColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }
+    }
     return cell;
     
 }
@@ -159,18 +208,12 @@
     return view;
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(SCREEN_WIDTH, 57.5);
+    return CGSizeMake(SCREEN_WIDTH, 40);
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    //根据数据 把所有的都遍历一次 如果是当前点的cell 选中她 如果不是 就不选中她喽
-    for (NSInteger i = 0; i < [[self.titlearray objectAtIndex:indexPath.section] count];i++) {
-        if (i == indexPath.item) {
-            [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-        }else {
-            [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES];
-        }
+    [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [self.collectionView reloadData];
 
-    }
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
      [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
