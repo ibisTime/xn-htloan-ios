@@ -67,5 +67,10 @@
     }
     return self;
 }
-
+-(void)setCarmodel:(CarModel *)carmodel{
+    _carmodel = carmodel;
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[carmodel.pic convertImageUrl]] placeholderImage:kImage(@"1")];
+    self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f", [carmodel.salePrice floatValue]/10000 ];
+}
 @end

@@ -30,18 +30,21 @@
     UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, (440.00/690.00) * (SCREEN_WIDTH - 30))];
     image.image = kImage(@"1");
     
+    NSLog(@"%@",self.models);
     
     
     UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 160, view.width, 70)];
     v1.backgroundColor = RGB(84, 84, 84);
     v1.alpha = 0.4;
     UILabel * titlelab = [UILabel labelWithFrame:CGRectMake(15, 16.5, view.width - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
-    titlelab.text = @"中大型车";
+//    titlelab.text = @"中大型车";
+    titlelab.text = self.models[0].remark;
     [v1 addSubview:titlelab];
     
     
     UILabel * moneylab = [UILabel labelWithFrame:CGRectMake(15, 36.5, view.width / 2, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16.5) textColor:kWhiteColor];
-    moneylab.text = @"54.9-210万";
+//    moneylab.text = @"54.9-210万";
+    moneylab.text = [NSString stringWithFormat:@"%.2f-%.2f万",[self.models[0].lowest floatValue]/10000,[self.models[0].highest floatValue]/10000];
     [v1 addSubview:moneylab];
     
     UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(275, 32.5, 55, 22)];
@@ -70,7 +73,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 2;
+    return self.models[0].cars.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -82,6 +85,7 @@
         cell=[[ClassifyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         
     }
+    cell.carmodel = self.models[0].cars[indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

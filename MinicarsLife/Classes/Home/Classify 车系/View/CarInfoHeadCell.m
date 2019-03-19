@@ -27,7 +27,7 @@
         
 
         
-        UILabel * title = [UILabel labelWithFrame:CGRectMake( 15, 15, SCREEN_WIDTH - 155, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+        UILabel * title = [UILabel labelWithFrame:CGRectMake( 15, 15, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
         title.numberOfLines = 2;
         [self addSubview:title];
@@ -43,7 +43,7 @@
 //        [self addSubview:time];
 //        self.timelab = time;
         
-        UILabel * money = [UILabel labelWithFrame:CGRectMake( 15, describe.yy + 5, 74, 16.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
+        UILabel * money = [UILabel labelWithFrame:CGRectMake(15, describe.yy + 5, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
         NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:@"参考价 54.9万"];
         [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
         money.attributedText = att;

@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * lowest;
 @property (nonatomic,copy) NSString * level;
 @property (nonatomic,copy) NSString * isReferee;
-
+@property (nonatomic,copy) NSMutableArray<CarModel *> * cars;
 /**
  "price": 0,
  "highest": 0,

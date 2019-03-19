@@ -34,6 +34,7 @@
 #import "CarModel.h"
 
 #import "HomeTableHeadCell.h"
+#import "ClassifyInfoVC.h"
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>
 //@property (nonatomic , strong)HomeTableView *tableView;
 @property (nonatomic , strong)UIWebView *webView;
@@ -46,7 +47,7 @@
 @property (nonatomic,strong) NSMutableArray<NewsModel *> * NewsModels;
 
 
-@property (nonatomic,strong) NSMutableArray<CarModel *> * CarStyleModels;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
 @end
 
 @implementation HomeViewController
@@ -91,7 +92,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         HomeTableHeadCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableHead" forIndexPath:indexPath];
-        cell.CarStyleModels = self.CarStyleModels;
+        cell.CarStyleModels = self.CarClassifyModels;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -156,12 +157,22 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-//    if (sender.tag >7) {
-//        <#statements#>
-//    }
-//    ChooseCarVC * vc = [ChooseCarVC new];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
+    
+    [self getClassifyData:self.CarClassifyModels[sender.tag - 8].code];
+}
+-(void)getClassifyData:(NSString*)code{
+    //列表查询车型
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630426";
+    http2.parameters[@"seriesCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 //点击collectionview cell
 -(void)ClickCollection:(NSInteger)index{
@@ -415,7 +426,8 @@
     http1.code = @"630416";
     http1.parameters[@"isReferee"] = @"1";
     [http1 postWithSuccess:^(id responseObject) {
-        
+        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.tableview reloadData_tl];
     } failure:^(NSError *error) {
         
     }];
@@ -426,8 +438,7 @@
     http2.code = @"630426";
     http2.parameters[@"isReferee"] = @"1";
     [http2 postWithSuccess:^(id responseObject) {
-        self.CarStyleModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.tableview reloadData_tl];
+        
     } failure:^(NSError *error) {
         
     }];

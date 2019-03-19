@@ -178,7 +178,7 @@
         UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 20, 3, 14)];
         v2.backgroundColor = MainColor;
         [view addSubview:v2];
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx, v1.yy + 10, 65, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx, v1.yy + 10, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         if (section == 1) {
             label.text = @"库存信息";
         }

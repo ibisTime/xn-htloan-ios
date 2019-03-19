@@ -37,4 +37,5 @@
 - (void)updateUserInfoWithNotification;
 
 -(void)showPopAnimationWithAnimationStyle:(NSInteger)style showView:(UIView *)showView BGAlpha:(CGFloat)alpha isClickBGDismiss:(BOOL)dismiss;
+
 @end

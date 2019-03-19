@@ -214,11 +214,14 @@
 }
 -(void)setCarStyleModels:(NSMutableArray<CarModel *> *)CarStyleModels{
     _CarStyleModels = CarStyleModels;
-    for (int j = 0; j < 3; j++) {
-        UIButton * button = [self viewWithTag:(8 + j)];
-        CarModel * model = CarStyleModels[j];
-        [button setTitle:model.name forState:(UIControlStateNormal)];
-        [button.imageView sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]]];
+    if (CarStyleModels.count > 0) {
+        for (int j = 0; j < 3; j++) {
+            UIButton * button = [self viewWithTag:(8 + j)];
+            CarModel * model = CarStyleModels[j];
+            [button setTitle:model.name forState:(UIControlStateNormal)];
+            [button.imageView sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]]];
+        }
     }
+    
 }
 @end
