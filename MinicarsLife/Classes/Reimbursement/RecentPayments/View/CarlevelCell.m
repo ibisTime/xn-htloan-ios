@@ -23,4 +23,12 @@
     }
     return self;
 }
+//-(void)setSelected:(BOOL)selected{
+//    [super setSelected:selected];
+//    if (selected) {
+//        self.name.textColor = MainColor;
+//    }
+//    else
+//        self.name.textColor = kBlackColor;
+//}
 @end

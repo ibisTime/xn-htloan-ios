@@ -22,13 +22,23 @@
 
 @property (nonatomic,strong) UICollectionView * collectionView;
 @property (nonatomic,strong) UILabel * ResultLab;
-
+@property (nonatomic,strong) NSMutableArray * titlearray;
 @end
 
 @implementation RecentPaymentsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.titlearray = [NSMutableArray array];
+    self.titlearray = @[@[@"35万以下",@"35-50万",@"50-70万",@"70-90万",@"90-110万",@"110-150万",@"150万以上"],
+                        @[@[@"1",@"2",@"3",@"3",@"2",@"1"],@[@"SUV",@"轿车",@"MPV",@"跑车",@"皮卡",@"房车"]],
+                        @[@"中东",@"美规",@"加规",@"墨版",@"欧规"],
+                        @[@"两厢",@"三厢",@"掀背",@"旅行版",@"硬顶敞篷",@"软顶敞篷",@"硬顶跑车"],
+                        @[@"2.0L以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
+    
+    
+    
     
     self.ResultLab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     self.ResultLab.text = @"您选择的条件会显示在这";
@@ -59,6 +69,7 @@
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.backgroundColor = kWhiteColor;
+    self.collectionView.allowsMultipleSelection = YES;
     [self.collectionView registerClass:[CarCell class] forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerClass:[CarCell class] forCellWithReuseIdentifier:@"cell1"];
     [self.collectionView registerClass:[CarlevelCell class] forCellWithReuseIdentifier:@"level"];
@@ -86,7 +97,13 @@
     return 5;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    if (section == 1) {
+        NSMutableArray * arr =self.titlearray[section][0];
+        return arr.count;
+    }
+    NSMutableArray * arr =self.titlearray[section];
+    return arr.count;
+   
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -103,17 +120,21 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-        cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
+//        cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
+        cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
         return cell;
     }
     
     if (indexPath.section == 1) {
         CarlevelCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"level" forIndexPath:indexPath];
+        cell.name.text = self.titlearray[indexPath.section][1][indexPath.row];
+        cell.logo.image = kImage(self.titlearray[indexPath.section][0][indexPath.row]);
         return cell;
     }
     
     CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
-    cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
+//    cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
+    cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
     return cell;
     
 }
@@ -141,18 +162,31 @@
     return CGSizeMake(SCREEN_WIDTH, 57.5);
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    //根据数据 把所有的都遍历一次 如果是当前点的cell 选中她 如果不是 就不选中她喽
+    for (NSInteger i = 0; i < [[self.titlearray objectAtIndex:indexPath.section] count];i++) {
+        if (i == indexPath.item) {
+            [self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+        }else {
+            [self.collectionView deselectItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:indexPath.section] animated:YES];
+        }
+
+    }
+}
+-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+     [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 }
 //-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;
 //}
-//// cell点击变色
+////// cell点击变色
 //-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([self.collectionView isEqual:collectionView]) {
-//        CarCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
-//        cell.selected =!cell.selected;
-//        cell.backgroundColor = MainColor;
-//    }
+////    if ([self.collectionView isEqual:collectionView]) {
+////        CarCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
+////        cell.selected =!cell.selected;
+////        cell.backgroundColor = MainColor;
+////    }
+//    UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
+//    cell.backgroundColor = MainColor;
 //}
 //- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
 //    NSLog(@"%s", __FUNCTION__);

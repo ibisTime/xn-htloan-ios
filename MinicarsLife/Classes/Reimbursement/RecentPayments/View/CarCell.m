@@ -21,16 +21,26 @@
     }
     return self;
 }
--(void)setSelected:(BOOL)selected{
-    if (selected) {
-//        self.backgroundColor = MainColor;
+//-(void)setSelected:(BOOL)selected{
+//    if (selected) {
+////        self.backgroundColor = MainColor;
+//        self.layer.borderColor = MainColor.CGColor;
+////        [self.TitleLab setTintColor:MainColor];
+//        self.TitleLab.textColor = MainColor;
+//    }
+//    else{
+//        self.layer.borderColor = kLineColor.CGColor;
+////        [self.TitleLab setTintColor:kBlackColor];
+//        self.TitleLab.textColor = kBlackColor;
+//    }
+//}
+-(void)setIsselect:(BOOL *)isselect{
+    if (isselect) {
         self.layer.borderColor = MainColor.CGColor;
-//        [self.TitleLab setTintColor:MainColor];
         self.TitleLab.textColor = MainColor;
     }
     else{
         self.layer.borderColor = kLineColor.CGColor;
-//        [self.TitleLab setTintColor:kBlackColor];
         self.TitleLab.textColor = kBlackColor;
     }
 }

@@ -104,6 +104,7 @@
 		1FA54DBF22393A500077FE54 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */; };
 		1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */; };
 		1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */; };
+		36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */; };
 		363B6123223B7B9A00585061 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6122223B7B9A00585061 /* NewsCell.m */; };
 		363B6126223B81A800585061 /* CarNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6125223B81A800585061 /* CarNewsVC.m */; };
 		363B6129223B897F00585061 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6128223B897F00585061 /* NewsModel.m */; };
@@ -571,6 +572,8 @@
 		1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableHeadCell.h; sourceTree = "<group>"; };
+		36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableHeadCell.m; sourceTree = "<group>"; };
 		363B6121223B7B9A00585061 /* NewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
 		363B6122223B7B9A00585061 /* NewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsCell.m; sourceTree = "<group>"; };
 		363B6124223B81A800585061 /* CarNewsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarNewsVC.h; sourceTree = "<group>"; };
@@ -2832,6 +2835,8 @@
 				36E3A39F223B673800B26F4F /* HotCarCollectionCell.m */,
 				363B6121223B7B9A00585061 /* NewsCell.h */,
 				363B6122223B7B9A00585061 /* NewsCell.m */,
+				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
+				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4303,6 +4308,7 @@
 				7A8A5CD820E60CBC002D9A48 /* IntroductionCell.m in Sources */,
 				7AB29D2120FC34670014FCB3 /* QNSessionManager.m in Sources */,
 				363B6158223BDA2400585061 /* ZJAnimationPopView.m in Sources */,
+				36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */,
 				7A81BEF720F72403005699F0 /* MyCarLoanNameCell.m in Sources */,
 				7A3CBD8320F0EFCF00D795E5 /* CKAlertViewController.m in Sources */,
 				7A8A5B1620E35B12002D9A48 /* BaseViewController.m in Sources */,
