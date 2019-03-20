@@ -8,7 +8,7 @@
 
 #import "HomeViewController.h"
 #import "GoodsDetailsViewController.h"
-
+#import "ClassifyListVC.h"
 #import "HomeModel.h"
 //#import "HomeTableView.h"
 #import "NewsInfoVC.h"
@@ -32,7 +32,7 @@
 #import "BrandListVC.h"
 #import "ClassifyListVC.h"
 #import "CarModel.h"
-
+#import "CarInfoVC.h"
 #import "HomeTableHeadCell.h"
 #import "ClassifyInfoVC.h"
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>
@@ -47,7 +47,8 @@
 @property (nonatomic,strong) NSMutableArray<NewsModel *> * NewsModels;
 
 
-@property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarModelsCars;
 @end
 
 @implementation HomeViewController
@@ -59,8 +60,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"微车生活";
+//    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
     HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
-    view.CarStyleModels = self.CarClassifyModels;
+//    view.CarStyleModels = self.CarClassifyModels;
     view.delegate = self;
     self.tableview.tableHeaderView = view;
     [self.view addSubview:self.tableview];
@@ -92,7 +94,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         HomeTableHeadCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableHead" forIndexPath:indexPath];
-        cell.CarStyleModels = self.CarClassifyModels;
+        cell.CarStyleModels = self.CarModelsCars;
         cell.delegate = self;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -163,33 +165,7 @@
     }
     
 }
-//点击上面的分类按钮
--(void)ClickBtn:(UIButton *)sender{
-    NSLog(@"tag%ld",sender.tag);
-    if (sender.tag < 4) {
-        switch (sender.tag) {
-            case 0:
-                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
-                break;
-                case 1:
-                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
-                break;
-                case 2:
-                [self GetClassifyByPrice:@"700000" priceEnd:@""];
-                break;
-            default:
-                break;
-        }
-    }
-    if (sender.tag>3 && sender.tag < 8) {
-        ClassifyListVC * vc = [ClassifyListVC new];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (sender.tag > 7) {
-         [self getClassifyData:self.CarClassifyModels[sender.tag - 8].code];
-    }
-}
+
 //根据价格选择
 -(void)GetClassifyByPrice:(NSString *)priceStart priceEnd:(NSString *)priceEnd{
     TLNetworking * http2 = [[TLNetworking alloc]init];
@@ -211,7 +187,57 @@
     
 
 }
--(void)getClassifyData:(NSString*)code{
+
+//点击collectionview cell
+-(void)ClickCollection:(NSInteger)index{
+    NSLog(@"tag%ld",index);
+//    ChooseCarVC * vc = [ChooseCarVC new];
+    CarInfoVC * vc = [CarInfoVC new];
+    vc.CarModel =[CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)ClickCollectionClassify:(NSIndexPath *)index{
+    if (index.section == 0) {
+        switch (index.row) {
+            case 0:
+                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
+                break;
+            case 1:
+                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
+                break;
+            case 2:
+                [self GetClassifyByPrice:@"700000" priceEnd:@""];
+                break;
+            default:
+                break;
+        }
+    }
+}
+-(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models{
+    if (index.section == 1) {
+        [self getClassifyListData:models.code];
+    }
+    if (index.section == 2) {
+        [self getClassifyData:models.code :models.name];
+    }
+}
+-(void)getClassifyListData:(NSString *)code{
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630416";
+    http2.parameters[@"brandCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)getClassifyData:(NSString*)code :(NSString *)title{
     //列表查询车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
@@ -220,25 +246,12 @@
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
         vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        if (vc.models.count > 0) {
         vc.hidesBottomBarWhenPushed = YES;
+        vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
-//        }
-        
     } failure:^(NSError *error) {
         
     }];
-}
-//点击collectionview cell
--(void)ClickCollection:(NSInteger)index{
-    NSLog(@"tag%ld",index);
-    ChooseCarVC * vc = [ChooseCarVC new];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
--(void)ClickCollectionClassify:(NSIndexPath *)index{
-    
 }
 #pragma mark - 获取数据
 -(void)getnewsadta{
@@ -468,28 +481,28 @@
 
 
 -(void)loadData{
-    //列表查询品牌
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.showView = self.view;
-    http.code = @"630406";
-    http.parameters[@"isReferee"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    //列表查询车系
-    TLNetworking * http1 = [[TLNetworking alloc]init];
-    http1.showView = self.view;
-    http1.code = @"630416";
-    http1.parameters[@"isReferee"] = @"1";
-    [http1 postWithSuccess:^(id responseObject) {
-        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.tableview reloadData_tl];
-    } failure:^(NSError *error) {
-        
-    }];
+//    //列表查询品牌
+//    TLNetworking * http = [[TLNetworking alloc]init];
+//    http.showView = self.view;
+//    http.code = @"630406";
+//    http.parameters[@"isReferee"] = @"1";
+//    [http postWithSuccess:^(id responseObject) {
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//    
+//    //列表查询车系
+//    TLNetworking * http1 = [[TLNetworking alloc]init];
+//    http1.showView = self.view;
+//    http1.code = @"630416";
+//    http1.parameters[@"isReferee"] = @"1";
+//    [http1 postWithSuccess:^(id responseObject) {
+//        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        [self.tableview reloadData_tl];
+//    } failure:^(NSError *error) {
+//        
+//    }];
     
     //列表查询车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
@@ -497,7 +510,15 @@
     http2.code = @"630426";
     http2.parameters[@"isReferee"] = @"1";
     [http2 postWithSuccess:^(id responseObject) {
-        
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.CarModelsCars = [NSMutableArray array];
+        for (int j = 0; j < self.CarModels.count; j ++) {
+            for (int i = 0; i < self.CarModels[j].cars.count; i++) {
+
+                [self.CarModelsCars addObject:self.CarModels[j].cars[i]];
+            }
+            [self.tableview reloadData_tl];
+        }
     } failure:^(NSError *error) {
         
     }];

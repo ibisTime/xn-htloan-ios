@@ -64,6 +64,7 @@
 
 //获取IP
 + (NSString *)getIPAddress:(BOOL)preferIPv4;
+//2000,000元
 
 + (NSString *)appVersionString;
 - (NSString *)dencode:(NSString *)base64String;

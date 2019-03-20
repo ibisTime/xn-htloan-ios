@@ -126,6 +126,10 @@
 		36428DAE223F37B1007B7D24 /* AskSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DAD223F37B0007B7D24 /* AskSuccessView.m */; };
 		36428DB1223F689D007B7D24 /* CarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DB0223F689D007B7D24 /* CarCell.m */; };
 		36428DB4223F7122007B7D24 /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DB3223F7122007B7D24 /* CollectionHeaderView.m */; };
+		364C607C2242093800C35897 /* BrandCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 364C607B2242093800C35897 /* BrandCollectionCell.m */; };
+		364C60822242102F00C35897 /* pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 364C60802242102F00C35897 /* pinyin.m */; };
+		364C60832242102F00C35897 /* ChineseString.m in Sources */ = {isa = PBXBuildFile; fileRef = 364C60812242102F00C35897 /* ChineseString.m */; };
+		364C60862242303900C35897 /* CalculatorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 364C60852242303900C35897 /* CalculatorModel.m */; };
 		367EF8EB223F7B0900C9921D /* CarlevelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF8EA223F7B0900C9921D /* CarlevelCell.m */; };
 		367EF8EE223F7F4C00C9921D /* BrandTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF8ED223F7F4C00C9921D /* BrandTableView.m */; };
 		367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF8F3223F858100C9921D /* BrandTableViewCell.m */; };
@@ -616,6 +620,14 @@
 		36428DB0223F689D007B7D24 /* CarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarCell.m; sourceTree = "<group>"; };
 		36428DB2223F7122007B7D24 /* CollectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionHeaderView.h; sourceTree = "<group>"; };
 		36428DB3223F7122007B7D24 /* CollectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionHeaderView.m; sourceTree = "<group>"; };
+		364C607A2242093800C35897 /* BrandCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandCollectionCell.h; sourceTree = "<group>"; };
+		364C607B2242093800C35897 /* BrandCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandCollectionCell.m; sourceTree = "<group>"; };
+		364C607E2242102F00C35897 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
+		364C607F2242102F00C35897 /* ChineseString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseString.h; sourceTree = "<group>"; };
+		364C60802242102F00C35897 /* pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pinyin.m; sourceTree = "<group>"; };
+		364C60812242102F00C35897 /* ChineseString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseString.m; sourceTree = "<group>"; };
+		364C60842242303900C35897 /* CalculatorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorModel.h; sourceTree = "<group>"; };
+		364C60852242303900C35897 /* CalculatorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorModel.m; sourceTree = "<group>"; };
 		367EF8E9223F7B0900C9921D /* CarlevelCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarlevelCell.h; sourceTree = "<group>"; };
 		367EF8EA223F7B0900C9921D /* CarlevelCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarlevelCell.m; sourceTree = "<group>"; };
 		367EF8EC223F7F4C00C9921D /* BrandTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandTableView.h; sourceTree = "<group>"; };
@@ -1663,6 +1675,17 @@
 			path = CustomAnimation;
 			sourceTree = "<group>";
 		};
+		364C607D2242102F00C35897 /* ChineseSorting */ = {
+			isa = PBXGroup;
+			children = (
+				364C607E2242102F00C35897 /* pinyin.h */,
+				364C60802242102F00C35897 /* pinyin.m */,
+				364C607F2242102F00C35897 /* ChineseString.h */,
+				364C60812242102F00C35897 /* ChineseString.m */,
+			);
+			path = ChineseSorting;
+			sourceTree = "<group>";
+		};
 		366ADDC2223A201300623EC6 /* Calculator 计算器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1706,6 +1729,8 @@
 		366ADDC5223A203C00623EC6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				364C60842242303900C35897 /* CalculatorModel.h */,
+				364C60852242303900C35897 /* CalculatorModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1826,6 +1851,8 @@
 				367EF8ED223F7F4C00C9921D /* BrandTableView.m */,
 				367EF8F2223F858100C9921D /* BrandTableViewCell.h */,
 				367EF8F3223F858100C9921D /* BrandTableViewCell.m */,
+				364C607A2242093800C35897 /* BrandCollectionCell.h */,
+				364C607B2242093800C35897 /* BrandCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2966,6 +2993,7 @@
 		7A8A5B1120E35A33002D9A48 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				364C607D2242102F00C35897 /* ChineseSorting */,
 				363B6155223BDA2400585061 /* CustomAnimation */,
 				B83400D721D75A340089D4DE /* HappyDNS */,
 				B82ED84921D38D0F0019AAE0 /* SJChartVeiw */,
@@ -4071,6 +4099,7 @@
 				7A8A5AC720E35905002D9A48 /* ViewController.m in Sources */,
 				7A22CE2820EE37640010059D /* CarLoansNotThroughVC.m in Sources */,
 				7A81BEF120F7229E005699F0 /* MyCarLoanDetailsTableView.m in Sources */,
+				364C60832242102F00C35897 /* ChineseString.m in Sources */,
 				B8A70B0021CE4FCA00E97EFD /* BannerWebViewVC.m in Sources */,
 				7A8A5CBE20E5D1D5002D9A48 /* CarLoanCalculatorHeadCell.m in Sources */,
 				7A3CBD7D20F0E4A600D795E5 /* WithdrawalPriceCell.m in Sources */,
@@ -4151,6 +4180,7 @@
 				7A0593012100ADDC00075FE8 /* DetailsVC.m in Sources */,
 				363B615C223BDB4400585061 /* CallNowView.m in Sources */,
 				7AA906B420EF1474004F2B12 /* DropShippingOrderVC.m in Sources */,
+				364C60862242303900C35897 /* CalculatorModel.m in Sources */,
 				7A0592F2210098BD00075FE8 /* NearFutureModel.m in Sources */,
 				7A8A5CCE20E60617002D9A48 /* ExhibitionCenterCell.m in Sources */,
 				7A22CDB220ECCBBE0010059D /* NickNameVC.m in Sources */,
@@ -4220,6 +4250,7 @@
 				7A22CE1220EE24680010059D /* MessageVC.m in Sources */,
 				367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */,
 				7A8A5BFE20E37FCA002D9A48 /* TermsOfServiceView.m in Sources */,
+				364C607C2242093800C35897 /* BrandCollectionCell.m in Sources */,
 				368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */,
 				7A3CBD9A20F3217300D795E5 /* UIScrollView+TLAdd.m in Sources */,
 				36E3A37E223B3BBD00B26F4F /* LeftFootCell.m in Sources */,
@@ -4288,6 +4319,7 @@
 				B834011421D75A350089D4DE /* QNDomain.m in Sources */,
 				7A81BF0A20F755AF005699F0 /* OrderDetailsInfoCell.m in Sources */,
 				7A3CBE0120F4AE3100D795E5 /* SignFinishView.m in Sources */,
+				364C60822242102F00C35897 /* pinyin.m in Sources */,
 				7AB29D1D20FC34670014FCB3 /* QNPHAssetResource.m in Sources */,
 				7AA906E020EF53B6004F2B12 /* PayWayCell.m in Sources */,
 				7A3CBE2320F5E76500D795E5 /* BankCardModel.m in Sources */,

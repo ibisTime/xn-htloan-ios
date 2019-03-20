@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CalculatorVC : BaseViewController
-
+@property (nonatomic,strong) NSString * carcode;
 @end
 
 NS_ASSUME_NONNULL_END

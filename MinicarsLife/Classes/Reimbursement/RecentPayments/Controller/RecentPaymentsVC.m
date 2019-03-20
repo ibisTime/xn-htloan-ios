@@ -14,6 +14,8 @@
 #import "CarCell.h"
 #import "CollectionHeaderView.h"
 #import "CarlevelCell.h"
+#import "CarModel.h"
+#import "ClassifyListVC.h"
 @interface RecentPaymentsVC ()<RefreshDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic , strong)NearFutureTableView *tableView;
 
@@ -23,7 +25,10 @@
 @property (nonatomic,strong) UICollectionView * collectionView;
 @property (nonatomic,strong) UILabel * ResultLab;
 @property (nonatomic,strong) NSArray * titlearray;
-@property (nonatomic,strong)NSMutableArray *selectArray;
+@property (nonatomic,strong) UIButton * resultBtn;
+@property (nonatomic,strong) NSMutableArray *selectArray;
+@property (nonatomic,strong) NSMutableArray * selectTitleArray;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
 @end
 
 @implementation RecentPaymentsVC
@@ -39,7 +44,8 @@
                         @[@"2.0L以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
     self.selectArray = [NSMutableArray array];
     [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
-    
+    self.selectTitleArray = [NSMutableArray array];
+    [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     
     self.ResultLab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     self.ResultLab.text = @"您选择的条件会显示在这";
@@ -84,21 +90,32 @@
     reset.frame = CGRectMake(15, 7.5, 85, 35);
     [reset addTarget:self action:@selector(resetClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:reset];
-    UIButton * resultBtn = [UIButton buttonWithTitle:@"有1684款车型符合要求" titleColor:kWhiteColor backgroundColor:MainColor titleFont:14 cornerRadius:2];
+    UIButton * resultBtn = [UIButton buttonWithTitle:@"有0款车型符合要求" titleColor:kWhiteColor backgroundColor:MainColor titleFont:14 cornerRadius:2];
     resultBtn.frame = CGRectMake(reset.xx + 15, 7.5, SCREEN_WIDTH - reset.xx - 15  -15, 35);
+    [resultBtn addTarget:self action:@selector(resultClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:resultBtn];
-    
+    self.resultBtn = resultBtn;
     [self.view addSubview:view];
     
     
     
     [self LoadData];
 }
-
+-(void)resultClick{
+    ClassifyListVC * vc = [ClassifyListVC new];
+    vc.CarModels = self.CarModels;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)getClassifyListData:(NSString *)code{
+    
+}
 -(void)resetClick
 {
     self.selectArray = [NSMutableArray array];
     [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    self.selectTitleArray = [NSMutableArray array];
+    [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     self.ResultLab.text = @"您选择的条件会显示在这";
     [self.collectionView reloadData];
 }
@@ -128,7 +145,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-//        cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
         cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
         if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
             cell.layer.borderColor = kLineColor.CGColor;
@@ -168,7 +184,6 @@
     }
     
     CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
-//    cell.TitleLab.text = [NSString stringWithFormat:@"35万以下%ld",indexPath.row];
     cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
     if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
         cell.layer.borderColor = kLineColor.CGColor;
@@ -210,15 +225,271 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(SCREEN_WIDTH, 40);
 }
+
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [self getData:indexPath];
+    if (indexPath.section == 1) {
+        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][1][indexPath.row]]];
+    }
+    else
+        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][indexPath.row]]];
     
+    NSMutableArray *newArray = [NSMutableArray array];
+    
+    for (int i = 0;i < self.selectTitleArray.count; i++) {
+        NSString *string = [self.selectTitleArray objectAtIndex:i];
+        if ( ! [newArray containsObject:string] ){
+            [newArray addObject:string];
+            
+        }
+        
+    }
+    NSString *string = [newArray componentsJoinedByString:@"/"];
+    self.ResultLab.text = string;
     [self.collectionView reloadData];
-
 }
 -(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
      [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
 }
+
+-(void)getData:(NSIndexPath *)indexPath{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630426";
+    
+    //根据价格
+    if (![self.selectArray[0] isEqualToString:@""]) {
+    int i = [self.selectArray[0] intValue];
+    switch (i) {
+        case 0:{
+            http.parameters[@"priceStart"] =@"" ;
+            http.parameters[@"priceEnd"] = @"350000";
+
+        }
+            break;
+        case 1:{
+            http.parameters[@"priceStart"] =@"350000" ;
+            http.parameters[@"priceEnd"] = @"500000";
+
+        }
+            break;
+        case 2:{
+            http.parameters[@"priceStart"] =@"500000" ;
+            http.parameters[@"priceEnd"] = @"700000";
+
+        }
+            break;
+        case 3:{
+            http.parameters[@"priceStart"] =@"700000" ;
+            http.parameters[@"priceEnd"] = @"900000";
+
+        }
+            break;
+        case 4:{
+            http.parameters[@"priceStart"] =@"900000" ;
+            http.parameters[@"priceEnd"] = @"1100000";
+
+        }
+            break;
+        case 5:{
+            http.parameters[@"priceStart"] =@"1100000" ;
+            http.parameters[@"priceEnd"] = @"1500000";
+
+        }
+            break;
+        case 6:{
+            http.parameters[@"priceStart"] =@"1500000" ;
+            http.parameters[@"priceEnd"] = @"";
+
+        }
+            break;
+            
+        default:
+            break;
+    }
+    }
+    //根据级别
+    if (![self.selectArray[1] isEqualToString:@""]) {
+    int a = [self.selectArray[1] intValue];
+    switch (a) {
+        case 0:{
+            NSArray  *levelList = @[@"0"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+        case 1:{
+            NSArray  *levelList = @[@"1"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+        case 2:{
+            NSArray  *levelList = @[@"2"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+        case 3:{
+            NSArray  *levelList = @[@"3"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+        case 4:{
+            NSArray  *levelList = @[@"4"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+        case 5:{
+            NSArray  *levelList = @[@"5"];
+            http.parameters[@"levelList"] = levelList;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    }
+    //根据规格版本
+    if (![self.selectArray[2] isEqualToString:@""]) {
+    int b = [self.selectArray[2] intValue];
+    switch (b) {
+        case 0:{
+            NSArray  *versionList = @[@"1"];
+            http.parameters[@"versionList"] = versionList;
+        }
+            break;
+        case 1:{
+            NSArray  *versionList = @[@"2"];
+            http.parameters[@"versionList"] = versionList;
+        }
+            break;
+        case 2:{
+            NSArray  *versionList = @[@"3"];
+            http.parameters[@"versionList"] = versionList;
+        }
+            break;
+        case 3:{
+            NSArray  *versionList = @[@"4"];
+            http.parameters[@"versionList"] = versionList;
+        }
+            break;
+        case 4:{
+            NSArray  *versionList = @[@"5"];
+            http.parameters[@"versionList"] = versionList;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    }
+    //根据结构版本
+    if (![self.selectArray[3] isEqualToString:@""]) {
+    int c = [self.selectArray[3] intValue];
+    switch (c) {
+        case 0:{
+            NSArray  *structureList = @[@"1"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 1:{
+            NSArray  *structureList = @[@"2"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 2:{
+            NSArray  *structureList = @[@"3"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 3:{
+            NSArray  *structureList = @[@"4"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 4:{
+            NSArray  *structureList = @[@"5"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 5:{
+            NSArray  *structureList = @[@"6"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+        case 6:{
+            NSArray  *structureList = @[@"7"];
+            http.parameters[@"structureList"] = structureList;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    }
+    //排量
+    if (![self.selectArray[4] isEqualToString:@""]) {
+        int d = [self.selectArray[4] intValue];
+        switch (d) {
+            case 0:{
+                http.parameters[@"displacementStart"] =@"" ;
+                http.parameters[@"displacementEnd"] = @"2.0";
+                
+            }
+                break;
+            case 1:{
+                http.parameters[@"displacementStart"] =@"2.1" ;
+                http.parameters[@"displacementEnd"] = @"3.0";
+                
+            }
+                break;
+            case 2:{
+                http.parameters[@"displacementStart"] =@"3.1" ;
+                http.parameters[@"displacementEnd"] = @"4.0";
+                
+            }
+                break;
+            case 3:{
+                http.parameters[@"displacementStart"] =@"4.1" ;
+                http.parameters[@"displacementEnd"] = @"5.0";
+                
+            }
+                break;
+            case 4:{
+                http.parameters[@"displacementStart"] =@"5.1" ;
+                http.parameters[@"displacementEnd"] = @"";
+                
+            }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    [http postWithSuccess:^(id responseObject) {
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",self.CarModels.count] forState:(UIControlStateNormal)];
+    } failure:^(NSError *error) {
+
+    }];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
 //    return YES;
 //}

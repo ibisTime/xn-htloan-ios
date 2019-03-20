@@ -98,6 +98,7 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CarInfoVC * vc = [CarInfoVC new];
+    vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

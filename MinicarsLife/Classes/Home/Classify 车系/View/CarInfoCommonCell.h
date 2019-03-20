@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CarModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarInfoCommonCell : UITableViewCell
 @property (nonatomic,strong) UILabel * titlelab;
 @property (nonatomic,strong) UILabel * contentlab;
+@property (nonatomic,strong) CarModel * CarModel;
 @end
 
 NS_ASSUME_NONNULL_END

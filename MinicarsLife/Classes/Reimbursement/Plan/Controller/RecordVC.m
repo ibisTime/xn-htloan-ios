@@ -12,19 +12,26 @@
 #import "RecordDetailsVC.h"
 #import "BrandTableView.h"
 #import "BrandListVC.h"
-@interface RecordVC ()<RefreshDelegate>
+#import "BrandCollectionCell.h"
+#import "CarModel.h"
+@interface RecordVC ()<RefreshDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 //@property (nonatomic , strong)ReimbursementTableView *tableView;
 @property (nonatomic,strong) BrandTableView * tableview;
 
 @property (nonatomic , strong)NSMutableArray <ReimbursementModel *>*model;
+@property (nonatomic,strong) UICollectionView * CollectionView;
 
+@property (nonatomic,strong) NSMutableArray<CarModel *> * HotCarBrands;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * NormalCarBrands;
+@property(nonatomic,strong)NSMutableArray *indexArray;
+@property(nonatomic,strong)NSMutableArray *letterResultArr;
 @end
 
 @implementation RecordVC
 
 -(BrandTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[BrandTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
+        _tableview = [[BrandTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - kTabBarHeight)];
         
     }
     return _tableview;
@@ -32,7 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self LoadData];
     UIView * headview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 205)];
     headview.backgroundColor = kWhiteColor;
     UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 23, 3, 14)];
@@ -55,63 +62,46 @@
 
     
     NSArray * titlearray = @[@"丰田",@"路虎",@"奔驰",@"宝马",@"福特",@"奥迪",@"日产",@"玛莎拉蒂",@"保时捷",@"雷克萨斯"];
+   
+    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    CGFloat width = (SCREEN_WIDTH - 60.00)/5;
+    // 设置每个item的大小
+    layout.itemSize = CGSizeMake(width, 70);
+    layout.minimumInteritemSpacing = 10;
+    layout.minimumLineSpacing = 10;
+    layout.sectionInset = UIEdgeInsetsMake(10, 5, 10, 15);
+    
+    layout.scrollDirection = UICollectionViewScrollDirectionVertical;
+    
+    self.CollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 41, SCREEN_WIDTH, 205-40) collectionViewLayout:layout];
+    self.CollectionView.backgroundColor = kWhiteColor;
+    self.CollectionView.delegate = self;
+    self.CollectionView.dataSource = self;
+    self.CollectionView.scrollEnabled = NO;
+    [self.CollectionView registerClass:[BrandCollectionCell class] forCellWithReuseIdentifier:@"cell"];
+    [headview addSubview:self.CollectionView];
+    
+//    for (int i= 0; i < 10; i ++) {
+//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
+//        button.tag = i;
+//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
+//        button.frame = CGRectMake(i % 5 * (kScreenWidth/5),label.yy + 16 + i / 5 * (56.5 + 20), SCREEN_WIDTH/5, 56.5);
+//        [headview addSubview:button];
+//
+//        UIImageView *iconImgae = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH/5, 30)];
+//        iconImgae.image = kImage(@"车型库-选中");
+//        iconImgae.contentMode =  UIViewContentModeScaleAspectFit;
+//        [button addSubview:iconImgae];
+//
+//        UILabel *iconLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH/5, 16.5)];
+//        iconLbl.text = titlearray[i];
+//        iconLbl.textAlignment = NSTextAlignmentCenter;
+//        iconLbl.textColor = kHexColor(@"#333333");
+//        iconLbl.font = Font(12);
+//        [button addSubview:iconLbl];
+//    }
+    
 
-    
-    for (int i= 0; i < 10; i ++) {
-        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
-        button.tag = i;
-        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-        button.frame = CGRectMake(i % 5 * (kScreenWidth/5),label.yy + 16 + i / 5 * (56.5 + 20), SCREEN_WIDTH/5, 56.5);
-        [headview addSubview:button];
-        
-//        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:0 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(@"车型库-选中") forState:(UIControlStateNormal)];
-//        }];
-        
-        UIImageView *iconImgae = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH/5, 30)];
-        iconImgae.image = kImage(@"车型库-选中");
-//        [iconImgae setContentScaleFactor:[[UIScreen mainScreen] scale]];
-        iconImgae.contentMode =  UIViewContentModeScaleAspectFit;
-//        iconImgae.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-//        iconImgae.clipsToBounds  = YES;
-        [button addSubview:iconImgae];
-        
-        UILabel *iconLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH/5, 16.5)];
-        iconLbl.text = titlearray[i];
-        iconLbl.textAlignment = NSTextAlignmentCenter;
-        iconLbl.textColor = kHexColor(@"#333333");
-        iconLbl.font = Font(12);
-        [button addSubview:iconLbl];
-    }
-    
-//    for (int j = 0; j < 5; j ++) {
-//        UIButton * button = [UIButton buttonWithTitle:titlearray[j] titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-//        button.tag = j;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 17, (SCREEN_WIDTH-30)/5, 53);
-//        [headview addSubview:button];
-//    }
-//    for (int j = 0; j < 5; j ++) {
-//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-//        button.tag = j + 4;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/5 * j, label.yy + 3.5 + 100, (SCREEN_WIDTH-30)/5, 53);
-//        [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
-//
-////        [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
-////            [button setImage:kImage(logoarray[j + 5]) forState:(UIControlStateNormal)];
-////        }];
-//
-//        [headview addSubview:button];
-//
-//        if (j < 4) {
-//            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/5 * (j+1), label.yy + 3.5 + 100, 1, 20)];
-//            v1.backgroundColor = kLineColor;
-//            [headview addSubview:v1];
-//        }
-//    }
-    
-    
 //    [self.view addSubview:headview];
     self.tableview.tableHeaderView = headview;
     [self.view addSubview:self.tableview];
@@ -123,13 +113,61 @@
 -(void)clickbtn:(UIButton*)sender{
     
 }
-
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    if (self.HotCarBrands.count < 5) {
+        return 1;
+    }
+    return 2;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.HotCarBrands.count;
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    BrandCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.titlelab.text = self.HotCarBrands[indexPath.row].name;
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]] placeholderImage:kImage(@"车型库-选中")];
+    return cell;
+}
 -(void)moreBrand{
     BrandListVC * vc = [[BrandListVC alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+
+
+-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    RecordDetailsVC *vc = [[RecordDetailsVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.model = _model[indexPath.row];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)LoadData{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630406";
+    http.parameters[@"isReferee"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        self.HotCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.CollectionView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    TLNetworking * http1 = [[TLNetworking alloc]init];
+    http1.code = @"630406";
+    http1.parameters[@""] = @"";
+    [http1 postWithSuccess:^(id responseObject) {
+        self.NormalCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+//        self.letterResultArr = [ChineseString LetterSortArray:self.NormalCarBrands];
+//        self.tableview.letterResultArr = self.letterResultArr;
+        [self.tableview reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
 #pragma mark - Init
 //- (void)initTableView {
 //
@@ -141,16 +179,6 @@
 //    [self.view addSubview:self.tableView];
 //
 //}
-
--(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    RecordDetailsVC *vc = [[RecordDetailsVC alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.model = _model[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
-
 //-(void)LoadData
 //{
 //

@@ -16,6 +16,10 @@
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 
 @property (nonatomic,strong) UICollectionView * collection;
+@property (nonatomic,assign) int classifycount;
+@property (nonatomic,assign) int carBrandcount;
+
+
 
 @end
 
@@ -25,6 +29,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.classifycount = 3;
+        self.carBrandcount = 4;
         [self loadData];
         self.backgroundColor = kWhiteColor;
         [self bannerLoadData];
@@ -94,18 +100,19 @@
     return 3;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if (section == 2) {
-        return 3;
+    if (section == 0) {
+        return 4;
     }
-    return 4;
+    if (section == 1) {
+        return self.carBrandcount;
+    }
+    return self.classifycount;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 2) {
         SelectcarFootCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectcarFoot" forIndexPath:indexPath];
-        NSArray * titlelab = @[@"雷克萨斯LX5",@"奔驰S级",@"霸道3000"];
-        NSArray * imgarray = @[@"1",@"2",@"3"];
-        cell.titlelab.text = titlelab[indexPath.row];
-        cell.logo.image = kImage(imgarray[indexPath.row]);
+        cell.titlelab.text = self.CarClassifyModels[indexPath.row].name;
+        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"1")];
         return cell;
     }
     if (indexPath.section == 0) {
@@ -115,8 +122,7 @@
         return cell;
     }
     SelectCarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    NSArray * titlearray = @[@"奔驰",@"保时捷",@"丰田",@"奥迪"];
-    cell.titlelab.text = titlearray[indexPath.row];
+    cell.titlelab.text = self.CarBrandModels[indexPath.row].name;
     return cell;
 
 }
@@ -127,12 +133,21 @@
         return CGSizeMake((SCREEN_WIDTH - 75) / 4  , 20);
     }
     return CGSizeMake((SCREEN_WIDTH - 75) /3, 100);
-    
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"%ld",indexPath.row);
-    if (self.delegate) {
-        [self.delegate ClickCollectionClassify:indexPath];
+    if (indexPath.section == 0) {
+        if (self.delegate) {
+            [self.delegate ClickCollectionClassify:indexPath];
+        }
+    }
+    else if (indexPath.section == 1){
+        if (self.delegate) {
+            [self.delegate ClickCollectionClassify:indexPath withmodels:self.CarBrandModels[indexPath.row]];
+        }
+    }else{
+        if (self.delegate) {
+            [self.delegate ClickCollectionClassify:indexPath withmodels:self.CarClassifyModels[indexPath.row]];
+        }
     }
 }
 
@@ -187,6 +202,11 @@
     http.parameters[@"isReferee"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         
+        self.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        if (self.carBrandcount > self.CarBrandModels.count) {
+            self.carBrandcount = (int)self.CarBrandModels.count;
+        }
+        [self.collection reloadData];
     } failure:^(NSError *error) {
         
     }];
@@ -197,21 +217,25 @@
     http1.code = @"630416";
     http1.parameters[@"isReferee"] = @"1";
     [http1 postWithSuccess:^(id responseObject) {
-        
+        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        if (self.classifycount > self.CarClassifyModels.count) {
+            self.classifycount = (int)self.CarClassifyModels.count;
+        }
+        [self.collection reloadData];
     } failure:^(NSError *error) {
         
     }];
     
     //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self;
-    http2.code = @"630426";
-    http2.parameters[@"isReferee"] = @"1";
-    [http2 postWithSuccess:^(id responseObject) {
-        self.CarStyleModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-    } failure:^(NSError *error) {
-        
-    }];
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self;
+//    http2.code = @"630426";
+//    http2.parameters[@"isReferee"] = @"1";
+//    [http2 postWithSuccess:^(id responseObject) {
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
 }
 //
 //#pragma mark - 十一个按钮

@@ -29,18 +29,17 @@
         //索引数组
         self.indexArray = [NSMutableArray arrayWithObjects:@"#",nil];
         for (char ch='A'; ch<='Z'; ch++) {
-//            if (ch=='I' || ch=='O' || ch=='U' || ch=='V')
-//                continue;
             [self.indexArray addObject:[NSString stringWithFormat:@"%c",ch]];
         }
     }
     return self;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 26;
+    return 27;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+//    return 1;
+    return [[self.letterResultArr objectAtIndex:section] count];
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -52,7 +51,8 @@
         cell=[[BrandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         
     }
-    
+    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

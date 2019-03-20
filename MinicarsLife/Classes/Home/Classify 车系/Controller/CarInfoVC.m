@@ -13,6 +13,7 @@
 #import "DeployLastCell.h"
 #import "CallNowView.h"
 #import "AskSuccessView.h"
+#import "CalculatorVC.h"
 @interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 @property (nonatomic,strong) TLTableView * tableview;
@@ -121,6 +122,9 @@
         if(cell==nil){
             cell=[[CarInfoHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
+        cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell.button addTarget:self action:@selector(goCalculator) forControlEvents:(UIControlEventTouchUpInside)];
         return cell;
     }
     else if (indexPath.section == 2){
@@ -130,6 +134,8 @@
             if(cell==nil){
                 cell=[[DeployFirstCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
+            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
         else{
@@ -142,16 +148,28 @@
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
                 
             }
-            
+            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
     }
+    NSArray * titlearr = @[@"车源所在地",@"手续",@"更新时间"];
+    NSArray * contentarr = @[@"",@"",[self.CarModel.updateDatetime convertToDetailDateWithoutHour]];
     static NSString *rid=@"CarInfoCommon";
     CarInfoCommonCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     if(cell==nil){
         cell=[[CarInfoCommonCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
     }
+    cell.titlelab.text = titlearr[indexPath.row];
+    cell.contentlab.text = contentarr[indexPath.row];
+    cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+-(void)goCalculator{
+    CalculatorVC * vc = [CalculatorVC new];
+    vc.carcode = self.CarModel.code;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -167,6 +185,7 @@
     else
         return 45;
 }
+
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 1 || section == 2) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52.5)];
@@ -175,10 +194,10 @@
         v1.backgroundColor = kLineColor;
         [view addSubview:v1];
         
-        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 20, 3, 14)];
+        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 20, 3, 25)];
         v2.backgroundColor = MainColor;
         [view addSubview:v2];
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx, v1.yy + 10, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx + 5, v1.yy + 10, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         if (section == 1) {
             label.text = @"库存信息";
         }

@@ -149,10 +149,11 @@
     return 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 3;
+    return self.CarStyleModels.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HotCarCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+    cell.model =[CarModel mj_objectWithKeyValues: self.CarStyleModels[indexPath.row]];
     return cell;
     
 }
@@ -209,15 +210,6 @@
 //}
 -(void)setCarStyleModels:(NSMutableArray<CarModel *> *)CarStyleModels{
     _CarStyleModels = CarStyleModels;
-    
-    if (CarStyleModels.count > 0) {
-        for (int j = 0; j < 3; j++) {
-            UIButton * button = [self viewWithTag:(8 + j)];
-            CarModel * model = CarStyleModels[j];
-            [button setTitle:model.name forState:(UIControlStateNormal)];
-            [button.imageView sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]]];
-        }
-    }
-    
+    [self.collection reloadData];
 }
 @end

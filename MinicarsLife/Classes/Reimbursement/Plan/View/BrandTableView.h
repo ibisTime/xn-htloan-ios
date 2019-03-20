@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BrandTableView : TLTableView<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSMutableArray * indexArray;
+@property(nonatomic,strong)NSMutableArray *letterResultArr;
 @end
 
 NS_ASSUME_NONNULL_END

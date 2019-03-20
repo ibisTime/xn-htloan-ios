@@ -43,7 +43,7 @@
 //        [self addSubview:time];
 //        self.timelab = time;
         
-        UILabel * money = [UILabel labelWithFrame:CGRectMake(15, describe.yy + 5, SCREEN_WIDTH - 30, 16.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
+        UILabel * money = [UILabel labelWithFrame:CGRectMake(15, describe.yy + 5, SCREEN_WIDTH - 30 - 100, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
         NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:@"参考价 54.9万"];
         [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
         money.attributedText = att;
@@ -64,7 +64,37 @@
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 175, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kLineColor;
         [self addSubview:v1];
+        
+        UIView * view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18)];
+        kViewRadius(view1, 2);
+        view1.layer.borderColor = kHexColor(@"#FF9402").CGColor;
+        view1.layer.borderWidth = 0.5;
+        view1.backgroundColor = kHexColor(@"#FF9402");
+        view1.alpha = 0.2;
+        
+        UIButton * button = [UIButton buttonWithTitle:@"计算器" titleColor:kBlackColor backgroundColor:kClearColor titleFont:10 cornerRadius:2];
+        button.frame = CGRectMake(0, 0, view1.bounds.size.width, view1.bounds.size.height);
+        [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:2 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"详情-计算器") forState:(UIControlStateNormal)];
+        }];
+        button.tag = 1001;
+        self.button = button;
+        [view1 addSubview:button];
+        [self addSubview:view1];
     }
     return self;
+}
+
+-(void)setCarModel:(CarModel *)CarModel{
+    _CarModel = CarModel;
+    
+    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    NSString * str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000];
+    NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:str];
+    [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
+    self.moneylab.attributedText = att;
+    
+    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
 }
 @end
