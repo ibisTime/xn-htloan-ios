@@ -9,14 +9,17 @@
 #import "BrandListVC.h"
 #import "BrandCell.h"
 #import "ClassifyListVC.h"
+#import "CarModel.h"
 @interface BrandListVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong) UICollectionView * collection;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
 @end
 
 @implementation BrandListVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getdata];
     self.title = @"选择品牌";
     
     
@@ -40,22 +43,44 @@
     return 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 10;
+    return self.CarModels.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
 
     BrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:rid forIndexPath:indexPath];
-
+    cell.carmodel = self.CarModels[indexPath.row];
     cell.layer.borderColor = kLineColor.CGColor;
     cell.layer.borderWidth = 1;
     return cell;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    ClassifyListVC * vc = [ClassifyListVC new];
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    [self getClassifyListData:self.CarModels[indexPath.row].code];
+}
+-(void)getClassifyListData:(NSString *)code{
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630416";
+    http2.parameters[@"brandCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
-
+-(void)getdata{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630406";
+    [http postWithSuccess:^(id responseObject) {
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.collection reloadData];
+    } failure:^(NSError *error) {
+    }];
+}
 
 @end

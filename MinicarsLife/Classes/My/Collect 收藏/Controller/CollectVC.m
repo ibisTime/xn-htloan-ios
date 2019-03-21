@@ -36,7 +36,7 @@
 
 - (CollectBottomView *)bottom_view{
     if (!_bottom_view) {
-        self.bottom_view = [[CollectBottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, 375, 50)];
+        self.bottom_view = [[CollectBottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 50)];
 //        _bottom_view.backgroundColor = [UIColor yellowColor];
         [_bottom_view.deleteBtn addTarget:self action:@selector(deleteData) forControlEvents:UIControlEventTouchUpInside];
         [_bottom_view.allBtn addTarget:self action:@selector(tapAllBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -133,7 +133,7 @@
         if (btn.selected) {
 
             for (int i = 0; i< self.CollectModels.count; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:i];
                 //全选实现方法
                 [_tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
             }
@@ -164,7 +164,9 @@
 //    }
 }
 
-
+-(void)deleteData{
+    
+}
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -195,7 +197,7 @@
 //    TLNetworking * help = [[TLNetworking alloc]init];
     help.code = @"630465";
 //    help.parameters[@"limit"] = @"10";
-//    help.parameters[@"start"] = @"1";
+    help.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
     help.parameters[@"toType"] = @"0";
     help.parameters[@"type"] = @"3";
     [help modelClass:[CollectModel class]];

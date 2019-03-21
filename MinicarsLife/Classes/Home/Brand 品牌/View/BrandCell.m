@@ -27,4 +27,9 @@
     }
     return self;
 }
+-(void)setCarmodel:(CarModel *)carmodel{
+    _carmodel = carmodel;
+    [self.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+    self.brandname.text = carmodel.name;
+}
 @end

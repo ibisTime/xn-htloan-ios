@@ -8,7 +8,8 @@
 
 #import "SearchVC.h"
 #import "HotBrandCell.h"
-@interface SearchVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
+#import "ClassifyListVC.h"
+@interface SearchVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate>
 @property (nonatomic,strong) UISearchBar * SearchBar;
 @property (nonatomic,strong) UICollectionView * collectionView;
 @property (nonatomic,strong) NSArray * titlearray;
@@ -29,7 +30,7 @@
     
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(-35, 0, SCREEN_WIDTH, 44)];
     view.backgroundColor = kClearColor;
-    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 5.5, 272, 33)];
+    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 5.5, (544.00 / 750.00)*SCREEN_WIDTH, 33)];
 //    self.SearchBar.layer.borderWidth = 1;
     self.SearchBar.placeholder = @"请搜索品牌或车系";
     self.SearchBar.backgroundColor = kClearColor;
@@ -43,7 +44,8 @@
     [view addSubview:self.SearchBar];
     
     UIButton * button = [UIButton buttonWithTitle:@"搜索" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16 cornerRadius:0];
-    button.frame = CGRectMake(self.SearchBar.xx + 6, 15, 33, 22.5);
+    button.frame = CGRectMake(self.SearchBar.xx + 6, 10, 33, 22.5);
+    [button addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:button];
     
     self.navigationItem.titleView = view;
@@ -101,8 +103,23 @@
     CGSize size = [self.titlearray[indexPath.row] sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:Font(14),NSFontAttributeName,nil]];
     // 名字的H
     CGFloat nameW = size.width;
-    
     return CGSizeMake(nameW + 10, 40);
 }
 
+-(void)searchClick{
+    [self searchBarSearchButtonClicked:self.SearchBar];
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630426";
+    http.parameters[@"queryName"] = searchBar.text;
+    [http postWithSuccess:^(id responseObject) {
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 @end

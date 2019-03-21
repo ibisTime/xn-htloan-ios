@@ -27,19 +27,22 @@
         [self registerClass:[BrandTableViewCell class] forCellReuseIdentifier:@"cell"];
         
         //索引数组
-        self.indexArray = [NSMutableArray arrayWithObjects:@"#",nil];
-        for (char ch='A'; ch<='Z'; ch++) {
-            [self.indexArray addObject:[NSString stringWithFormat:@"%c",ch]];
-        }
+        
+        
+//        for (char ch='A'; ch<='Z'; ch++) {
+//            [self.indexArray addObject:[NSString stringWithFormat:@"%c",ch]];
+//        }
     }
     return self;
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 27;
+    return self.normalArray.count;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    return 1;
-    return [[self.letterResultArr objectAtIndex:section] count];
+    NSArray *array = self.normalArray[section];
+//    NSArray <CarModel *>*model = [CarModel mj_objectArrayWithKeyValuesArray:self.NormalCarBrands[section]];
+    return array.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -51,18 +54,25 @@
         cell=[[BrandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         
     }
-    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+//    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 55;
 }
--(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
-   
-    return self.indexArray;
-}
+
+//-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+//    self.indexArray = [NSMutableArray arrayWithObjects:@"#",nil];
+//    
+//    for (int i = 0; i < self.normalArray.count; i ++) {
+////        char ch =
+//        [self.indexArray addObject:[NSString stringWithFormat:@"%c",[self.normalArray[i][0][@"letter"] charValue]]];
+//    }
+//    return self.normalArray;
+//}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return [self.indexArray objectAtIndex:section];
+    return self.normalArray[section][0][@"letter"];
 }
 @end

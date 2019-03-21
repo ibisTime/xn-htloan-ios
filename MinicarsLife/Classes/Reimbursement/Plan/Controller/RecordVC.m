@@ -14,6 +14,7 @@
 #import "BrandListVC.h"
 #import "BrandCollectionCell.h"
 #import "CarModel.h"
+#import "ClassifyListVC.h"
 @interface RecordVC ()<RefreshDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 //@property (nonatomic , strong)ReimbursementTableView *tableView;
 @property (nonatomic,strong) BrandTableView * tableview;
@@ -134,8 +135,24 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
-
+    [self getClassifyListData:self.HotCarBrands[indexPath.row].code];
+}
+-(void)getClassifyListData:(NSString *)code{
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630416";
+    http2.parameters[@"brandCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 -(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RecordDetailsVC *vc = [[RecordDetailsVC alloc]init];
@@ -158,16 +175,40 @@
     http1.code = @"630406";
     http1.parameters[@""] = @"";
     [http1 postWithSuccess:^(id responseObject) {
-        self.NormalCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        NSMutableArray *array = [NSMutableArray array];
+        array = [self filterMaxItemsArray:responseObject[@"data"] filterKey:@"letter"];
         
+//        self.NormalCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:[self filterMaxItemsArray:responseObject[@"data"] filterKey:@"letter"]];
+        self.tableview.normalArray = array;
 //        self.letterResultArr = [ChineseString LetterSortArray:self.NormalCarBrands];
 //        self.tableview.letterResultArr = self.letterResultArr;
+        
         [self.tableview reloadData];
     } failure:^(NSError *error) {
         
     }];
     
 }
+
+
+- (NSMutableArray *)filterMaxItemsArray:(NSArray *)array filterKey:(NSString *)key {
+    NSMutableArray *origArray = [NSMutableArray arrayWithArray:array];
+    NSMutableArray *filerArray = [NSMutableArray array];
+    
+    while (origArray.count > 0) {
+        id obj = origArray.firstObject;
+        NSPredicate *predic = nil;
+        
+        id value = [obj valueForKey:key];
+        predic = [NSPredicate predicateWithFormat:@"self.%@ == %@",key,value];
+        
+        NSArray *pArray = [origArray filteredArrayUsingPredicate:predic];
+        [filerArray addObject:pArray];
+        [origArray removeObjectsInArray:pArray];
+    }
+    return filerArray;
+}
+
 #pragma mark - Init
 //- (void)initTableView {
 //

@@ -123,6 +123,7 @@
 		363B6158223BDA2400585061 /* ZJAnimationPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6156223BDA2400585061 /* ZJAnimationPopView.m */; };
 		363B6159223BDA4600585061 /* ZJAnimationPopView.h in Sources */ = {isa = PBXBuildFile; fileRef = 363B6157223BDA2400585061 /* ZJAnimationPopView.h */; };
 		363B615C223BDB4400585061 /* CallNowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B615B223BDB4400585061 /* CallNowView.m */; };
+		364004182243723600E36949 /* NSString+Check.m in Sources */ = {isa = PBXBuildFile; fileRef = 364004172243723600E36949 /* NSString+Check.m */; };
 		36428DAE223F37B1007B7D24 /* AskSuccessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DAD223F37B0007B7D24 /* AskSuccessView.m */; };
 		36428DB1223F689D007B7D24 /* CarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DB0223F689D007B7D24 /* CarCell.m */; };
 		36428DB4223F7122007B7D24 /* CollectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36428DB3223F7122007B7D24 /* CollectionHeaderView.m */; };
@@ -614,6 +615,8 @@
 		363B6157223BDA2400585061 /* ZJAnimationPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAnimationPopView.h; sourceTree = "<group>"; };
 		363B615A223BDB4400585061 /* CallNowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CallNowView.h; sourceTree = "<group>"; };
 		363B615B223BDB4400585061 /* CallNowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CallNowView.m; sourceTree = "<group>"; };
+		364004162243723600E36949 /* NSString+Check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Check.h"; sourceTree = "<group>"; };
+		364004172243723600E36949 /* NSString+Check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Check.m"; sourceTree = "<group>"; };
 		36428DAC223F37B0007B7D24 /* AskSuccessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AskSuccessView.h; sourceTree = "<group>"; };
 		36428DAD223F37B0007B7D24 /* AskSuccessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AskSuccessView.m; sourceTree = "<group>"; };
 		36428DAF223F689D007B7D24 /* CarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarCell.h; sourceTree = "<group>"; };
@@ -2468,6 +2471,8 @@
 		7A3CBDCE20F493FA00D795E5 /* Nsstring */ = {
 			isa = PBXGroup;
 			children = (
+				364004162243723600E36949 /* NSString+Check.h */,
+				364004172243723600E36949 /* NSString+Check.m */,
 				7A3CBE0B20F514FC00D795E5 /* NSString+Extension.h */,
 				7A3CBE0C20F514FD00D795E5 /* NSString+Extension.m */,
 				7A3CBDCF20F4940600D795E5 /* NSString+Date.h */,
@@ -4071,11 +4076,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MinicarsLife/Pods-MinicarsLife-resources.sh",
+				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
 			);
@@ -4171,6 +4178,7 @@
 				7AB29D7520FC65270014FCB3 /* RecentPaymentsDetailsVC.m in Sources */,
 				3686506A2240FA2000FC39CD /* SelectcarFootCell.m in Sources */,
 				7A8A5C9520E4A7FE002D9A48 /* NSString+MJExtension.m in Sources */,
+				364004182243723600E36949 /* NSString+Check.m in Sources */,
 				7A22CDD520EDBBDE0010059D /* EditorAddressVC.m in Sources */,
 				7A8A5CE220E61915002D9A48 /* GoodsDetailsBottomView.m in Sources */,
 				7A3CBD6C20F0CAC200D795E5 /* TheDetailCell.m in Sources */,

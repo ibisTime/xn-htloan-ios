@@ -14,6 +14,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:self.allBtn];
+        self.backgroundColor = kWhiteColor;
 //        [self addSubview:self.readBtn];
         [self addSubview:self.deleteBtn];
     }
@@ -47,9 +48,11 @@
     if (!_deleteBtn) {
         self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         _deleteBtn.frame = CGRectMake(self.bounds.size.width - 50, 0, 40, self.bounds.size.height);
-        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:16];
         [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+        [_deleteBtn setBackgroundColor:MainColor forState:(UIControlStateNormal)];
         [_deleteBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        kViewRadius(_deleteBtn, 2);
     }
     return _deleteBtn;
 }

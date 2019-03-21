@@ -33,6 +33,7 @@
 #import "BaseTabBarViewController.h"
 #import "ChineseString.h"
 #import "SelectedListView.h"
+#import "NSString+Check.h"
 #define kDeviceStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 #define USERDEFAULTS [NSUserDefaults standardUserDefaults]
 
