@@ -16,7 +16,7 @@
 @implementation ClassifyInfoVC
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         [_tableview registerClass:[ClassifyInfoCell class] forCellReuseIdentifier:@"cell"];
@@ -97,8 +97,21 @@
     return 185;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CarInfoVC * vc = [CarInfoVC new];
-    vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
-    [self.navigationController pushViewController:vc animated:YES];
+    CarModel * model = [CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
+    [self getcarinfo:model.code];
+}
+-(void)getcarinfo:(NSString *)code{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.parameters[@"code"] = code;
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        CarInfoVC * vc = [CarInfoVC new];
+//        vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
+        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end

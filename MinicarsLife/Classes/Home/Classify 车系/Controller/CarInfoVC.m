@@ -15,9 +15,13 @@
 #import "AskSuccessView.h"
 #import "CalculatorVC.h"
 @interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
+{
+    CallNowView * callNowView;
+}
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) UIView * bottomview;
+@property (nonatomic,strong) UIButton * collectbtn;
 @end
 
 @implementation CarInfoVC
@@ -79,21 +83,69 @@
     [self.view addSubview:self.bottomview];
     
     
+    UIButton * collectbtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 30, 30, 30)];
+//    collectbtn.backgroundColor = [UIColor redColor];
+    [collectbtn addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
+    [collectbtn setImage:kImage(@"我的收藏") forState:(UIControlStateNormal)];
+    [collectbtn setImage:kImage(@"详情收藏-点击") forState:(UIControlStateSelected)];
+    if ([self.CarModel.isCollect isEqualToString:@"1"]) {
+        collectbtn.selected = YES;
+    }
+    [self.scrollView addSubview:collectbtn];
+    self.collectbtn = collectbtn;
     
+    callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    callNowView.carmodel = self.CarModel;
+    callNowView.delegate = self;
+    [self.view addSubview:callNowView];
+    
+}
+-(void)collectclick{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.CarModel.code;
+    http.parameters[@"toType"] = @"0";
+    http.parameters[@"type"] = @"3";
+    [http postWithSuccess:^(id responseObject) {
+        self.collectbtn.selected = !self.collectbtn.selected;
+    } failure:^(NSError *error) {
+        
+    }];
+    NSLog(@"=======%s=======",__func__);
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
+    if (sender.tag == 1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:10086"]];
+    }
     if (sender.tag == 2) {
-        CallNowView * vc = [[CallNowView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        vc.delegate = self;
-        [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
+        [UIView animateWithDuration:0.1 animations:^{
+//            self.view.alpha = 0.6;
+            callNowView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+        }];
     }
 }
--(void)askmoney{
-    [[USERXX user].cusPopView dismiss];
-    AskSuccessView * vc = [[AskSuccessView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    vc.delegate = self;
-    [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
-    
+
+-(void)askmoneyWithphone:(NSString *)phone name:(NSString *)name{
+//    [NSUserDefaults standardUserDefaults]
+    NSLog(@"%@",[USERDEFAULTS objectForKey:USER_ID]);
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630430";
+    http.parameters[@"carCode"] = self.CarModel.code;
+    http.parameters[@"name"] = name;
+    http.parameters[@"userMobile"] = phone;
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+        AskSuccessView * vc = [[AskSuccessView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        vc.delegate = self;
+        [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)deleteBtnClickDelegate{
+    callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 -(void)BackToHomeClick{
     BaseTabBarViewController *tabBarCtrl = [[BaseTabBarViewController alloc] init];
@@ -154,14 +206,37 @@
         }
     }
     NSArray * titlearr = @[@"车源所在地",@"手续",@"更新时间"];
-    NSArray * contentarr = @[@"",@"",[self.CarModel.updateDatetime convertToDetailDateWithoutHour]];
+    
+    
+    
     static NSString *rid=@"CarInfoCommon";
     CarInfoCommonCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     if(cell==nil){
         cell=[[CarInfoCommonCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
     }
     cell.titlelab.text = titlearr[indexPath.row];
-    cell.contentlab.text = contentarr[indexPath.row];
+    if (indexPath.row==0) {
+        if (self.CarModel.fromPlace) {
+            cell.contentlab.text = self.CarModel.fromPlace;
+        }
+        else
+            cell.contentlab.text = @"暂无";
+    }
+    else if (indexPath.row==1) {
+        if (self.CarModel.procedure) {
+            cell.contentlab.text = self.CarModel.procedure;
+        }
+        else
+            cell.contentlab.text = @"暂无";
+    }
+    else{
+        if (self.CarModel.updateDatetime) {
+            cell.contentlab.text = self.CarModel.updateDatetime;
+        }
+        else
+            cell.contentlab.text = @"暂无";
+    }
+//    cell.contentlab.text = contentarr[indexPath.row];
     cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

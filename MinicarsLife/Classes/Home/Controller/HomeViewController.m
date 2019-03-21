@@ -70,7 +70,7 @@
 }
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight-kTabBarHeight)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
@@ -142,7 +142,7 @@
         
         UIButton * button = [UIButton buttonWithTitle:@"更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
         [button addTarget:self action:@selector(morenews) forControlEvents:(UIControlEventTouchUpInside)];
-        button.frame = CGRectMake(SCREEN_WIDTH - 15 - 25, 23, 25, 17);
+        button.frame = CGRectMake(SCREEN_WIDTH - 15 - 25, 27, 25, 17);
         [view addSubview:button];
         return view;
     }
@@ -192,10 +192,29 @@
 -(void)ClickCollection:(NSInteger)index{
     NSLog(@"tag%ld",index);
 //    ChooseCarVC * vc = [ChooseCarVC new];
-    CarInfoVC * vc = [CarInfoVC new];
-    vc.CarModel =[CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    CarInfoVC * vc = [CarInfoVC new];
+//    vc.CarModel =[CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    CarModel * model = [CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
+    [self getcarinfo:model.code];
+}
+-(void)getcarinfo:(NSString *)code{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.parameters[@"code"] = code;
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        CarInfoVC * vc = [CarInfoVC new];
+//        vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
+        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)ClickCollectionClassify:(NSIndexPath *)index{
@@ -209,6 +228,9 @@
                 break;
             case 2:
                 [self GetClassifyByPrice:@"700000" priceEnd:@""];
+                break;
+            case 3:
+                [self GetClassifyByPrice:@"" priceEnd:@"300000"];
                 break;
             default:
                 break;

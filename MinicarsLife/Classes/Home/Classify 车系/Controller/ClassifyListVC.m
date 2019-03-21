@@ -16,7 +16,7 @@
 @implementation ClassifyListVC
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         [_tableview registerClass:[ClassifyCell class] forCellReuseIdentifier:@"cell"];
@@ -54,9 +54,10 @@
     return 110;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self getClassifyData:self.CarModels[indexPath.row].code];
+//    [self getClassifyData:self.CarModels[indexPath.row].code];
+    [self getClassifyData:self.CarModels[indexPath.row].code withtitle:self.CarModels[indexPath.row].name];
 }
--(void)getClassifyData:(NSString*)code{
+-(void)getClassifyData:(NSString*)code withtitle:(NSString *)title{
     //列表查询车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
@@ -66,6 +67,7 @@
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
         vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         //        if (vc.models.count > 0) {
+        vc.title = title;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         //        }

@@ -31,11 +31,11 @@
         self.ContentLab.text = @"410，000元";
         [self addSubview:self.ContentLab];
         
-        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, 17.5, 13, 15)];
+        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, (self.bounds.size.height - 10)/2, 10, 10)];
         img.image = kImage(@"you");
         [self addSubview:img];
         
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, self.contentView.height - 1, SCREEN_WIDTH - 30, 1)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, self.bounds.size.height - 1, SCREEN_WIDTH - 30, 1)];
         v1.backgroundColor = kLineColor;
         [self addSubview:v1];
         

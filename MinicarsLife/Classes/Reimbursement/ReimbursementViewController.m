@@ -41,7 +41,7 @@
     UIButton  *button = [UIButton buttonWithTitle:@"" titleColor:kClearColor backgroundColor:kClearColor titleFont:0];
 //    button.imageView.image = kImage(@"弹窗-关闭");
     [button setImage:kImage(@"搜索") forState:(UIControlStateNormal)];
-    button.frame = CGRectMake(self.backView.width - 6 - 12 - 12, 14.5, 17.5, 17.5);
+    button.frame = CGRectMake(self.backView.width - 6 - 12 - 25, 14.5, 17.5, 17.5);
     [button addTarget:self action:@selector(buttonclick) forControlEvents:(UIControlEventTouchUpInside)];
     [self.backView addSubview:button];
     

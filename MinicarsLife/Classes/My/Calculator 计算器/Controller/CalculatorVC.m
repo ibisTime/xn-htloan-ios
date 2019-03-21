@@ -17,7 +17,7 @@
 #import "ChooseCarVC.h"
 #import "CalculatorModel.h"
 #import "CarModel.h"
-@interface CalculatorVC ()<UITableViewDelegate,UITableViewDataSource>{
+@interface CalculatorVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>{
     int tag;
 }
 @property (nonatomic,strong) TLTableView * leftTable;
@@ -28,11 +28,22 @@
 @end
 
 @implementation CalculatorVC
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getcarname:self.carcode];
+    [self getData:@"12" total:@"0"];
+    
+    //去除导航栏下方的横线
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]
+                                                  forBarMetrics:UIBarMetricsDefault];
+    
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc]init]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self getcarname:self.carcode];
-    [self getData:@"12" total:@"0"];
+    MinicarsLifeWeakSelf;
+    
     tag = 0;
     [self createSegMentController];
     
@@ -40,7 +51,11 @@
     self.leftTable.delegate = self;
     self.leftTable.dataSource = self;
     self.leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    self.leftTable.refreshDelegate = self;
+    [self.leftTable addRefreshAction:^{
+        [weakSelf getcarname:weakSelf.carcode];
+        [weakSelf getData:@"12" total:@"0"];
+    }];
     [self.view addSubview:self.leftTable];
     
     self.rightTable = [[TLTableView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight) style:UITableViewStylePlain];
@@ -120,8 +135,13 @@
             if(cell==nil){
                 cell=[[LeftHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-            cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
-            cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
+            if (self.CalculatorModel.saleAmount) {
+                cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
+                cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
+            }
+            else
+                cell.moneylab.text = @"暂无售价";
+           
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -134,20 +154,21 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.TitleLab.text = array[indexPath.row-1];
-           
-                if (self.CarModel) {
-                     if (indexPath.row == 1) {
-                    NSString * str = [NSString stringWithFormat:@"%@ %@ %@",self.CarModel.brandName,self.CarModel.seriesName,self.CarModel.name];
-                         if (self.CalculatorModel) {
-                             NSArray * contentarray = @[str,self.CalculatorModel.saleAmount];
-                              cell.ContentLab.text = contentarray[indexPath.row - 1];
-                         }
-                     }
-                    else{
-                        cell.ContentLab.text = [self NumberWithFromatter:self.CalculatorModel.saleAmount];
-                    }
-                }
             
+            if (indexPath.row == 1) {
+                if (self.CarModel) {
+                    NSString * str = [NSString stringWithFormat:@"%@ %@ %@",self.CarModel.brandName,self.CarModel.seriesName,self.CarModel.name];
+                    cell.ContentLab.text = str;
+                }
+                else
+                    cell.ContentLab.text = @"请选择车型";
+            }else if (indexPath.row == 2){
+                if (self.CalculatorModel) {
+                    cell.ContentLab.text = self.CalculatorModel.saleAmount;
+                }
+                else
+                    cell.ContentLab.text = @"暂无售价";
+            }
             return cell;
         }
         
@@ -174,11 +195,20 @@
             cell=[[RightHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             
         }
+        
         cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
         if (self.CalculatorModel.monthReply) {
             cell.moneyarray = @[self.CalculatorModel.monthReply,self.CalculatorModel.extraAmount,self.CalculatorModel.totalAmount];
         }
-        cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
+        if (self.CalculatorModel.yjsfAmount) {
+            cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
+        }
+        else
+            cell.moneylab.text = @"暂无售价";
+        
+        
+        
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -205,11 +235,14 @@
             NSString * str1 = [NSString stringWithFormat:@"%@ %@ %@",self.CarModel.brandName,self.CarModel.seriesName,self.CarModel.name];
             cell.ContentLab.text = str1;
         }
+        else
+            cell.ContentLab.text = @"暂无车型";
     }else if (indexPath.row == 2){
         if (self.CalculatorModel) {
             NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
             cell.ContentLab.text = str2;
-        }
+        }else
+            cell.ContentLab.text = @"暂无售价";
     }else if (indexPath.row == 3){
         cell.ContentLab.text = @"一年";
         if (self.DkYear) {
@@ -220,7 +253,8 @@
         if (self.CalculatorModel) {
             NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
             cell.ContentLab.text = str4;
-        }
+        }else
+            cell.ContentLab.text = @"暂无售价";
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -254,6 +288,10 @@
         }
     }
     if (tag == 1) {
+        if (indexPath.row == 1) {
+            ChooseCarVC * vc = [ChooseCarVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
         if (indexPath.row == 3) {
             NSArray * array1 = @[@"一年",@"两年",@"三年"];
 //            NSMutableArray * array = [NSMutableArray arrayWithArray:array1];
@@ -269,6 +307,7 @@
                     SelectedListModel *model = array[0];
                     NSLog(@"选中第%ld行" , model.sid);
                     self.DkYear = array1[model.sid];
+                    [self.rightTable reloadData_tl];
                     [self getData:[NSString stringWithFormat:@"%ld",(model.sid + 1) * 12] total:@"0"];
                 }];
             };
@@ -296,6 +335,7 @@
 }
 -(void)getData : (NSString *)period total:(NSString *)total{
     TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
     http.code = @"630428";
     http.parameters[@"carCode"] =self.carcode;
     if (tag == 0) {
@@ -317,6 +357,7 @@
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
     http.parameters[@"code"] = code;
+    http.showView = self.view;
     [http postWithSuccess:^(id responseObject) {
         self.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.leftTable reloadData_tl];

@@ -37,7 +37,7 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.CarModels.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -72,7 +72,14 @@
 //    }
 //    [navVC setViewControllers:viewControllers animated:YES];
     
-    [self.navigationController popToViewController:[[CalculatorVC alloc]init]animated:YES];
+//    [self.navigationController popToViewController:[[CalculatorVC alloc]init]animated:YES];
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[CalculatorVC class]]) {
+            CalculatorVC *revise =(CalculatorVC *)controller;
+            revise.carcode = self.CarModels[indexPath.row].code;
+            [self.navigationController popToViewController:revise animated:YES];
+        }
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 55;
