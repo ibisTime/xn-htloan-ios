@@ -51,7 +51,7 @@
     
     if(cell==nil){
         
-        cell=[[BrandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
+        cell=[[BrandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:rid];
         
     }
 //    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
@@ -62,15 +62,13 @@
     return 55;
 }
 
-//-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
+-(NSArray<NSString *> *)sectionIndexTitlesForTableView:(UITableView *)tableView{
 //    self.indexArray = [NSMutableArray arrayWithObjects:@"#",nil];
-//    
-//    for (int i = 0; i < self.normalArray.count; i ++) {
-////        char ch =
-//        [self.indexArray addObject:[NSString stringWithFormat:@"%c",[self.normalArray[i][0][@"letter"] charValue]]];
-//    }
-//    return self.normalArray;
-//}
+//    self.indexArray = [NSMutableArray array];
+    
+
+    return self.indexArray;
+}
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return self.normalArray[section][0][@"letter"];
