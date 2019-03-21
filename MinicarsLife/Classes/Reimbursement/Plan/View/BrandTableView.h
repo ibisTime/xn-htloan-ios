@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray * indexArray;
 @property(nonatomic,strong)NSMutableArray *letterResultArr;
 //@property (nonatomic,strong) NSMutableArray<CarModel *> * NormalCarBrands;
-@property (nonatomic , strong)NSArray *normalArray;
+@property (nonatomic , strong)NSArray<CarModel *> *normalArray;
 @end
 
 NS_ASSUME_NONNULL_END

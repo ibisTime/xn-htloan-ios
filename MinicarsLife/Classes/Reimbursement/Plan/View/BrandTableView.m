@@ -55,6 +55,9 @@
         
     }
 //    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
+    NSMutableArray<CarModel *> *carmodel = [CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[indexPath.section]];
+    cell.namelab.text = carmodel[indexPath.row].name;
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel[indexPath.row].logo convertImageUrl]]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -71,6 +74,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return self.normalArray[section][0][@"letter"];
+    NSMutableArray<CarModel *> *carmodel = [CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[section] ];
+    return carmodel[0].letter;
 }
 @end

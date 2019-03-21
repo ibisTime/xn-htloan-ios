@@ -56,12 +56,19 @@
         [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
     }];
+    [self.leftTable beginRefreshing];
+    
     [self.view addSubview:self.leftTable];
     
     self.rightTable = [[TLTableView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-kNavigationBarHeight) style:UITableViewStylePlain];
     self.rightTable.delegate = self;
     self.rightTable.dataSource = self;
     self.rightTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.rightTable addRefreshAction:^{
+        [weakSelf getcarname:weakSelf.carcode];
+        [weakSelf getData:@"12" total:@"0"];
+    }];
+    [self.rightTable beginRefreshing];
     
     [self.view addSubview:self.rightTable];
     
@@ -349,8 +356,12 @@
         self.CalculatorModel = [CalculatorModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.leftTable reloadData_tl];
         [self.rightTable reloadData_tl];
-    } failure:^(NSError *error) {
         
+        [self.leftTable endRefreshHeader];
+        [self.rightTable endRefreshHeader];
+    } failure:^(NSError *error) {
+        [self.leftTable endRefreshHeader];
+        [self.rightTable endRefreshHeader];
     }];
 }
 -(void)getcarname:(NSString *)code{
@@ -362,8 +373,12 @@
         self.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.leftTable reloadData_tl];
         [self.rightTable reloadData_tl];
-    } failure:^(NSError *error) {
         
+        [self.leftTable endRefreshHeader];
+        [self.rightTable endRefreshHeader];
+    } failure:^(NSError *error) {
+        [self.leftTable endRefreshHeader];
+        [self.rightTable endRefreshHeader];
     }];
 }
 -(NSString *)NumberWithFromatter:(NSString *)moneystr{

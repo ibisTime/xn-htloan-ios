@@ -28,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"车系列表";
+//    [self.tableview addRefreshAction:^{
+//        
+//    }];
+//    [self.tableview beginRefreshing];
+    
     [self.view addSubview:self.tableview];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

@@ -187,7 +187,7 @@
     }
     http.parameters[@"codeList"] = self.deleteArray;
     [http postWithSuccess:^(id responseObject) {
-        
+        [self.tableview beginRefreshing];
     } failure:^(NSError *error) {
         
     }];

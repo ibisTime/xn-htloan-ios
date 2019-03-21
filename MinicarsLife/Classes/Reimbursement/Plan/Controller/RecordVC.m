@@ -82,28 +82,7 @@
     [self.CollectionView registerClass:[BrandCollectionCell class] forCellWithReuseIdentifier:@"cell"];
     [headview addSubview:self.CollectionView];
     
-//    for (int i= 0; i < 10; i ++) {
-//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
-//        button.tag = i;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        button.frame = CGRectMake(i % 5 * (kScreenWidth/5),label.yy + 16 + i / 5 * (56.5 + 20), SCREEN_WIDTH/5, 56.5);
-//        [headview addSubview:button];
-//
-//        UIImageView *iconImgae = [[UIImageView alloc]initWithFrame:CGRectMake(0, 5, SCREEN_WIDTH/5, 30)];
-//        iconImgae.image = kImage(@"车型库-选中");
-//        iconImgae.contentMode =  UIViewContentModeScaleAspectFit;
-//        [button addSubview:iconImgae];
-//
-//        UILabel *iconLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREEN_WIDTH/5, 16.5)];
-//        iconLbl.text = titlearray[i];
-//        iconLbl.textAlignment = NSTextAlignmentCenter;
-//        iconLbl.textColor = kHexColor(@"#333333");
-//        iconLbl.font = Font(12);
-//        [button addSubview:iconLbl];
-//    }
-    
 
-//    [self.view addSubview:headview];
     self.tableview.tableHeaderView = headview;
     [self.view addSubview:self.tableview];
     
@@ -161,6 +140,7 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)LoadData{
+    MinicarsLifeWeakSelf;
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630406";
     http.parameters[@"isReferee"] = @"1";
@@ -171,48 +151,82 @@
         
     }];
     
-    TLNetworking * http1 = [[TLNetworking alloc]init];
-    http1.code = @"630406";
+    
+    
+    TLPageDataHelper * http1 = [TLPageDataHelper new];
+    http1.code = @"630405";
     http1.parameters[@""] = @"";
-    [http1 postWithSuccess:^(id responseObject) {
-//        NSMutableArray *array = [NSMutableArray array];
-        NSArray *array = responseObject[@"data"];
-        
-        
-        
-        NSMutableArray *allArray = [NSMutableArray array];
-        for(int i=0;i<26;i++)
-        {
-            NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
-            NSMutableArray *rowArray = [NSMutableArray array];
-            for (int j = 0; j < array.count; j ++) {
-                
-                if ([str isEqualToString:array[j][@"letter"]]) {
-                    [rowArray addObject:array[j]];
+    [http1 modelClass:[CarModel class]];
+    http1.tableView = self.tableview;
+    http1.isCurrency = YES;
+        [self.tableview addRefreshAction:^{
+            [http1 refresh:^(NSMutableArray *objs, BOOL stillHave) {
+                NSArray<CarModel *> *array = objs;
+                NSMutableArray<CarModel *> *allArray = [NSMutableArray array];
+                for(int i=0;i<26;i++)
+                {
+                    NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+                    NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
+                    for (int j = 0; j < array.count; j ++) {
+
+                        if ([str isEqualToString:array[j].letter]) {
+                            [rowArray addObject:array[j]];
+                        }
+                    }
+                    if (rowArray.count > 0) {
+                        
+                        [allArray addObject:rowArray];
+                    }
+                    
                 }
-            }
-            if (rowArray.count > 0) {
                 
-                [allArray addObject:rowArray];
+                NSMutableArray *indexArray = [NSMutableArray array];
+                for (int i = 0; i < allArray.count; i ++) {
+                    NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:allArray[i]];
+                    [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
+                }
+                weakSelf.tableview.indexArray = indexArray;
+                weakSelf.tableview.normalArray = allArray;
+                [weakSelf.tableview reloadData];
+                [weakSelf.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [weakSelf.tableview endRefreshHeader];
+        }];
+        }];
+    [self.tableview beginRefreshing];
+
+    [self.tableview addLoadMoreAction:^{
+        [http1 loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            NSArray *array = objs;
+            NSMutableArray *allArray = [NSMutableArray array];
+            for(int i=0;i<26;i++)
+            {
+                NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+                NSMutableArray *rowArray = [NSMutableArray array];
+                for (int j = 0; j < array.count; j ++) {
+                    
+                    if ([str isEqualToString:array[j][@"letter"]]) {
+                        [rowArray addObject:array[j]];
+                    }
+                }
+                if (rowArray.count > 0) {
+                    
+                    [allArray addObject:rowArray];
+                }
+                
             }
             
-        }
-        
-        NSMutableArray *indexArray = [NSMutableArray array];
-        for (int i = 0; i < allArray.count; i ++) {
-            //        char ch =
-            
-            [indexArray addObject:[NSString stringWithFormat:@"%@",allArray[i][0][@"letter"]]];
-        }
-        self.tableview.indexArray = indexArray;
-//        self.NormalCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:[self filterMaxItemsArray:responseObject[@"data"] filterKey:@"letter"]];
-        self.tableview.normalArray = allArray;
-//        self.letterResultArr = [ChineseString LetterSortArray:self.NormalCarBrands];
-//        self.tableview.letterResultArr = self.letterResultArr;
-        
-        [self.tableview reloadData];
-    } failure:^(NSError *error) {
-        
+            NSMutableArray *indexArray = [NSMutableArray array];
+            for (int i = 0; i < allArray.count; i ++) {
+                [indexArray addObject:[NSString stringWithFormat:@"%@",allArray[i][0][@"letter"]]];
+            }
+            weakSelf.tableview.indexArray = indexArray;
+            weakSelf.tableview.normalArray = allArray;
+            [weakSelf.tableview reloadData];
+            [weakSelf.tableview endRefreshFooter];
+        } failure:^(NSError *error) {
+            [weakSelf.tableview endRefreshFooter];
+        }];
     }];
     
 }
