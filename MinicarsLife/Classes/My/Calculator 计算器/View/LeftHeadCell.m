@@ -30,7 +30,9 @@
         
         self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(20) textColor:kWhiteColor];
 //        self.moneylab.text = @"410，000元";
-        self.moneylab.attributedText = [self getPriceAttribute:@"410，000元"];
+//        if (self.moneystr) {
+//            self.moneylab.attributedText = [self getPriceAttribute:self.moneystr];
+//        }
         [self addSubview:self.moneylab];
     }
     return self;

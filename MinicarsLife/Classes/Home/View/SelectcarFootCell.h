@@ -1,8 +1,8 @@
 //
-//  LeftHeadCell.h
+//  SelectcarFootCell.h
 //  MinicarsLife
 //
-//  Created by 梅敏杰 on 2019/3/14.
+//  Created by 梅敏杰 on 2019/3/19.
 //  Copyright © 2019年 QinBao Zheng. All rights reserved.
 //
 
@@ -10,10 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LeftHeadCell : UITableViewCell
+@interface SelectcarFootCell : UICollectionViewCell
+@property (nonatomic,strong) UIImageView * logo;
 @property (nonatomic,strong) UILabel * titlelab;
-@property (nonatomic,strong) UILabel * moneylab;
-@property (nonatomic,strong) NSString * moneystr;
 @end
 
 NS_ASSUME_NONNULL_END

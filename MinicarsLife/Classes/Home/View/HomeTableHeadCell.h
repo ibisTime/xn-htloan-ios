@@ -11,12 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol ClickBtn <NSObject>
 
--(void)ClickBtn:(UIButton *)sender;
+//-(void)ClickBtn:(UIButton *)sender;
 -(void)ClickCollection:(NSInteger)index;
 
 @end
 @interface HomeTableHeadCell : UITableViewCell<HW3DBannerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic , strong)HW3DBannerView *scrollView;
+//@property (nonatomic , strong)HW3DBannerView *scrollView;
 
 @property (nonatomic,strong) UICollectionView * collection;
 @property (nonatomic,weak) id<ClickBtn> delegate;

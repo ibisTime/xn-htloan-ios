@@ -12,12 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ClickBtn <NSObject>
 
 -(void)ClickBtn:(UIButton *)sender;
--(void)ClickCollection:(NSInteger)index;
+-(void)ClickCollectionClassify:(NSIndexPath *)index;
+-(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models;
 
 @end
 @interface HomeHeadVC : UIView
 @property (nonatomic,weak) id<ClickBtn> delegate;
-@property (nonatomic,strong) NSMutableArray<CarModel *> * CarStyleModels;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarBrandModels;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
 @end
 
 NS_ASSUME_NONNULL_END

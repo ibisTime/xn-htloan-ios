@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RightHeaderCell : UITableViewCell
 @property (nonatomic,strong) UILabel * titlelab;
 @property (nonatomic,strong) UILabel * moneylab;
+@property (nonatomic,strong) NSString * moneystr;
+@property (nonatomic,strong) NSArray * moneyarray;
 @end
 
 NS_ASSUME_NONNULL_END

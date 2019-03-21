@@ -48,7 +48,7 @@
         [self.rightview addSubview:self.rightmoney];
         
         UILabel * label1 = [UILabel labelWithFrame:CGRectMake(15, self.rightmoney.yy + 10, self.rightview.width - 30, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
-        label1.text = @"必要花费（元）";
+        label1.text = @"商业保险（元）";
         [label1 sizeToFit];
         label1.frame = CGRectMake((self.rightview.width - label1.width) / 2, self.rightmoney.yy + 10, label1.width, 25);
         [self.rightview addSubview:label1];

@@ -15,17 +15,24 @@
 #define leftfoot @"LeftFootCell"
 #import "RightHeaderCell.h"
 #import "ChooseCarVC.h"
+#import "CalculatorModel.h"
+#import "CarModel.h"
 @interface CalculatorVC ()<UITableViewDelegate,UITableViewDataSource>{
     int tag;
 }
 @property (nonatomic,strong) TLTableView * leftTable;
 @property (nonatomic,strong) TLTableView * rightTable;
+@property (nonatomic,strong) CalculatorModel * CalculatorModel;
+@property (nonatomic,strong) CarModel * CarModel;
+@property (nonatomic,strong) NSString * DkYear;
 @end
 
 @implementation CalculatorVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getcarname:self.carcode];
+    [self getData:@"12" total:@"0"];
     tag = 0;
     [self createSegMentController];
     
@@ -70,6 +77,8 @@
             self.rightTable.hidden = YES;
             sender.selectedSegmentIndex=0;
             tag = 0;
+//            [self getData:@"12"];
+            [self getData:@"12" total:@"0"];
             [self.leftTable reloadData];
             break;
             
@@ -78,6 +87,7 @@
             self.rightTable.hidden = NO;
             sender.selectedSegmentIndex = 1;
             tag=1;
+            [self getData:@"12" total:@"1"];
             [self.rightTable reloadData];
             break;
             
@@ -102,12 +112,16 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tag == 0) {
         NSArray * array = @[@"车型",@"裸车售价"];
+        
+        
         if (indexPath.row == 0) {
             static NSString *rid=LeftHead;
             LeftHeadCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
             if(cell==nil){
                 cell=[[LeftHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
+            cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
+            cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -120,6 +134,20 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.TitleLab.text = array[indexPath.row-1];
+           
+                if (self.CarModel) {
+                     if (indexPath.row == 1) {
+                    NSString * str = [NSString stringWithFormat:@"%@ %@ %@",self.CarModel.brandName,self.CarModel.seriesName,self.CarModel.name];
+                         if (self.CalculatorModel) {
+                             NSArray * contentarray = @[str,self.CalculatorModel.saleAmount];
+                              cell.ContentLab.text = contentarray[indexPath.row - 1];
+                         }
+                     }
+                    else{
+                        cell.ContentLab.text = [self NumberWithFromatter:self.CalculatorModel.saleAmount];
+                    }
+                }
+            
             return cell;
         }
         
@@ -128,10 +156,14 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
+        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
+    
     NSArray * array = @[@"车型",@"裸车售价",@"贷款年限",@"裸车首付"];
+    
     if (indexPath.row == 0) {
         static NSString *rid=@"cell";
         
@@ -142,6 +174,11 @@
             cell=[[RightHeaderCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             
         }
+        cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
+        if (self.CalculatorModel.monthReply) {
+            cell.moneyarray = @[self.CalculatorModel.monthReply,self.CalculatorModel.extraAmount,self.CalculatorModel.totalAmount];
+        }
+        cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -151,15 +188,41 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
+        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     static NSString *rid=@"com";
+    
     CommonCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     if(cell==nil){
         cell=[[CommonCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
     }
     cell.TitleLab.text = array[indexPath.row - 1];
+    if (indexPath.row == 1) {
+        if (self.CarModel) {
+            NSString * str1 = [NSString stringWithFormat:@"%@ %@ %@",self.CarModel.brandName,self.CarModel.seriesName,self.CarModel.name];
+            cell.ContentLab.text = str1;
+        }
+    }else if (indexPath.row == 2){
+        if (self.CalculatorModel) {
+            NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
+            cell.ContentLab.text = str2;
+        }
+    }else if (indexPath.row == 3){
+        cell.ContentLab.text = @"一年";
+        if (self.DkYear) {
+            cell.ContentLab.text = self.DkYear;
+        }
+    }
+    else{
+        if (self.CalculatorModel) {
+            NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
+            cell.ContentLab.text = str4;
+        }
+    }
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -175,7 +238,7 @@
             return 81;
     }
     if (indexPath.row == 0) {
-        return 171+30;
+        return 171;
     }
     else if (indexPath.row == 5){
         return 81;
@@ -190,6 +253,35 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
     }
+    if (tag == 1) {
+        if (indexPath.row == 3) {
+            NSArray * array1 = @[@"一年",@"两年",@"三年"];
+//            NSMutableArray * array = [NSMutableArray arrayWithArray:array1];
+            NSMutableArray *array = [NSMutableArray array];
+            for (int i = 0;  i < array1.count; i ++) {
+                [array addObject:[[SelectedListModel alloc] initWithSid:i Title:array1[i]]];
+            }
+            SelectedListView *view = [[SelectedListView alloc] initWithFrame:CGRectMake(0, 0, 280, 0) style:UITableViewStylePlain];
+            view.isSingle = YES;
+            view.array = array;
+            view.selectedBlock = ^(NSArray<SelectedListModel *> *array) {
+                [LEEAlert closeWithCompletionBlock:^{
+                    SelectedListModel *model = array[0];
+                    NSLog(@"选中第%ld行" , model.sid);
+                    self.DkYear = array1[model.sid];
+                    [self getData:[NSString stringWithFormat:@"%ld",(model.sid + 1) * 12] total:@"0"];
+                }];
+            };
+            [LEEAlert alert].config
+            .LeeTitle(@"选择选择贷款年限")
+            .LeeItemInsets(UIEdgeInsetsMake(20, 0, 20, 0))
+            .LeeCustomView(view)
+            .LeeItemInsets(UIEdgeInsetsMake(0, 0, 0, 0))
+            .LeeHeaderInsets(UIEdgeInsetsMake(10, 0, 0, 0))
+            .LeeClickBackgroundClose(YES)
+            .LeeShow();
+        }
+    }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
@@ -201,5 +293,57 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 40;
+}
+-(void)getData : (NSString *)period total:(NSString *)total{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630428";
+    http.parameters[@"carCode"] =self.carcode;
+    if (tag == 0) {
+        http.parameters[@"isTotal"] = @"0";
+        http.parameters[@"period"] = period;
+    }else{
+        http.parameters[@"isTotal"] = @"1";
+        http.parameters[@"period"] = period;
+    }
+    [http postWithSuccess:^(id responseObject) {
+        self.CalculatorModel = [CalculatorModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.leftTable reloadData_tl];
+        [self.rightTable reloadData_tl];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)getcarname:(NSString *)code{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.parameters[@"code"] = code;
+    [http postWithSuccess:^(id responseObject) {
+        self.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.leftTable reloadData_tl];
+        [self.rightTable reloadData_tl];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(NSString *)NumberWithFromatter:(NSString *)moneystr{
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    NSNumber *number = [formatter numberFromString:moneystr];
+    formatter.numberStyle = kCFNumberFormatterDecimalStyle;
+    NSString *string = [formatter stringFromNumber:number];
+    
+    return string;
+}
+
+-(NSMutableAttributedString *)getPriceAttribute:(NSString *)string{
+    
+    NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:string];
+    //目的是想改变 ‘/’前面的字体的属性，所以找到目标的range
+    NSRange range = [string rangeOfString:@"元"];
+    NSRange pointRange = NSMakeRange(0, range.location);
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    dic[NSFontAttributeName] = boldFont(40);
+    //赋值
+    [attribut addAttributes:dic range:pointRange];
+    return attribut;
 }
 @end

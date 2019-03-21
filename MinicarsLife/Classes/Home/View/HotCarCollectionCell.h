@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CarModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HotCarCollectionCell : UICollectionViewCell
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel * desribelab;
 @property (nonatomic,strong) UILabel * moneylab;
 @property (nonatomic,strong) UILabel * personlab;
+@property (nonatomic,strong) CarModel * model;
 @end
 
 NS_ASSUME_NONNULL_END

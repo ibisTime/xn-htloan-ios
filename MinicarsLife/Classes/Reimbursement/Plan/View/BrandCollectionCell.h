@@ -1,8 +1,8 @@
 //
-//  LeftHeadCell.h
+//  BrandCollectionCell.h
 //  MinicarsLife
 //
-//  Created by 梅敏杰 on 2019/3/14.
+//  Created by 梅敏杰 on 2019/3/20.
 //  Copyright © 2019年 QinBao Zheng. All rights reserved.
 //
 
@@ -10,10 +10,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LeftHeadCell : UITableViewCell
+@interface BrandCollectionCell : UICollectionViewCell
 @property (nonatomic,strong) UILabel * titlelab;
-@property (nonatomic,strong) UILabel * moneylab;
-@property (nonatomic,strong) NSString * moneystr;
+@property (nonatomic,strong) UIImageView * logo;
 @end
 
 NS_ASSUME_NONNULL_END

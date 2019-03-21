@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
-
+#import "CarModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarInfoVC : BaseViewController
-
+@property (nonatomic,strong) CarModel * CarModel;
 @end
 
 NS_ASSUME_NONNULL_END
