@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BrandTableView : TLTableView<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic,strong) NSMutableArray * indexArray;
+@property (nonatomic,strong) NSArray * indexArray;
 @property(nonatomic,strong)NSMutableArray *letterResultArr;
 //@property (nonatomic,strong) NSMutableArray<CarModel *> * NormalCarBrands;
 @property (nonatomic , strong)NSArray *normalArray;

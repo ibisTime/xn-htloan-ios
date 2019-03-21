@@ -175,11 +175,38 @@
     http1.code = @"630406";
     http1.parameters[@""] = @"";
     [http1 postWithSuccess:^(id responseObject) {
-        NSMutableArray *array = [NSMutableArray array];
-        array = [self filterMaxItemsArray:responseObject[@"data"] filterKey:@"letter"];
+//        NSMutableArray *array = [NSMutableArray array];
+        NSArray *array = responseObject[@"data"];
         
+        
+        
+        NSMutableArray *allArray = [NSMutableArray array];
+        for(int i=0;i<26;i++)
+        {
+            NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+            NSMutableArray *rowArray = [NSMutableArray array];
+            for (int j = 0; j < array.count; j ++) {
+                
+                if ([str isEqualToString:array[j][@"letter"]]) {
+                    [rowArray addObject:array[j]];
+                }
+            }
+            if (rowArray.count > 0) {
+                
+                [allArray addObject:rowArray];
+            }
+            
+        }
+        
+        NSMutableArray *indexArray = [NSMutableArray array];
+        for (int i = 0; i < allArray.count; i ++) {
+            //        char ch =
+            
+            [indexArray addObject:[NSString stringWithFormat:@"%@",allArray[i][0][@"letter"]]];
+        }
+        self.tableview.indexArray = indexArray;
 //        self.NormalCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:[self filterMaxItemsArray:responseObject[@"data"] filterKey:@"letter"]];
-        self.tableview.normalArray = array;
+        self.tableview.normalArray = allArray;
 //        self.letterResultArr = [ChineseString LetterSortArray:self.NormalCarBrands];
 //        self.tableview.letterResultArr = self.letterResultArr;
         
