@@ -17,10 +17,17 @@
 @property (nonatomic ,assign) BOOL isInsertEdit;//tableview编辑方式的判断
 @property (nonatomic ,strong) CollectBottomView *bottom_view;//底部视图
 @property (nonatomic,strong) NSMutableArray<CollectModel *> * CollectModels;
+
+@property (nonatomic ,strong) NSMutableArray *deleteArray;//删除的数据
 @end
 
 @implementation CollectVC
-
+- (NSMutableArray *)deleteArray{
+    if (!_deleteArray) {
+        self.deleteArray = [NSMutableArray array];
+    }
+    return _deleteArray;
+}
 -(TLTableView *)tableview{
     if (!_tableview) {
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStylePlain];
@@ -76,7 +83,7 @@
     CollectCell * cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
     cell.model = self.CollectModels[indexPath.section];
     UIView *backGroundView = [[UIView alloc]init];
-    backGroundView.backgroundColor = [UIColor clearColor];
+    backGroundView.backgroundColor = kClearColor;
     cell.selectedBackgroundView = backGroundView;
     
     return cell;
@@ -106,7 +113,10 @@
             self.bottom_view.frame = frame;
             [self.view addSubview:self.bottom_view];
         }];
-        
+        [self.deleteArray removeAllObjects];
+        for (int i = 0; i < self.CollectModels.count; i++) {
+            [self.deleteArray addObject:@""];
+        }
         
         
     }else{
@@ -136,7 +146,9 @@
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:i];
                 //全选实现方法
                 [_tableview selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+                [self.deleteArray replaceObjectAtIndex:i withObject:self.CollectModels[i].code];
             }
+            
 //
 //            //点击全选的时候需要清除deleteArray里面的数据，防止deleteArray里面的数据和列表数据不一致
 //            if (self.deleteArray.count >0) {
@@ -150,7 +162,7 @@
             for (int i = 0; i< self.CollectModels.count; i++) {
                 NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
                 [_tableview deselectRowAtIndexPath:indexPath animated:NO];
-
+                [self.deleteArray replaceObjectAtIndex:i withObject:@""];
             }
 
 //            [btn setTitle:@"全选" forState:UIControlStateNormal];
@@ -165,8 +177,24 @@
 }
 
 -(void)deleteData{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630461";
+//    NSArray * codeList = [NSArray array];
+    for (int i = 0; i < self.deleteArray.count; i++) {
+        if ([self.deleteArray[i] isEqualToString:@""]) {
+            [self.deleteArray removeObjectAtIndex:i];
+        }
+    }
+    http.parameters[@"codeList"] = self.deleteArray;
+    [http postWithSuccess:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
     
 }
+
+
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -184,13 +212,31 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.RightButton.selected) {
         NSLog(@"选中");
-//        [self.deleteArray addObject:[self.dataArray objectAtIndex:indexPath.row]];
+        NSString * str = self.CollectModels[indexPath.section].code;
+        if ([self.deleteArray[indexPath.section] isEqualToString:@""]) {
+            [self.deleteArray replaceObjectAtIndex:indexPath.section withObject:str];
+        }
+//        else{
+//            [self.deleteArray replaceObjectAtIndex:indexPath.section withObject:@""];
+//        }
+        
+        NSLog(@"%@",self.deleteArray);
         
     }else{
         NSLog(@"跳转下一页");
     }
 }
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.RightButton.selected) {
+        NSLog(@"取消选中");
+        [self.deleteArray replaceObjectAtIndex:indexPath.section withObject:@""];
 
+        NSLog(@"%@",self.deleteArray);
+
+    }else{
+        NSLog(@"跳转下一页");
+    }
+}
 -(void)getdata{
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
@@ -206,6 +252,9 @@
     [self.tableview addRefreshAction:^{
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
             weakSelf.CollectModels = objs;
+            for (int i = 0; i < weakSelf.CollectModels.count; i++) {
+                [weakSelf.deleteArray addObject:@""];
+            }
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];
         } failure:^(NSError *error) {

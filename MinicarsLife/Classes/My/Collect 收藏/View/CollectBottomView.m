@@ -46,13 +46,15 @@
 
 - (UIButton *)deleteBtn{
     if (!_deleteBtn) {
-        self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _deleteBtn.frame = CGRectMake(self.bounds.size.width - 50, 0, 40, self.bounds.size.height);
-        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:16];
-        [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
-        [_deleteBtn setBackgroundColor:MainColor forState:(UIControlStateNormal)];
-        [_deleteBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        kViewRadius(_deleteBtn, 2);
+//        self.deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        self.deleteBtn = [[UIButton alloc]init];
+        _deleteBtn = [UIButton buttonWithTitle:@"删除" titleColor:kWhiteColor backgroundColor:MainColor titleFont:16 cornerRadius:2];
+        _deleteBtn.frame = CGRectMake(self.bounds.size.width - 90, 10, 75, 32);
+//        _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:16];
+//        [_deleteBtn setTitle:@"删除" forState:UIControlStateNormal];
+//        [_deleteBtn setBackgroundColor:MainColor forState:(UIControlStateNormal)];
+//        [_deleteBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//        kViewRadius(_deleteBtn, 2);
     }
     return _deleteBtn;
 }

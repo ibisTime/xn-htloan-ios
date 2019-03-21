@@ -231,7 +231,7 @@
     }
     else{
         if (self.CarModel.updateDatetime) {
-            cell.contentlab.text = self.CarModel.updateDatetime;
+            cell.contentlab.text = [self.CarModel.updateDatetime convertToDetailDateWithoutHour];
         }
         else
             cell.contentlab.text = @"暂无";
