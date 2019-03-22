@@ -138,6 +138,9 @@
 		367EF90D223F91B400C9921D /* HotBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 367EF90C223F91B400C9921D /* HotBrandCell.m */; };
 		368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368650662240FA0D00FC39CD /* SelectCarCell.m */; };
 		3686506A2240FA2000FC39CD /* SelectcarFootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 368650692240FA2000FC39CD /* SelectcarFootCell.m */; };
+		3698BAF2224482C200EFB576 /* DeployModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3698BAF1224482C200EFB576 /* DeployModel.m */; };
+		3698BAF82244A3D000EFB576 /* BrandCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3698BAF72244A3D000EFB576 /* BrandCollectionReusableView.m */; };
+		3698BAFB2244C09800EFB576 /* SelectBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3698BAFA2244C09800EFB576 /* SelectBrandCell.m */; };
 		36E3A366223B3B9200B26F4F /* CollectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A365223B3B9200B26F4F /* CollectVC.m */; };
 		36E3A36B223B3B9A00B26F4F /* CollectBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A368223B3B9900B26F4F /* CollectBottomView.m */; };
 		36E3A36C223B3B9A00B26F4F /* CollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A36A223B3B9A00B26F4F /* CollectCell.m */; };
@@ -645,6 +648,12 @@
 		368650662240FA0D00FC39CD /* SelectCarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectCarCell.m; sourceTree = "<group>"; };
 		368650682240FA2000FC39CD /* SelectcarFootCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectcarFootCell.h; sourceTree = "<group>"; };
 		368650692240FA2000FC39CD /* SelectcarFootCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectcarFootCell.m; sourceTree = "<group>"; };
+		3698BAF0224482C200EFB576 /* DeployModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeployModel.h; sourceTree = "<group>"; };
+		3698BAF1224482C200EFB576 /* DeployModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeployModel.m; sourceTree = "<group>"; };
+		3698BAF62244A3D000EFB576 /* BrandCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandCollectionReusableView.h; sourceTree = "<group>"; };
+		3698BAF72244A3D000EFB576 /* BrandCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandCollectionReusableView.m; sourceTree = "<group>"; };
+		3698BAF92244C09800EFB576 /* SelectBrandCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectBrandCell.h; sourceTree = "<group>"; };
+		3698BAFA2244C09800EFB576 /* SelectBrandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectBrandCell.m; sourceTree = "<group>"; };
 		36E3A364223B3B9200B26F4F /* CollectVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectVC.h; sourceTree = "<group>"; };
 		36E3A365223B3B9200B26F4F /* CollectVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectVC.m; sourceTree = "<group>"; };
 		36E3A367223B3B9900B26F4F /* CollectBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectBottomView.h; sourceTree = "<group>"; };
@@ -1600,6 +1609,7 @@
 		363B612D223BA12B00585061 /* Classify 车系 */ = {
 			isa = PBXGroup;
 			children = (
+				3698BAEE2244829100EFB576 /* Model */,
 				363B613C223BAA5100585061 /* View */,
 				363B613A223BAA2F00585061 /* Controller */,
 			);
@@ -1738,6 +1748,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3698BAEE2244829100EFB576 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3698BAF0224482C200EFB576 /* DeployModel.h */,
+				3698BAF1224482C200EFB576 /* DeployModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		36AC10EF223901DE00861133 /* Collect 收藏 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1848,6 +1867,8 @@
 		7A0592FB2100AD7900075FE8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3698BAF62244A3D000EFB576 /* BrandCollectionReusableView.h */,
+				3698BAF72244A3D000EFB576 /* BrandCollectionReusableView.m */,
 				7A81BF1B20F84863005699F0 /* ReimbursementTableView.h */,
 				7A81BF1C20F84863005699F0 /* ReimbursementTableView.m */,
 				367EF8EC223F7F4C00C9921D /* BrandTableView.h */,
@@ -2879,6 +2900,8 @@
 				368650662240FA0D00FC39CD /* SelectCarCell.m */,
 				368650682240FA2000FC39CD /* SelectcarFootCell.h */,
 				368650692240FA2000FC39CD /* SelectcarFootCell.m */,
+				3698BAF92244C09800EFB576 /* SelectBrandCell.h */,
+				3698BAFA2244C09800EFB576 /* SelectBrandCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4255,6 +4278,7 @@
 				7A22CDD220EDB2950010059D /* ShippingAddressCell.m in Sources */,
 				B885CB462171F15F001A1258 /* UIButton+CZHExtension.m in Sources */,
 				7A22CDE620EDBE7D0010059D /* Province.m in Sources */,
+				3698BAFB2244C09800EFB576 /* SelectBrandCell.m in Sources */,
 				7A22CE1220EE24680010059D /* MessageVC.m in Sources */,
 				367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */,
 				7A8A5BFE20E37FCA002D9A48 /* TermsOfServiceView.m in Sources */,
@@ -4263,6 +4287,7 @@
 				7A3CBD9A20F3217300D795E5 /* UIScrollView+TLAdd.m in Sources */,
 				36E3A37E223B3BBD00B26F4F /* LeftFootCell.m in Sources */,
 				B834010B21D75A350089D4DE /* QNIpModel.m in Sources */,
+				3698BAF2224482C200EFB576 /* DeployModel.m in Sources */,
 				7A8A5CA020E4D91D002D9A48 /* USERXX.m in Sources */,
 				7A3CBDCD20F4916400D795E5 /* CreditReportModel.m in Sources */,
 				B88A6D002185DC0B007683AE /* MoblieCodeVC.m in Sources */,
@@ -4318,6 +4343,7 @@
 				7A3CBDFA20F4AE3100D795E5 /* FontSizeView.m in Sources */,
 				363B613F223BAB2000585061 /* ClassifyCell.m in Sources */,
 				36428DAE223F37B1007B7D24 /* AskSuccessView.m in Sources */,
+				3698BAF82244A3D000EFB576 /* BrandCollectionReusableView.m in Sources */,
 				B885CB0D2171C9ED001A1258 /* WSDatePickerView.m in Sources */,
 				7A3CBE2620F5F40B00D795E5 /* AddBankCardVC.m in Sources */,
 				7A8A5C4220E3DC92002D9A48 /* UIView+Banner.m in Sources */,

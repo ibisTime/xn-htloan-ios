@@ -14,6 +14,7 @@
 #import "CallNowView.h"
 #import "AskSuccessView.h"
 #import "CalculatorVC.h"
+#import "DeployModel.h"
 @interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
 {
     CallNowView * callNowView;
@@ -22,6 +23,8 @@
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) UIView * bottomview;
 @property (nonatomic,strong) UIButton * collectbtn;
+@property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
+@property (nonatomic,strong) NSString * phonestring;
 @end
 
 @implementation CarInfoVC
@@ -62,6 +65,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self bannerLoadData];
+    [self getCarDeploy];
+    [self loadData];
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 522.00/750.00 * SCREEN_WIDTH)];
     [view addSubview:self.scrollView];
     self.tableview.tableHeaderView = view;
@@ -116,7 +121,8 @@
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
     if (sender.tag == 1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:10086"]];
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:10086"]];
+        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",self.phonestring]]];
     }
     if (sender.tag == 2) {
         [UIView animateWithDuration:0.1 animations:^{
@@ -165,7 +171,13 @@
     else if (section == 1){
         return 3;
     }
-    return 3;
+    if (self.DeployModels.count <= 4) {
+        return 1;
+    }
+    else if (self.DeployModels.count > 4 && self.DeployModels.count <= 6 ){
+        return 2;
+    }else
+        return 3;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -186,21 +198,34 @@
             if(cell==nil){
                 cell=[[DeployFirstCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+//            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+//            cell.model = [DeployModel mj_objectWithKeyValues:self.DeployModels[indexPath.row]];
+            cell.DeployModels = self.DeployModels;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
         else{
+            
             static NSString *rid=@"DeployLast";
-            
             DeployLastCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
-            
             if(cell==nil){
-                
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
+            }
+            if (indexPath.row == 1) {
+                if (self.DeployModels.count == 6) {
+                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 2)];
+                }
+                else
+                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 1)];
                 
             }
-            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
+            else{
+                if (self.DeployModels.count == 8) {
+                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 2)];
+                }
+                else
+                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 1)];
+            }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -318,6 +343,32 @@
         WGLog(@"%@",error);
     }];
 }
-
-
+-(void)getCarDeploy{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630448";
+    http.parameters[@"carCode"] = self.CarModel.code;
+    [http postWithSuccess:^(id responseObject) {
+        self.DeployModels = [DeployModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.tableview reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+- (void)loadData
+{
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = TheCalculatorURL;
+    http.showView = self.view;
+    http.parameters[@"limit"] = @"20";
+    http.parameters[@"start"] = @"1";
+    http.parameters[@"ckey"] = @"telephone";
+    http.parameters[@"orderDir"] = @"asc";
+    [http postWithSuccess:^(id responseObject) {
+        self.phonestring = responseObject[@"data"][@"list"][0][@"cvalue"];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
 @end

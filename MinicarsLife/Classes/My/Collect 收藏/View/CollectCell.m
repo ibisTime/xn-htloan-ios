@@ -73,23 +73,18 @@
     return self;
 }
 
--(void)setSelected:(BOOL)selected animated:(BOOL)animated{
-    if (!self.editing) {
-        return;
-    }
-    [super setSelected:selected animated:animated];
-    
-    if (self.editing) {
-        
-        self.contentView.backgroundColor = [UIColor clearColor];
-        self.backgroundColor = [UIColor clearColor];
-        //        self.textLabel.backgroundColor = [UIColor clearColor];
-        //        self.detailTextLabel.backgroundColor = [UIColor clearColor];
-//        self.label.backgroundColor = [UIColor clearColor];
-        
-        
-    }
-}
+//-(void)setSelected:(BOOL)selected animated:(BOOL)animated{
+//    if (!self.editing) {
+//        return;
+//    }
+//    [super setSelected:selected animated:animated];
+//
+//    if (self.editing) {
+//
+//        self.contentView.backgroundColor = [UIColor clearColor];
+//        self.backgroundColor = [UIColor clearColor];
+//    }
+//}
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated{
     [super setEditing:editing animated:animated];
@@ -117,6 +112,9 @@
     self.contentlab.text = car.Description;
     self.describdlab.text = car.brandName;
     self.titlelab.text = car.name;
-    [self.image sd_setImageWithURL:[NSURL URLWithString:[car.pic convertImageUrl]]];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[car.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.image.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    self.image.clipsToBounds = YES;
 }
 @end

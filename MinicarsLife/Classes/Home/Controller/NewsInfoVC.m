@@ -55,6 +55,7 @@
     http.parameters[@"code"] = self.code;
     [http postWithSuccess:^(id responseObject) {
         self.model = [NewsModel mj_objectWithKeyValues:responseObject[@"data"]];
+        self.status.text = self.model.tag;
         self.titlelab.text = [NSString stringWithFormat:@"         %@", self.model.title];
 //        self.authorlab.text = [NSString stringWithFormat:@"作者：%@", self.model.author];
         [self.titlelab sizeToFit];

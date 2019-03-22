@@ -53,7 +53,10 @@
 
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
-    [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+    [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.ClassifyLogo.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    self.ClassifyLogo.clipsToBounds = YES;
     self.ClassifyName.text = carmodel.name;
     self.ClassiftType.text = carmodel.remark;
     self.ClassifyPrice.text = [NSString stringWithFormat:@"%.1f-%.1f万",[carmodel.lowest floatValue]/10000,[carmodel.highest floatValue]/10000];

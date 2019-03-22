@@ -31,7 +31,7 @@
         self.ContentLab.text = @"410，000元";
         [self addSubview:self.ContentLab];
         
-        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, (self.bounds.size.height - 10)/2, 10, 10)];
+        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 15 - 15, (self.bounds.size.height - 10)/2, 6, 11)];
         img.image = kImage(@"you");
         [self addSubview:img];
         

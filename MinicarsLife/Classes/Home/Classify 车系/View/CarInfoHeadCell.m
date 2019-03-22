@@ -90,7 +90,11 @@
     
     self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
-    NSString * str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000];
+    NSString * str;
+    if (CarModel.salePrice.length > 5) {
+        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000];
+    }else
+        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]];
     NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:str];
     [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
     self.moneylab.attributedText = att;

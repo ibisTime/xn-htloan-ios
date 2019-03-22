@@ -45,7 +45,7 @@
         label.text = @"查看详情";
         [self addSubview:label];
         
-        UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 40, v1.yy + 5, 15, 15)];
+        UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 21, v1.yy + 10, 6, 11)];
         image.image = kImage(@"you");
         [self addSubview:image];
         

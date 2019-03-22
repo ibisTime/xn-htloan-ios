@@ -57,44 +57,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MinicarsLife/Classes/Reimbursement/SearchVC.m"
-            timestampString = "574839182.514395"
+            filePath = "MinicarsLife/Classes/Home/View/HomeTableView.m"
+            timestampString = "574942579.277016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "-searchBarSearchButtonClicked:"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-tableView:heightForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/Classify &#x8f66;&#x7cfb;/Controller/ClassifyListVC.m"
+            timestampString = "574942311.456264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "-[SearchVC searchBarSearchButtonClicked:]"
+                  symbolName = "-[ClassifyListVC viewDidLoad]"
                   moduleName = "MinicarsLife"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Reimbursement/SearchVC.m"
-                  timestampString = "574857806.552938"
+                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Home/Classify%20%E8%BD%A6%E7%B3%BB/Controller/ClassifyListVC.m"
+                  timestampString = "574942579.849277"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "300">
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "180">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__41-[SearchVC searchBarSearchButtonClicked:]_block_invoke"
+                  symbolName = "__29-[ClassifyListVC viewDidLoad]_block_invoke"
                   moduleName = "MinicarsLife"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Reimbursement/SearchVC.m"
-                  timestampString = "574857806.555869"
+                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Home/Classify%20%E8%BD%A6%E7%B3%BB/Controller/ClassifyListVC.m"
+                  timestampString = "574942579.851686"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "20">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -103,13 +119,13 @@
                   symbolName = "__destroy_helper_block_"
                   moduleName = "MinicarsLife"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Reimbursement/SearchVC.m"
-                  timestampString = "574857806.558636"
+                  urlString = "file:///Users/meiminjie/Desktop/xn-htloan-ios/MinicarsLife/Classes/Home/Classify%20%E8%BD%A6%E7%B3%BB/Controller/ClassifyListVC.m"
+                  timestampString = "574942579.853989"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "20">
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -120,13 +136,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MinicarsLife/Classes/Reimbursement/SearchVC.m"
-            timestampString = "574839182.514461"
+            filePath = "MinicarsLife/Classes/Home/Classify &#x8f66;&#x7cfb;/Controller/ClassifyListVC.m"
+            timestampString = "574942312.897491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "-searchBarSearchButtonClicked:"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-viewDidLoad"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

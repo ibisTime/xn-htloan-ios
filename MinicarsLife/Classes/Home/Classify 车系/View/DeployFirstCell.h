@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CarModel.h"
+//#import "CarModel.h"
+#import "DeployModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DeployFirstCell : UITableViewCell
-@property (nonatomic,strong) CarModel * CarModel;
+//@property (nonatomic,strong) CarModel * CarModel;
+@property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
 @end
 
 NS_ASSUME_NONNULL_END

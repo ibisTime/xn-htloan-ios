@@ -27,11 +27,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    MinicarsLifeWeakSelf;
     self.title = @"车系列表";
-//    [self.tableview addRefreshAction:^{
-//        
-//    }];
-//    [self.tableview beginRefreshing];
+    if (self.brandcode) {
+        [self.tableview addRefreshAction:^{
+            [weakSelf getClassifyListData];
+        }];
+        [self.tableview beginRefreshing];
+    }
+    
     
     [self.view addSubview:self.tableview];
 }
@@ -79,6 +83,20 @@
         
     } failure:^(NSError *error) {
         
+    }];
+}
+
+-(void)getClassifyListData{
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630416";
+    http2.parameters[@"brandCode"] = self.brandcode;
+    [http2 postWithSuccess:^(id responseObject) {
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.tableview reloadData_tl];
+        [self.tableview endRefreshHeader];
+    } failure:^(NSError *error) {
+        [self.tableview endRefreshHeader];
     }];
 }
 @end

@@ -121,7 +121,10 @@
 -(void)setCarmodel:(CarModel *)carmodel{
     
     _carmodel = carmodel;
-    [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.image.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    self.image.clipsToBounds = YES;
     self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     self.timelab.text = [self.carmodel.updateDatetime convertToDetailDateWithoutHour];

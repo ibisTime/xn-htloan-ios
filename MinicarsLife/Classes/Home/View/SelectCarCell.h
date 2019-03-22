@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SelectCarCell : UICollectionViewCell
 @property (nonatomic,strong) UILabel * titlelab;
+@property (nonatomic,strong) UIImageView * logo;
 @end
 
 NS_ASSUME_NONNULL_END
