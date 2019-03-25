@@ -30,8 +30,11 @@
 @implementation CalculatorVC
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self getcarname:self.carcode];
-    [self getData:@"12" total:@"0"];
+    if (self.carcode) {
+        [self getcarname:self.carcode];
+        [self getData:@"12" total:@"0"];
+    }
+    
     
     //去除导航栏下方的横线
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]
@@ -56,7 +59,10 @@
         [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
     }];
-    [self.leftTable beginRefreshing];
+    if (self.carcode) {
+        [self.leftTable beginRefreshing];
+    }
+    
     
     [self.view addSubview:self.leftTable];
     
@@ -68,8 +74,9 @@
         [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
     }];
-    [self.rightTable beginRefreshing];
-    
+    if (self.carcode) {
+        [self.rightTable beginRefreshing];
+    }
     [self.view addSubview:self.rightTable];
     
 }

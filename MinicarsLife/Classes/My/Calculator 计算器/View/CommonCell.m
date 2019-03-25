@@ -35,7 +35,7 @@
         img.image = kImage(@"you");
         [self addSubview:img];
         
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, self.bounds.size.height - 1, SCREEN_WIDTH - 30, 1)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 49, SCREEN_WIDTH - 30, 1)];
         v1.backgroundColor = kLineColor;
         [self addSubview:v1];
         
