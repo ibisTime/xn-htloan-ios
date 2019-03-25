@@ -39,7 +39,7 @@
         lineView.backgroundColor = BackColor;
         [self addSubview:lineView];
 
-        _youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 26, 19.5, 6, 11)];
+        _youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 21, 19.5, 6, 11)];
         _youImage.image = HGImage(@"more");
         [self addSubview:_youImage];
 

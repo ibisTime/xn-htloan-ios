@@ -39,7 +39,7 @@
         _calculateButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
         [self addSubview:_calculateButton];
 
-        _youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 13, 6, 11)];
+        _youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 21, 13, 6, 11)];
         _youImage.image = HGImage(@"more");
         [self addSubview:_youImage];
 

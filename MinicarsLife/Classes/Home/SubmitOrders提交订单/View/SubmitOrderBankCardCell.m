@@ -71,7 +71,7 @@
         [self addSubview:self.cardNumberLbl];
         [self addSubview:self.backLabel];
 
-        youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 22.5, 50/2 - 5.5, 6, 11)];
+        youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 21, 50/2 - 5.5, 6, 11)];
         youImage.image = HGImage(@"more");
         [self addSubview:youImage];
 

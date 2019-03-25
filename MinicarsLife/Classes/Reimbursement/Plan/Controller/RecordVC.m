@@ -244,13 +244,14 @@
                         [rowArray addObject:array[j]];
                     }
                 }
+                
                 if (rowArray.count > 0) {
-                    
+
+//                    [allArray addObject:rowArray];
+       
                     [weakSelf.allArray addObject:rowArray];
                 }
-                
             }
-            
             NSMutableArray *indexArray = [NSMutableArray array];
             for (int i = 0; i < weakSelf.allArray.count; i ++) {
                 NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];

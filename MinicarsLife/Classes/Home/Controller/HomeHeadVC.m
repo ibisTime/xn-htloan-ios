@@ -72,7 +72,7 @@
         // 设置列间距
 //        layout.minimumInteritemSpacing = 15;
         // 设置行间距
-        layout.minimumLineSpacing = 5;
+        layout.minimumLineSpacing = 10;
         //每个分区的四边间距UIEdgeInsetsMake
         layout.sectionInset = UIEdgeInsetsMake(10, 24, 10, 24);
         // 设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
@@ -114,6 +114,7 @@
         cell.titlelab.text = self.CarClassifyModels[indexPath.row].name;
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
         cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+//        cell.backgroundColor = [UIColor redColor];
         //超出容器范围的切除掉
         cell.logo.clipsToBounds = YES;
         return cell;
@@ -125,16 +126,25 @@
         return cell;
     }
     SelectBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectBrand" forIndexPath:indexPath];
+//    cell.backgroundColor = [UIColor redColor];
     if (self.CarBrandModels) {
         CarModel * model =[CarModel mj_objectWithKeyValues:self.CarBrandModels[indexPath.row]];
         cell.titlelab.text = model.name;
+        
+        
+        
         [cell.titlelab sizeToFit];
         cell.titlelab.frame = CGRectMake(((SCREEN_WIDTH - 75) / 4 + cell.titlelab.width)/2.5, 0, cell.titlelab.width, 20);
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
         cell.logo.contentMode =UIViewContentModeScaleAspectFill;
         //超出容器范围的切除掉
         cell.logo.clipsToBounds = YES;
-        cell.logo.frame = CGRectMake(cell.titlelab.x - 20, 0.5, 19, 19);
+        
+        
+        
+        
+        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width + 20)/2, 2.5, 15, 15);
+        cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.titlelab.width, 20);
     }
     
     return cell;
