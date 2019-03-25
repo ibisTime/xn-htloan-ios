@@ -15,7 +15,8 @@
     if (self) {
         
         UIView * topview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT - (718.00/1334.00)*SCREEN_HEIGHT)];
-        topview.alpha = 0.5;
+        topview.alpha = 0.3;
+        topview.backgroundColor = kBlackColor;
         [self addSubview:topview];
         
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - ((718.00/1334.00)*SCREEN_HEIGHT), SCREEN_WIDTH, (718.00/1334.00)*SCREEN_HEIGHT)];
@@ -125,11 +126,21 @@
     self.image.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     self.image.clipsToBounds = YES;
-    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
+    self.titlelab.text = [NSString stringWithFormat:@"%@ ",self.carmodel.name];
+//    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     self.timelab.text = [self.carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.1f",[self.carmodel.salePrice floatValue]/10000];
-    self.contentlab.text =  [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
+    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[self.carmodel.salePrice floatValue]/10000];
+//    self.contentlab.text =  [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
+    
+//    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.version,carmodel.seriesName,carmodel.fromPlace];
+    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+    
+    
+    self.contentlab.text = @"";
+    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
+    for (int i = 0; i < model.count; i++) {
+        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+    }
 }
 -(void)clickask{
     if (self.phone.text.length == 0) {

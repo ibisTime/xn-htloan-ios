@@ -109,12 +109,21 @@
     CarModel * car = [CarModel mj_objectWithKeyValues:model.car];
     self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[car.salePrice floatValue]/10000];
     self.timelab.text = [car.updateDatetime convertToDetailDateWithoutHour];
-    self.contentlab.text = car.Description;
-    self.describdlab.text = car.brandName;
+//    self.contentlab.text = car.Description;
+//    self.describdlab.text = car.brandName;
     self.titlelab.text = car.name;
     [self.image sd_setImageWithURL:[NSURL URLWithString:[car.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     self.image.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     self.image.clipsToBounds = YES;
+    
+    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",car.version,[USERXX convertNull: car.outsideColor],[USERXX convertNull: car.insideColor], [USERXX convertNull:car.fromPlace]];
+    
+    
+    self.contentlab.text = @"";
+    NSMutableArray <DeployModel *> * DeployModels =[DeployModel mj_objectArrayWithKeyValuesArray:car.caonfigList];
+    for (int i = 0; i < DeployModels.count; i++) {
+        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,DeployModels[i].config[@"name"]];
+    }
 }
 @end

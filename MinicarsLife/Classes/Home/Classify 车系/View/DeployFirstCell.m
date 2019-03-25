@@ -26,17 +26,13 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-//        NSArray * titlearray = @[@"定速巡航",@"多功能方向盘",@"无钥匙进入",@"胎压监测"];
-//        NSArray * imagearray = @[@"1",@"2",@"3",@"2"];
         for (int i = 0; i < 4; i++) {
+            UIImageView * logo = [[UIImageView alloc]initWithFrame:CGRectMake(10 + (SCREEN_WIDTH / 4) * i, 0, ((SCREEN_WIDTH - 80) / 4), 40)];
+            logo.tag = 1000 + i;
+            [self addSubview:logo];
             UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
-            button.frame = CGRectMake(0 + (SCREEN_WIDTH / 4) * i, 0, (SCREEN_WIDTH / 4), 80);
-//            [button setTitle:titlearray[i] forState:(UIControlStateNormal)];
+            button.frame = CGRectMake(0 + (SCREEN_WIDTH / 4) * i, logo.yy, (SCREEN_WIDTH / 4), 20);
             button.tag = 100 + i;
-//            [button SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:0 imagePositionBlock:^(UIButton *button) {
-//                [button setImage:imagearray[i] forState:(UIControlStateNormal)];
-//            }];
-            
             [self addSubview:button];
         }
     }
@@ -50,6 +46,9 @@
         UIButton * button1 = [self viewWithTag:i + 100];
         DeployModel* model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
         [button1 setTitle:model.config[@"name"] forState:(UIControlStateNormal)];
+        
+        UIImageView * logo = [self viewWithTag:1000 + i];
+        [logo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
 //        button1.titleLabel.uiin
 //        [button1 SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:1 imagePositionBlock:^(UIButton *button) {
 //            [button setImage:model.config[@"pic"] forState:(UIControlStateNormal)];

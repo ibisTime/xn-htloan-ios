@@ -73,10 +73,17 @@
     self.image.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     self.image.clipsToBounds = YES;
-    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.brandName,carmodel.seriesName,carmodel.name];
+    self.titlelab.text = [NSString stringWithFormat:@"%@",carmodel.name];
     self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
     self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000 ];
-    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.brandName,carmodel.seriesName,carmodel.name];
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.brandName,carmodel.seriesName,carmodel.name];
+    
+    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+    
+    
+    self.contentlab.text = @"";
+    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
+    for (int i = 0; i < model.count; i++) {
+        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+    }
 }
 @end

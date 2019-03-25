@@ -75,11 +75,9 @@
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
         vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //        if (vc.models.count > 0) {
         vc.title = title;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-        //        }
         
     } failure:^(NSError *error) {
         

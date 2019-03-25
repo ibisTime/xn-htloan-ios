@@ -37,17 +37,29 @@
 //    self.SearchBar.layer.borderWidth = 1;
     self.SearchBar.placeholder = @"请搜索品牌或车系";
     self.SearchBar.backgroundColor = kClearColor;
-//    self.SearchBar.barStyle = UIBarStyleBlack;
     
-    UIImage* searchBarBg = [self GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
-    [self.SearchBar setBackgroundImage:searchBarBg];
+//    UIImage* searchBarBg = [self GetImageWithColor:[UIColor clearColor] andHeight:33.0f];
+//    [self.SearchBar setBackgroundImage:searchBarBg];
+
     
+    for (UIView *view in self.SearchBar.subviews) {
+        // for before iOS7.0
+        if ([view isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+            [view removeFromSuperview];
+            break;
+        }
+        // for later iOS7.0(include)
+        if ([view isKindOfClass:NSClassFromString(@"UIView")] && view.subviews.count > 0) {
+            [[view.subviews objectAtIndex:0] removeFromSuperview];
+            break;
+        }
+    }
     
     
     [view addSubview:self.SearchBar];
     
     UIButton * button = [UIButton buttonWithTitle:@"搜索" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16 cornerRadius:0];
-    button.frame = CGRectMake(self.SearchBar.xx + 6, 10, 33, 22.5);
+    button.frame = CGRectMake(self.SearchBar.xx + 17, 10, 33, 22.5);
     [button addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:button];
     
@@ -63,7 +75,7 @@
     // 设置布局方向(滚动方向)
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 69, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#B9B9B9")];
+    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 25, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#B9B9B9")];
     label.text = @"热门车系";
     [self.view addSubview:label];
     
@@ -119,16 +131,20 @@
 }
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630426";
-    http.parameters[@"queryName"] = searchBar.text;
-    [http postWithSuccess:^(id responseObject) {
-        ClassifyListVC * vc = [ClassifyListVC new];
-        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSError *error) {
-        
-    }];
+    if (searchBar.text.length == 0) {
+        [TLAlert alertWithMsg:@"请输入搜索内容"];
+    }else{
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630426";
+        http.parameters[@"queryName"] = searchBar.text;
+        [http postWithSuccess:^(id responseObject) {
+            ClassifyListVC * vc = [ClassifyListVC new];
+            vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.navigationController pushViewController:vc animated:YES];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
 }
 -(void)gethotclassify{
     TLNetworking * http = [[TLNetworking alloc]init];

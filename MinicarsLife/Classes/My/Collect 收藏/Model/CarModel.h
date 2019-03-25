@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "DeployModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarModel : NSObject
@@ -63,7 +63,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * procedure;
 @property (nonatomic,copy) NSString * isCollect;
 @property (nonatomic,copy) NSString * collectNumber;
+@property (nonatomic,copy) NSString * version;
+@property (nonatomic,copy) NSString * outsideColor;
+@property (nonatomic,copy) NSString * insideColor;
 @property (nonatomic,copy) NSMutableArray<CarModel *> * cars;
+@property (nonatomic,copy) NSMutableArray<DeployModel *> * caonfigList;
 /**
  "price": 0,
  "highest": 0,

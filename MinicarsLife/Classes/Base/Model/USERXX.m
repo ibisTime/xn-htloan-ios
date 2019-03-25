@@ -148,4 +148,21 @@
     // 4.显示弹框
     [_popView pop];
 }
++ (NSString*)convertNull:(id)object{
+    if ([object isEqual:[NSNull null]]) {
+        return @"";
+    }
+    else if ([object isKindOfClass:[NSNull class]])
+    {
+        return @"";
+    }
+    else if ([object isEqualToString:@"(null)"])
+    {
+        return @"";
+    }
+    else if (object==nil){
+        return @"";
+    }
+    return object;
+}
 @end

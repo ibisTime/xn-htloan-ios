@@ -17,8 +17,10 @@
 -(TLTableView *)tableview{
     if (!_tableview) {
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
+        if (self.models.count > 0) {
         _tableview.delegate = self;
         _tableview.dataSource = self;
+        }
         [_tableview registerClass:[ClassifyInfoCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableview;
@@ -57,7 +59,8 @@
         [v2 addSubview:img];
         
         UILabel * label = [UILabel labelWithFrame:CGRectMake(img.xx + 4, 0, 30, 22) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
-        label.text = @"549";
+//        label.text = @"549";
+        label.text = self.models[0].picNumber;
         [v2 addSubview:label];
         
         [v1 addSubview:v2];
@@ -67,9 +70,8 @@
         
         [view addSubview:image];
         self.tableview.tableHeaderView = view;
-        [self.view addSubview:self.tableview];
     }
-    
+    [self.view addSubview:self.tableview];
     // Do any additional setup after loading the view.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -107,7 +109,6 @@
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
         CarInfoVC * vc = [CarInfoVC new];
-//        vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
         vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {

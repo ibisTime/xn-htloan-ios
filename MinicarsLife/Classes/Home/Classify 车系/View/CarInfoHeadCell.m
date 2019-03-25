@@ -88,8 +88,8 @@
 -(void)setCarModel:(CarModel *)CarModel{
     _CarModel = CarModel;
     
-    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    self.titlelab.text = [NSString stringWithFormat:@"%@",CarModel.name];
+//    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     NSString * str;
     if (CarModel.salePrice.length > 5) {
         str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000];
@@ -99,6 +99,15 @@
     [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
     self.moneylab.attributedText = att;
     
-    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+//    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    
+    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",CarModel.version,[USERXX convertNull: CarModel.outsideColor],[USERXX convertNull: CarModel.insideColor], [USERXX convertNull:CarModel.fromPlace]];
+    
+    
+    self.contentlab.text = @"";
+    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:CarModel.caonfigList];
+    for (int i = 0; i < model.count; i++) {
+        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+    }
 }
 @end
