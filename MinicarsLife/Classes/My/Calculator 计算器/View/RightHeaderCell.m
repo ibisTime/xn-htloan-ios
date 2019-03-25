@@ -36,29 +36,40 @@
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, self.moneylab.yy + 5, SCREEN_WIDTH - 30, 1)];
         v1.backgroundColor = kLineColor;
+        v1.alpha = 0.3;
         [self addSubview:v1];
         
         for (int i = 0; i < 3; i ++) {
             UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0 + SCREEN_WIDTH / 3 * i, self.moneylab.yy + 10, SCREEN_WIDTH / 3, 70)];
             UILabel * money = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
             money.tag = i + 10;
-            money.text = @"123456";
+//            money.text = @"123456";
             
             [view addSubview:money];
             
-            UILabel * title = [UILabel labelWithFrame:CGRectMake(0, money.yy + 5, SCREEN_WIDTH / 3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+            UILabel * title = [UILabel labelWithFrame:CGRectMake(0, money.yy, SCREEN_WIDTH / 3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
             title.text = @"月供（元）";
             title.tag = i +100;
             [view addSubview:title];
             
             if (i < 2) {
-                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 20, 1, 40)];
+                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 25, 1, 30)];
                 v1.backgroundColor = kLineColor;
+                v1.alpha = 0.3;
                 [self addSubview:v1];
             }
             
             [self addSubview:view];
         }
+        
+        UILabel * l1 = [self viewWithTag:100];
+        l1.text = @"月供(元)";
+        
+        UILabel * l2 = [self viewWithTag:101];
+        l2.text = @"多花费(元)";
+        
+        UILabel * l3 = [self viewWithTag:102];
+        l3.text = @"总花费(元)";
         
     }
     return self;

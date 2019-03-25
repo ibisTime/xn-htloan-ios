@@ -53,10 +53,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    MinicarsLifeWeakSelf;
 //    self.title = @"我的收藏";
     [self getdata];
     
     [self.view addSubview:self.tableview];
+    [self.tableview addRefreshAction:^{
+        [weakSelf getdata];
+    }];
+    [self.tableview beginRefreshing];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -238,38 +243,55 @@
     }
 }
 -(void)getdata{
-    MinicarsLifeWeakSelf;
-    TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
-//    TLNetworking * help = [[TLNetworking alloc]init];
-    help.code = @"630465";
-//    help.parameters[@"limit"] = @"10";
-    help.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
-    help.parameters[@"toType"] = @"0";
-    help.parameters[@"type"] = self.type;
-    [help modelClass:[CollectModel class]];
-    help.tableView = self.tableview;
-    help.isCurrency = YES;
-    [self.tableview addRefreshAction:^{
-        [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
-            weakSelf.CollectModels = objs;
-            for (int i = 0; i < weakSelf.CollectModels.count; i++) {
-                [weakSelf.deleteArray addObject:@""];
-            }
-            [weakSelf.tableview reloadData_tl];
-            [weakSelf.tableview endRefreshHeader];
-        } failure:^(NSError *error) {
-            [weakSelf.tableview endRefreshHeader];
-        }];
+//    MinicarsLifeWeakSelf;
+//    TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
+////    TLNetworking * help = [[TLNetworking alloc]init];
+//    help.code = @"630465";
+////    help.parameters[@"limit"] = @"10";
+//    help.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+//    help.parameters[@"toType"] = @"0";
+//    help.parameters[@"type"] = self.type;
+//    [help modelClass:[CollectModel class]];
+//    help.tableView = self.tableview;
+//    help.isCurrency = YES;
+//    [self.tableview addRefreshAction:^{
+//        [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
+//            weakSelf.CollectModels = objs;
+////            for (int i = 0; i < weakSelf.CollectModels.count; i++) {
+////                [weakSelf.deleteArray addObject:@""];
+////            }
+//            [weakSelf.tableview reloadData_tl];
+//            [weakSelf.tableview endRefreshHeader];
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshHeader];
+//        }];
+//    }];
+//    [self.tableview addLoadMoreAction:^{
+//        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+//            weakSelf.CollectModels = objs;
+//            [weakSelf.tableview reloadData_tl];
+//            [weakSelf.tableview endRefreshFooter];
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshFooter];
+//        }];
+//    }];
+//    [self.tableview beginRefreshing];
+    
+    
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630467";
+    http.parameters[@"toType"] = @"0";
+    http.parameters[@"type"] = self.type;
+    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        self.CollectModels = [CollectModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        for (int i = 0; i < self.CollectModels.count; i++) {
+            [self.deleteArray addObject:@""];
+        }
+        [self.tableview reloadData_tl];
+        [self.tableview endRefreshHeader];
+    } failure:^(NSError *error) {
+        
     }];
-    [self.tableview addLoadMoreAction:^{
-        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-            weakSelf.CollectModels = objs;
-            [weakSelf.tableview reloadData_tl];
-            [weakSelf.tableview endRefreshFooter];
-        } failure:^(NSError *error) {
-            [weakSelf.tableview endRefreshFooter];
-        }];
-    }];
-    [self.tableview beginRefreshing];
 }
 @end

@@ -332,7 +332,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     view.backgroundColor = kWhiteColor;
-    UILabel * label = [UILabel labelWithFrame:view.frame textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+    UILabel * label = [UILabel labelWithFrame:view.frame textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     label.text = @"*此结果仅供参考";
     [view addSubview:label];
     return view;

@@ -25,7 +25,7 @@
     
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
     view.backgroundColor = kWhiteColor;
-    self.status = [UILabel labelWithFrame:CGRectMake(15, 23, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
+    self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
     self.status.text = @"原创";
     kViewRadius(self.status, 1);
     [view addSubview:self.status];
