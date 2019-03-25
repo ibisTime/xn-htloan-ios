@@ -32,6 +32,10 @@
         label2.tag = 1001;
 //        label2.text = @"·2气";
         [self addSubview:label2];
+        
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15,44 , SCREEN_WIDTH-30, 1)];
+        v1.backgroundColor = kLineColor;
+        [self addSubview:v1];
     }
     return self;
 }

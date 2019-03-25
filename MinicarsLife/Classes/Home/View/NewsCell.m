@@ -32,6 +32,7 @@
     if (self) {
         self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 120 - 15, 10, 120, 85)];
 //        self.photo.image = kImage(@"2");
+        kViewRadius(self.photo, 2);
         [self addSubview:self.photo];
         
         self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];

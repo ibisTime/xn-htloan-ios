@@ -25,6 +25,8 @@
 @property (nonatomic,strong) UIButton * collectbtn;
 @property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
 @property (nonatomic,strong) NSString * phonestring;
+@property (nonatomic,strong) NSArray * firstarray;
+@property (nonatomic,strong) NSArray * lastarray;
 @end
 
 @implementation CarInfoVC
@@ -191,13 +193,23 @@
     else if (section == 1){
         return 3;
     }
-    if (self.DeployModels.count <= 4) {
+    
+    if (self.firstarray.count < 0) {
+        return 0;
+        }
+    if (self.lastarray.count == 0) {
         return 1;
     }
-    else if (self.DeployModels.count > 4 && self.DeployModels.count <= 6 ){
-        return 2;
-    }else
-        return 3;
+    NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
+    return 1 + arr.count;
+    
+//    if (self.DeployModels.count <= 4) {
+//        return 1;
+//    }
+//    else if (self.DeployModels.count > 4 && self.DeployModels.count <= 6 ){
+//        return 2;
+//    }else
+//        return 3;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -225,26 +237,29 @@
             return cell;
         }
         else{
-            
             static NSString *rid=@"DeployLast";
             DeployLastCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
             if(cell==nil){
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-            if (indexPath.row == 1) {
-                if (self.DeployModels.count == 6) {
-                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 2)];
-                }
-                else
-                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 1)];
-                
-            }
-            else{
-                if (self.DeployModels.count == 8) {
-                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 2)];
-                }
-                else
-                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 1)];
+//            if (indexPath.row == 1) {
+//                if (self.DeployModels.count == 6) {
+//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 2)];
+//                }
+//                else
+//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 1)];
+//
+//            }
+//            else{
+//                if (self.DeployModels.count == 8) {
+//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 2)];
+//                }
+//                else
+//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 1)];
+//            }
+            NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
+            for (int i = 0; i < arr.count; i ++) {
+                cell.DeployModels = (NSMutableArray *)arr[i];
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -369,6 +384,13 @@
     http.parameters[@"carCode"] = self.CarModel.code;
     [http postWithSuccess:^(id responseObject) {
         self.DeployModels = [DeployModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        
+        NSArray * arr = [self splitArray:self.DeployModels withSubSize:4];
+        self.firstarray = [NSArray array];
+        self.firstarray = arr[0];
+        self.lastarray = [NSArray array];
+        self.lastarray = arr[1];
+        
         [self.tableview reloadData];
     } failure:^(NSError *error) {
         
@@ -403,4 +425,31 @@
         
     }];
 }
+
+-(NSArray *)splitArray: (NSArray *)array withSubSize : (int )subSize{
+    
+//    将数组拆分为指定长度的个数
+    unsigned long count = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1);
+//    用来保存制定长度数组的可变数组对象
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    //利用数组个数迸行循坏，将指定长度的元素加入数组
+    for(int i=0;i<count;i++){
+//    / /数组
+        int index = i * subSize;
+        //保存拆分的固定氏度的数组元素的可变数组
+        NSMutableArray *arr1 = [[NSMutableArray alloc] init];
+//        移除子数组的所有元素
+        [arr1 removeAllObjects];
+        int j = index;
+    //将数组下标乘以1、2、3,得到拆分吋数组的最大下禄値，但最大不能超大数组的大小
+        while (j < subSize*(i + 1) && j < array. count) {
+            [arr1 addObject:[array objectAtIndex:j]];
+            j+=1;
+        }
+/// /將子数组添加到保存子数组的数组中
+        [arr addObject:[arr1 copy]];
+    }
+    return [arr copy];
+}
+
 @end
