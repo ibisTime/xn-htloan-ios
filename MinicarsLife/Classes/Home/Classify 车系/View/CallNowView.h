@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CarModel.h"
-
+#import "DeployModel.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol AskMoneyClickDelegate <NSObject>
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectModel.h"
+#import "DeployModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CollectCell : UITableViewCell

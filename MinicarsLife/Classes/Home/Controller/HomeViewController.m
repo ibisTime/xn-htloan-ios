@@ -56,6 +56,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self loadData];
+    [self getnewsadta];
 }
 
 - (void)viewDidLoad {
@@ -67,7 +68,7 @@
     headview.delegate = self;
     self.tableview.tableHeaderView = headview;
     [self.view addSubview:self.tableview];
-    [self getnewsadta];
+    
 }
 -(TLTableView *)tableview{
     if (!_tableview) {

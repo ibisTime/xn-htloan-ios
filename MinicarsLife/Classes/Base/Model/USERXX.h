@@ -37,5 +37,5 @@
 - (void)updateUserInfoWithNotification;
 
 -(void)showPopAnimationWithAnimationStyle:(NSInteger)style showView:(UIView *)showView BGAlpha:(CGFloat)alpha isClickBGDismiss:(BOOL)dismiss;
-
++ (NSString*)convertNull:(id)object;
 @end

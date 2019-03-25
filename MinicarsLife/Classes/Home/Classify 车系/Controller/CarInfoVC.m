@@ -64,13 +64,19 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self bannerLoadData];
+//    [self bannerLoadData];
     [self getCarDeploy];
     [self loadData];
+    [self setHistory];
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 522.00/750.00 * SCREEN_WIDTH)];
     [view addSubview:self.scrollView];
     self.tableview.tableHeaderView = view;
     [self.view addSubview:self.tableview];
+    
+     NSArray * p=[self.CarModel.pic componentsSeparatedByString:@","];
+    NSMutableArray *muArray = [NSMutableArray arrayWithArray:p];
+    self.scrollView.data = muArray;
+    
     
     self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70, SCREEN_WIDTH, 70)];
     UIButton * callnow = [UIButton buttonWithTitle:@"打电话" titleColor:kWhiteColor backgroundColor:kHexColor(@"#FF9402") titleFont:16 cornerRadius:2];
@@ -106,17 +112,31 @@
     
 }
 -(void)collectclick{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630460";
-    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
-    http.parameters[@"toCode"] = self.CarModel.code;
-    http.parameters[@"toType"] = @"0";
-    http.parameters[@"type"] = @"3";
-    [http postWithSuccess:^(id responseObject) {
-        self.collectbtn.selected = !self.collectbtn.selected;
-    } failure:^(NSError *error) {
-        
-    }];
+    if ([self.CarModel.isCollect isEqualToString:@"0"]) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630460";
+        http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+        http.parameters[@"toCode"] = self.CarModel.code;
+        http.parameters[@"toType"] = @"0";
+        http.parameters[@"type"] = @"3";
+        [http postWithSuccess:^(id responseObject) {
+            self.collectbtn.selected = !self.collectbtn.selected;
+            [self getCarDeploy];
+        } failure:^(NSError *error) {
+            
+        }];
+    }else{
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630462";
+        http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+        http.parameters[@"carCode"] = self.CarModel.code;
+        [http postWithSuccess:^(id responseObject) {
+            self.collectbtn.selected = !self.collectbtn.selected;
+            [self getCarDeploy];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
     NSLog(@"=======%s=======",__func__);
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
@@ -369,6 +389,18 @@
     } failure:^(NSError *error) {
         
     }];
-    
+}
+-(void)setHistory{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.CarModel.code;
+    http.parameters[@"toType"] = @"0";
+    http.parameters[@"type"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 @end

@@ -73,6 +73,20 @@
         self.authorlab.attributedText = attrStr;
         
         [self.webview loadHTMLString:self.model.context baseURL:nil];
+        [self getreadnum];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)getreadnum{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.model.code;
+    http.parameters[@"toType"] = @"1";
+    http.parameters[@"type"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        
     } failure:^(NSError *error) {
         
     }];
