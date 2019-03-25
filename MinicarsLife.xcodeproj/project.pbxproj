@@ -2836,6 +2836,7 @@
 		7A8A5B0120E35A06002D9A48 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				7A8A5B0220E35A06002D9A48 /* Controller */,
 				7AA906C820EF3CED004F2B12 /* SubmitOrders提交订单 */,
 				363B6131223BA1E000585061 /* Brand 品牌 */,
 				363B612D223BA12B00585061 /* Classify 车系 */,
@@ -2844,7 +2845,6 @@
 				7A8A5CCF20E609D4002D9A48 /* VehicleDetails车辆详情 */,
 				7A8A5CC520E6003A002D9A48 /* ExhibitionCenter展销中心 */,
 				7A8A5CB520E5CC7D002D9A48 /* CarLoanCalculator车贷计算器 */,
-				7A8A5B0220E35A06002D9A48 /* Controller */,
 				7A8A5B0320E35A06002D9A48 /* Model */,
 				7A8A5B0420E35A06002D9A48 /* View */,
 			);
@@ -2854,10 +2854,10 @@
 		7A8A5B0220E35A06002D9A48 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				36E3A392223B3D6B00B26F4F /* HomeHeadVC.h */,
-				36E3A393223B3D6C00B26F4F /* HomeHeadVC.m */,
 				7A8A5B1720E35B47002D9A48 /* HomeViewController.h */,
 				7A8A5B1820E35B47002D9A48 /* HomeViewController.m */,
+				36E3A392223B3D6B00B26F4F /* HomeHeadVC.h */,
+				36E3A393223B3D6C00B26F4F /* HomeHeadVC.m */,
 				B8A70AFE21CE4FCA00E97EFD /* BannerWebViewVC.h */,
 				B8A70AFF21CE4FCA00E97EFD /* BannerWebViewVC.m */,
 				363B6124223B81A800585061 /* CarNewsVC.h */,

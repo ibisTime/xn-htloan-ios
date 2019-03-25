@@ -62,7 +62,7 @@
     [super viewDidLoad];
     self.title = @"微车生活";
 //    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
-    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
+    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 60)];
 //    view.CarStyleModels = self.CarClassifyModels;
     headview.delegate = self;
     self.tableview.tableHeaderView = headview;
@@ -75,6 +75,7 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
+        
         [_tableview registerClass:[HomeTableHeadCell class] forCellReuseIdentifier:@"HomeTableHead"];
         [_tableview registerClass:[NewsCell class] forCellReuseIdentifier:@"cell"];
         
@@ -114,19 +115,19 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 47.5;
+        return 60;
     }
-    return 47.5;
+    return 60;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-        v1.backgroundColor = kLineColor;
+        v1.backgroundColor = kBackgroundColor;
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 15, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         label.text = @"精选车源";
         [view addSubview:label];
         return view;
@@ -134,10 +135,10 @@
     if (section == 1) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-        v1.backgroundColor = kLineColor;
+        v1.backgroundColor = kBackgroundColor;
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 15, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         label.text = @"新车资讯";
         [view addSubview:label];
         
@@ -343,7 +344,7 @@
         numberToRound1 = (headview.CarClassifyModels.count)/3.0;
         result1 = (int)ceilf(numberToRound1);
         
-        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1);
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
         headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
     }
     

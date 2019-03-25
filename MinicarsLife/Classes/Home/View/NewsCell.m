@@ -31,25 +31,24 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 120 - 15, 10, 120, 85)];
-        self.photo.image = kImage(@"2");
+//        self.photo.image = kImage(@"2");
         [self addSubview:self.photo];
         
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 120 - 15 - 15, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
-        self.titlelab.numberOfLines = 0;
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+        self.titlelab.numberOfLines = 3;
         self.titlelab.text = @"雷克萨斯LX570正在优惠降价，点击立即询价";
         [self addSubview:self.titlelab];
         
-        self.statuslab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 30, 30, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(10) textColor:kHexColor(@"#FF5E5E")];
-        self.statuslab.layer.borderColor = kHexColor(@"#FF5E5E").CGColor;
-        self.statuslab.layer.borderWidth = 1;
+        self.statuslab = [UILabel labelWithFrame:CGRectMake(15, 80, 30, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(10) textColor:kHexColor(@"#FF5E5E")];
+        kViewBorderRadius(self.statuslab, 3, 1, kHexColor(@"#FF5E5E"));
         self.statuslab.text = @"原创";
         [self addSubview:self.statuslab];
         
-        self.newsfrom = [UILabel labelWithFrame:CGRectMake(55, self.titlelab.yy + 30, 50, 16) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        self.newsfrom = [UILabel labelWithFrame:CGRectMake(55, 80, 50, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         self.newsfrom.text = @"微车生活";
         [self addSubview:self.newsfrom];
         
-        self.looknum = [UILabel labelWithFrame:CGRectMake(self.photo.x - 60 - 70, self.titlelab.yy + 30, 70, 16) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        self.looknum = [UILabel labelWithFrame:CGRectMake(self.photo.x - 60 - 70, 80, 70, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         self.looknum.text = @"1.5万次浏览";
         [self addSubview:self.looknum];
         
@@ -67,8 +66,27 @@
     //超出容器范围的切除掉
     self.photo.clipsToBounds = YES;
     self.titlelab.text = model.title;
+    self.titlelab.frame = CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0);
+    [self.titlelab sizeToFit];
+    
     self.newsfrom.text = model.author;
     self.statuslab.text = model.tag;
+    [self.statuslab sizeToFit];
+    self.statuslab.frame = CGRectMake(15, 80, self.statuslab.width + 10, 15);
+    
+    [self.newsfrom sizeToFit];
+    
+    if (self.newsfrom.width >  100)
+    {
+        self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 80, 100, 15);
+    }
+    else
+    {
+        self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 80, self.newsfrom.width, 15);
+    }
+    
+    self.looknum.frame = CGRectMake(self.newsfrom.xx + 10, 80, SCREEN_WIDTH - self.newsfrom.xx - 10 - 120 - 25, 15);
+    
     float count = [model.readCount floatValue];
     NSString * str;
     if (count > 10000) {

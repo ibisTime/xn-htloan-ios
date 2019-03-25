@@ -247,7 +247,7 @@
                 
                 if (rowArray.count > 0) {
 
-                    [allArray addObject:rowArray];
+//                    [allArray addObject:rowArray];
        
                     [weakSelf.allArray addObject:rowArray];
                 }
