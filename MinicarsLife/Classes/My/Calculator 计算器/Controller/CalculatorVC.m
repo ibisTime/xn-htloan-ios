@@ -184,8 +184,15 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
-        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+//        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+//        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
+            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        }else{
+            cell.leftmoney.text = @"00.00";
+            cell.rightmoney.text = @"00.00";
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -225,8 +232,14 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
-        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
+            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        }else{
+            cell.leftmoney.text = @"00.00";
+            cell.rightmoney.text = @"00.00";
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -279,7 +292,7 @@
             return 81;
     }
     if (indexPath.row == 0) {
-        return 171;
+        return 161;
     }
     else if (indexPath.row == 5){
         return 81;
