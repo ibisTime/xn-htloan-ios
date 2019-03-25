@@ -38,9 +38,13 @@
 }
 -(void)setModel:(CarModel *)model{
     _model = model;
-    [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+    self.logo.backgroundColor = [UIColor redColor];
+    [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.logo.contentMode = UIViewContentModeScaleAspectFill;
+//    self.logo.clipsToBounds = YES;
     self.desribelab.text = [NSString stringWithFormat:@"%@  %@",model.name,model.slogan];
     self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[model.salePrice floatValue]/10000];
+    self.personlab.text = [NSString stringWithFormat:@"%@人关注",model.collectNumber];
     
 }
 @end

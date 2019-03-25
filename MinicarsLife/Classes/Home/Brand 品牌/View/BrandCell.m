@@ -29,7 +29,10 @@
 }
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
-    [self.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+    [self.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.logo.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    self.logo.clipsToBounds = YES;
     self.brandname.text = carmodel.name;
 }
 @end

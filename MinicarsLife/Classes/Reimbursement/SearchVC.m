@@ -9,10 +9,12 @@
 #import "SearchVC.h"
 #import "HotBrandCell.h"
 #import "ClassifyListVC.h"
+#import "ClassifyInfoVC.h"
 @interface SearchVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate>
 @property (nonatomic,strong) UISearchBar * SearchBar;
 @property (nonatomic,strong) UICollectionView * collectionView;
 @property (nonatomic,strong) NSArray * titlearray;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * carmodels;
 @end
 
 @implementation SearchVC
@@ -20,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self gethotclassify];
     
     
     
@@ -90,13 +93,18 @@
     return 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return self.carmodels.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HotBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.titlelab.text = self.titlearray[indexPath.row];
+    CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
+    cell.titlelab.text = model.name;
     return cell;
+}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+     CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
+    [self getClassifyData:model.code :model.name];
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -117,6 +125,34 @@
     [http postWithSuccess:^(id responseObject) {
         ClassifyListVC * vc = [ClassifyListVC new];
         vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)gethotclassify{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630416";
+    http.parameters[@"location"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.collectionView reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)getClassifyData:(NSString*)code :(NSString *)title{
+    //列表查询车型
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630426";
+    http2.parameters[@"seriesCode"] = code;
+    [http2 postWithSuccess:^(id responseObject) {
+        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.hidesBottomBarWhenPushed = YES;
+        vc.title = title;
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {
         

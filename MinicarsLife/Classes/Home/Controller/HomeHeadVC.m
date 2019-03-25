@@ -12,13 +12,12 @@
 #import "ChooseCarVC.h"
 #import "SelectCarCell.h"
 #import "SelectcarFootCell.h"
+#import "SelectBrandCell.h"
 @interface HomeHeadVC ()<HW3DBannerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic , strong)HW3DBannerView *scrollView;
 
-@property (nonatomic,strong) UICollectionView * collection;
 @property (nonatomic,assign) int classifycount;
 @property (nonatomic,assign) int carBrandcount;
-
+@property (nonatomic,strong) UICollectionViewFlowLayout * layout;
 
 
 @end
@@ -29,9 +28,9 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.classifycount = 3;
-        self.carBrandcount = 4;
-        [self loadData];
+//        self.classifycount = 3;
+//        self.carBrandcount = 4;
+//        [self loadData];
         self.backgroundColor = kWhiteColor;
         [self bannerLoadData];
         [self addSubview:self.scrollView];
@@ -67,21 +66,21 @@
 -(UICollectionView *)collection{
     if (!_collection) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-        CGFloat width = 130 / 375.00 * SCREEN_WIDTH;
+//        CGFloat width = 130 / 375.00 * SCREEN_WIDTH;
         // 设置每个item的大小
 //        layout.itemSize = CGSizeMake(width, 338.00 / 226.00 * width);
         // 设置列间距
-        layout.minimumInteritemSpacing = 15;
+//        layout.minimumInteritemSpacing = 15;
         // 设置行间距
-        layout.minimumLineSpacing = 10;
+        layout.minimumLineSpacing = 5;
         //每个分区的四边间距UIEdgeInsetsMake
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(10, 24, 10, 24);
         // 设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
 //        layout.estimatedItemSize = CGSizeMake(width , 338.00 / 226.00 * width);
         // 设置布局方向(滚动方向)
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        
-        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 10,SCREEN_WIDTH , width + 40)collectionViewLayout:layout];
+        self.layout = layout;
+        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 10,SCREEN_WIDTH , self.bounds.size.height - self.scrollView.yy)collectionViewLayout:self.layout];
         _collection.delegate = self;
         _collection.dataSource = self;
         _collection.showsVerticalScrollIndicator = NO;
@@ -90,6 +89,7 @@
         _collection.backgroundColor = [UIColor whiteColor];
         [_collection registerClass:[SelectcarFootCell class] forCellWithReuseIdentifier:@"SelectcarFoot"];
         [_collection registerClass:[SelectCarCell class] forCellWithReuseIdentifier:@"cell"];
+        [_collection registerClass:[SelectBrandCell class] forCellWithReuseIdentifier:@"SelectBrand"];
     }
     return _collection;
 }
@@ -104,15 +104,18 @@
         return 4;
     }
     if (section == 1) {
-        return self.carBrandcount;
+        return self.CarBrandModels.count;
     }
-    return self.classifycount;
+    return self.CarClassifyModels.count;
 }
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 2) {
         SelectcarFootCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectcarFoot" forIndexPath:indexPath];
         cell.titlelab.text = self.CarClassifyModels[indexPath.row].name;
-        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"1")];
+        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+        //超出容器范围的切除掉
+        cell.logo.clipsToBounds = YES;
         return cell;
     }
     if (indexPath.section == 0) {
@@ -121,18 +124,29 @@
         cell.titlelab.text = titlearray[indexPath.row];
         return cell;
     }
-    SelectCarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    cell.titlelab.text = self.CarBrandModels[indexPath.row].name;
+    SelectBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectBrand" forIndexPath:indexPath];
+    if (self.CarBrandModels) {
+        CarModel * model =[CarModel mj_objectWithKeyValues:self.CarBrandModels[indexPath.row]];
+        cell.titlelab.text = model.name;
+        [cell.titlelab sizeToFit];
+        cell.titlelab.frame = CGRectMake(((SCREEN_WIDTH - 75) / 4 + cell.titlelab.width)/2.5, 0, cell.titlelab.width, 20);
+        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+        //超出容器范围的切除掉
+        cell.logo.clipsToBounds = YES;
+        cell.logo.frame = CGRectMake(cell.titlelab.x - 20, 0.5, 19, 19);
+    }
+    
     return cell;
 
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return CGSizeMake((SCREEN_WIDTH - 75) /4, 20);
+        return CGSizeMake((SCREEN_WIDTH - 120) /4, 20);
     }else if (indexPath.section == 1){
-        return CGSizeMake((SCREEN_WIDTH - 75) / 4  , 20);
+        return CGSizeMake((SCREEN_WIDTH - 120) / 4  , 20);
     }
-    return CGSizeMake((SCREEN_WIDTH - 75) /3, 100);
+    return CGSizeMake((SCREEN_WIDTH - 96) /3, 80);
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -194,49 +208,53 @@
         WGLog(@"%@",error);
     }];
 }
--(void)loadData{
-    //列表查询品牌
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.showView = self;
-    http.code = @"630406";
-    http.parameters[@"isReferee"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        
-        self.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        if (self.carBrandcount > self.CarBrandModels.count) {
-            self.carBrandcount = (int)self.CarBrandModels.count;
-        }
+-(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
+    _CarBrandModels = CarBrandModels;
+    if (self.CarClassifyModels && self.CarBrandModels) {
         [self.collection reloadData];
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    //列表查询车系
-    TLNetworking * http1 = [[TLNetworking alloc]init];
-    http1.showView = self;
-    http1.code = @"630416";
-    http1.parameters[@"isReferee"] = @"1";
-    [http1 postWithSuccess:^(id responseObject) {
-        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        if (self.classifycount > self.CarClassifyModels.count) {
-            self.classifycount = (int)self.CarClassifyModels.count;
-        }
-        [self.collection reloadData];
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    //列表查询车型
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.showView = self;
-//    http2.code = @"630426";
-//    http2.parameters[@"isReferee"] = @"1";
-//    [http2 postWithSuccess:^(id responseObject) {
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
+    }
 }
+-(void)setCarClassifyModels:(NSMutableArray<CarModel *> *)CarClassifyModels{
+    _CarClassifyModels = CarClassifyModels;
+    if (self.CarClassifyModels && self.CarBrandModels) {
+        [self.collection reloadData];
+    }
+    
+}
+//-(void)loadData{
+//    //列表查询品牌
+//    TLNetworking * http = [[TLNetworking alloc]init];
+//    http.showView = self;
+//    http.code = @"630406";
+//    http.parameters[@"isReferee"] = @"1";
+//    [http postWithSuccess:^(id responseObject) {
+//        
+//        self.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        if (self.carBrandcount > self.CarBrandModels.count) {
+//            self.carBrandcount = (int)self.CarBrandModels.count;
+//        }
+//        [self.collection reloadData];
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//    
+//    //列表查询车系
+//    TLNetworking * http1 = [[TLNetworking alloc]init];
+//    http1.showView = self;
+//    http1.code = @"630416";
+//    http1.parameters[@"isReferee"] = @"1";
+//    [http1 postWithSuccess:^(id responseObject) {
+//        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        if (self.classifycount > self.CarClassifyModels.count) {
+//            self.classifycount = (int)self.CarClassifyModels.count;
+//        }
+//        [self.collection reloadData];
+//    } failure:^(NSError *error) {
+//        
+//    }];
+    
+//}
+
 //
 //#pragma mark - 十一个按钮
 //-(void)createbtn{

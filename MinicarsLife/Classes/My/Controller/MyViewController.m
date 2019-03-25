@@ -215,12 +215,19 @@
             //我的收藏
             else if (indexPath.row == 1){
                 CollectVC * vc = [[CollectVC alloc]init];
+                vc.type = @"3";
+                vc.title = @"我的收藏";
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
             //我的足迹
             else{
                 [TLAlert alertWithInfo:@"我的足迹"];
+                CollectVC * vc = [[CollectVC alloc]init];
+                vc.title = @"我的足迹";
+                vc.type = @"1";
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             }
             //            CreditReportVC *vc = [[CreditReportVC alloc]init];
             //            vc.hidesBottomBarWhenPushed = YES;

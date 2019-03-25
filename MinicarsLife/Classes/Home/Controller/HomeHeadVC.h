@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,weak) id<ClickBtn> delegate;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarBrandModels;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
+
+@property (nonatomic , strong)HW3DBannerView *scrollView;
+
+@property (nonatomic,strong) UICollectionView * collection;
 @end
 
 NS_ASSUME_NONNULL_END

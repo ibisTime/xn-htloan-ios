@@ -40,7 +40,7 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 //    return 1;
-    NSArray *array = self.normalArray[section];
+    NSArray<CarModel *> *array =[CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[section]];
 //    NSArray <CarModel *>*model = [CarModel mj_objectArrayWithKeyValuesArray:self.NormalCarBrands[section]];
     return array.count;
 }
@@ -54,10 +54,14 @@
         cell=[[BrandTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:rid];
         
     }
-//    cell.namelab.text = [[self.letterResultArr objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
     NSMutableArray<CarModel *> *carmodel = [CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[indexPath.section]];
     cell.namelab.text = carmodel[indexPath.row].name;
-    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel[indexPath.row].logo convertImageUrl]]];
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel[indexPath.row].logo convertImageUrl]]placeholderImage:kImage(@"default_pic")];
+    cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    cell.logo.clipsToBounds = YES;
+//    [cell.logo sizeToFit];
+//    cell.logo.frame = CGRectMake(65 - cell.logo.width, 15, cell.logo.width, 25);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -76,5 +80,8 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     NSMutableArray<CarModel *> *carmodel = [CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[section] ];
     return carmodel[0].letter;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.refreshDelegate refreshTableView:self didSelectRowAtIndexPath:indexPath];
 }
 @end

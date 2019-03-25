@@ -32,9 +32,9 @@
         
         [self addSubview:self.collection];
         
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.collection.yy + 20 , SCREEN_WIDTH, 20)];
-        v1.backgroundColor = kLineColor;
-        [self addSubview:v1];
+//        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.collection.yy + 20 , SCREEN_WIDTH, 20)];
+//        v1.backgroundColor = kLineColor;
+//        [self addSubview:v1];
     }
     return self;
 }
@@ -42,21 +42,21 @@
 -(UICollectionView *)collection{
     if (!_collection) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-        CGFloat width = 130.00 / 375.00 * SCREEN_WIDTH;
+        CGFloat width = 130.00;
         // 设置每个item的大小
-        layout.itemSize = CGSizeMake(width, 338.00 / 226.00 * width);
+        layout.itemSize = CGSizeMake(width, 170);
         // 设置列间距
         layout.minimumInteritemSpacing = 15;
         // 设置行间距
         //        layout.minimumLineSpacing = 1;
         //每个分区的四边间距UIEdgeInsetsMake
-        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10);
         // 设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
         //        layout.estimatedItemSize = CGSizeMake(width , 338.00 / 226.00 * width);
         // 设置布局方向(滚动方向)
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH , width + 20)collectionViewLayout:layout];
+        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH , 170 )collectionViewLayout:layout];
         _collection.delegate = self;
         _collection.dataSource = self;
         _collection.showsVerticalScrollIndicator = NO;

@@ -8,7 +8,6 @@
 
 #import "HomeViewController.h"
 #import "GoodsDetailsViewController.h"
-#import "ClassifyListVC.h"
 #import "HomeModel.h"
 //#import "HomeTableView.h"
 #import "NewsInfoVC.h"
@@ -35,7 +34,9 @@
 #import "CarInfoVC.h"
 #import "HomeTableHeadCell.h"
 #import "ClassifyInfoVC.h"
-@interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>
+@interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>{
+    HomeHeadVC * headview;
+}
 //@property (nonatomic , strong)HomeTableView *tableView;
 @property (nonatomic , strong)UIWebView *webView;
 @property (nonatomic , strong)NSArray *urlArray;
@@ -61,10 +62,10 @@
     [super viewDidLoad];
     self.title = @"微车生活";
 //    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
-    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
+    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
 //    view.CarStyleModels = self.CarClassifyModels;
-    view.delegate = self;
-    self.tableview.tableHeaderView = view;
+    headview.delegate = self;
+    self.tableview.tableHeaderView = headview;
     [self.view addSubview:self.tableview];
     [self getnewsadta];
 }
@@ -107,36 +108,36 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
-        return 130.00 / 375.00 * SCREEN_WIDTH + 20;
+        return 180;
     }
     return 105;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 57.5;
+        return 47.5;
     }
-    return 57.5;
+    return 47.5;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kLineColor;
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 25, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 15, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         label.text = @"精选车源";
         [view addSubview:label];
         return view;
     }
     if (section == 1) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kLineColor;
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 25, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 15, 70, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         label.text = @"新车资讯";
         [view addSubview:label];
         
@@ -253,6 +254,7 @@
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyListVC * vc = [ClassifyListVC new];
         vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.brandcode = code;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {
@@ -287,6 +289,7 @@
     [self.tableview addRefreshAction:^{
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
             weakSelf.NewsModels = objs;
+            [weakSelf loadData];
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];
         } failure:^(NSError *error) {
@@ -305,9 +308,64 @@
     [self.tableview beginRefreshing];
 }
 
-
-
-
+-(void)loadData{
+    
+    //列表查询品牌
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
+    http.code = @"630406";
+    http.parameters[@"isReferee"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    //列表查询车系
+    TLNetworking * http1 = [[TLNetworking alloc]init];
+    http1.showView = self.view;
+    http1.code = @"630416";
+    http1.parameters[@"isReferee"] = @"1";
+    [http1 postWithSuccess:^(id responseObject) {
+        headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    if (headview.CarBrandModels && headview.CarClassifyModels) {
+        float numberToRound;
+        int result;
+        numberToRound = (headview.CarBrandModels.count)/3.0;
+        result = (int)ceilf(numberToRound);
+        
+        float numberToRound1;
+        int result1;
+        numberToRound1 = (headview.CarClassifyModels.count)/3.0;
+        result1 = (int)ceilf(numberToRound1);
+        
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1);
+        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
+    }
+    
+    //列表查询车型
+    TLNetworking * http2 = [[TLNetworking alloc]init];
+    http2.showView = self.view;
+    http2.code = @"630426";
+    http2.parameters[@"isReferee"] = @"1";
+    [http2 postWithSuccess:^(id responseObject) {
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.CarModelsCars = [NSMutableArray array];
+        for (int j = 0; j < self.CarModels.count; j ++) {
+            for (int i = 0; i < self.CarModels[j].cars.count; i++) {
+                
+                [self.CarModelsCars addObject:self.CarModels[j].cars[i]];
+            }
+            [self.tableview reloadData_tl];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 
 
@@ -502,47 +560,6 @@
 //}
 
 
--(void)loadData{
-//    //列表查询品牌
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.showView = self.view;
-//    http.code = @"630406";
-//    http.parameters[@"isReferee"] = @"1";
-//    [http postWithSuccess:^(id responseObject) {
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//    
-//    //列表查询车系
-//    TLNetworking * http1 = [[TLNetworking alloc]init];
-//    http1.showView = self.view;
-//    http1.code = @"630416";
-//    http1.parameters[@"isReferee"] = @"1";
-//    [http1 postWithSuccess:^(id responseObject) {
-//        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        [self.tableview reloadData_tl];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-    
-    //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630426";
-    http2.parameters[@"isReferee"] = @"1";
-    [http2 postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        self.CarModelsCars = [NSMutableArray array];
-        for (int j = 0; j < self.CarModels.count; j ++) {
-            for (int i = 0; i < self.CarModels[j].cars.count; i++) {
 
-                [self.CarModelsCars addObject:self.CarModels[j].cars[i]];
-            }
-            [self.tableview reloadData_tl];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-}
+
 @end

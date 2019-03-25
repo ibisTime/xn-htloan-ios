@@ -66,6 +66,7 @@
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyListVC * vc = [ClassifyListVC new];
         vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.brandcode = code;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {

@@ -24,10 +24,13 @@
 - (UIButton *)allBtn{
     if (!_allBtn) {
         self.allBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _allBtn.frame = CGRectMake(10, 0, 40, self.bounds.size.height);
+        _allBtn.frame = CGRectMake(10, 0, 60, self.bounds.size.height);
         _allBtn.titleLabel.font = [UIFont systemFontOfSize:14];
         [_allBtn setTitle:@"全选" forState:UIControlStateNormal];
-        [_allBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [_allBtn setImage:kImage(@"编辑-未选中") forState:(UIControlStateNormal)];
+        [_allBtn setImage:kImage(@"编辑-选中") forState:(UIControlStateSelected)];
+        
+        [_allBtn setTitleColor:kBlackColor forState:UIControlStateNormal];
     }
     return _allBtn;
 }

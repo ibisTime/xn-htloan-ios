@@ -53,7 +53,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"我的收藏";
+//    self.title = @"我的收藏";
     [self getdata];
     
     [self.view addSubview:self.tableview];
@@ -245,7 +245,7 @@
 //    help.parameters[@"limit"] = @"10";
     help.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
     help.parameters[@"toType"] = @"0";
-    help.parameters[@"type"] = @"3";
+    help.parameters[@"type"] = self.type;
     [help modelClass:[CollectModel class]];
     help.tableView = self.tableview;
     help.isCurrency = YES;

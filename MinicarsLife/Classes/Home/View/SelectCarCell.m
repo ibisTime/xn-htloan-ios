@@ -13,8 +13,10 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = [UIColor redColor];
-        self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
-        [self addSubview:self.titlelab];
+        
+            self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+            [self addSubview:self.titlelab];
+        
     }
     return self;
 }

@@ -24,13 +24,25 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         UILabel * label1 = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH / 2 - 15, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
-        label1.text = @"·底挂";
+        label1.tag = 1000;
+//        label1.text = @"·底挂";
         [self addSubview:label1];
         
         UILabel * label2 = [UILabel labelWithFrame:CGRectMake(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2 - 15, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
-        label2.text = @"·2气";
+        label2.tag = 1001;
+//        label2.text = @"·2气";
         [self addSubview:label2];
     }
     return self;
+}
+-(void)setDeployModels:(NSMutableArray *)DeployModels{
+    _DeployModels = DeployModels;
+//    UILabel * label1 = [self viewWithTag:1001];
+//    label1.text = DeployModels[0];
+    for (int i = 0; i < DeployModels.count; i++) {
+        UILabel * label1 = [self viewWithTag:1000 + i];
+        DeployModel * model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
+        label1.text = [NSString stringWithFormat:@"·%@",model.config[@"name"]];
+    }
 }
 @end

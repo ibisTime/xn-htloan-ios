@@ -11,7 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ClassifyListVC : BaseViewController
+//
+//@property (nonatomic,strong) NSMutableArray<CarModel*> * carmodel;
 @property (nonatomic,strong) NSMutableArray<CarModel*> * CarModels;
+@property (nonatomic,strong) NSString * brandcode;
 @end
 
 NS_ASSUME_NONNULL_END

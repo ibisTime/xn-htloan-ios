@@ -30,7 +30,7 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 120 - 15, 0, 120, 85)];
+        self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 120 - 15, 10, 120, 85)];
         self.photo.image = kImage(@"2");
         [self addSubview:self.photo];
         
@@ -62,10 +62,13 @@
 }
 
 -(void)setModel:(NewsModel *)model{
-    [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"2")];
+    [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    self.photo.contentMode =UIViewContentModeScaleAspectFill;
+    //超出容器范围的切除掉
+    self.photo.clipsToBounds = YES;
     self.titlelab.text = model.title;
     self.newsfrom.text = model.author;
-    
+    self.statuslab.text = model.tag;
     float count = [model.readCount floatValue];
     NSString * str;
     if (count > 10000) {
