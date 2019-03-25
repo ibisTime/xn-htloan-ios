@@ -209,13 +209,11 @@
                         [rowArray addObject:array[j]];
                     }
                 }
+                
                 if (rowArray.count > 0) {
-                    
                     [allArray addObject:rowArray];
                 }
-                
             }
-            
             NSMutableArray *indexArray = [NSMutableArray array];
             for (int i = 0; i < allArray.count; i ++) {
                 [indexArray addObject:[NSString stringWithFormat:@"%@",allArray[i][0][@"letter"]]];
