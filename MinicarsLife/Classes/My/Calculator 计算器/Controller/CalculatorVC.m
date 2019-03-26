@@ -150,7 +150,7 @@
                 cell=[[LeftHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
             if (self.CalculatorModel.saleAmount) {
-                cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
+                cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
                 cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             }
             else
@@ -217,7 +217,7 @@
             
         }
         
-        cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
+        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
         if (self.CalculatorModel.monthReply) {
             cell.moneyarray = @[self.CalculatorModel.monthReply,self.CalculatorModel.extraAmount,self.CalculatorModel.totalAmount];
         }
@@ -415,7 +415,7 @@
     NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:string];
     //目的是想改变 ‘/’前面的字体的属性，所以找到目标的range
     NSRange range = [string rangeOfString:@"元"];
-    NSRange pointRange = NSMakeRange(0, range.location);
+    NSRange pointRange = NSMakeRange(0, range.location-1);
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     dic[NSFontAttributeName] = boldFont(40);
     //赋值
