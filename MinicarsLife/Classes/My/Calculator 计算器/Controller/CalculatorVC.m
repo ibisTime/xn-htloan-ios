@@ -30,8 +30,11 @@
 @implementation CalculatorVC
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self getcarname:self.carcode];
-    [self getData:@"12" total:@"0"];
+    if (self.carcode) {
+        [self getcarname:self.carcode];
+        [self getData:@"12" total:@"0"];
+    }
+    
     
     //去除导航栏下方的横线
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init]
@@ -56,7 +59,10 @@
         [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
     }];
-    [self.leftTable beginRefreshing];
+    if (self.carcode) {
+        [self.leftTable beginRefreshing];
+    }
+    
     
     [self.view addSubview:self.leftTable];
     
@@ -68,8 +74,9 @@
         [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
     }];
-    [self.rightTable beginRefreshing];
-    
+    if (self.carcode) {
+        [self.rightTable beginRefreshing];
+    }
     [self.view addSubview:self.rightTable];
     
 }
@@ -184,8 +191,15 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
-        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+//        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+//        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
+            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        }else{
+            cell.leftmoney.text = @"00.00";
+            cell.rightmoney.text = @"00.00";
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -225,8 +239,14 @@
         if(cell==nil){
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
-        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
+            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
+            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+        }else{
+            cell.leftmoney.text = @"00.00";
+            cell.rightmoney.text = @"00.00";
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -279,7 +299,7 @@
             return 81;
     }
     if (indexPath.row == 0) {
-        return 171;
+        return 161;
     }
     else if (indexPath.row == 5){
         return 81;
@@ -332,7 +352,7 @@
 -(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     view.backgroundColor = kWhiteColor;
-    UILabel * label = [UILabel labelWithFrame:view.frame textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+    UILabel * label = [UILabel labelWithFrame:view.frame textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     label.text = @"*此结果仅供参考";
     [view addSubview:label];
     return view;

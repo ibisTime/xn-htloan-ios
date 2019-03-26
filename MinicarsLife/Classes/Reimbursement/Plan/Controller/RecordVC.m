@@ -148,9 +148,12 @@
         ClassifyListVC * vc = [ClassifyListVC new];
         NSMutableArray<CarModel*> * model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         vc.CarModels = model;
-        CarModel * mo = [CarModel mj_objectWithKeyValues:model[0]];
-//        vc.brandcode = model[0][@"brandCode"];
-        vc.brandcode = mo.brandCode;
+        if (model.count > 0) {
+            CarModel * mo = [CarModel mj_objectWithKeyValues:model[0]];
+            //        vc.brandcode = model[0][@"brandCode"];
+            vc.brandcode = mo.brandCode;
+        }
+        
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {

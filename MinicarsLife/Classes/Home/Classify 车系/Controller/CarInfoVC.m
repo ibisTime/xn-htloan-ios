@@ -84,13 +84,13 @@
     UIButton * callnow = [UIButton buttonWithTitle:@"打电话" titleColor:kWhiteColor backgroundColor:kHexColor(@"#FF9402") titleFont:16 cornerRadius:2];
     callnow.tag = 1;
     [callnow addTarget:self action:@selector(ClickBottomBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    callnow.frame = CGRectMake(15, 16, SCREEN_WIDTH / 2 - 30, 45);
+    callnow.frame = CGRectMake(15, 16, SCREEN_WIDTH / 2 - 7.5 - 15, 45);
     [self.bottomview addSubview:callnow];
     
     UIButton * asknow = [UIButton buttonWithTitle:@"询底价" titleColor:kWhiteColor backgroundColor:kHexColor(@"#028EFF") titleFont:16 cornerRadius:2];
     asknow.tag = 2;
     [asknow addTarget:self action:@selector(ClickBottomBtn:) forControlEvents:(UIControlEventTouchUpInside)];
-    asknow.frame = CGRectMake(callnow.xx + 15, 16, SCREEN_WIDTH / 2 - 30, 45);
+    asknow.frame = CGRectMake(SCREEN_WIDTH / 2 + 7.5, 16, SCREEN_WIDTH / 2 - 15 - 7.5, 45);
     [self.bottomview addSubview:asknow];
     
     [self.view addSubview:self.bottomview];

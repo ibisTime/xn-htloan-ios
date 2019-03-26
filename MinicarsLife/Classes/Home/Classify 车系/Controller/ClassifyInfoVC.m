@@ -51,11 +51,14 @@
         moneylab.text = [NSString stringWithFormat:@"%.2f-%.2f万",[self.models[0].lowest floatValue]/10000,[self.models[0].highest floatValue]/10000];
         [v1 addSubview:moneylab];
         
-        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(275, 32.5, 55, 22)];
+        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 30 - 55, 32.5, 55, 22)];
+        v2.backgroundColor = kHexColor(@"#000000");
+        v2.alpha = 0.5;
+        kViewRadius(v2, 2);
         
         v2.backgroundColor = RGB(84, 84, 84);
         UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(9, 5.85, 13, 10.65)];
-        img.image = kImage(@"2");
+        img.image = kImage(@"图片");
         [v2 addSubview:img];
         
         UILabel * label = [UILabel labelWithFrame:CGRectMake(img.xx + 4, 0, 30, 22) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];

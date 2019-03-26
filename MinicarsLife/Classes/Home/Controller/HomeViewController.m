@@ -55,13 +55,16 @@
 @implementation HomeViewController
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self loadData];
-    [self getnewsadta];
+//    [self loadData];
+//    [self getnewsadta];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"微车生活";
+    [self loadData];
+    [self getnewsadta];
+    
 //    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
     headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 60)];
 //    view.CarStyleModels = self.CarClassifyModels;

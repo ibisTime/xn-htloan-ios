@@ -89,7 +89,7 @@
 
         [self setUserInfoWithDict:responseObject[@"data"]];
 
-        [self saveUserInfo:responseObject[@"data"]];
+//        [self saveUserInfo:responseObject[@"data"]];
     } failure:^(NSError *error) {
 
     }];

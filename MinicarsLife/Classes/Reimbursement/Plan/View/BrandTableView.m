@@ -60,8 +60,6 @@
     cell.logo.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     cell.logo.clipsToBounds = YES;
-//    [cell.logo sizeToFit];
-//    cell.logo.frame = CGRectMake(65 - cell.logo.width, 15, cell.logo.width, 25);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

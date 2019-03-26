@@ -27,7 +27,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         for (int i = 0; i < 4; i++) {
-            UIImageView * logo = [[UIImageView alloc]initWithFrame:CGRectMake(10 + (SCREEN_WIDTH / 4) * i, 0, ((SCREEN_WIDTH - 80) / 4), 40)];
+            UIImageView * logo = [[UIImageView alloc]initWithFrame:CGRectMake(((SCREEN_WIDTH / 4) - 40) / 2 + (SCREEN_WIDTH / 4) * i, 0, 40, 40)];
             logo.tag = 1000 + i;
             [self addSubview:logo];
             UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:12 cornerRadius:0];
