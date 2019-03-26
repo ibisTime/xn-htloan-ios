@@ -31,9 +31,10 @@
     
     
     
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(-35, 0, SCREEN_WIDTH, 44)];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 120, 44)];
     view.backgroundColor = kClearColor;
-    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 5.5, (544.00 / 750.00)*SCREEN_WIDTH, 33)];
+//    view.backgroundColor = [UIColor redColor];
+    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 5.5, SCREEN_WIDTH - 120, 33)];
 //    self.SearchBar.layer.borderWidth = 1;
     self.SearchBar.placeholder = @"请搜索品牌或车系";
     self.SearchBar.backgroundColor = kClearColor;
@@ -58,10 +59,18 @@
     
     [view addSubview:self.SearchBar];
     
-    UIButton * button = [UIButton buttonWithTitle:@"搜索" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16 cornerRadius:0];
-    button.frame = CGRectMake(self.SearchBar.xx + 17, 10, 33, 22.5);
-    [button addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
-    [view addSubview:button];
+//    UIButton * button = [UIButton buttonWithTitle:@"搜索" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16 cornerRadius:0];
+//    button.frame = CGRectMake(self.SearchBar.xx + 17, 10, 33, 22.5);
+//    [button addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
+//    [view addSubview:button];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    self.RightButton.titleLabel.font = Font(16);
+    [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-57.5, 30, 42.5, 45)];
+    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
+    [self.RightButton addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
     
     self.navigationItem.titleView = view;
     
