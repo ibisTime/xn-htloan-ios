@@ -308,7 +308,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 170;
+        return 160;
     }
     else if (indexPath.section == 2){
         if (indexPath.row == 0) {
@@ -329,7 +329,8 @@
         v1.backgroundColor = kLineColor;
         [view addSubview:v1];
         
-        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 20, 3, 25)];
+        UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 25, 3, 15)];
+        kViewRadius(v2, 1.5);
         v2.backgroundColor = MainColor;
         [view addSubview:v2];
         UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx + 5, v1.yy + 10, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];

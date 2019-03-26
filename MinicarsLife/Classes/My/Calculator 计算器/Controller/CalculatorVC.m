@@ -154,7 +154,7 @@
                 cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             }
             else
-                cell.moneylab.text = @"暂无售价";
+                cell.moneylab.text = @"00.00";
            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -181,7 +181,7 @@
                     cell.ContentLab.text = self.CalculatorModel.saleAmount;
                 }
                 else
-                    cell.ContentLab.text = @"暂无售价";
+                    cell.ContentLab.text = @"00.00";
             }
             return cell;
         }
@@ -225,7 +225,7 @@
             cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
         }
         else
-            cell.moneylab.text = @"暂无售价";
+            cell.moneylab.text = @"00.00";
         
         
         
@@ -269,7 +269,7 @@
             NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
             cell.ContentLab.text = str2;
         }else
-            cell.ContentLab.text = @"暂无售价";
+            cell.ContentLab.text = @"00.00";
     }else if (indexPath.row == 3){
         cell.ContentLab.text = @"一年";
         if (self.DkYear) {
@@ -281,7 +281,7 @@
             NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
             cell.ContentLab.text = str4;
         }else
-            cell.ContentLab.text = @"暂无售价";
+            cell.ContentLab.text = @"00.00";
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

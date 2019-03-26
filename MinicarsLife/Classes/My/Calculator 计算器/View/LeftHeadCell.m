@@ -24,11 +24,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = MainColor;
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
         self.titlelab.text = @"预计总花费（裸车价格+必要花费+商业保险）";
         [self addSubview:self.titlelab];
         
-        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 10, SCREEN_WIDTH - 30, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(20) textColor:kWhiteColor];
+        self.moneylab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy, SCREEN_WIDTH - 30, 60) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(20) textColor:kWhiteColor];
 //        self.moneylab.text = @"410，000元";
 //        if (self.moneystr) {
 //            self.moneylab.attributedText = [self getPriceAttribute:self.moneystr];

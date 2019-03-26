@@ -27,10 +27,10 @@
         self.leftmoney = [UILabel labelWithFrame:CGRectMake(15, 15,self.leftview.width - 30 , 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         self.leftmoney.text = @"41.157";
         [self.leftview addSubview:self.leftmoney];
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, self.leftmoney.yy + 10, self.leftview.width - 30, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
+        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, self.leftmoney.yy, self.leftview.width - 30, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
         label.text = @"必要花费（元）";
-        [label sizeToFit];
-        label.frame = CGRectMake((self.leftview.width - label.width) / 2, self.leftmoney.yy + 10, label.width, 25);
+//        [label sizeToFit];
+//        label.frame = CGRectMake((self.leftview.width - label.width) / 2, self.leftmoney.yy + 10, label.width, 25);
         [self.leftview addSubview:label];
         
 //        UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.leftview.height - 15) / 2, 13, 15)];
@@ -42,15 +42,15 @@
         view.backgroundColor = kLineColor;
         [self addSubview:view];
         
-        self.rightview = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, 70)];
+        self.rightview = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2, 0, SCREEN_WIDTH / 2, 81)];
         self.rightmoney = [UILabel labelWithFrame:CGRectMake(15, 15,self.rightview.width - 30 , 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         self.rightmoney.text = @"41.157";
         [self.rightview addSubview:self.rightmoney];
         
-        UILabel * label1 = [UILabel labelWithFrame:CGRectMake(15, self.rightmoney.yy + 10, self.rightview.width - 30, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
+        UILabel * label1 = [UILabel labelWithFrame:CGRectMake(15, self.rightmoney.yy, self.rightview.width - 30, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
         label1.text = @"商业保险（元）";
-        [label1 sizeToFit];
-        label1.frame = CGRectMake((self.rightview.width - label1.width) / 2, self.rightmoney.yy + 10, label1.width, 25);
+//        [label1 sizeToFit];
+//        label1.frame = CGRectMake((self.rightview.width - label1.width) / 2, self.rightmoney.yy + 10, label1.width, 25);
         [self.rightview addSubview:label1];
         
 //        UIImageView * img1 = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 15 - 15, (self.rightview.height - 15) / 2, 13, 15)];

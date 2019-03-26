@@ -24,7 +24,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = MainColor;
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
         self.titlelab.text = @"预计首付款（裸车价格+必要花费+商业保险）";
         [self addSubview:self.titlelab];
         
@@ -52,7 +52,7 @@
             [view addSubview:title];
             
             if (i < 2) {
-                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 20, 1, 25)];
+                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 15, 1, 25)];
                 v1.backgroundColor = kLineColor;
                 v1.alpha = 0.3;
                 [self addSubview:v1];

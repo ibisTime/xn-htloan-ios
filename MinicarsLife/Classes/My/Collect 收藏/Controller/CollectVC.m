@@ -11,6 +11,7 @@
 #define collect @"CollectCell"
 #import "CollectBottomView.h"
 #import "CollectModel.h"
+#import "CarInfoVC.h"
 @interface CollectVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 //@property (nonatomic ,strong) UIButton *btn;//编辑按钮
@@ -228,8 +229,23 @@
         NSLog(@"%@",self.deleteArray);
         
     }else{
-        NSLog(@"跳转下一页");
+//        NSLog(@"跳转下一页");
+        CarModel * model = [CarModel mj_objectWithKeyValues: self.CollectModels[indexPath.section].car];
+        [self getcarinfo:model.code];
     }
+}
+-(void)getcarinfo:(NSString *)code{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.parameters[@"code"] = code;
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        CarInfoVC * vc = [CarInfoVC new];
+        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
 }
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.RightButton.selected) {
