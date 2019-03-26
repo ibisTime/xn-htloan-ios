@@ -154,7 +154,7 @@
                 cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             }
             else
-                cell.moneylab.text = @"00.00";
+                cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -225,7 +225,8 @@
             cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
         }
         else
-            cell.moneylab.text = @"00.00";
+            cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
+//            cell.moneylab.text = @"00.00";
         
         
         
@@ -417,9 +418,14 @@
     NSRange range = [string rangeOfString:@"元"];
     NSRange pointRange = NSMakeRange(0, range.location-1);
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[NSFontAttributeName] = boldFont(40);
+    dic[NSFontAttributeName] = Font(40);
+    
+    NSMutableDictionary * dic1 = [NSMutableDictionary dictionary];
+    dic1[NSFontAttributeName] = Font(20);
+    NSRange range1 = NSMakeRange(range.location, 1);
     //赋值
     [attribut addAttributes:dic range:pointRange];
+    [attribut addAttributes:dic1 range:range1];
     return attribut;
 }
 @end

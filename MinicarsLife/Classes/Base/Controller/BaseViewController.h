@@ -14,4 +14,10 @@
 
 @property (nonatomic , strong)UIButton *RightButton;
 
+//导航栏设为透明
+-(void)navigationTransparentClearColor;
+//导航栏设为默认
+-(void)navigationSetDefault;
+//导航栏设为白色
+-(void)navigationwhiteColor;
 @end

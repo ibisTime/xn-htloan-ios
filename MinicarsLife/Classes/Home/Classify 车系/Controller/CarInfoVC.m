@@ -22,7 +22,7 @@
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) UIView * bottomview;
-@property (nonatomic,strong) UIButton * collectbtn;
+//@property (nonatomic,strong) UIButton * collectbtn;
 @property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
 @property (nonatomic,strong) NSString * phonestring;
 @property (nonatomic,strong) NSArray * firstarray;
@@ -34,13 +34,16 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.alpha = 0;
+    [self navigationTransparentClearColor];
+
+//    self.navigationController.navigationBar.alpha = 0;
 //     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    [self navigationSetDefault];
 //    [self.navigationController setNavigationBarHidden:NO animated:animated];
-    self.navigationController.navigationBar.alpha = 1;
+//    self.navigationController.navigationBar.alpha = 1;
 }
 
 -(TLTableView *)tableview{
@@ -96,16 +99,37 @@
     [self.view addSubview:self.bottomview];
     
     
-    UIButton * collectbtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 30, 30, 30)];
-//    collectbtn.backgroundColor = [UIColor redColor];
-    [collectbtn addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
-    [collectbtn setImage:kImage(@"我的收藏") forState:(UIControlStateNormal)];
-    [collectbtn setImage:kImage(@"详情收藏-点击") forState:(UIControlStateSelected)];
-    if ([self.CarModel.isCollect isEqualToString:@"1"]) {
-        collectbtn.selected = YES;
+//    UIButton * collectbtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 30, 30, 30)];
+////    collectbtn.backgroundColor = [UIColor redColor];
+//    [collectbtn addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
+//    [collectbtn setImage:kImage(@"我的收藏") forState:(UIControlStateNormal)];
+//    [collectbtn setImage:kImage(@"详情收藏-点击") forState:(UIControlStateSelected)];
+//    if ([self.CarModel.isCollect isEqualToString:@"1"]) {
+//        collectbtn.selected = YES;
+//    }
+//
+//
+////    [self.scrollView addSubview:collectbtn];
+//    self.navigationItem.titleView = collectbtn;
+//    self.collectbtn = collectbtn;
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    self.RightButton.titleLabel.font = Font(16);
+    [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-50, 30, 50, 50)];
+//    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
+    [self.RightButton setImage:kImage(@"我的收藏") forState:UIControlStateNormal];
+    [self.RightButton setImage:kImage(@"详情收藏-点击") forState:UIControlStateSelected];
+    if ([self.CarModel.isCollect isEqualToString:@"1"]){
+        self.RightButton.selected = YES;
     }
-    [self.scrollView addSubview:collectbtn];
-    self.collectbtn = collectbtn;
+
+    [self.RightButton addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    
+    
+    
     
     callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
     callNowView.carmodel = self.CarModel;
@@ -122,7 +146,8 @@
         http.parameters[@"toType"] = @"0";
         http.parameters[@"type"] = @"3";
         [http postWithSuccess:^(id responseObject) {
-            self.collectbtn.selected = !self.collectbtn.selected;
+            self.RightButton.selected = !self.RightButton.selected;
+            [self reloaddata];
             [self getCarDeploy];
         } failure:^(NSError *error) {
             
@@ -133,13 +158,13 @@
         http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
         http.parameters[@"carCode"] = self.CarModel.code;
         [http postWithSuccess:^(id responseObject) {
-            self.collectbtn.selected = !self.collectbtn.selected;
+            self.RightButton.selected = !self.RightButton.selected;
             [self getCarDeploy];
+            [self reloaddata];
         } failure:^(NSError *error) {
             
         }];
     }
-    NSLog(@"=======%s=======",__func__);
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
     if (sender.tag == 1) {
@@ -422,6 +447,18 @@
     http.parameters[@"type"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         
+    } failure:^(NSError *error) {
+        
+    }];
+}
+-(void)reloaddata{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"code"] = self.CarModel.code;
+    [http postWithSuccess:^(id responseObject) {
+        self.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.tableview reloadData_tl];
     } failure:^(NSError *error) {
         
     }];
