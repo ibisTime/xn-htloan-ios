@@ -30,18 +30,18 @@
         img.image = kImage(@"1");
         self.image = img;
         
-        UILabel * title = [UILabel labelWithFrame:CGRectMake(img.xx + 15, 15, SCREEN_WIDTH - 155, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+        UILabel * title = [UILabel labelWithFrame:CGRectMake(img.xx + 15, 15, SCREEN_WIDTH - 155, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(14) textColor:kBlackColor];
         title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
-        title.numberOfLines = 2;
+        title.numberOfLines = 1;
         [self addSubview:title];
         self.titlelab = title;
         
-        UILabel * describe = [UILabel labelWithFrame:CGRectMake(img.xx + 15, title.yy + 5, SCREEN_WIDTH - 120, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
+        UILabel * describe = [UILabel labelWithFrame:CGRectMake(img.xx + 15, title.yy + 10, SCREEN_WIDTH - 120, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
         describe.text = @"中大型SUV 白/米 车在杭州市";
         [self addSubview:describe];
         self.describdlab = describe;
         
-        UILabel * time = [UILabel labelWithFrame:CGRectMake(img.xx + 15, describe.yy + 5, 74, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
+        UILabel * time = [UILabel labelWithFrame:CGRectMake(img.xx + 15, describe.yy + 10, 74, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
         time.text = @"2019-03-11";
         [self addSubview:time];
         self.timelab = time;
