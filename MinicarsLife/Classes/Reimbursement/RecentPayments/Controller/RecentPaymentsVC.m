@@ -117,6 +117,9 @@
     self.selectTitleArray = [NSMutableArray array];
     [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     self.ResultLab.text = @"您选择的条件会显示在这";
+    
+    self.CarModels = [NSMutableArray array];
+    [self.resultBtn setTitle:[NSString stringWithFormat:@"有0款车型符合要求"] forState:(UIControlStateNormal)];
     [self.collectionView reloadData];
 }
 
@@ -472,22 +475,6 @@
 
     }];
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
