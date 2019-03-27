@@ -56,7 +56,10 @@
     self.leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.leftTable.refreshDelegate = self;
     [self.leftTable addRefreshAction:^{
-        [weakSelf getcarname:weakSelf.carcode];
+        if (weakSelf.carcode) {
+            [weakSelf getcarname:weakSelf.carcode];
+            
+        }
         [weakSelf getData:@"12" total:@"0"];
     }];
     if (self.carcode) {
@@ -71,8 +74,12 @@
     self.rightTable.dataSource = self;
     self.rightTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.rightTable addRefreshAction:^{
-        [weakSelf getcarname:weakSelf.carcode];
         [weakSelf getData:@"12" total:@"0"];
+        if (weakSelf.carcode) {
+            [weakSelf getcarname:weakSelf.carcode];
+            
+        }
+        
     }];
     if (self.carcode) {
         [self.rightTable beginRefreshing];
@@ -362,28 +369,35 @@
     return 40;
 }
 -(void)getData : (NSString *)period total:(NSString *)total{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.showView = self.view;
-    http.code = @"630428";
-    http.parameters[@"carCode"] =self.carcode;
-    if (tag == 0) {
-        http.parameters[@"isTotal"] = @"0";
-        http.parameters[@"period"] = period;
-    }else{
-        http.parameters[@"isTotal"] = @"1";
-        http.parameters[@"period"] = period;
+    if (self.carcode) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.showView = self.view;
+        http.code = @"630428";
+        http.parameters[@"carCode"] =self.carcode;
+        if (tag == 0) {
+            http.parameters[@"isTotal"] = @"0";
+            http.parameters[@"period"] = period;
+        }else{
+            http.parameters[@"isTotal"] = @"1";
+            http.parameters[@"period"] = period;
+        }
+        [http postWithSuccess:^(id responseObject) {
+            self.CalculatorModel = [CalculatorModel mj_objectWithKeyValues:responseObject[@"data"]];
+            [self.leftTable reloadData_tl];
+            [self.rightTable reloadData_tl];
+            
+            [self.leftTable endRefreshHeader];
+            [self.rightTable endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.leftTable endRefreshHeader];
+            [self.rightTable endRefreshHeader];
+        }];
     }
-    [http postWithSuccess:^(id responseObject) {
-        self.CalculatorModel = [CalculatorModel mj_objectWithKeyValues:responseObject[@"data"]];
-        [self.leftTable reloadData_tl];
-        [self.rightTable reloadData_tl];
-        
+    else{
         [self.leftTable endRefreshHeader];
         [self.rightTable endRefreshHeader];
-    } failure:^(NSError *error) {
-        [self.leftTable endRefreshHeader];
-        [self.rightTable endRefreshHeader];
-    }];
+    }
+    
 }
 -(void)getcarname:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
