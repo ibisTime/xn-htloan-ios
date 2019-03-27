@@ -376,10 +376,10 @@
         http.code = @"630428";
         http.parameters[@"carCode"] =self.carcode;
         if (tag == 0) {
-            http.parameters[@"isTotal"] = @"0";
+            http.parameters[@"isTotal"] = @"1";
             http.parameters[@"period"] = period;
         }else{
-            http.parameters[@"isTotal"] = @"1";
+            http.parameters[@"isTotal"] = @"0";
             http.parameters[@"period"] = period;
         }
         [http postWithSuccess:^(id responseObject) {

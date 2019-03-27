@@ -92,42 +92,39 @@
     if ([tfView1.nameTextField.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:@"请输入手机号"];
         return;
-    }
-    if ([codeView.nameTextField.text isEqualToString:@""]) {
+    }else if ([codeView.nameTextField.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:@"请输入验证码"];
         return;
-    }
-    if ([tfView2.nameTextField.text isEqualToString:@""]) {
+    }else if ([tfView2.nameTextField.text isEqualToString:@""]) {
         [TLAlert alertWithInfo:@"请输入新密码"];
         return;
-    }
-    if (![tfView3.nameTextField.text isEqualToString:tfView2.nameTextField.text]) {
+    }else if (![tfView3.nameTextField.text isEqualToString:tfView2.nameTextField.text]) {
         [TLAlert alertWithInfo:@"密码不一致"];
         return;
+    }else{
+        TLNetworking *http = [TLNetworking new];
+        http.code = ChangePasswordURL;
+        http.showView = self.view;
+        http.parameters[@"kind"] = @"C";
+        http.parameters[@"mobile"] = tfView1.nameTextField.text;
+        http.parameters[@"smsCaptcha"] = codeView.nameTextField.text;
+        http.parameters[@"newLoginPwd"] = tfView2.nameTextField.text;
+        
+        [http postWithSuccess:^(id responseObject) {
+            WGLog(@"%@",responseObject);
+            [TLAlert alertWithSucces:@"修改成功"];
+            LoginViewController *vc = [[LoginViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+            vc.state = @"100";
+            [USERDEFAULTS removeObjectForKey:USER_ID];
+            [USERDEFAULTS removeObjectForKey:TOKEN_ID];
+            [rootViewController presentViewController:nav animated:YES completion:nil];
+        
+        } failure:^(NSError *error) {
+            WGLog(@"%@",error);
+        }];
     }
-
-    TLNetworking *http = [TLNetworking new];
-    http.code = ChangePasswordURL;
-    http.showView = self.view;
-    http.parameters[@"kind"] = @"C";
-    http.parameters[@"mobile"] = tfView1.nameTextField.text;
-    http.parameters[@"smsCaptcha"] = codeView.nameTextField.text;
-    http.parameters[@"newLoginPwd"] = tfView2.nameTextField.text;
-
-    [http postWithSuccess:^(id responseObject) {
-        WGLog(@"%@",responseObject);
-        [TLAlert alertWithSucces:@"修改成功"];
-        LoginViewController *vc = [[LoginViewController alloc]init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-        UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-        vc.state = @"100";
-        [USERDEFAULTS removeObjectForKey:USER_ID];
-        [USERDEFAULTS removeObjectForKey:TOKEN_ID];
-        [rootViewController presentViewController:nav animated:YES completion:nil];
-
-    } failure:^(NSError *error) {
-        WGLog(@"%@",error);
-    }];
 }
 
 -(void)sendButtonClick:(UIButton *)sender
