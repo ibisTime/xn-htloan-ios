@@ -125,7 +125,13 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
-    [self getClassifyData:model.code :model.name];
+//    [self getClassifyData:model.code :model.name];
+    ClassifyInfoVC * vc = [ClassifyInfoVC new];
+//    vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    vc.seriesCode = model.code;
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = model.name;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     

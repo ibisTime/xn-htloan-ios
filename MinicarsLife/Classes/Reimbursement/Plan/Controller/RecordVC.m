@@ -137,7 +137,11 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 
-    [self getClassifyListData:self.HotCarBrands[indexPath.row].code];
+//    [self getClassifyListData:self.HotCarBrands[indexPath.row].code];
+    ClassifyListVC * vc = [ClassifyListVC new];
+    vc.brandcode = self.HotCarBrands[indexPath.row].code;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)getClassifyListData:(NSString *)code{
     TLNetworking * http2 = [[TLNetworking alloc]init];
@@ -165,7 +169,11 @@
     NSMutableArray<CarModel *> * array = self.allArray[indexPath.section];
 //    CarModel * model = [CarModel mj_objectArrayWithKeyValuesArray:array[indexPath.row]];
     CarModel * model = [CarModel mj_objectWithKeyValues:array[indexPath.row]];
-    [self getClassifyListData:model.code];
+//    [self getClassifyListData:model.code];
+    ClassifyListVC * vc = [ClassifyListVC new];
+    vc.brandcode = model.code;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)LoadData{
