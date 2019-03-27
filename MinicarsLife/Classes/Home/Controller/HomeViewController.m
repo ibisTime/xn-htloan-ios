@@ -174,27 +174,7 @@
     
 }
 
-//根据价格选择
--(void)GetClassifyByPrice:(NSString *)priceStart priceEnd:(NSString *)priceEnd{
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630426";
-    http2.parameters[@"priceStart"] =priceStart;
-    http2.parameters[@"priceEnd"] =priceEnd;
-    [http2 postWithSuccess:^(id responseObject) {      
-        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
-        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    } failure:^(NSError *error) {
-        
-    }];
-    
-    
-    
 
-}
 
 //点击collectionview cell
 -(void)ClickCollection:(NSInteger)index{
@@ -227,63 +207,104 @@
 
 -(void)ClickCollectionClassify:(NSIndexPath *)index{
     if (index.section == 0) {
+        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
         switch (index.row) {
-            case 0:
-                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
+            case 0:{
+                vc.priceStart = @"300000";
+                vc.priceEnd = @"500000";
+            }
+//                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
                 break;
-            case 1:
-                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
+            case 1:{
+                vc.priceStart = @"500000";
+                vc.priceEnd = @"700000";
+            }
+//                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
                 break;
-            case 2:
-                [self GetClassifyByPrice:@"700000" priceEnd:@""];
+            case 2:{
+                vc.priceStart = @"700000";
+                vc.priceEnd = @"";
+            }
+//                [self GetClassifyByPrice:@"700000" priceEnd:@""];
                 break;
-            case 3:
-                [self GetClassifyByPrice:@"" priceEnd:@"300000"];
+            case 3:{
+                vc.priceStart = @"";
+                vc.priceEnd = @"300000";
+            }
+//                [self GetClassifyByPrice:@"" priceEnd:@"300000"];
                 break;
             default:
                 break;
         }
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
+//根据价格选择
+//-(void)GetClassifyByPrice:(NSString *)priceStart priceEnd:(NSString *)priceEnd{
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self.view;
+//    http2.code = @"630426";
+//    http2.parameters[@"priceStart"] =priceStart;
+//    http2.parameters[@"priceEnd"] =priceEnd;
+//    [http2 postWithSuccess:^(id responseObject) {
+//        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
+//        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//        
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//}
 -(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models{
     if (index.section == 1) {
-        [self getClassifyListData:models.code];
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.brandcode = models.code;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+//        [self getClassifyListData:models.code];
     }
     if (index.section == 2) {
-        [self getClassifyData:models.code :models.name];
+        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+        vc.seriesCode = models.code;
+        vc.title = models.name;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+//        [self getClassifyData:models.code :models.name];
     }
 }
--(void)getClassifyListData:(NSString *)code{
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630416";
-    http2.parameters[@"brandCode"] = code;
-    [http2 postWithSuccess:^(id responseObject) {
-        ClassifyListVC * vc = [ClassifyListVC new];
-        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        vc.brandcode = code;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSError *error) {
-        
-    }];
-}
--(void)getClassifyData:(NSString*)code :(NSString *)title{
-    //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630426";
-    http2.parameters[@"seriesCode"] = code;
-    [http2 postWithSuccess:^(id responseObject) {
-        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.title = title;
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//-(void)getClassifyListData:(NSString *)code{
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self.view;
+//    http2.code = @"630416";
+//    http2.parameters[@"brandCode"] = code;
+//    [http2 postWithSuccess:^(id responseObject) {
+//        ClassifyListVC * vc = [ClassifyListVC new];
+//        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        vc.brandcode = code;
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
+//-(void)getClassifyData:(NSString*)code :(NSString *)title{
+//    //列表查询车型
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self.view;
+//    http2.code = @"630426";
+//    http2.parameters[@"seriesCode"] = code;
+//    [http2 postWithSuccess:^(id responseObject) {
+//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+//        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.title = title;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    } failure:^(NSError *error) {
+//        
+//    }];
+//}
 #pragma mark - 获取数据
 -(void)getnewsadta{
     MinicarsLifeWeakSelf;

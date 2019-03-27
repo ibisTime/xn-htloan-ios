@@ -9,7 +9,7 @@
 #import "ClassifyInfoVC.h"
 #import "ClassifyInfoCell.h"
 #import "CarInfoVC.h"
-@interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @end
 
@@ -17,10 +17,11 @@
 -(TLTableView *)tableview{
     if (!_tableview) {
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
-        if (self.models.count > 0) {
+//        if (self.models.count > 0) {
         _tableview.delegate = self;
         _tableview.dataSource = self;
-        }
+        _tableview.refreshDelegate = self;
+//        }
         [_tableview registerClass:[ClassifyInfoCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableview;
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self getClassifyData];
    
     if (self.models.count > 0) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, (440.00/690.00) * (SCREEN_WIDTH - 30))];
@@ -99,7 +101,12 @@
         [view addSubview:image];
         self.tableview.tableHeaderView = view;
     }
+    MinicarsLifeWeakSelf;
     [self.view addSubview:self.tableview];
+    [self.tableview addRefreshAction:^{
+        [weakSelf getClassifyData];
+    }];
+    [self.tableview beginRefreshing];
     // Do any additional setup after loading the view.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -107,7 +114,10 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.models[0].cars.count;
+    if (self.models.count>0) {
+        return self.models[0].cars.count;
+    }
+    return 0;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -130,6 +140,23 @@
     CarModel * model = [CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
     [self getcarinfo:model.code];
 }
+-(void)getClassifyData{
+    //列表查询车型
+    if (self.seriesCode) {
+        TLNetworking * http2 = [[TLNetworking alloc]init];
+        http2.showView = self.view;
+        http2.code = @"630426";
+        http2.parameters[@"seriesCode"] = self.seriesCode;
+        [http2 postWithSuccess:^(id responseObject) {
+            self.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableview reloadData];
+            [self.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.tableview endRefreshHeader];
+        }];
+    }
+}
+
 -(void)getcarinfo:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";

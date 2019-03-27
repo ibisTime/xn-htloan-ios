@@ -27,14 +27,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self GetClassifyByPrice];
     MinicarsLifeWeakSelf;
     self.title = @"车系列表";
-    if (self.brandcode) {
+//    if (self.brandcode) {
         [self.tableview addRefreshAction:^{
             [weakSelf getClassifyListData];
+            [weakSelf GetClassifyByPrice];
         }];
         [self.tableview beginRefreshing];
-    }
+//    }
     
     
     [self.view addSubview:self.tableview];
@@ -83,18 +85,37 @@
         
     }];
 }
-
+-(void)GetClassifyByPrice{
+    if (self.priceStart||self.priceEnd) {
+        TLNetworking * http2 = [[TLNetworking alloc]init];
+        http2.showView = self.view;
+        http2.code = @"630426";
+        http2.parameters[@"priceStart"] =self.priceStart;
+        http2.parameters[@"priceEnd"] =self.priceEnd;
+        [http2 postWithSuccess:^(id responseObject) {
+            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableview reloadData_tl];
+            [self.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.tableview endRefreshHeader];
+        }];
+    }
+    
+}
 -(void)getClassifyListData{
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630416";
-    http2.parameters[@"brandCode"] = self.brandcode;
-    [http2 postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.tableview reloadData_tl];
-        [self.tableview endRefreshHeader];
-    } failure:^(NSError *error) {
-        [self.tableview endRefreshHeader];
-    }];
+    if (self.brandcode) {
+        TLNetworking * http2 = [[TLNetworking alloc]init];
+        http2.showView = self.view;
+        http2.code = @"630416";
+        http2.parameters[@"brandCode"] = self.brandcode;
+        [http2 postWithSuccess:^(id responseObject) {
+            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableview reloadData_tl];
+            [self.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.tableview endRefreshHeader];
+        }];
+    }
+    
 }
 @end
