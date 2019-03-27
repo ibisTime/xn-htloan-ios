@@ -370,6 +370,7 @@
 }
 -(void)getData : (NSString *)period total:(NSString *)total{
     if (self.carcode) {
+        self.CalculatorModel = nil;
         TLNetworking * http = [[TLNetworking alloc]init];
         http.showView = self.view;
         http.code = @"630428";
@@ -385,10 +386,11 @@
             self.CalculatorModel = [CalculatorModel mj_objectWithKeyValues:responseObject[@"data"]];
             [self.leftTable reloadData_tl];
             [self.rightTable reloadData_tl];
-            
             [self.leftTable endRefreshHeader];
             [self.rightTable endRefreshHeader];
         } failure:^(NSError *error) {
+            [self.leftTable reloadData_tl];
+            [self.rightTable reloadData_tl];
             [self.leftTable endRefreshHeader];
             [self.rightTable endRefreshHeader];
         }];
