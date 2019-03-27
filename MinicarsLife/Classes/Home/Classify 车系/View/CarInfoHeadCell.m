@@ -27,9 +27,9 @@
         
 
         
-        UILabel * title = [UILabel labelWithFrame:CGRectMake( 15, 15, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
+        UILabel * title = [UILabel labelWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
         title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
-        title.numberOfLines = 2;
+        title.numberOfLines = 1;
         [self addSubview:title];
         self.titlelab = title;
         

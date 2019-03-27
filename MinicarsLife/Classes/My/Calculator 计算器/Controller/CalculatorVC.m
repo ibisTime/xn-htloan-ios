@@ -150,11 +150,11 @@
                 cell=[[LeftHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
             if (self.CalculatorModel.saleAmount) {
-                cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
+                cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
                 cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             }
             else
-                cell.moneylab.text = @"暂无售价";
+                cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -181,7 +181,7 @@
                     cell.ContentLab.text = self.CalculatorModel.saleAmount;
                 }
                 else
-                    cell.ContentLab.text = @"暂无售价";
+                    cell.ContentLab.text = @"00.00";
             }
             return cell;
         }
@@ -217,7 +217,7 @@
             
         }
         
-        cell.moneystr = [NSString stringWithFormat:@"%@元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
+        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
         if (self.CalculatorModel.monthReply) {
             cell.moneyarray = @[self.CalculatorModel.monthReply,self.CalculatorModel.extraAmount,self.CalculatorModel.totalAmount];
         }
@@ -225,7 +225,8 @@
             cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
         }
         else
-            cell.moneylab.text = @"暂无售价";
+            cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
+//            cell.moneylab.text = @"00.00";
         
         
         
@@ -269,7 +270,7 @@
             NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
             cell.ContentLab.text = str2;
         }else
-            cell.ContentLab.text = @"暂无售价";
+            cell.ContentLab.text = @"00.00";
     }else if (indexPath.row == 3){
         cell.ContentLab.text = @"一年";
         if (self.DkYear) {
@@ -281,7 +282,7 @@
             NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
             cell.ContentLab.text = str4;
         }else
-            cell.ContentLab.text = @"暂无售价";
+            cell.ContentLab.text = @"00.00";
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -415,11 +416,16 @@
     NSMutableAttributedString *attribut = [[NSMutableAttributedString alloc]initWithString:string];
     //目的是想改变 ‘/’前面的字体的属性，所以找到目标的range
     NSRange range = [string rangeOfString:@"元"];
-    NSRange pointRange = NSMakeRange(0, range.location);
+    NSRange pointRange = NSMakeRange(0, range.location-1);
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    dic[NSFontAttributeName] = boldFont(40);
+    dic[NSFontAttributeName] = Font(40);
+    
+    NSMutableDictionary * dic1 = [NSMutableDictionary dictionary];
+    dic1[NSFontAttributeName] = Font(20);
+    NSRange range1 = NSMakeRange(range.location, 1);
     //赋值
     [attribut addAttributes:dic range:pointRange];
+    [attribut addAttributes:dic1 range:range1];
     return attribut;
 }
 @end

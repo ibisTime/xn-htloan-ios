@@ -32,7 +32,8 @@
     if (self.models.count > 0) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, (440.00/690.00) * (SCREEN_WIDTH - 30))];
         UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, (440.00/690.00) * (SCREEN_WIDTH - 30))];
-        image.image = kImage(@"1");
+//        image.image = kImage(@"1");
+        [image sd_setImageWithURL:[NSURL URLWithString:[self.models[0].advPic convertImageUrl]] placeholderImage:kImage(@"1")];
         
         NSLog(@"%@",self.models);
         
@@ -42,7 +43,31 @@
         v1.alpha = 0.4;
         UILabel * titlelab = [UILabel labelWithFrame:CGRectMake(15, 16.5, view.width - 30, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
         //    titlelab.text = @"中大型车";
-        titlelab.text = self.models[0].remark;
+//        titlelab.text = self.models[0].remark;
+        int level = [self.models[0].level intValue];
+        switch (level) {
+            case 0:
+                titlelab.text = @"SUV";
+                break;
+            case 1:
+                titlelab.text = @"轿车";
+                break;
+            case 2:
+                titlelab.text = @"MPV";
+                break;
+            case 3:
+                titlelab.text = @"跑车";
+                break;
+            case 4:
+                titlelab.text = @"皮卡";
+                break;
+            case 5:
+                titlelab.text = @"房车";
+                break;
+                
+            default:
+                break;
+        }
         [v1 addSubview:titlelab];
         
         

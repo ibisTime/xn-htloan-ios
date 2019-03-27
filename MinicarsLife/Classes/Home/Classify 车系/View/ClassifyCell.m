@@ -58,7 +58,31 @@
     //超出容器范围的切除掉
     self.ClassifyLogo.clipsToBounds = YES;
     self.ClassifyName.text = carmodel.name;
-    self.ClassiftType.text = carmodel.remark;
+//    self.ClassiftType.text = carmodel.remark;
+    int level = [carmodel.level intValue];
+    switch (level) {
+        case 0:
+            self.ClassiftType.text = @"SUV";
+            break;
+        case 1:
+            self.ClassiftType.text = @"轿车";
+            break;
+        case 2:
+            self.ClassiftType.text = @"MPV";
+            break;
+        case 3:
+            self.ClassiftType.text = @"跑车";
+            break;
+        case 4:
+            self.ClassiftType.text = @"皮卡";
+            break;
+        case 5:
+            self.ClassiftType.text = @"房车";
+            break;
+            
+        default:
+            break;
+    }
     self.ClassifyPrice.text = [NSString stringWithFormat:@"%.1f-%.1f万",[carmodel.lowest floatValue]/10000,[carmodel.highest floatValue]/10000];
 }
 @end
