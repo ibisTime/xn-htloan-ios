@@ -113,9 +113,9 @@
     
         [TLProgressHUD show];
     }
-    if (self.isShowMsg) {
-        [TLProgressHUD dismiss];
-    }
+//    if (self.isShowMsg) {
+//        [TLProgressHUD dismiss];
+//    }
     
     if(self.code && self.code.length > 0){
     
@@ -167,15 +167,15 @@
       //打印JSON字符串
       [HttpLogger logJSONStringWithResponseObject:responseObject];
 
-      if(self.showView){
-          
-          [TLProgressHUD dismiss];
-      }
+//      if(self.showView){
+//
+//
+//      }
       
       if([responseObject[@"errorCode"] isEqual:@"0"]){ //成功
           
           if(success) {
-              
+              [TLProgressHUD dismiss];
               //在主线程中加载UI
               dispatch_async(dispatch_get_main_queue(), ^{
                   
@@ -210,26 +210,17 @@
                   [rootViewController presentViewController:nav animated:YES completion:nil];
               }];
               return;
+          }else
+          {
+              [TLAlert alertWithInfo:responseObject[@"errorInfo"]];
           }
           
-          if(self.isShowMsg) { //异常也是失败
-              
-              [TLAlert alertWithInfo:responseObject[@"errorInfo"]];
-
-          }
+          
       }
       
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
-       if(self.showView) {
-           
-           [TLProgressHUD dismiss];
-       }
-       
-       if (self.isShowMsg) {
-
-           [TLAlert alertWithInfo:@"网络异常"];
-       }
+       [TLAlert alertWithInfo:@"网络异常"];
 
        if(failure) {
            //在主线程中加载UI

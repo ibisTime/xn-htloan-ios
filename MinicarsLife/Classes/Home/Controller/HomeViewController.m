@@ -91,12 +91,14 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
     }
     return 2;
 }
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         HomeTableHeadCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableHead" forIndexPath:indexPath];

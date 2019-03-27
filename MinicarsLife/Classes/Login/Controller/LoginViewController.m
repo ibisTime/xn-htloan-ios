@@ -132,8 +132,8 @@
     [self loginCustomView];
     [self.view addSubview:self.ForgotPasswordButton];
     [self.view addSubview:self.loginButton];
-
 }
+
 
 -(void)TheNavigationBar
 {
