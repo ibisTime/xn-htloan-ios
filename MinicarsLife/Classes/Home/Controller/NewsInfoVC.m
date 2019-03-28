@@ -89,8 +89,8 @@
         self.authorlab.frame = CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20);
         
         
-        view.frame = CGRectMake(0, -(self.authorlab.yy + 10), SCREEN_WIDTH, self.authorlab.yy + 10);
-        self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.authorlab.yy + 10, 0, 0, 0);
+        view.frame = CGRectMake(0, -(self.authorlab.yy), SCREEN_WIDTH, self.authorlab.yy);
+        self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.authorlab.yy, 0, 0, 0);
         
         [self.webview loadHTMLString:self.model.context baseURL:nil];
         [self getreadnum];
