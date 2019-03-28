@@ -53,6 +53,8 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+//    NSLog(@"kHeight = %.2f",(kHeight(432)/3 * 2));
+//    NSLog(@"contentOffset = %.2f",self.tableview.contentOffset.y)
     if (self.tableview.contentOffset.y>(kHeight(432)/3 * 2)) {
         
         [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:0/255.0 green:145/255.0 blue:247/255.0 alpha:1.00]] forBarMetrics:UIBarMetricsDefault];
