@@ -19,7 +19,7 @@
 {
     if (!_LeftBackbButton) {
         _LeftBackbButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _LeftBackbButton.frame = CGRectMake(0, 0, 44, 44);
+        _LeftBackbButton.frame = CGRectMake(0, 0, 14, 14);
         [_LeftBackbButton setImage:HGImage(@"返回") forState:(UIControlStateNormal)];
     }
     return _LeftBackbButton;

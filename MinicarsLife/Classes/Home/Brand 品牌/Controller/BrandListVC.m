@@ -56,7 +56,11 @@
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    [self getClassifyListData:self.CarModels[indexPath.row].code];
+//    [self getClassifyListData:self.CarModels[indexPath.row].code];
+    ClassifyListVC * vc = [ClassifyListVC new];
+    vc.brandcode = self.CarModels[indexPath.row].code;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 -(void)getClassifyListData:(NSString *)code{
     TLNetworking * http2 = [[TLNetworking alloc]init];

@@ -36,24 +36,43 @@
     [super viewWillAppear:animated];
     [self navigationTransparentClearColor];
 
-//    self.navigationController.navigationBar.alpha = 0;
-//     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self navigationSetDefault];
-//    [self.navigationController setNavigationBarHidden:NO animated:animated];
-//    self.navigationController.navigationBar.alpha = 1;
 }
 
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 70)];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 70) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
     }
     return _tableview;
+}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+//    NSLog(@"kHeight = %.2f",(kHeight(432)/3 * 2));
+//    NSLog(@"contentOffset = %.2f",self.tableview.contentOffset.y)
+    if (self.tableview.contentOffset.y>(kHeight(432)/3 * 2)) {
+        
+        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:0/255.0 green:145/255.0 blue:247/255.0 alpha:1.00]] forBarMetrics:UIBarMetricsDefault];
+    }else
+    {
+        [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:0/255.0 green:145/255.0 blue:247/255.0  alpha:self.tableview.contentOffset.y / (kHeight(432)/3 * 2)]] forBarMetrics:UIBarMetricsDefault];
+    }
+}
+-(UIImage *)imageWithBgColor:(UIColor *)color {
+    
+    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 #pragma mark -- 滑动试图懒加载
 -(HW3DBannerView *)scrollView
@@ -351,7 +370,7 @@
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52.5)];
         view.backgroundColor = kWhiteColor;
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
-        v1.backgroundColor = kLineColor;
+        v1.backgroundColor = kBackgroundColor;
         [view addSubview:v1];
         
         UIView * v2 = [[UIView alloc]initWithFrame:CGRectMake(15, 25, 3, 15)];
@@ -488,6 +507,9 @@
         [arr addObject:[arr1 copy]];
     }
     return [arr copy];
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.001;
 }
 
 @end

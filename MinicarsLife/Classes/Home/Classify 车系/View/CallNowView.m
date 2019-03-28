@@ -78,6 +78,7 @@
 //
         UITextField * phone = [[UITextField alloc]initWithFrame:CGRectMake(phonelab.xx + 33.5, view1.yy + 12.5, SCREEN_WIDTH - 30 - 100, 20)];
         phone.placeholder = @"请输入联系方式";
+        phone.font = Font(14);
         [view addSubview:phone];
         self.phone = phone;
         

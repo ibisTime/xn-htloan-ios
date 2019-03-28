@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 //@property (nonatomic,strong) NSMutableArray<CarModel*> * carmodel;
 @property (nonatomic,strong) NSMutableArray<CarModel*> * CarModels;
 @property (nonatomic,strong) NSString * brandcode;
+@property (nonatomic,strong) NSString *priceStart;
+@property (nonatomic,strong) NSString *priceEnd;
 @end
 
 NS_ASSUME_NONNULL_END

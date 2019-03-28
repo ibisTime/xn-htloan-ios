@@ -8,7 +8,9 @@
 
 #import "NewsInfoVC.h"
 #import "NewsModel.h"
-@interface NewsInfoVC ()
+@interface NewsInfoVC (){
+    UIView * view;
+}
 @property (nonatomic,strong) UIWebView * webview;
 @property (nonatomic,strong) UILabel * status;
 @property (nonatomic,strong) UILabel * titlelab;
@@ -23,7 +25,7 @@
     [super viewDidLoad];
     self.title = @"文章";
     
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
+    view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
     view.backgroundColor = kWhiteColor;
     self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
     self.status.text = @"原创";
@@ -35,11 +37,11 @@
     self.titlelab.numberOfLines = 3;
     [view addSubview:self.titlelab];
     
-    self.authorlab = [UILabel labelWithFrame:CGRectMake(15, view.height - 35, SCREEN_WIDTH - 30  - 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:MainColor];
+    self.authorlab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:MainColor];
     self.authorlab.text = @"作者：微车生活";
     [view addSubview:self.authorlab];
     
-    self.timelab = [UILabel labelWithFrame:CGRectMake(self.authorlab.xx, view.height - 35, 100, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+    self.timelab = [UILabel labelWithFrame:CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     self.timelab.text = @"2019-01-11发布";
     [view addSubview:self.timelab];
     
@@ -56,11 +58,24 @@
     [http postWithSuccess:^(id responseObject) {
         self.model = [NewsModel mj_objectWithKeyValues:responseObject[@"data"]];
         self.status.text = self.model.tag;
-        self.titlelab.text = [NSString stringWithFormat:@"         %@", self.model.title];
-//        self.authorlab.text = [NSString stringWithFormat:@"作者：%@", self.model.author];
+        [self.status sizeToFit];
+        self.status.frame = CGRectMake(15, 21, self.status.width + 10, 20);
+        
+        
+        NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+        // 对齐方式
+        style.alignment = NSTextAlignmentLeft;
+        // 首行缩进
+        style.firstLineHeadIndent = self.status.width + 5;
+        NSAttributedString *attrText = [[NSAttributedString alloc] initWithString:self.model.title attributes:@{ NSParagraphStyleAttributeName : style}];
+        self.titlelab.attributedText = attrText;
+        
         [self.titlelab sizeToFit];
         self.titlelab.frame = CGRectMake(15, 20, SCREEN_WIDTH - 30, self.titlelab.height);
+        
+        
         self.timelab.text = [NSString stringWithFormat:@"%@发布", [self.model.updateDatetime convertToDetailDateWithoutHour]];
+        self.timelab.frame = CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20);
         
         NSString * str = [NSString stringWithFormat:@"作者:%@", self.model.author];
         NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
@@ -71,6 +86,11 @@
         
      
         self.authorlab.attributedText = attrStr;
+        self.authorlab.frame = CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20);
+        
+        
+        view.frame = CGRectMake(0, -(self.authorlab.yy), SCREEN_WIDTH, self.authorlab.yy);
+        self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.authorlab.yy, 0, 0, 0);
         
         [self.webview loadHTMLString:self.model.context baseURL:nil];
         [self getreadnum];

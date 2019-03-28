@@ -30,6 +30,8 @@
 
 - (void)refreshTableViewButtonClick:(TLTableView *)refreshTablevi BarName:(NSString *)name;
 
+-(void)refreshTableView:(TLTableView *)refreshTableview scrollView:(UIScrollView *)scroll;
+
 @end
 
 @interface  TLTableView: UITableView

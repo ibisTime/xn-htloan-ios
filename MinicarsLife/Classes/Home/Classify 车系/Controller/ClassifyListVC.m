@@ -27,15 +27,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self GetClassifyByPrice];
     MinicarsLifeWeakSelf;
     self.title = @"车系列表";
-    if (self.brandcode) {
-        [self.tableview addRefreshAction:^{
-            [weakSelf getClassifyListData];
+    [self.tableview addRefreshAction:^{
+        [weakSelf getClassifyListData];
+        [weakSelf GetClassifyByPrice];
         }];
-        [self.tableview beginRefreshing];
-    }
-    
+    [self.tableview beginRefreshing];
     
     [self.view addSubview:self.tableview];
 }
@@ -64,37 +63,63 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    [self getClassifyData:self.CarModels[indexPath.row].code];
-    [self getClassifyData:self.CarModels[indexPath.row].code withtitle:self.CarModels[indexPath.row].name];
+//    [self getClassifyData:self.CarModels[indexPath.row].code withtitle:self.CarModels[indexPath.row].name];
+    ClassifyInfoVC * vc = [ClassifyInfoVC new];
+    vc.title = self.CarModels[indexPath.row].name;
+    vc.seriesCode = self.CarModels[indexPath.row].code;
+    [self.navigationController pushViewController:vc animated:YES];
 }
--(void)getClassifyData:(NSString*)code withtitle:(NSString *)title{
-    //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630426";
-    http2.parameters[@"seriesCode"] = code;
-    [http2 postWithSuccess:^(id responseObject) {
-        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        vc.title = title;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
-        
-    } failure:^(NSError *error) {
-        
-    }];
+//-(void)getClassifyData:(NSString*)code withtitle:(NSString *)title{
+//    //列表查询车型
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self.view;
+//    http2.code = @"630426";
+//    http2.parameters[@"seriesCode"] = code;
+//    [http2 postWithSuccess:^(id responseObject) {
+//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+//        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        vc.title = title;
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
+-(void)GetClassifyByPrice{
+    if (self.priceStart||self.priceEnd) {
+        TLNetworking * http2 = [[TLNetworking alloc]init];
+        http2.showView = self.view;
+        http2.code = @"630426";
+        http2.parameters[@"priceStart"] =self.priceStart;
+        http2.parameters[@"priceEnd"] =self.priceEnd;
+        [http2 postWithSuccess:^(id responseObject) {
+            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableview reloadData_tl];
+            [self.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.tableview endRefreshHeader];
+        }];
+    }
+    else{
+        [self.tableview endRefreshHeader];
+    }
 }
-
 -(void)getClassifyListData{
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630416";
-    http2.parameters[@"brandCode"] = self.brandcode;
-    [http2 postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.tableview reloadData_tl];
+    if (self.brandcode) {
+        TLNetworking * http2 = [[TLNetworking alloc]init];
+        http2.showView = self.view;
+        http2.code = @"630416";
+        http2.parameters[@"brandCode"] = self.brandcode;
+        [http2 postWithSuccess:^(id responseObject) {
+            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            [self.tableview reloadData_tl];
+            [self.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [self.tableview endRefreshHeader];
+        }];
+    }else
         [self.tableview endRefreshHeader];
-    } failure:^(NSError *error) {
-        [self.tableview endRefreshHeader];
-    }];
+    
 }
 @end
