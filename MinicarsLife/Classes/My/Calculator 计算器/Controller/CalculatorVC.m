@@ -184,6 +184,7 @@
                 else
                     cell.ContentLab.text = @"请选择车型";
             }else if (indexPath.row == 2){
+                cell.img.hidden = YES;
                 if (self.CalculatorModel) {
                     cell.ContentLab.text = self.CalculatorModel.saleAmount;
                 }
@@ -273,6 +274,7 @@
         else
             cell.ContentLab.text = @"暂无车型";
     }else if (indexPath.row == 2){
+        cell.img.hidden = YES;
         if (self.CalculatorModel) {
             NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
             cell.ContentLab.text = str2;
@@ -285,6 +287,7 @@
         }
     }
     else{
+        cell.img.hidden = YES;
         if (self.CalculatorModel) {
             NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
             cell.ContentLab.text = str4;

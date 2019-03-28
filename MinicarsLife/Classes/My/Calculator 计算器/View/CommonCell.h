@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CommonCell : UITableViewCell
 @property (nonatomic,strong) UILabel * TitleLab;
 @property (nonatomic,strong) UILabel * ContentLab;
+@property (nonatomic,strong) UIImageView * img ;
 @end
 
 NS_ASSUME_NONNULL_END

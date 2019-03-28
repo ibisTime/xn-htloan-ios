@@ -128,25 +128,45 @@
     // Do any additional setup after loading the view.
     self.title = @"登录";
     self.view.backgroundColor = BackColor;
-    [self TheNavigationBar];
+//    [self TheNavigationBar];
     [self loginCustomView];
     [self.view addSubview:self.ForgotPasswordButton];
     [self.view addSubview:self.loginButton];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    [self.LeftBackbButton setTintColor:[UIColor whiteColor]];
+    
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    self.navigationItem.leftBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.LeftBackbButton]];
+    
+    self.RightButton.titleLabel.font = Font(16);
+    [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-50, 30, 50, 50)];
+    [self.LeftBackbButton setFrame:CGRectMake(0, 15, 14, 14)];
+    [self.RightButton setTitle:@"注册" forState:(UIControlStateNormal)];
+    [self.LeftBackbButton setImage:HGImage(@"返回") forState:(UIControlStateNormal)];
+    self.LeftBackbButton.tag = 100;
+    self.RightButton.tag = 101;
+    //    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
+//    [self.RightButton setImage:kImage(@"我的收藏") forState:UIControlStateNormal];
+//    [self.RightButton setImage:kImage(@"详情收藏-点击") forState:UIControlStateSelected];
+    [self.RightButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.LeftBackbButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
 
 -(void)TheNavigationBar
 {
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    negativeSpacer.width = -10;
-    self.navigationItem.leftBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.LeftBackbButton]];
-    [self.RightButton setTitle:@"注册" forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    [self.LeftBackbButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    [self.LeftBackbButton setImage:HGImage(@"返回") forState:(UIControlStateNormal)];
-    self.LeftBackbButton.tag = 100;
-    [self.RightButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
-    self.RightButton.tag = 101;
+//    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//    negativeSpacer.width = -10;
+////    self.navigationItem.leftBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.LeftBackbButton]];
+//    [self.RightButton setTitle:@"注册" forState:(UIControlStateNormal)];
+//    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+////    [self.LeftBackbButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
+////    [self.LeftBackbButton setImage:HGImage(@"返回") forState:(UIControlStateNormal)];
+////    self.LeftBackbButton.tag = 100;
+//    [self.RightButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//    self.RightButton.tag = 101;
 }
 
 -(void)loginCustomView

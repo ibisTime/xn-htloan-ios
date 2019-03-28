@@ -324,15 +324,15 @@
             [weakSelf.tableview endRefreshHeader];
         }];
     }];
-    [self.tableview addLoadMoreAction:^{
-        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-            weakSelf.NewsModels = objs;
-            [weakSelf.tableview reloadData_tl];
-            [weakSelf.tableview endRefreshFooter];
-        } failure:^(NSError *error) {
-            [weakSelf.tableview endRefreshFooter];
-        }];
-    }];
+//    [self.tableview addLoadMoreAction:^{
+//        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+//            weakSelf.NewsModels = objs;
+//            [weakSelf.tableview reloadData_tl];
+//            [weakSelf.tableview endRefreshFooter];
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshFooter];
+//        }];
+//    }];
     [self.tableview beginRefreshing];
 }
 
