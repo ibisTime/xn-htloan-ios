@@ -138,7 +138,7 @@
     self.RightButton.titleLabel.font = Font(16);
     [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-50, 30, 50, 50)];
 //    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
-    [self.RightButton setImage:kImage(@"我的收藏") forState:UIControlStateNormal];
+    [self.RightButton setImage:kImage(@"详情收藏-未点击") forState:UIControlStateNormal];
     [self.RightButton setImage:kImage(@"详情收藏-点击") forState:UIControlStateSelected];
     if ([self.CarModel.isCollect isEqualToString:@"1"]){
         self.RightButton.selected = YES;
@@ -228,6 +228,9 @@
 }
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    if (self.firstarray==nil&&self.lastarray==nil) {
+        return 2;
+    }
     return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -237,7 +240,6 @@
     else if (section == 1){
         return 3;
     }
-    
     if (self.firstarray.count < 0) {
         return 0;
         }
@@ -429,13 +431,13 @@
     http.parameters[@"carCode"] = self.CarModel.code;
     [http postWithSuccess:^(id responseObject) {
         self.DeployModels = [DeployModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        
-        NSArray * arr = [self splitArray:self.DeployModels withSubSize:4];
-        self.firstarray = [NSArray array];
-        self.firstarray = arr[0];
-        self.lastarray = [NSArray array];
-        self.lastarray = arr[1];
-        
+        if (self.DeployModels.count>0) {
+            NSArray * arr = [self splitArray:self.DeployModels withSubSize:4];
+            self.firstarray = [NSArray array];
+            self.firstarray = arr[0];
+            self.lastarray = [NSArray array];
+            self.lastarray = arr[1];
+        }
         [self.tableview reloadData];
     } failure:^(NSError *error) {
         

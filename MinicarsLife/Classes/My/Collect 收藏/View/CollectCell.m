@@ -15,7 +15,7 @@
 @property (nonatomic,strong) UILabel * timelab;
 @property (nonatomic,strong) UILabel * moneylab;
 @property (nonatomic,strong) UILabel * contentlab;
-@property (nonatomic,strong) UIView * view;
+//@property (nonatomic,strong) UIView * view;
 @end
 
 

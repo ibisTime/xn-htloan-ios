@@ -31,7 +31,7 @@
 }
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStylePlain];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.allowsMultipleSelectionDuringEditing = YES;
@@ -82,14 +82,14 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 10;
-}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CollectCell * cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
     cell.model = self.CollectModels[indexPath.section];
+    
     UIView *backGroundView = [[UIView alloc]init];
     backGroundView.backgroundColor = kClearColor;
+    cell.view.backgroundColor = kHexColor(@"#F5F5F5");
     cell.selectedBackgroundView = backGroundView;
     
     return cell;
@@ -166,7 +166,7 @@
         }else{
             //取消选中
             for (int i = 0; i< self.CollectModels.count; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:i];
                 [_tableview deselectRowAtIndexPath:indexPath animated:NO];
                 [self.deleteArray replaceObjectAtIndex:i withObject:@""];
             }
@@ -199,7 +199,11 @@
     }];
     
 }
-
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+//    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+//    view.backgroundColor = kBackgroundColor;
+//    return view;
+//}
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -309,5 +313,16 @@
     } failure:^(NSError *error) {
         
     }];
+}
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    return [UIView new];
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
+}-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    return [UIView new];
 }
 @end

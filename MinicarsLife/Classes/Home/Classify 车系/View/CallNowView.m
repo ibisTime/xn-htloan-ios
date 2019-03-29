@@ -98,6 +98,7 @@
         
         UITextField * name = [[UITextField alloc]initWithFrame:CGRectMake(namelab.xx + 33.5, v1.yy + 12.5, SCREEN_WIDTH - 30 - 100, 20)];
         name.placeholder = @"请输入姓名";
+        name.font = Font(14);
         [view addSubview:name];
         self.name = name;
         
