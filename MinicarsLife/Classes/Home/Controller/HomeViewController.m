@@ -96,7 +96,7 @@
     if (section == 0) {
         return 1;
     }
-    return 2;
+    return self.NewsModels.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
