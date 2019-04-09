@@ -15,6 +15,7 @@
 //        self.backgroundColor = [UIColor greenColor];
         self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, self.bounds.size.width - 10, 60)];
         kViewRadius(self.logo, 4);
+        self.logo.contentMode =UIViewContentModeScaleAspectFill;
         [self addSubview:self.logo];
         
         self.titlelab = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy, self.bounds.size.width, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(13) textColor:kBlackColor];

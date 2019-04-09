@@ -13,12 +13,13 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = [UIColor redColor];
-        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 45)];
+        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(10, 5, self.bounds.size.width - 20, 35)];
         [self addSubview:self.logo];
         
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy, self.bounds.size.width, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy + 5, self.bounds.size.width, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
         [self addSubview:self.titlelab];
     }
     return self;
 }
+
 @end

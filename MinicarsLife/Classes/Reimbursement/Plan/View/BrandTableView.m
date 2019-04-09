@@ -56,10 +56,11 @@
     }
     NSMutableArray<CarModel *> *carmodel = [CarModel mj_objectArrayWithKeyValuesArray:self.normalArray[indexPath.section]];
     cell.namelab.text = carmodel[indexPath.row].name;
-    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel[indexPath.row].logo convertImageUrl]]placeholderImage:kImage(@"default_pic")];
     cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[carmodel[indexPath.row].logo convertImageUrl]]placeholderImage:kImage(@"default_pic")];
+    
     //超出容器范围的切除掉
-    cell.logo.clipsToBounds = YES;
+//    cell.logo.clipsToBounds = YES;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }

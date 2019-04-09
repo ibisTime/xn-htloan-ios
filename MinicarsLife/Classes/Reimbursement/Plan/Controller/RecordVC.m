@@ -46,29 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self LoadData];
-//    UIView * headview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 205)];
-//    headview.backgroundColor = kWhiteColor;
-//    UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 23, 3, 14)];
-//    v1.backgroundColor = MainColor;
-//    kViewRadius(v1, 1.5);
-//    [headview addSubview:v1];
-//
-//    UILabel * label = [UILabel labelWithFrame:CGRectMake(v1.xx + 5, 21, 60, 18) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
-//    label.text = @"热门品牌";
-//    [headview addSubview:label];
-//
-//
-//    UIButton * button = [UIButton buttonWithTitle:@"更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
-//    [button addTarget:self action:@selector(moreBrand) forControlEvents:(UIControlEventTouchUpInside)];
-//    button.frame = CGRectMake(SCREEN_WIDTH - 15 - 40, 23, 40, 17);
-//    [button SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:3 imagePositionBlock:^(UIButton *button) {
-//        [button setImage:kImage(@"more") forState:(UIControlStateNormal)];
-//    }];
-//    [headview addSubview:button];
-    
-    
-//    NSArray * titlearray = @[@"丰田",@"路虎",@"奔驰",@"宝马",@"福特",@"奥迪",@"日产",@"玛莎拉蒂",@"保时捷",@"雷克萨斯"];
-   
+
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     width = (SCREEN_WIDTH - 60.00)/5;
     // 设置每个item的大小
@@ -112,10 +90,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BrandCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.titlelab.text = self.HotCarBrands[indexPath.row].name;
-    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     cell.logo.contentMode =UIViewContentModeScaleAspectFill;
-    //超出容器范围的切除掉
-    cell.logo.clipsToBounds = YES;
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    
     return cell;
 }
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
@@ -129,6 +106,7 @@
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(SCREEN_WIDTH, 40);
 }
+
 -(void)moreBrand{
     BrandListVC * vc = [[BrandListVC alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
@@ -180,7 +158,8 @@
     MinicarsLifeWeakSelf;
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630406";
-    http.parameters[@"isReferee"] = @"1";
+    http.parameters[@"location"] = @"1";
+    http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         self.HotCarBrands = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         
@@ -201,7 +180,7 @@
     
     TLPageDataHelper * http1 = [TLPageDataHelper new];
     http1.code = @"630405";
-    http1.parameters[@""] = @"";
+    http1.parameters[@"status"] = @"1";
     [http1 modelClass:[CarModel class]];
     http1.tableView = self.tableview;
     http1.isCurrency = YES;
@@ -214,13 +193,11 @@
                     NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
                     NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
                     for (int j = 0; j < array.count; j ++) {
-
                         if ([str isEqualToString:array[j].letter]) {
                             [rowArray addObject:array[j]];
                         }
                     }
                     if (rowArray.count > 0) {
-                        
                         [weakSelf.allArray addObject:rowArray];
                     }
                     

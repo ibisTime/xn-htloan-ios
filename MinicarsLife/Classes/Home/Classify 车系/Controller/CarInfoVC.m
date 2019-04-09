@@ -425,6 +425,7 @@
         WGLog(@"%@",error);
     }];
 }
+
 -(void)getCarDeploy{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630448";
@@ -434,9 +435,15 @@
         if (self.DeployModels.count>0) {
             NSArray * arr = [self splitArray:self.DeployModels withSubSize:4];
             self.firstarray = [NSArray array];
-            self.firstarray = arr[0];
+            if (arr.count > 0) {
+                self.firstarray = arr[0];
+            }
+            
             self.lastarray = [NSArray array];
-            self.lastarray = arr[1];
+            if (arr.count > 1) {
+                self.lastarray = arr[1];
+            }
+//
         }
         [self.tableview reloadData];
     } failure:^(NSError *error) {

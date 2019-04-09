@@ -26,11 +26,11 @@
         self.desribelab.text= @"塞纳18款3.5四驱 Limited 7座加规";
         [self addSubview:self.desribelab];
         
-        self.moneylab = [UILabel labelWithFrame:CGRectMake(0,  150, self.width / 2, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(14) textColor:MainColor];
+        self.moneylab = [UILabel labelWithFrame:CGRectMake(0,  150, 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(14) textColor:MainColor];
         self.moneylab.text = @"73万";
         [self addSubview:self.moneylab];
         
-        self.personlab = [UILabel labelWithFrame:CGRectMake(self.moneylab.xx, 150, self.width/ 2, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        self.personlab = [UILabel labelWithFrame:CGRectMake(self.moneylab.xx, 150, 50, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         self.personlab.text= @"950人关注";
         [self addSubview:self.personlab];
         
@@ -40,14 +40,16 @@
 -(void)setModel:(CarModel *)model{
     _model = model;
     self.logo.backgroundColor = [UIColor redColor];
-    [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     self.logo.contentMode = UIViewContentModeScaleAspectFill;
+    [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    
 //    self.logo.clipsToBounds = YES;
     self.desribelab.frame = CGRectMake(0, self.logo.yy + 10, self.width, 0);
     self.desribelab.text = [NSString stringWithFormat:@"%@  %@",model.name,model.slogan];
     [self.desribelab sizeToFit];
     
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[model.salePrice floatValue]/10000];
+    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[model.salePrice floatValue]/10000];
     self.personlab.text = [NSString stringWithFormat:@"%@人关注",model.collectNumber];
 }
+
 @end

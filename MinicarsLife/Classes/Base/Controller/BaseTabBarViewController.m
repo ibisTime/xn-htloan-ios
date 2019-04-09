@@ -24,14 +24,14 @@
 
 }
 - (void)createTabBar{
-    [self createControllerWithTitle:@"首页" image:@"home1"selectedimage:@"home2" className:[HomeViewController class]];
-    [self createControllerWithTitle:@"车型库" image:@"车型库-未选中"selectedimage:@"车型库-选中" className:[ReimbursementViewController class]];
-    [self createControllerWithTitle:@"我的" image:@"my1"selectedimage:@"my2" className:[MyViewController class]];
+    [self createControllerWithTitle1:@"首页" image:@"home1"selectedimage:@"home2" className:[HomeViewController class]];
+    [self createControllerWithTitle1:@"车型库" image:@"车型库-未选中"selectedimage:@"车型库-选中" className:[ReimbursementViewController class]];
+    [self createControllerWithTitle1:@"我的" image:@"my1"selectedimage:@"my2" className:[MyViewController class]];
 
 }
 
 //提取公共方法
-- (void)createControllerWithTitle:(NSString *)title image:(NSString *)image selectedimage:(NSString *)selectedimage  className:(Class)class{
+- (void)createControllerWithTitle1:(NSString *)title image:(NSString *)image selectedimage:(NSString *)selectedimage  className:(Class)class{
 
     UIViewController *vc = [[class alloc]init];
     UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:vc];

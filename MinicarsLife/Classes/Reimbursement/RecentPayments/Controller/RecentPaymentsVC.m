@@ -467,7 +467,7 @@
                 break;
         }
     }
-    
+    http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",self.CarModels.count] forState:(UIControlStateNormal)];
@@ -475,53 +475,6 @@
 
     }];
 }
-
-
-//-(BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-//    return YES;
-//}
-////// cell点击变色
-//-(void)collectionView:(UICollectionView *)collectionView didUnhighlightItemAtIndexPath:(NSIndexPath *)indexPath{
-////    if ([self.collectionView isEqual:collectionView]) {
-////        CarCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
-////        cell.selected =!cell.selected;
-////        cell.backgroundColor = MainColor;
-////    }
-//    UICollectionViewCell * cell = [collectionView cellForItemAtIndexPath:indexPath];
-//    cell.backgroundColor = MainColor;
-//}
-//- (void)collectionView:(UICollectionView *)collectionView didHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-//
-//- (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"%s", __FUNCTION__);
-//    return YES;
-//}
-//
-//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    NSLog(@"%s", __FUNCTION__);
-//}
-
-#pragma mark - Init
-//- (void)initTableView {
-//
-//    self.tableView = [[NearFutureTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 50) style:(UITableViewStyleGrouped)];
-//
-//    self.tableView.refreshDelegate = self;
-//    self.tableView.backgroundColor = kBackgroundColor;
-//
-//    [self.view addSubview:self.tableView];
-//
-//}
-//
-//-(void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    DetailsVC *vc = [[DetailsVC alloc]init];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    vc.model = _model[indexPath.row];
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
 
 
 
@@ -534,6 +487,7 @@
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.code = @"630543";
     helper.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    
     helper.isList = NO;
     helper.isCurrency = YES;
     helper.tableView = self.tableView;

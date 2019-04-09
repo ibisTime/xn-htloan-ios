@@ -104,6 +104,12 @@
 		1FA54DBF22393A500077FE54 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */; };
 		1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */; };
 		1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */; };
+		1FFB8E9E225AFA8B00B72F31 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */; };
+		1FFB8E9F225AFA8B00B72F31 /* WLWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E95225AFA8B00B72F31 /* WLWebProgressLayer.m */; };
+		1FFB8EA0225AFA8B00B72F31 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E98225AFA8B00B72F31 /* NSTimer+addition.m */; };
+		1FFB8EA1225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E99225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m */; };
+		1FFB8EA2225AFA8B00B72F31 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */; };
+		1FFB8EA3225AFA8B00B72F31 /* GeneralWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */; };
 		36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */; };
 		363B6123223B7B9A00585061 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6122223B7B9A00585061 /* NewsCell.m */; };
 		363B6126223B81A800585061 /* CarNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6125223B81A800585061 /* CarNewsVC.m */; };
@@ -582,6 +588,18 @@
 		1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		1FFB8E92225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+NSURLRequestSSLY.h"; sourceTree = "<group>"; };
+		1FFB8E93225AFA8B00B72F31 /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
+		1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		1FFB8E95225AFA8B00B72F31 /* WLWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WLWebProgressLayer.m; sourceTree = "<group>"; };
+		1FFB8E96225AFA8B00B72F31 /* GeneralWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralWebView.h; sourceTree = "<group>"; };
+		1FFB8E97225AFA8B00B72F31 /* WYWebProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWebProgressLayer.h; sourceTree = "<group>"; };
+		1FFB8E98225AFA8B00B72F31 /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
+		1FFB8E99225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+NSURLRequestSSLY.m"; sourceTree = "<group>"; };
+		1FFB8E9A225AFA8B00B72F31 /* WLWebProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WLWebProgressLayer.h; sourceTree = "<group>"; };
+		1FFB8E9B225AFA8B00B72F31 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
+		1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralWebView.m; sourceTree = "<group>"; };
 		36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableHeadCell.h; sourceTree = "<group>"; };
 		36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableHeadCell.m; sourceTree = "<group>"; };
 		363B6121223B7B9A00585061 /* NewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
@@ -1604,6 +1622,25 @@
 				1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */,
 			);
 			path = ILiveSDK;
+			sourceTree = "<group>";
+		};
+		1FFB8E91225AFA8B00B72F31 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				1FFB8E96225AFA8B00B72F31 /* GeneralWebView.h */,
+				1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */,
+				1FFB8E92225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.h */,
+				1FFB8E93225AFA8B00B72F31 /* NSTimer+addition.h */,
+				1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */,
+				1FFB8E95225AFA8B00B72F31 /* WLWebProgressLayer.m */,
+				1FFB8E97225AFA8B00B72F31 /* WYWebProgressLayer.h */,
+				1FFB8E98225AFA8B00B72F31 /* NSTimer+addition.m */,
+				1FFB8E99225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m */,
+				1FFB8E9A225AFA8B00B72F31 /* WLWebProgressLayer.h */,
+				1FFB8E9B225AFA8B00B72F31 /* UIView+Frame.h */,
+				1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		363B612D223BA12B00585061 /* Classify 车系 */ = {
@@ -2854,6 +2891,7 @@
 		7A8A5B0220E35A06002D9A48 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1FFB8E91225AFA8B00B72F31 /* Web */,
 				7A8A5B1720E35B47002D9A48 /* HomeViewController.h */,
 				7A8A5B1820E35B47002D9A48 /* HomeViewController.m */,
 				36E3A392223B3D6B00B26F4F /* HomeHeadVC.h */,
@@ -4191,6 +4229,7 @@
 				7A8A5CC420E5DC5C002D9A48 /* ApplyForView.m in Sources */,
 				36E3A39A223B470300B26F4F /* ClassifyCarVC.m in Sources */,
 				36428DB4223F7122007B7D24 /* CollectionHeaderView.m in Sources */,
+				1FFB8EA3225AFA8B00B72F31 /* GeneralWebView.m in Sources */,
 				363B6139223BA45C00585061 /* BrandCell.m in Sources */,
 				7A22CDB920ECD1010010059D /* CustomTextFieldView.m in Sources */,
 				7AB29D7F20FC861D0014FCB3 /* AboutUsVC.m in Sources */,
@@ -4255,6 +4294,7 @@
 				363B6130223BA14700585061 /* ClassifyListVC.m in Sources */,
 				7AA906F420EF6EF6004F2B12 /* RepaymentPlanVC.m in Sources */,
 				7A8A5CCB20E6009F002D9A48 /* ExhibitionCenterVC.m in Sources */,
+				1FFB8EA0225AFA8B00B72F31 /* NSTimer+addition.m in Sources */,
 				7A3CBDB320F3647D00D795E5 /* VehicleDetailsTbaleView.m in Sources */,
 				363B6151223BCDA900585061 /* DeployFirstCell.m in Sources */,
 				363B614B223BC84000585061 /* CarInfoHeadCell.m in Sources */,
@@ -4297,6 +4337,7 @@
 				7AB29D7B20FC68610014FCB3 /* TheDetailModel.m in Sources */,
 				7A3CBD8020F0E4F700D795E5 /* WLDecimalKeyboard.m in Sources */,
 				7AA906BD20EF16B9004F2B12 /* OrderCell.m in Sources */,
+				1FFB8EA2225AFA8B00B72F31 /* WYWebProgressLayer.m in Sources */,
 				7A8A5C7320E4A6D6002D9A48 /* HttpLogger.m in Sources */,
 				7AB29D2020FC34670014FCB3 /* QNResponseInfo.m in Sources */,
 				B8B4DB6921743C5E00BC3DE2 /* DishonestVC.m in Sources */,
@@ -4307,6 +4348,7 @@
 				363B6123223B7B9A00585061 /* NewsCell.m in Sources */,
 				B834011121D75A350089D4DE /* QNDnsManager.m in Sources */,
 				B885CB592171F22C001A1258 /* ClaimsTableView.m in Sources */,
+				1FFB8E9E225AFA8B00B72F31 /* UIView+Frame.m in Sources */,
 				363B6134223BA1FF00585061 /* BrandListVC.m in Sources */,
 				367EF90A223F8DAC00C9921D /* SearchVC.m in Sources */,
 				7A8A5C9320E4A7FE002D9A48 /* NSObject+MJKeyValue.m in Sources */,
@@ -4416,6 +4458,7 @@
 				363B6148223BBF8300585061 /* CarInfoVC.m in Sources */,
 				7A8A5C1220E3C801002D9A48 /* UILable+convience.m in Sources */,
 				B834011721D75A350089D4DE /* QNDnspodEnterprise.m in Sources */,
+				1FFB8E9F225AFA8B00B72F31 /* WLWebProgressLayer.m in Sources */,
 				7A3CBE0D20F514FD00D795E5 /* NSString+Extension.m in Sources */,
 				B834010F21D75A350089D4DE /* QNResolvUtil.m in Sources */,
 				7A3CBDAA20F3329E00D795E5 /* GoodsListTableView.m in Sources */,
@@ -4433,6 +4476,7 @@
 				7A8A5C8C20E4A7FE002D9A48 /* MJExtensionConst.m in Sources */,
 				7AA906D720EF47BD004F2B12 /* SubmitOrderGoodsCell.m in Sources */,
 				7A8A5C5420E492C6002D9A48 /* TLNetworking.m in Sources */,
+				1FFB8EA1225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m in Sources */,
 				36E3A394223B3D6C00B26F4F /* HomeHeadVC.m in Sources */,
 				B8B4DB5D2174295300BC3DE2 /* BaoModel.m in Sources */,
 				7A3CBE1320F59B2600D795E5 /* SelectModelsTableView.m in Sources */,

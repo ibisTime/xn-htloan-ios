@@ -20,13 +20,10 @@
 //推荐分期
 #import "GoodsListVC.h"
 #import "BannerWebViewVC.h"
-
 #import "NewsCell.h"
-
 #import "HomeHeadVC.h"
 #import "CarNewsVC.h"
 #import "NewsModel.h"
-
 #import "ChooseCarVC.h"
 #import "BrandListVC.h"
 #import "ClassifyListVC.h"
@@ -34,6 +31,7 @@
 #import "CarInfoVC.h"
 #import "HomeTableHeadCell.h"
 #import "ClassifyInfoVC.h"
+#import "GeneralWebView.h"
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>{
     HomeHeadVC * headview;
 }
@@ -61,7 +59,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"微车生活";
+//    self.title = @"微车生活";
+    UILabel *titleLbl = [[UILabel alloc]init];
+    titleLbl.text = @"微车生活";
+    titleLbl.font = Font(18);
+    titleLbl.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = titleLbl;
     [self loadData];
     [self getnewsadta];
     
@@ -73,6 +76,16 @@
     [self.view addSubview:self.tableview];
     
 }
+
+-(void)bannerUrl:(NSString *)url
+{
+    GeneralWebView *vc = [GeneralWebView new];
+    vc.URL = url;
+    vc.name = @"详情";
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(TLTableView *)tableview{
     if (!_tableview) {
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight-kTabBarHeight)];
@@ -82,7 +95,6 @@
         
         [_tableview registerClass:[HomeTableHeadCell class] forCellReuseIdentifier:@"HomeTableHead"];
         [_tableview registerClass:[NewsCell class] forCellReuseIdentifier:@"cell"];
-        
     }
     return _tableview;
 }
@@ -93,8 +105,16 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
     if (section == 0) {
-        return 1;
+        if (self.CarModelsCars.count == 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
     }
     return self.NewsModels.count;
 }
@@ -155,15 +175,14 @@
         return view;
     }
     return [UIView new];
-    
 }
 
 -(void)morenews{
     CarNewsVC * vc = [[CarNewsVC alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-    
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
         NewsInfoVC * vc = [NewsInfoVC new];
@@ -171,24 +190,15 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
 }
-
-
 
 //点击collectionview cell
 -(void)ClickCollection:(NSInteger)index{
     NSLog(@"tag%ld",index);
-//    ChooseCarVC * vc = [ChooseCarVC new];
-//    CarInfoVC * vc = [CarInfoVC new];
-//    vc.CarModel =[CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
-    
-    
     CarModel * model = [CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
     [self getcarinfo:model.code];
 }
+
 -(void)getcarinfo:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
@@ -225,13 +235,11 @@
                 vc.priceStart = @"700000";
                 vc.priceEnd = @"";
             }
-//                [self GetClassifyByPrice:@"700000" priceEnd:@""];
                 break;
             case 3:{
                 vc.priceStart = @"";
                 vc.priceEnd = @"300000";
             }
-//                [self GetClassifyByPrice:@"" priceEnd:@"300000"];
                 break;
             default:
                 break;
@@ -240,23 +248,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
-//根据价格选择
-//-(void)GetClassifyByPrice:(NSString *)priceStart priceEnd:(NSString *)priceEnd{
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.showView = self.view;
-//    http2.code = @"630426";
-//    http2.parameters[@"priceStart"] =priceStart;
-//    http2.parameters[@"priceEnd"] =priceEnd;
-//    [http2 postWithSuccess:^(id responseObject) {
-//        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
-//        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//        
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//}
+
 -(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models{
     if (index.section == 1) {
         ClassifyListVC * vc = [ClassifyListVC new];
@@ -269,47 +261,19 @@
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
         vc.seriesCode = models.code;
         vc.title = models.name;
+//        vc.model = models;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
 //        [self getClassifyData:models.code :models.name];
     }
 }
-//-(void)getClassifyListData:(NSString *)code{
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.showView = self.view;
-//    http2.code = @"630416";
-//    http2.parameters[@"brandCode"] = code;
-//    [http2 postWithSuccess:^(id responseObject) {
-//        ClassifyListVC * vc = [ClassifyListVC new];
-//        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        vc.brandcode = code;
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
-//-(void)getClassifyData:(NSString*)code :(NSString *)title{
-//    //列表查询车型
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.showView = self.view;
-//    http2.code = @"630426";
-//    http2.parameters[@"seriesCode"] = code;
-//    [http2 postWithSuccess:^(id responseObject) {
-//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-//        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        vc.title = title;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//}
+
 #pragma mark - 获取数据
 -(void)getnewsadta{
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630455";
+    help.parameters[@"location"] = @"1";
     help.parameters[@"status"] = @"1";
     [help modelClass:[NewsModel class]];
     help.tableView = self.tableview;
@@ -324,36 +288,29 @@
             [weakSelf.tableview endRefreshHeader];
         }];
     }];
-//    [self.tableview addLoadMoreAction:^{
-//        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-//            weakSelf.NewsModels = objs;
-//            [weakSelf.tableview reloadData_tl];
-//            [weakSelf.tableview endRefreshFooter];
-//        } failure:^(NSError *error) {
-//            [weakSelf.tableview endRefreshFooter];
-//        }];
-//    }];
+
     [self.tableview beginRefreshing];
 }
 
 -(void)loadData{
     
-    //列表查询品牌
+    //热门品牌
     TLNetworking * http = [[TLNetworking alloc]init];
     http.showView = self.view;
     http.code = @"630406";
-    http.parameters[@"isReferee"] = @"1";
+    http.parameters[@"location"] = @"1";
+    http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
     } failure:^(NSError *error) {
         
     }];
-    
     //列表查询车系
     TLNetworking * http1 = [[TLNetworking alloc]init];
     http1.showView = self.view;
     http1.code = @"630416";
-    http1.parameters[@"isReferee"] = @"1";
+    http1.parameters[@"location"] = @"1";
+    http1.parameters[@"status"] = @"1";
     [http1 postWithSuccess:^(id responseObject) {
         headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
     } failure:^(NSError *error) {
@@ -375,11 +332,12 @@
         headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
     }
     
-    //列表查询车型
+    //热门车系
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
     http2.code = @"630426";
-    http2.parameters[@"isReferee"] = @"1";
+    http2.parameters[@"location"] = @"1";
+    http2.parameters[@"status"] = @"1";
     [http2 postWithSuccess:^(id responseObject) {
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         self.CarModelsCars = [NSMutableArray array];
@@ -406,187 +364,22 @@
 
 #pragma mark - Init
 - (void)initTableView {
-//    self.tableView = [[HomeTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - kTabBarHeight) style:(UITableViewStyleGrouped)];
-//    self.tableView.refreshDelegate = self;
-//    self.tableView.backgroundColor = kBackgroundColor;
-//    [self.view addSubview:self.tableView];
-//    MJWeakSelf;
-//    self.tableView.clickImageBlock = ^(NSInteger currentIndex) {
-//        [weakSelf loadWebView:currentIndex];
-//    };
+
 }
 
 - (void)loadWebView:(NSInteger)inter
 {
-    
-  
-//    BannerWebViewVC *banner = [BannerWebViewVC new];
-//    banner.htmlStr = self.urlArray[inter];
-//    if ([banner.htmlStr isEqualToString:@""] || banner.htmlStr == nil) {
-//        return;
-//    }
-//    [self.navigationController pushViewController:banner animated:YES];
-//    self.webView = [[UIWebView alloc] init];
-//    self.webView.delegate = self;
-//    self.webView.scrollView.bounces=NO;
-//    [self.view addSubview:self.webView];
-//
-//    [self.webView loadHTMLString:self.urlArray[inter] baseURL:nil];
 
 }
 - (void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (indexPath.section == 1) {
-//        GoodsDetailsViewController *vc = [[GoodsDetailsViewController alloc]init];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        vc.model = self.goodsModel[indexPath.row];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+
 }
 
 -(void)refreshTableViewButtonClick:(TLTableView *)refreshTableview button:(UIButton *)sender selectRowAtIndex:(NSInteger)index
 {
-//    if (index == 98) {
-//        CarLoanCalculatorVC *vc = [CarLoanCalculatorVC new];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//
-//    }else if(index == 99)
-//    {
-//        GoodsListVC *vc = [GoodsListVC new];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }else
-//    {
-//        ExhibitionCenterVC *vc = [[ExhibitionCenterVC alloc]init];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        HomeModel *model = self.carModel[index - 100];
-//        vc.brandCode = model.brandCode;
-////        vc.seriesCode = model.seriesCode;
-//        NSLog(@"%@",self.carModel);
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+
 }
-
-//-(void)bannerLoadData
-//{
-////    MinicarsLifeWeakSelf;
-//    TLNetworking *http = [TLNetworking new];
-//    http.code = @"805806";
-//    http.parameters[@"location"] = @"index_banner";
-//    http.showView = self.view;
-//
-//    [http postWithSuccess:^(id responseObject) {
-//        WGLog(@"%@",responseObject);
-//        NSArray *array = responseObject[@"data"];
-//        NSMutableArray *muArray = [NSMutableArray array];
-//        NSMutableArray *urlArray = [NSMutableArray array];
-//
-//        for (int i = 0; i < array.count; i ++) {
-//            [muArray addObject:[NSString stringWithFormat:@"%@",[array[i][@"pic"] convertImageUrl]]];
-//            [urlArray addObject:[NSString stringWithFormat:@"%@",array[i][@"url"]]];
-//
-//        }
-//        self.urlArray = urlArray;
-//        self.tableView.bannerArray = muArray;
-//
-//    } failure:^(NSError *error) {
-//        WGLog(@"%@",error);
-//    }];
-//}
-
-////推荐车系
-//-(void)RecommendedRange
-//{
-//    MinicarsLifeWeakSelf;
-//
-//    TLNetworking *http = [TLNetworking new];
-//    http.code = RecommendedRangeURL;
-//    http.showView = self.view;
-////    http.parameters[@"location"] = @"1";
-//    http.parameters[@"status"] = @"1";
-//    [http postWithSuccess:^(id responseObject) {
-//
-//        self.carModel = [HomeModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        weakSelf.tableView.carModel = self.carModel;
-//        [weakSelf.tableView reloadData];
-//
-//    } failure:^(NSError *error) {
-//        WGLog(@"%@",error);
-//    }];
-//}
-//
-//-(void)LoadData
-//{
-//
-//    MinicarsLifeWeakSelf;
-//
-//    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-//    helper.code = RecommendedStagingURL;
-//    helper.parameters[@"location"] = @"0";
-//    helper.parameters[@"status"] = @"3";
-//    helper.isList = NO;
-//    helper.isCurrency = YES;
-//    helper.tableView = self.tableView;
-//    [helper modelClass:[HomeModel class]];
-//
-//    [self.tableView addRefreshAction:^{
-//        [weakSelf RecommendedRange];
-//        [weakSelf bannerLoadData];
-//        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-//
-//            //去除没有的币种
-//            NSLog(@" ==== %@",objs);
-//
-//            NSMutableArray <HomeModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//
-//                HomeModel *model = (HomeModel *)obj;
-//                [shouldDisplayCoins addObject:model];
-//
-//            }];
-//
-//            //
-//            weakSelf.goodsModel = shouldDisplayCoins;
-//            weakSelf.tableView.goodsModel = shouldDisplayCoins;
-//            [weakSelf.tableView reloadData_tl];
-//
-//        } failure:^(NSError *error) {
-//
-//        }];
-//    }];
-//    [self.tableView addLoadMoreAction:^{
-//        helper.parameters[@"location"] = @"1";
-//        helper.parameters[@"status"] = @"3";
-//        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-//            NSLog(@" ==== %@",objs);
-//            //去除没有的币种
-//            NSMutableArray <HomeModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//
-//                HomeModel *model = (HomeModel *)obj;
-//                //                if ([[CoinUtil shouldDisplayCoinArray] indexOfObject:currencyModel.currency ] != NSNotFound ) {
-//
-//                [shouldDisplayCoins addObject:model];
-//                //                }
-//
-//            }];
-//
-//            //
-//            weakSelf.goodsModel = shouldDisplayCoins;
-//            weakSelf.tableView.goodsModel = shouldDisplayCoins;
-//            [weakSelf.tableView reloadData_tl];
-//
-//        } failure:^(NSError *error) {
-//
-//
-//        }];
-//
-//    }];
-//
-//    [self.tableView beginRefreshing];
-//}
-
 
 
 

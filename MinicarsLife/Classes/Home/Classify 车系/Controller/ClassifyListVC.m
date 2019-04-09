@@ -69,23 +69,7 @@
     vc.seriesCode = self.CarModels[indexPath.row].code;
     [self.navigationController pushViewController:vc animated:YES];
 }
-//-(void)getClassifyData:(NSString*)code withtitle:(NSString *)title{
-//    //列表查询车型
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.showView = self.view;
-//    http2.code = @"630426";
-//    http2.parameters[@"seriesCode"] = code;
-//    [http2 postWithSuccess:^(id responseObject) {
-//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-//        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        vc.title = title;
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
+
 -(void)GetClassifyByPrice{
     if (self.priceStart||self.priceEnd) {
         TLNetworking * http2 = [[TLNetworking alloc]init];
@@ -93,6 +77,7 @@
         http2.code = @"630426";
         http2.parameters[@"priceStart"] =self.priceStart;
         http2.parameters[@"priceEnd"] =self.priceEnd;
+        
         [http2 postWithSuccess:^(id responseObject) {
             self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.tableview reloadData_tl];
@@ -110,6 +95,7 @@
         TLNetworking * http2 = [[TLNetworking alloc]init];
         http2.showView = self.view;
         http2.code = @"630416";
+        
         http2.parameters[@"brandCode"] = self.brandcode;
         [http2 postWithSuccess:^(id responseObject) {
             self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];

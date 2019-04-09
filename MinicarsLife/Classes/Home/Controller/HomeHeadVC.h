@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)ClickBtn:(UIButton *)sender;
 -(void)ClickCollectionClassify:(NSIndexPath *)index;
 -(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models;
-
+-(void)bannerUrl:(NSString *)url;
 @end
 @interface HomeHeadVC : UIView
 @property (nonatomic,weak) id<ClickBtn> delegate;

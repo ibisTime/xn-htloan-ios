@@ -66,6 +66,7 @@
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
     http2.code = @"630416";
+    http2.parameters[@"status"] = @"1";
     http2.parameters[@"brandCode"] = code;
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyListVC * vc = [ClassifyListVC new];
@@ -81,6 +82,7 @@
 -(void)getdata{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630406";
+    http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self.collection reloadData];

@@ -14,7 +14,7 @@
 #import "SelectcarFootCell.h"
 #import "SelectBrandCell.h"
 @interface HomeHeadVC ()<HW3DBannerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
-
+@property (nonatomic,strong)NSArray *urlArray;
 @property (nonatomic,assign) int classifycount;
 @property (nonatomic,assign) int carBrandcount;
 @property (nonatomic,strong) UICollectionViewFlowLayout * layout;
@@ -32,14 +32,11 @@
 //        self.carBrandcount = 4;
 //        [self loadData];
         self.backgroundColor = kWhiteColor;
-        [self bannerLoadData];
+        
         [self addSubview:self.scrollView];
 //        [self createbtn];
         [self addSubview:self.collection];
-        
-//        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.collection.yy + 20 , SCREEN_WIDTH, 20)];
-//        v1.backgroundColor = kLineColor;
-//        [self addSubview:v1];
+
     }
     return self;
 }
@@ -52,7 +49,7 @@
         _scrollView = [HW3DBannerView initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * SCREEN_WIDTH) imageSpacing:0 imageWidth:SCREEN_WIDTH];
         _scrollView.userInteractionEnabled=YES;
         _scrollView.autoScrollTimeInterval = 3;
-        _scrollView.placeHolderImage = [UIImage imageNamed:@""]; // 设置占位图片
+        _scrollView.placeHolderImage = kImage(@"default_pic"); // 设置占位图片
         
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
             //            NSLog(@"%ld",currentIndex);
@@ -112,11 +109,12 @@
     if (indexPath.section == 2) {
         SelectcarFootCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectcarFoot" forIndexPath:indexPath];
         cell.titlelab.text = self.CarClassifyModels[indexPath.row].name;
+        
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+        
 //        cell.backgroundColor = [UIColor redColor];
         //超出容器范围的切除掉
-        cell.logo.clipsToBounds = YES;
+//        cell.logo.clipsToBounds = YES;
         return cell;
     }
     if (indexPath.section == 0) {
@@ -134,16 +132,21 @@
         
         
         [cell.titlelab sizeToFit];
-        cell.titlelab.frame = CGRectMake(((SCREEN_WIDTH - 75) / 4 + cell.titlelab.width)/2.5, 0, cell.titlelab.width, 20);
+        
+        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 10, 2.5, 15, 15);
+        
+        cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.frame.size.width - cell.logo.xx - 5, 20);
+        
+        
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+//        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
         //超出容器范围的切除掉
-        cell.logo.clipsToBounds = YES;
+//        cell.logo.clipsToBounds = YES;
         
         
         
         
-        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width + 20)/2, 2.5, 15, 15);
+        
         cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.titlelab.width, 20);
     }
     
@@ -189,6 +192,11 @@
 }
 -(void)HW3DBannerViewClick:(NSInteger)currentImageIndex{
 //    NSLog(@"%ld",currentImageIndex);
+    NSLog(@"%@",self.urlArray[currentImageIndex]);
+    if ([USERXX isBlankString:self.urlArray[currentImageIndex]] == NO) {
+        [_delegate bannerUrl:self.urlArray[currentImageIndex]];
+    }
+    
 }
 
 #pragma mark - 获取数据
@@ -213,7 +221,7 @@
             
         }
         self.scrollView.data = muArray;
-        
+        self.urlArray = urlArray;
     } failure:^(NSError *error) {
         WGLog(@"%@",error);
     }];
@@ -221,6 +229,7 @@
 -(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
     _CarBrandModels = CarBrandModels;
     if (self.CarClassifyModels && self.CarBrandModels) {
+        [self bannerLoadData];
         [self.collection reloadData];
     }
 }
@@ -231,100 +240,6 @@
     }
     
 }
-//-(void)loadData{
-//    //列表查询品牌
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.showView = self;
-//    http.code = @"630406";
-//    http.parameters[@"isReferee"] = @"1";
-//    [http postWithSuccess:^(id responseObject) {
-//        
-//        self.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        if (self.carBrandcount > self.CarBrandModels.count) {
-//            self.carBrandcount = (int)self.CarBrandModels.count;
-//        }
-//        [self.collection reloadData];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-//    
-//    //列表查询车系
-//    TLNetworking * http1 = [[TLNetworking alloc]init];
-//    http1.showView = self;
-//    http1.code = @"630416";
-//    http1.parameters[@"isReferee"] = @"1";
-//    [http1 postWithSuccess:^(id responseObject) {
-//        self.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//        if (self.classifycount > self.CarClassifyModels.count) {
-//            self.classifycount = (int)self.CarClassifyModels.count;
-//        }
-//        [self.collection reloadData];
-//    } failure:^(NSError *error) {
-//        
-//    }];
-    
-//}
 
-//
-//#pragma mark - 十一个按钮
-//-(void)createbtn{
-//    NSArray * titlearray = @[@"30-50万",@"50-70万",@"70万以上",@"更多",@"奔驰",@"保时捷",@"丰田",@"奥迪"];
-//    NSArray * logoarray = @[@"1",@"2",@"3",@"1"];
-//    
-//    for (int j = 0; j < 4; j ++) {
-//        UIButton * button = [UIButton buttonWithTitle:titlearray[j] titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-//        button.tag = j;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/4 * j, self.scrollView.yy + 17, (SCREEN_WIDTH-30)/4, 16.5);
-//        
-//        if (j < 3) {
-//            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/4 * (j+1), self.scrollView.yy + 15, 1, 20)];
-//            v1.backgroundColor = kLineColor;
-//            [self addSubview:v1];
-//        }
-//        [self addSubview:button];
-//    }
-//    for (int j = 0; j < 4; j ++) {
-//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:13 cornerRadius:0];
-//        button.tag = j + 4;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/4 * j, self.scrollView.yy + 3.5 + 50, (SCREEN_WIDTH-30)/4, 20);
-//        [button setTitle:titlearray[j + 4] forState:(UIControlStateNormal)];
-//        
-//        //        [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 imagePositionBlock:^(UIButton *button) {
-//        //            [button setImage:kImage(logoarray[j]) forState:(UIControlStateNormal)];
-//        //        }];
-//        
-//        [self addSubview:button];
-//        
-//        if (j < 3) {
-//            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15 + (SCREEN_WIDTH-30)/4 * (j+1), self.scrollView.yy + 3.5 + 50, 1, 20)];
-//            v1.backgroundColor = kLineColor;
-//            [self addSubview:v1];
-//        }
-//    }
-//    NSLog(@"%@",self.CarStyleModels);
-//    NSArray * titlelab = @[@"雷克萨斯LX5",@"奔驰S级",@"霸道3000"];
-//    NSArray * imgarray = @[@"1",@"2",@"3"];
-//    for (int j = 0; j < 3; j++) {
-//        UIButton * button = [UIButton buttonWithTitle:@"" titleColor:kBlackColor backgroundColor:kClearColor titleFont:14 cornerRadius:0];
-//        button.tag = j + 8;
-//        [button addTarget:self action:@selector(clickbtn:) forControlEvents:(UIControlEventTouchUpInside)];
-//        [button setTitle:titlelab[j] forState:(UIControlStateNormal)];
-//        button.frame = CGRectMake(15 + (SCREEN_WIDTH-30)/3 * j, self.scrollView.yy + 90, (SCREEN_WIDTH-30)/3, 76.5);
-//        [button SG_imagePositionStyle:SGImagePositionStyleTop spacing:0 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(imgarray[j]) forState:(UIControlStateNormal)];
-//        }];
-//        [self addSubview:button];
-//    }
-//    UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 185, SCREEN_WIDTH, 10)];
-//    v1.backgroundColor = kLineColor;
-//    [self addSubview:v1];
-//    
-//    
-//    UILabel * label = [UILabel labelWithFrame:CGRectMake(15, v1.yy + 20, 70, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-//    label.text = @"精选车源";
-//    [self addSubview:label];
-//    
-//}
+
 @end
