@@ -124,14 +124,14 @@
 -(void)setCarmodel:(CarModel *)carmodel{
     
     _carmodel = carmodel;
-    [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     self.image.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     self.image.clipsToBounds = YES;
     self.titlelab.text = [NSString stringWithFormat:@"%@ ",self.carmodel.name];
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     self.timelab.text = [self.carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[self.carmodel.salePrice floatValue]/10000];
+    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[self.carmodel.salePrice floatValue]/10000/1000];
 //    self.contentlab.text =  [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.version,carmodel.seriesName,carmodel.fromPlace];
@@ -145,6 +145,23 @@
     }
 }
 -(void)clickask{
+    
+    if([USERXX user].isLogin == NO) {
+        
+        
+        
+        UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        [TLAlert alertWithTitle:@"提示" msg:@"您还为登录，是否前去登录" confirmMsg:@"确认" cancleMsg:@"取消" maker:rootViewController cancle:^(UIAlertAction *action) {
+            
+        } confirm:^(UIAlertAction *action) {
+            LoginViewController *vc = [[LoginViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+            
+            [rootViewController presentViewController:nav animated:YES completion:nil];
+        }];
+        return;
+    }
+    
     if (self.phone.text.length == 0) {
         [TLAlert alertWithMsg:@"请输入手机号!"];
     }else if (![self.phone.text isPhoneNum]){

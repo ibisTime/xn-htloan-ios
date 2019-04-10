@@ -19,6 +19,21 @@
 
 @implementation SearchVC
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _SearchBar.alpha = 1;
+    
+}
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+
+    _SearchBar.alpha = 0;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -27,42 +42,31 @@
     
     
     self.titlearray = [[NSArray alloc]init];
-    self.titlearray = @[@"揽胜运动3.0柴油",@"奔驰GLE400",@"酷路泽4500",@"揽胜运动3.0汽油",@"Levante"];
-    
-    
-    
-    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 120, 44)];
+
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 100, 44)];
     view.backgroundColor = kClearColor;
 //    view.backgroundColor = [UIColor redColor];
-    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 5.5, SCREEN_WIDTH - 120, 33)];
+    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(40, kStatusBarHeight + 5.5, SCREEN_WIDTH - 100, 33)];
 //    self.SearchBar.layer.borderWidth = 1;
     self.SearchBar.placeholder = @"请搜索品牌或车系";
-    self.SearchBar.backgroundColor = kClearColor;
+    self.SearchBar.backgroundColor = kWhiteColor;
     
-//    UIImage* searchBarBg = [self GetImageWithColor:[UIColor clearColor] andHeight:33.0f];
-//    [self.SearchBar setBackgroundImage:searchBarBg];
+    
+    self.SearchBar.delegate = self;
+    self.SearchBar.backgroundImage = [UIImage imageNamed:@"PYSearch.bundle/clearImage"];
+    [self.SearchBar setBackgroundImage:[UIImage new]];
+    [self.SearchBar setTranslucent:YES];
+    
+    kViewRadius(self.SearchBar, 10);
+    
+    UITextField * searchField = [self.SearchBar valueForKey:@"_searchField"];
+    searchField.backgroundColor = [UIColor whiteColor];
+    [searchField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
+    searchField.font = HGfont(14);
+    
+    [self.navigationController.view addSubview:self.SearchBar];
 
-    
-    for (UIView *view in self.SearchBar.subviews) {
-        // for before iOS7.0
-        if ([view isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
-            [view removeFromSuperview];
-            break;
-        }
-        // for later iOS7.0(include)
-        if ([view isKindOfClass:NSClassFromString(@"UIView")] && view.subviews.count > 0) {
-            [[view.subviews objectAtIndex:0] removeFromSuperview];
-            break;
-        }
-    }
-    
-    
-    [view addSubview:self.SearchBar];
-    
-//    UIButton * button = [UIButton buttonWithTitle:@"搜索" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:16 cornerRadius:0];
-//    button.frame = CGRectMake(self.SearchBar.xx + 17, 10, 33, 22.5);
-//    [button addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [view addSubview:button];
+
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
@@ -113,6 +117,7 @@
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
+
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.carmodels.count;
 }
@@ -123,6 +128,7 @@
     cell.titlelab.text = model.name;
     return cell;
 }
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
 //    [self getClassifyData:model.code :model.name];
@@ -133,12 +139,14 @@
     vc.title = model.name;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    CGSize size = [self.titlearray[indexPath.row] sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:Font(14),NSFontAttributeName,nil]];
+    CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
+    CGSize size = [model.name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:Font(14),NSFontAttributeName,nil]];
     // 名字的H
     CGFloat nameW = size.width;
-    return CGSizeMake(nameW + 10, 40);
+    return CGSizeMake(nameW + 20, 40);
 }
 
 -(void)searchClick{
@@ -151,6 +159,7 @@
     }else{
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"630426";
+        http.parameters[@"status"] = @"1";
         http.parameters[@"queryName"] = searchBar.text;
         [http postWithSuccess:^(id responseObject) {
             ClassifyListVC * vc = [ClassifyListVC new];
@@ -161,10 +170,13 @@
         }];
     }
 }
+
+
 -(void)gethotclassify{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630416";
-    http.parameters[@"location"] = @"1";
+    http.parameters[@"status"] = @"1";
+    http.parameters[@"location"] = @"0";
     [http postWithSuccess:^(id responseObject) {
         self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self.collectionView reloadData];
@@ -178,6 +190,7 @@
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
     http2.code = @"630426";
+    http2.parameters[@"status"] = @"1";
     http2.parameters[@"seriesCode"] = code;
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];

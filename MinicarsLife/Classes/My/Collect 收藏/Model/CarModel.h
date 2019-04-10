@@ -66,8 +66,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * version;
 @property (nonatomic,copy) NSString * outsideColor;
 @property (nonatomic,copy) NSString * insideColor;
-@property (nonatomic,copy) NSMutableArray<CarModel *> * cars;
-@property (nonatomic,copy) NSMutableArray<DeployModel *> * caonfigList;
+@property (nonatomic,strong) NSArray *cars;
+@property (nonatomic,strong) NSArray *caonfigList;
+@property (nonatomic,strong) NSArray *configs;
 /**
  "price": 0,
  "highest": 0,

@@ -107,7 +107,7 @@
 -(void)setModel:(CollectModel *)model{
     _model = model;
     CarModel * car = [CarModel mj_objectWithKeyValues:model.car];
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[car.salePrice floatValue]/10000];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[car.salePrice floatValue]/10000/1000];
     self.timelab.text = [car.updateDatetime convertToDetailDateWithoutHour];
 //    self.contentlab.text = car.Description;
 //    self.describdlab.text = car.brandName;

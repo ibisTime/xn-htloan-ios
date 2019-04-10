@@ -40,9 +40,10 @@
         
         for (int i = 0; i < 3; i ++) {
             UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0 + SCREEN_WIDTH / 3 * i, self.moneylab.yy + 10, SCREEN_WIDTH / 3, 70)];
-            UILabel * money = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH / 3, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+            
+            UILabel * money = [UILabel labelWithFrame:CGRectMake(0, 10, SCREEN_WIDTH / 3, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
             money.tag = i + 10;
-            money.text = @"00.00";
+            money.text = @"0.00";
             
             [view addSubview:money];
             
@@ -52,8 +53,8 @@
             [view addSubview:title];
             
             if (i < 2) {
-                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 15, 1, 25)];
-                v1.backgroundColor = kLineColor;
+                UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH / 3 * (i+1),self.moneylab.yy + 25, 1, 25)];
+                v1.backgroundColor = kBackgroundColor;
                 v1.alpha = 0.3;
                 [self addSubview:v1];
             }

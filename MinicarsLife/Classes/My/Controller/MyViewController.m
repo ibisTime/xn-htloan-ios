@@ -152,24 +152,23 @@
         case 0:
         {
             NSArray *nameArray = @[@"开始面签",@"购车计算器"];
-            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
-            cell.iconImage.image = imageArray[indexPath.row];
+//            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
+            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
             cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
         case 1:
         {
             NSArray *nameArray = @[@"我的消息",@"我的收藏",@"我的足迹"];
-            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3"),HGImage(@"myicon3")];
-            cell.iconImage.image = imageArray[indexPath.row];
+
+            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
             cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;
         case 2:
         {
             NSArray *nameArray = @[@"联系客服",@"关于我们"];
-            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
-            cell.iconImage.image = imageArray[indexPath.row];
+            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
             cell.nameLabel.text = nameArray[indexPath.row];
         }
             break;

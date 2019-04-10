@@ -54,7 +54,20 @@
 }
 -(void)setModel:(MessageModel *)model{
     _model = model;
+    
+    if ([model.content hasPrefix:@"<p>"]) {
+        NSRange startRange = [model.content rangeOfString:@"<p>"];
+        NSRange endRange = [model.content rangeOfString:@"</p>"];
+        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
+        NSString * con = [model.content substringWithRange:range];
+        contentlab.text = con;
+    }else
+    {
+        contentlab.text = model.content;
+    }
+    
+    
     titlelab.text = model.title;
-    contentlab.text = model.content;
+    
 }
 @end

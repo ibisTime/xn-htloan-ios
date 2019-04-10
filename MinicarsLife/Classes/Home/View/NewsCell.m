@@ -62,7 +62,7 @@
 }
 
 -(void)setModel:(NewsModel *)model{
-    [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     self.photo.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
     self.photo.clipsToBounds = YES;

@@ -165,10 +165,10 @@
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
         UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        label.text = @"新车资讯";
+        label.text = @"微车资讯";
         [view addSubview:label];
         
-        UIButton * button = [UIButton buttonWithTitle:@"更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
+        UIButton * button = [UIButton buttonWithTitle:@"全部" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
         [button addTarget:self action:@selector(morenews) forControlEvents:(UIControlEventTouchUpInside)];
         button.frame = CGRectMake(SCREEN_WIDTH - 15 - 25, 27, 25, 17);
         [view addSubview:button];
@@ -206,7 +206,6 @@
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
         CarInfoVC * vc = [CarInfoVC new];
-//        vc.CarModel =[CarModel mj_objectWithKeyValues: self.models[0].cars[indexPath.row]];
         vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -223,13 +222,11 @@
                 vc.priceStart = @"300000";
                 vc.priceEnd = @"500000";
             }
-//                [self GetClassifyByPrice:@"300000" priceEnd:@"500000"];
                 break;
             case 1:{
                 vc.priceStart = @"500000";
                 vc.priceEnd = @"700000";
             }
-//                [self GetClassifyByPrice:@"500000" priceEnd:@"700000"];
                 break;
             case 2:{
                 vc.priceStart = @"700000";
@@ -238,7 +235,7 @@
                 break;
             case 3:{
                 vc.priceStart = @"";
-                vc.priceEnd = @"300000";
+                vc.priceEnd = @"";
             }
                 break;
             default:
@@ -273,7 +270,7 @@
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630455";
-    help.parameters[@"location"] = @"1";
+    help.parameters[@"location"] = @"0";
     help.parameters[@"status"] = @"1";
     [help modelClass:[NewsModel class]];
     help.tableView = self.tableview;
@@ -298,7 +295,7 @@
     TLNetworking * http = [[TLNetworking alloc]init];
     http.showView = self.view;
     http.code = @"630406";
-    http.parameters[@"location"] = @"1";
+    http.parameters[@"location"] = @"0";
     http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -309,7 +306,7 @@
     TLNetworking * http1 = [[TLNetworking alloc]init];
     http1.showView = self.view;
     http1.code = @"630416";
-    http1.parameters[@"location"] = @"1";
+    http1.parameters[@"location"] = @"0";
     http1.parameters[@"status"] = @"1";
     [http1 postWithSuccess:^(id responseObject) {
         headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
@@ -332,11 +329,11 @@
         headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
     }
     
-    //热门车系
+    //热门车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
     http2.code = @"630426";
-    http2.parameters[@"location"] = @"1";
+    http2.parameters[@"location"] = @"0";
     http2.parameters[@"status"] = @"1";
     [http2 postWithSuccess:^(id responseObject) {
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];

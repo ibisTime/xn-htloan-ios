@@ -70,6 +70,7 @@
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630405";
+    help.parameters[@"status"] = @"1";
     [help modelClass:[CarModel class]];
     help.tableView = self.tableview;
     help.isCurrency = YES;

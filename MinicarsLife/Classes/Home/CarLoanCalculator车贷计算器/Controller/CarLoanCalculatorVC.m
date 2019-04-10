@@ -221,7 +221,7 @@
         http.parameters[@"createDatetime"] = [self getCurrentTimes];
         http.parameters[@"periods"] = @(month);
 
-        http.parameters[@"price"] = self.carModel.salePrice;
+        http.parameters[@"price"] = [NSString stringWithFormat:@"%.2f",[self.carModel.salePrice floatValue]/1000];
         http.parameters[@"saleDesc"] = [NSString stringWithFormat:@"首付%.2f，月供%.2f,多花%.2f",ADownPaymentPrice,MonthlyPayments,SpendMore];
 //        @(),@()
         http.parameters[@"seriesCode"] = self.carModel.seriesCode;

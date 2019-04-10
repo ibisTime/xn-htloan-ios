@@ -27,8 +27,10 @@
         
         UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 110, 82.5)];
         [self addSubview:img];
-        img.image = kImage(@"1");
+        
         self.image = img;
+//        self.image.contentMode =UIViewContentModeScaleAspectFill;
+        
         
         UILabel * title = [UILabel labelWithFrame:CGRectMake(img.xx + 15, 15, SCREEN_WIDTH - 155, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(14) textColor:kBlackColor];
         title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
@@ -52,30 +54,33 @@
         self.moneylab = money;
         
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+        self.view = view;
+        [self addSubview:view];
+        
+        
         UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         content.numberOfLines = 2;
         content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
         view.backgroundColor = kHexColor(@"#F5F5F5");
         [view addSubview:content];
-        [self addSubview:view];
-        self.view = view;
+        
+        
         self.contentlab = content;
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 175, SCREEN_WIDTH, 10)];
-        v1.backgroundColor = kLineColor;
+        v1.backgroundColor = kBackgroundColor;
         [self addSubview:v1];
     }
     return self;
 }
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
-    [self.image sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    self.image.contentMode =UIViewContentModeScaleAspectFill;
-    //超出容器范围的切除掉
-    self.image.clipsToBounds = YES;
+    [self.image sd_setImageWithURL:[NSURL URLWithString:[carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    
+
     self.titlelab.text = [NSString stringWithFormat:@"%@",carmodel.name];
     self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000 ];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000/1000 ];
     
     self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     

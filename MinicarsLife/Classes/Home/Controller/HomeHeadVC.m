@@ -87,6 +87,13 @@
         [_collection registerClass:[SelectcarFootCell class] forCellWithReuseIdentifier:@"SelectcarFoot"];
         [_collection registerClass:[SelectCarCell class] forCellWithReuseIdentifier:@"cell"];
         [_collection registerClass:[SelectBrandCell class] forCellWithReuseIdentifier:@"SelectBrand"];
+        
+        for (int i = 0; i < 3 ; i ++) {
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 10, 1, 20)];
+            lineView.backgroundColor =kLineColor;
+            [_collection addSubview:lineView];
+        }
+        
     }
     return _collection;
 }
@@ -133,7 +140,7 @@
         
         [cell.titlelab sizeToFit];
         
-        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 10, 2.5, 15, 15);
+        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 12, 2.5, 15, 15);
         
         cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.frame.size.width - cell.logo.xx - 5, 20);
         
@@ -227,7 +234,24 @@
     }];
 }
 -(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
+    
+    if (_CarBrandModels.count > 0) {
+        for (int i = 0; i < _CarBrandModels.count; i ++) {
+            UIView *lineView = [self viewWithTag:i + 10000];
+            [lineView removeFromSuperview];
+        }
+    }
+
+    if (CarBrandModels.count > 0) {
+        for (int i = 0; i < CarBrandModels.count - 1 ; i ++) {
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 40, 1, 20)];
+            lineView.tag = 10000+i;
+            lineView.backgroundColor =kLineColor;
+            [_collection addSubview:lineView];
+        }
+    }
     _CarBrandModels = CarBrandModels;
+    
     if (self.CarClassifyModels && self.CarBrandModels) {
         [self bannerLoadData];
         [self.collection reloadData];

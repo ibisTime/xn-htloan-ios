@@ -9,6 +9,8 @@
 #import "ClassifyInfoVC.h"
 #import "ClassifyInfoCell.h"
 #import "CarInfoVC.h"
+#import "ImageBrowserViewController.h"
+#import "ImageBrowsingVC.h"
 @interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @end
@@ -34,9 +36,11 @@
     
     MinicarsLifeWeakSelf;
     [self.view addSubview:self.tableview];
-    [self.tableview addRefreshAction:^{
-        [weakSelf getClassifyData];
-    }];
+    if (self.seriesCode) {
+        [self.tableview addRefreshAction:^{
+            [weakSelf getClassifyData];
+        }];
+    }
     [self.tableview beginRefreshing];
     // Do any additional setup after loading the view.
 }
@@ -132,7 +136,7 @@
         [image addSubview:titlelab];
         
         UILabel * moneylab = [UILabel labelWithFrame:CGRectMake(15, image.height - 70 + 36.5, view.width / 2, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16.5) textColor:kWhiteColor];
-        moneylab.text = [NSString stringWithFormat:@"%.2f-%.2f万",[self.models[0].lowest floatValue]/10000,[self.models[0].highest floatValue]/10000];
+        moneylab.text = [NSString stringWithFormat:@"%.2f-%.2f万",[self.models[0].lowest floatValue]/10000/1000,[self.models[0].highest floatValue]/10000/1000];
         [image addSubview:moneylab];
 
         UILabel * numberLabel = [UILabel labelWithFrame:CGRectMake( 4, 0, 30, 22) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
@@ -145,8 +149,45 @@
         img.image = kImage(@"图片");
         [image addSubview:img];
         self.tableview.tableHeaderView = view;
+        
+        UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleSingleTap:)];
+        singleTapGesture.numberOfTapsRequired =1;
+        singleTapGesture.numberOfTouchesRequired  =1;
+        [view addGestureRecognizer:singleTapGesture];
+
     }
+
+
+    
 }
+
+
+#pragma UIGestureRecognizer Handles
+-(void) handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    NSArray * p= [self.models[0].advPic componentsSeparatedByString:@"||"];
+    NSMutableArray *topImage = [NSMutableArray array];
+    for (int i = 0; i < p.count; i ++) {
+        [topImage addObject:[p[i] convertImageUrl]];
+    }
+//    NSArray *array = self.models[0].advPic;
+    ImageBrowsingVC *vc = [ImageBrowsingVC new];
+    vc.imageArray = topImage;
+    vc.title = self.title;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+    
+    
+    
+//    CarModel *model1 = model.cars[0];
+//
+//    NSArray *array = model1.configs;
+    
+
+}
+
+
 -(void)getcarinfo:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";

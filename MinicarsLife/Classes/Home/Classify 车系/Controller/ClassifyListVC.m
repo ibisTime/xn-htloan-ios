@@ -28,14 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self GetClassifyByPrice];
-    MinicarsLifeWeakSelf;
-    self.title = @"车系列表";
-    [self.tableview addRefreshAction:^{
-        [weakSelf getClassifyListData];
-        [weakSelf GetClassifyByPrice];
-        }];
-    [self.tableview beginRefreshing];
     
+    self.title = @"车系列表";
+    [self getClassifyListData];
+    [self GetClassifyByPrice];
     [self.view addSubview:self.tableview];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -62,8 +58,6 @@
     return 110;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self getClassifyData:self.CarModels[indexPath.row].code];
-//    [self getClassifyData:self.CarModels[indexPath.row].code withtitle:self.CarModels[indexPath.row].name];
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
     vc.title = self.CarModels[indexPath.row].name;
     vc.seriesCode = self.CarModels[indexPath.row].code;
@@ -71,41 +65,67 @@
 }
 
 -(void)GetClassifyByPrice{
-    if (self.priceStart||self.priceEnd) {
-        TLNetworking * http2 = [[TLNetworking alloc]init];
-        http2.showView = self.view;
-        http2.code = @"630426";
-        http2.parameters[@"priceStart"] =self.priceStart;
-        http2.parameters[@"priceEnd"] =self.priceEnd;
-        
-        [http2 postWithSuccess:^(id responseObject) {
-            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            [self.tableview reloadData_tl];
-            [self.tableview endRefreshHeader];
+
+    
+    MJWeakSelf;
+    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
+    helper.code = @"630415";
+    helper.parameters[@"priceStart"] =self.priceStart;
+    helper.parameters[@"priceEnd"] =self.priceEnd;
+    helper.parameters[@"brandCode"] = self.brandcode;
+    helper.isList = NO;
+    helper.isCurrency = YES;
+    helper.tableView = self.tableview;
+    [helper modelClass:[CarModel class]];
+    [self.tableview addRefreshAction:^{
+        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            NSMutableArray <CarModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
+            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                CarModel *model = (CarModel *)obj;
+                [shouldDisplayCoins addObject:model];
+            }];
+//            weakSelf.model = shouldDisplayCoins;
+            weakSelf.CarModels = shouldDisplayCoins;
+            [weakSelf.tableview reloadData_tl];
         } failure:^(NSError *error) {
-            [self.tableview endRefreshHeader];
         }];
-    }
-    else{
-        [self.tableview endRefreshHeader];
-    }
+    }];
+    [self.tableview addLoadMoreAction:^{
+        
+        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            NSLog(@" ==== %@",objs);
+            NSMutableArray <CarModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
+            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                CarModel *model = (CarModel *)obj;
+                [shouldDisplayCoins addObject:model];
+            }];
+//            weakSelf.model = shouldDisplayCoins;
+            weakSelf.CarModels = shouldDisplayCoins;
+            [weakSelf.tableview reloadData_tl];
+        } failure:^(NSError *error) {
+        }];
+    }];
+    [self.tableview beginRefreshing];
 }
+
+
 -(void)getClassifyListData{
-    if (self.brandcode) {
-        TLNetworking * http2 = [[TLNetworking alloc]init];
-        http2.showView = self.view;
-        http2.code = @"630416";
-        
-        http2.parameters[@"brandCode"] = self.brandcode;
-        [http2 postWithSuccess:^(id responseObject) {
-            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            [self.tableview reloadData_tl];
-            [self.tableview endRefreshHeader];
-        } failure:^(NSError *error) {
-            [self.tableview endRefreshHeader];
-        }];
-    }else
-        [self.tableview endRefreshHeader];
+//    if (self.brandcode) {
+//        TLNetworking * http2 = [[TLNetworking alloc]init];
+//        http2.showView = self.view;
+//        http2.code = @"630416";
+//        http2.parameters[@"status"] = @"1";
+//        http2.parameters[@"brandCode"] = self.brandcode;
+//        [http2 postWithSuccess:^(id responseObject) {
+//            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//            [self.tableview reloadData_tl];
+//            [self.tableview endRefreshHeader];
+//        } failure:^(NSError *error) {
+//            [self.tableview endRefreshHeader];
+//        }];
+//    }else
+//        [self.tableview endRefreshHeader];
     
 }
+
 @end

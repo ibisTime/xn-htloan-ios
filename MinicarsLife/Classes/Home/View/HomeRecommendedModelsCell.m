@@ -53,7 +53,7 @@
 
         _carImage = [[UIImageView alloc]init];
         _carImage.frame = CGRectMake(10, 10, WIDTH, WIDTH/3 *2);
-        [_carImage sd_setImageWithURL:[NSURL URLWithString:[mondel.advPic convertImageUrl]]];
+        [_carImage sd_setImageWithURL:[NSURL URLWithString:[mondel.pic convertImageUrl]]];
         kViewRadius(_carImage, 5);
 //        [_carImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",QINIUURL,mondel.advPic]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
 //

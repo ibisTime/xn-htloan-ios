@@ -97,9 +97,13 @@
     self.tableview.tableHeaderView = view;
     [self.view addSubview:self.tableview];
     
-     NSArray * p=[self.CarModel.pic componentsSeparatedByString:@","];
-    NSMutableArray *muArray = [NSMutableArray arrayWithArray:p];
-    self.scrollView.data = muArray;
+     NSArray * p= [self.CarModel.advPic componentsSeparatedByString:@"||"];
+    NSMutableArray *topImage = [NSMutableArray array];
+    for (int i = 0; i < p.count; i ++) {
+        [topImage addObject:[p[i] convertImageUrl]];
+    }
+//    NSMutableArray *muArray = [NSMutableArray arrayWithArray:p];
+    self.scrollView.data = topImage;
     
     
     self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70, SCREEN_WIDTH, 70)];
@@ -165,6 +169,9 @@
         http.parameters[@"toType"] = @"0";
         http.parameters[@"type"] = @"3";
         [http postWithSuccess:^(id responseObject) {
+            
+            [TLAlert alertWithSucces:@"收藏成功"];
+            
             self.RightButton.selected = !self.RightButton.selected;
             [self reloaddata];
             [self getCarDeploy];
@@ -203,6 +210,7 @@
     NSLog(@"%@",[USERDEFAULTS objectForKey:USER_ID]);
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630430";
+    http.showView = self.view;
     http.parameters[@"carCode"] = self.CarModel.code;
     http.parameters[@"name"] = name;
     http.parameters[@"userMobile"] = phone;
@@ -288,21 +296,7 @@
             if(cell==nil){
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-//            if (indexPath.row == 1) {
-//                if (self.DeployModels.count == 6) {
-//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 2)];
-//                }
-//                else
-//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(4, 1)];
-//
-//            }
-//            else{
-//                if (self.DeployModels.count == 8) {
-//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 2)];
-//                }
-//                else
-//                    cell.DeployModels =(NSMutableArray *) [self.DeployModels subarrayWithRange:NSMakeRange(6, 1)];
-//            }
+
             NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
             for (int i = 0; i < arr.count; i ++) {
                 cell.DeployModels = (NSMutableArray *)arr[i];
@@ -358,7 +352,12 @@
     }
     else if (indexPath.section == 2){
         if (indexPath.row == 0) {
-            return 82.5;
+            float numberToRound;
+            int result;
+            numberToRound = (self.DeployModels.count )/4.0;
+            result = (int)ceilf(numberToRound);
+            
+            return result * 70;
         }
         else
             return 45;

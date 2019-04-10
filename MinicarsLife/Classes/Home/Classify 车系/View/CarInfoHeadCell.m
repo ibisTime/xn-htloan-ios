@@ -62,7 +62,7 @@
         self.contentlab = content;
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 175, SCREEN_WIDTH, 10)];
-        v1.backgroundColor = kLineColor;
+        v1.backgroundColor = kBackgroundColor;
         [self addSubview:v1];
         
         UIView * view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18)];
@@ -92,9 +92,9 @@
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     NSString * str;
     if (CarModel.salePrice.length > 5) {
-        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000];
+        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000/1000];
     }else
-        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]];
+        str = [NSString stringWithFormat:@"参考价 %.1f",[CarModel.salePrice floatValue]/1000];
     NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:str];
     [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
     self.moneylab.attributedText = att;

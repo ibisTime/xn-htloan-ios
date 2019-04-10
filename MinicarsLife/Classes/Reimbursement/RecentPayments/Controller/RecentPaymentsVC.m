@@ -16,6 +16,7 @@
 #import "CarlevelCell.h"
 #import "CarModel.h"
 #import "ClassifyListVC.h"
+#import "ClassifyInfoVC.h"
 @interface RecentPaymentsVC ()<RefreshDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic , strong)NearFutureTableView *tableView;
 
@@ -29,6 +30,14 @@
 @property (nonatomic,strong) NSMutableArray *selectArray;
 @property (nonatomic,strong) NSMutableArray * selectTitleArray;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
+
+
+
+@property (nonatomic , strong)NSArray *Array1;
+@property (nonatomic , strong)NSMutableArray *Array2;
+@property (nonatomic , strong)NSMutableArray *Array3;
+@property (nonatomic , strong)NSMutableArray *Array4;
+@property (nonatomic , strong)NSArray *Array5;
 @end
 
 @implementation RecentPaymentsVC
@@ -38,14 +47,19 @@
     
 //    self.titlearray = [NSMutableArray array];
     self.titlearray = @[@[@"35万以下",@"35-50万",@"50-70万",@"70-90万",@"90-110万",@"110-150万",@"150万以上"],
-                        @[@[@"suv",@"轿车",@"mpv",@"跑车",@"皮卡",@"房车"],@[@"SUV",@"轿车",@"MPV",@"跑车",@"皮卡",@"房车"]],
+                        @[@"SUV",@"轿车",@"MPV",@"跑车",@"皮卡",@"房车"],
                         @[@"中东",@"美规",@"加规",@"墨版",@"欧规"],
                         @[@"两厢",@"三厢",@"掀背",@"旅行版",@"硬顶敞篷",@"软顶敞篷",@"硬顶跑车"],
                         @[@"2.0L以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
-    self.selectArray = [NSMutableArray array];
-    [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
-    self.selectTitleArray = [NSMutableArray array];
-    [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    
+    
+    self.Array1 = [NSMutableArray array];
+    self.Array2 = [NSMutableArray array];
+    self.Array3 = [NSMutableArray array];
+    self.Array4 = [NSMutableArray array];
+    self.Array5 = [NSMutableArray array];
+    
+
     
     self.ResultLab = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
     self.ResultLab.text = @"您选择的条件会显示在这";
@@ -97,19 +111,24 @@
     self.resultBtn = resultBtn;
     [self.view addSubview:view];
     
-    
-    
     [self LoadData];
+    [self getData];
 }
+
+//确认按钮a点击方法
 -(void)resultClick{
     ClassifyListVC * vc = [ClassifyListVC new];
     vc.CarModels = self.CarModels;
     vc.hidesBottomBarWhenPushed = YES;
+//    vc.title = @"车型";
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 -(void)getClassifyListData:(NSString *)code{
     
 }
+
+
 -(void)resetClick
 {
     self.selectArray = [NSMutableArray array];
@@ -118,7 +137,7 @@
     [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
     self.ResultLab.text = @"您选择的条件会显示在这";
     
-    self.CarModels = [NSMutableArray array];
+//    self.CarModels = [NSMutableArray array];
     [self.resultBtn setTitle:[NSString stringWithFormat:@"有0款车型符合要求"] forState:(UIControlStateNormal)];
     [self.collectionView reloadData];
 }
@@ -127,10 +146,6 @@
     return 5;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if (section == 1) {
-        NSMutableArray * arr =self.titlearray[section][0];
-        return arr.count;
-    }
     NSMutableArray * arr =self.titlearray[section];
     return arr.count;
    
@@ -149,51 +164,84 @@
     if (indexPath.section == 0) {
         CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
         cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
-        if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
-            cell.layer.borderColor = kLineColor.CGColor;
+//        if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
+//            cell.layer.borderColor = kLineColor.CGColor;
+//            cell.layer.borderWidth = 1;
+//        }else
+//        {
+//            if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+//                cell.layer.borderColor = MainColor.CGColor;
+//                cell.layer.borderWidth = 1;
+//            }
+//            else
+//            {
+//                cell.layer.borderColor = kLineColor.CGColor;
+//                cell.layer.borderWidth = 1;
+//            }
+//        }
+        if ([self.Array1 containsObject:@(indexPath.row)]) {
+            cell.layer.borderColor = MainColor.CGColor;
             cell.layer.borderWidth = 1;
         }else
         {
-            if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
-                cell.layer.borderColor = MainColor.CGColor;
-                cell.layer.borderWidth = 1;
-            }else
-            {
-                cell.layer.borderColor = kLineColor.CGColor;
-                cell.layer.borderWidth = 1;
-            }
+            cell.layer.borderColor = kLineColor.CGColor;
+            cell.layer.borderWidth = 1;
         }
-        
         
         return cell;
     }
     
     if (indexPath.section == 1) {
         CarlevelCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"level" forIndexPath:indexPath];
-        cell.name.text = self.titlearray[indexPath.section][1][indexPath.row];
-        cell.logo.image = kImage(self.titlearray[indexPath.section][0][indexPath.row]);
-        if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
-            cell.name.textColor = kTextColor;
+        cell.name.text = self.titlearray[indexPath.section][indexPath.row];
+        cell.logo.image = kImage(self.titlearray[indexPath.section][indexPath.row]);
+        if ([self.Array2 containsObject:@(indexPath.row)]) {
+            cell.name.textColor = MainColor;
         }else
         {
-            if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
-                cell.name.textColor = MainColor;
-            }else
-            {
-                cell.name.textColor = kTextColor;
-            }
+            cell.name.textColor = kTextColor;
         }
         return cell;
     }
     
     CarCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell1" forIndexPath:indexPath];
     cell.TitleLab.text = self.titlearray[indexPath.section][indexPath.row];
-    if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
-        cell.layer.borderColor = kLineColor.CGColor;
-        cell.layer.borderWidth = 1;
-    }else
-    {
-        if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+//    if ([self.selectArray[indexPath.section] isEqualToString:@""]) {
+//        cell.layer.borderColor = kLineColor.CGColor;
+//        cell.layer.borderWidth = 1;
+//    }else
+//    {
+//        if (indexPath.row == [self.selectArray[indexPath.section] integerValue]) {
+//            cell.layer.borderColor = MainColor.CGColor;
+//            cell.layer.borderWidth = 1;
+//        }else
+//        {
+//            cell.layer.borderColor = kLineColor.CGColor;
+//            cell.layer.borderWidth = 1;
+//        }
+//    }
+    if (indexPath.section == 2) {
+        if ([self.Array3 containsObject:@(indexPath.row + 1)]) {
+            cell.layer.borderColor = MainColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }else
+        {
+            cell.layer.borderColor = kLineColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }
+    }
+    if (indexPath.section == 3) {
+        if ([self.Array4 containsObject:@(indexPath.row + 1)]) {
+            cell.layer.borderColor = MainColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }else
+        {
+            cell.layer.borderColor = kLineColor.CGColor;
+            cell.layer.borderWidth = 1;
+        }
+    }
+    if (indexPath.section == 4) {
+        if ([self.Array5 containsObject:@(indexPath.row)]) {
             cell.layer.borderColor = MainColor.CGColor;
             cell.layer.borderWidth = 1;
         }else
@@ -231,39 +279,140 @@
 
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
-    [self getData:indexPath];
-    if (indexPath.section == 1) {
-        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][1][indexPath.row]]];
+    
+    
+    if (indexPath.section == 0) {
+        
+        if ([self.Array1 containsObject:@(indexPath.row)]) {
+            self.Array1 = @[];;
+        }else
+        {
+            self.Array1 = @[@(indexPath.row)];;
+        }
+        
+//        [self.Array1 addObjectsFromArray:array];
     }
-    else
-        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][indexPath.row]]];
-    
-    NSMutableArray *newArray = [NSMutableArray array];
-    
-    for (int i = 0;i < self.selectTitleArray.count; i++) {
-        NSString *string = [self.selectTitleArray objectAtIndex:i];
-        if ( ! [newArray containsObject:string] ){
-            [newArray addObject:string];
-            
+    if (indexPath.section == 1) {
+        
+        if ([self.Array2 containsObject:@(indexPath.row)]) {
+            [self.Array2 removeObject:@(indexPath.row)];
+        }else
+        {
+            [self.Array2 addObject:@(indexPath.row)];
+        }
+    }
+    if (indexPath.section == 2) {
+        
+        if ([self.Array3 containsObject:@(indexPath.row + 1)]) {
+            [self.Array3 removeObject:@(indexPath.row + 1)];
+        }else
+        {
+            [self.Array3 addObject:@(indexPath.row + 1)];
         }
         
     }
-    NSString *string = [newArray componentsJoinedByString:@"/"];
+    if (indexPath.section == 3) {
+        
+        if ([self.Array4 containsObject:@(indexPath.row+ 1)]) {
+            [self.Array4 removeObject:@(indexPath.row+ 1)];
+        }else
+        {
+            [self.Array4 addObject:@(indexPath.row+ 1)];
+        }
+        
+    }
+    if (indexPath.section == 4) {
+        
+        if ([self.Array5 containsObject:@(indexPath.row)]) {
+            self.Array5 = @[];;
+        }else
+        {
+            self.Array5 = @[@(indexPath.row)];;
+        }
+        
+    }
+//    if (indexPath.section == 2) {
+//        NSArray *array = @[indexPath.row];
+//        self.Array1 = array;
+//    }
+//    if (indexPath.section == 3) {
+//        NSArray *array = @[indexPath.row];
+//        self.Array1 = array;
+//    }
+//    if (indexPath.section == 4) {
+//        NSArray *array = @[indexPath.row];
+//        self.Array1 = array;
+//    }
+    
+    NSMutableArray *array1 = [NSMutableArray array];
+    NSMutableArray *array2 = [NSMutableArray array];
+    NSMutableArray *array3 = [NSMutableArray array];
+    NSMutableArray *array4 = [NSMutableArray array];
+    NSMutableArray *array5 = [NSMutableArray array];
+    
+    if (self.Array1.count > 0) {
+        [array1 addObject:self.titlearray[0][[self.Array1[0] integerValue]]];
+    }
+    for (int i = 0; i < self.Array2.count; i ++) {
+        [array2 addObject:self.titlearray[1][[self.Array2[i] integerValue]]];
+    }
+    for (int i = 0; i < self.Array3.count; i ++) {
+        [array3 addObject:self.titlearray[2][[self.Array3[i] integerValue] - 1]];
+    }
+    for (int i = 0; i < self.Array4.count; i ++) {
+        [array4 addObject:self.titlearray[3][[self.Array4[i] integerValue] - 1]];
+    }
+    for (int i = 0; i < self.Array5.count; i ++) {
+        [array5 addObject:self.titlearray[4][[self.Array5[i] integerValue]]];
+    }
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:array1];
+    [array addObjectsFromArray:array2];
+    [array addObjectsFromArray:array3];
+    [array addObjectsFromArray:array4];
+    [array addObjectsFromArray:array5];
+    NSString *string = [array componentsJoinedByString:@"/"];
     self.ResultLab.text = string;
     [self.collectionView reloadData];
+    
+    
+    
+    
+    
+//    [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    [self getData];
+//
+//
+//
+//
+//    if (indexPath.section == 1) {
+//        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][1][indexPath.row]]];
+//    }
+//    else
+//        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][indexPath.row]]];
+//
+//    NSMutableArray *newArray = [NSMutableArray array];
+//
+//    for (int i = 0;i < self.selectTitleArray.count; i++) {
+//        NSString *string = [self.selectTitleArray objectAtIndex:i];
+//        if ( ! [newArray containsObject:string] ){
+//            [newArray addObject:string];
+//
+//        }
+//    }
+    
 }
--(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-     [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-}
+//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
+//     [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+//}
 
--(void)getData:(NSIndexPath *)indexPath{
+-(void)getData{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630426";
-    
+    http.showView = self.view;
     //根据价格
-    if (![self.selectArray[0] isEqualToString:@""]) {
-    int i = [self.selectArray[0] intValue];
+    if (self.Array1.count > 0) {
+    int i = [self.Array1[0] intValue];
     switch (i) {
         case 0:{
             http.parameters[@"priceStart"] =@"" ;
@@ -313,128 +462,20 @@
     }
     }
     //根据级别
-    if (![self.selectArray[1] isEqualToString:@""]) {
-    int a = [self.selectArray[1] intValue];
-    switch (a) {
-        case 0:{
-            NSArray  *levelList = @[@"0"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-        case 1:{
-            NSArray  *levelList = @[@"1"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-        case 2:{
-            NSArray  *levelList = @[@"2"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-        case 3:{
-            NSArray  *levelList = @[@"3"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-        case 4:{
-            NSArray  *levelList = @[@"4"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-        case 5:{
-            NSArray  *levelList = @[@"5"];
-            http.parameters[@"levelList"] = levelList;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    }
+    http.parameters[@"levelList"] = self.Array2;
+
     //根据规格版本
-    if (![self.selectArray[2] isEqualToString:@""]) {
-    int b = [self.selectArray[2] intValue];
-    switch (b) {
-        case 0:{
-            NSArray  *versionList = @[@"1"];
-            http.parameters[@"versionList"] = versionList;
-        }
-            break;
-        case 1:{
-            NSArray  *versionList = @[@"2"];
-            http.parameters[@"versionList"] = versionList;
-        }
-            break;
-        case 2:{
-            NSArray  *versionList = @[@"3"];
-            http.parameters[@"versionList"] = versionList;
-        }
-            break;
-        case 3:{
-            NSArray  *versionList = @[@"4"];
-            http.parameters[@"versionList"] = versionList;
-        }
-            break;
-        case 4:{
-            NSArray  *versionList = @[@"5"];
-            http.parameters[@"versionList"] = versionList;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    }
+    http.parameters[@"versionList"] = self.Array3;
+
     //根据结构版本
-    if (![self.selectArray[3] isEqualToString:@""]) {
-    int c = [self.selectArray[3] intValue];
-    switch (c) {
-        case 0:{
-            NSArray  *structureList = @[@"1"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 1:{
-            NSArray  *structureList = @[@"2"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 2:{
-            NSArray  *structureList = @[@"3"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 3:{
-            NSArray  *structureList = @[@"4"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 4:{
-            NSArray  *structureList = @[@"5"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 5:{
-            NSArray  *structureList = @[@"6"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-        case 6:{
-            NSArray  *structureList = @[@"7"];
-            http.parameters[@"structureList"] = structureList;
-        }
-            break;
-            
-        default:
-            break;
-    }
-    }
+    http.parameters[@"structureList"] = self.Array4;
+
     //排量
-    if (![self.selectArray[4] isEqualToString:@""]) {
-        int d = [self.selectArray[4] intValue];
+    if (self.Array4.count > 0) {
+        int d = [self.Array4[0] intValue];
         switch (d) {
             case 0:{
-                http.parameters[@"displacementStart"] =@"" ;
+                http.parameters[@"displacementStart"] = @"" ;
                 http.parameters[@"displacementEnd"] = @"2.0";
                 
             }

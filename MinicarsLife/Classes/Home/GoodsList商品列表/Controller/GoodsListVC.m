@@ -55,7 +55,7 @@
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.code = RecommendedStagingURL;
     helper.parameters[@"status"] = @"3";
-    helper.parameters[@"location"] = @"1";
+    helper.parameters[@"location"] = @"0";
 
     helper.isList = NO;
     helper.isCurrency = YES;

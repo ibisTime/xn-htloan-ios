@@ -110,6 +110,7 @@
 		1FFB8EA1225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E99225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.m */; };
 		1FFB8EA2225AFA8B00B72F31 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */; };
 		1FFB8EA3225AFA8B00B72F31 /* GeneralWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */; };
+		1FFB8EB7225C7E9A00B72F31 /* ImageBrowsingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */; };
 		36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */; };
 		363B6123223B7B9A00585061 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6122223B7B9A00585061 /* NewsCell.m */; };
 		363B6126223B81A800585061 /* CarNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6125223B81A800585061 /* CarNewsVC.m */; };
@@ -600,6 +601,8 @@
 		1FFB8E9B225AFA8B00B72F31 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
 		1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWebProgressLayer.m; sourceTree = "<group>"; };
 		1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralWebView.m; sourceTree = "<group>"; };
+		1FFB8EB5225C7E9900B72F31 /* ImageBrowsingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageBrowsingVC.h; sourceTree = "<group>"; };
+		1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageBrowsingVC.m; sourceTree = "<group>"; };
 		36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableHeadCell.h; sourceTree = "<group>"; };
 		36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableHeadCell.m; sourceTree = "<group>"; };
 		363B6121223B7B9A00585061 /* NewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
@@ -1689,6 +1692,8 @@
 				363B6141223BAF3800585061 /* ClassifyInfoVC.m */,
 				363B6146223BBF8300585061 /* CarInfoVC.h */,
 				363B6147223BBF8300585061 /* CarInfoVC.m */,
+				1FFB8EB5225C7E9900B72F31 /* ImageBrowsingVC.h */,
+				1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4170,6 +4175,7 @@
 				364C60832242102F00C35897 /* ChineseString.m in Sources */,
 				B8A70B0021CE4FCA00E97EFD /* BannerWebViewVC.m in Sources */,
 				7A8A5CBE20E5D1D5002D9A48 /* CarLoanCalculatorHeadCell.m in Sources */,
+				1FFB8EB7225C7E9A00B72F31 /* ImageBrowsingVC.m in Sources */,
 				7A3CBD7D20F0E4A600D795E5 /* WithdrawalPriceCell.m in Sources */,
 				36E3A366223B3B9200B26F4F /* CollectVC.m in Sources */,
 				7A3CBD9E20F3217300D795E5 /* ImageUtil.m in Sources */,

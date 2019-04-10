@@ -29,7 +29,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.ClassifyLogo = [[UIImageView alloc]initWithFrame:CGRectMake(15, 14, 110, 82.5)];
-        self.ClassifyLogo.image = kImage(@"1");
+
+//        self.ClassifyLogo.contentMode =UIViewContentModeScaleAspectFill;
         [self addSubview:self.ClassifyLogo];
         
         self.ClassifyName = [UILabel labelWithFrame:CGRectMake(self.ClassifyLogo.xx + 15, 15, SCREEN_WIDTH - 30 - 85, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kBlackColor];
@@ -54,9 +55,9 @@
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
     [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    self.ClassifyLogo.contentMode =UIViewContentModeScaleAspectFill;
+    
     //超出容器范围的切除掉
-    self.ClassifyLogo.clipsToBounds = YES;
+    
     self.ClassifyName.text = carmodel.name;
 //    self.ClassiftType.text = carmodel.remark;
     int level = [carmodel.level intValue];
@@ -83,6 +84,6 @@
         default:
             break;
     }
-    self.ClassifyPrice.text = [NSString stringWithFormat:@"%.1f-%.1f万",[carmodel.lowest floatValue]/10000,[carmodel.highest floatValue]/10000];
+    self.ClassifyPrice.text = [NSString stringWithFormat:@"%.1f-%.1f",[carmodel.lowest floatValue]/1000,[carmodel.highest floatValue]/1000];
 }
 @end

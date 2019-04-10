@@ -31,10 +31,7 @@
 //        [self createbtn];
         
         [self addSubview:self.collection];
-        
-//        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, self.collection.yy + 20 , SCREEN_WIDTH, 20)];
-//        v1.backgroundColor = kLineColor;
-//        [self addSubview:v1];
+
     }
     return self;
 }

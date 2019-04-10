@@ -157,11 +157,11 @@
                 cell=[[LeftHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
             if (self.CalculatorModel.saleAmount) {
-                cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.saleAmount]];
+                cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.totalAmount floatValue]/1000]]];
                 cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
             }
             else
-                cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
+                cell.moneylab.attributedText =[self getPriceAttribute:@"0.00 元"];
            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -186,10 +186,10 @@
             }else if (indexPath.row == 2){
                 cell.img.hidden = YES;
                 if (self.CalculatorModel) {
-                    cell.ContentLab.text = self.CalculatorModel.saleAmount;
+                    cell.ContentLab.text = [NSString stringWithFormat:@"%.2f",[self.CalculatorModel.saleAmount floatValue]/1000];
                 }
                 else
-                    cell.ContentLab.text = @"00.00";
+                    cell.ContentLab.text = @"0.00";
             }
             return cell;
         }
@@ -197,16 +197,16 @@
         static NSString *rid=leftfoot;
         LeftFootCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
         if(cell==nil){
-            cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
+            cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:rid];
         }
 //        cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
 //        cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
         if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
-            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+            cell.leftmoney.text = [self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.byhf floatValue]/1000]];
+            cell.rightmoney.text = [self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.sybx floatValue]/1000]];
         }else{
-            cell.leftmoney.text = @"00.00";
-            cell.rightmoney.text = @"00.00";
+            cell.leftmoney.text = @"0.00";
+            cell.rightmoney.text = @"0.00";
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -225,15 +225,15 @@
             
         }
         
-        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:self.CalculatorModel.yjsfAmount]];
+        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.yjsfAmount floatValue]]]];
         if (self.CalculatorModel.monthReply) {
-            cell.moneyarray = @[self.CalculatorModel.monthReply,self.CalculatorModel.extraAmount,self.CalculatorModel.totalAmount];
+            cell.moneyarray = @[[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.monthReply floatValue]/1000],[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.extraAmount floatValue]/1000],[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.totalAmount floatValue]/1000]];
         }
         if (self.CalculatorModel.yjsfAmount) {
             cell.moneylab.attributedText = [self getPriceAttribute:cell.moneystr];
         }
         else
-            cell.moneylab.attributedText =[self getPriceAttribute:@"00.00 元"];
+            cell.moneylab.attributedText =[self getPriceAttribute:@"0.00 元"];
 //            cell.moneylab.text = @"00.00";
         
         
@@ -249,13 +249,12 @@
             cell=[[LeftFootCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
         if (self.CalculatorModel.byhf&&self.CalculatorModel.sybx) {
-            cell.leftmoney.text = [self NumberWithFromatter:self.CalculatorModel.byhf];
-            cell.rightmoney.text = [self NumberWithFromatter:self.CalculatorModel.sybx];
+            cell.leftmoney.text = [self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.byhf floatValue]/1000]];
+            cell.rightmoney.text = [self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.sybx floatValue]/1000]];
         }else{
-            cell.leftmoney.text = @"00.00";
-            cell.rightmoney.text = @"00.00";
+            cell.leftmoney.text = @"0.00";
+            cell.rightmoney.text = @"0.00";
         }
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
@@ -276,10 +275,10 @@
     }else if (indexPath.row == 2){
         cell.img.hidden = YES;
         if (self.CalculatorModel) {
-            NSString * str2 = [self NumberWithFromatter: self.CalculatorModel.saleAmount];
+            NSString * str2 = [self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.saleAmount floatValue]/1000]];
             cell.ContentLab.text = str2;
         }else
-            cell.ContentLab.text = @"00.00";
+            cell.ContentLab.text = @"0.00";
     }else if (indexPath.row == 3){
         cell.ContentLab.text = @"一年";
         if (self.DkYear) {
@@ -289,10 +288,10 @@
     else{
         cell.img.hidden = YES;
         if (self.CalculatorModel) {
-            NSString * str4 = [self NumberWithFromatter:self.CalculatorModel.sfAmount];
+            NSString * str4 = [NSString stringWithFormat:@"%.2f%% (%@元) ",[self.CalculatorModel.sfAmount floatValue]/[self.CalculatorModel.saleAmount floatValue] * 100,[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.saleAmount floatValue]/1000]]];
             cell.ContentLab.text = str4;
         }else
-            cell.ContentLab.text = @"00.00";
+            cell.ContentLab.text = @"0.00";
     }
 
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -301,7 +300,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tag == 0) {
         if (indexPath.row == 0) {
-            return 101;
+            return 120;
         }
         else if (indexPath.row == 1||indexPath.row == 2){
             return 50;
@@ -310,7 +309,7 @@
             return 81;
     }
     if (indexPath.row == 0) {
-        return 161;
+        return 181;
     }
     else if (indexPath.row == 5){
         return 81;
