@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
-	<string>微车生活</string>
+	<string>浩源车网</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.3</string>
+	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -28,11 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>是否允许微车生活访问您的相机,用于更换您的头像</string>
+	<string>是否允许浩源车网访问您的相机,用于更换您的头像</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>是否允许微车生活访问您的摄像头</string>
+	<string>是否允许浩源车网访问您的摄像头</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>是否允许微车生活访问您的相册,用于更换您的头像</string>
+	<string>是否允许浩源车网访问您的相册,用于更换您的头像</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

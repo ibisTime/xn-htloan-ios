@@ -38,7 +38,7 @@
     [view addSubview:self.titlelab];
     
     self.authorlab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:MainColor];
-    self.authorlab.text = @"作者：微车生活";
+    self.authorlab.text = @"作者：浩源车网";
     [view addSubview:self.authorlab];
     
     self.timelab = [UILabel labelWithFrame:CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];

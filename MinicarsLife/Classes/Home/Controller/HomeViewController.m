@@ -59,9 +59,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.title = @"微车生活";
+//    self.title = @"浩源车网";
     UILabel *titleLbl = [[UILabel alloc]init];
-    titleLbl.text = @"微车生活";
+    titleLbl.text = @"浩源车网";
     titleLbl.font = Font(18);
     titleLbl.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = titleLbl;
