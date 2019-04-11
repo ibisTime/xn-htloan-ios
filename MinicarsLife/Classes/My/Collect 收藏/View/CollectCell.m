@@ -119,7 +119,7 @@
     
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",car.version,[USERXX convertNull: car.outsideColor],[USERXX convertNull: car.insideColor], [USERXX convertNull:car.fromPlace]];
     
-    int level = [model.level intValue];
+    int level = [model.car[@"level"] intValue];
     switch (level) {
         case 0:
             self.describdlab.text = @"SUV";

@@ -30,11 +30,11 @@
     }
     return self;
 }
--(void)setDeployModels:(NSMutableArray<DeployModel *> *)DeployModels{
-    _DeployModels = DeployModels;
+-(void)setCaonfigList:(NSArray *)caonfigList{
+    _caonfigList = caonfigList;
     
     
-    for (int i = 0; i < DeployModels.count; i++) {
+    for (int i = 0; i < caonfigList.count; i++) {
         
         
         UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(i % 4 * SCREEN_WIDTH/4, i / 4 * 70, SCREEN_WIDTH/4, 70)];
@@ -50,14 +50,10 @@
         button.frame = CGRectMake(0 , logo.yy + 5 , (SCREEN_WIDTH / 4), 15);
         button.tag = 100 + i;
         [backView addSubview:button];
-        
-        
-        
-        DeployModel* model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
-        [button setTitle:model.config[@"name"] forState:(UIControlStateNormal)];
 
-        [logo sd_setImageWithURL:[NSURL URLWithString:[model.config[@"pic"] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-
+//        DeployModel* model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
+        [button setTitle:caonfigList[i][@"config"][@"name"] forState:(UIControlStateNormal)];
+        [logo sd_setImageWithURL:[NSURL URLWithString:[caonfigList[i][@"config"][@"pic"] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     }
     
 }

@@ -330,8 +330,6 @@
     //        if ([num longValue] >= 3) {
     //            [TLAlert alertWithMsg:@"房间已满"];
     //        }else{
-    
-    
     if ([faceStr isEqualToString:@""]) {
         [SVProgressHUD showWithStatus:@""];
         [SVProgressHUD dismissWithDelay:2];
@@ -356,7 +354,6 @@
                 //                            for(UITextField *text in alert.textFields){
                 //                                NSLog(@"text = %@", text.text);
                 //                                [self  checkIsRoom:text.text];
-                
                 // 1. 创建live房间页面
                 FaceToFaceSignVC *liveRoomVC = [[FaceToFaceSignVC alloc] init];
                 liveRoomVC.hidesBottomBarWhenPushed = YES;
@@ -598,11 +595,14 @@
         [_headView.headImage sd_setImageWithURL:[NSURL URLWithString:[[USERDEFAULTS objectForKey:PHOTO] convertImageUrl]] placeholderImage:HGImage(@"myheadimage")];
         
         NSString *str = [USERDEFAULTS objectForKey:MOBILE];
-        if ([USERXX isBlankString:[USERDEFAULTS objectForKey:NICKNAME]] == YES)
+        if ([USERXX isBlankString:[USERDEFAULTS objectForKey:NICKNAME]] == YES || [[USERDEFAULTS objectForKey:NICKNAME] isEqualToString:@""])
         {
             if (str.length > 4) {
                 NSString *str5 = [str substringFromIndex:str.length-4];
                 _headView.nameLabel.text = [NSString stringWithFormat:@"尾号为%@用户",str5];
+            }else
+            {
+                _headView.nameLabel.text = [NSString stringWithFormat:@"尾号为%@用户",str];
             }
             
             

@@ -24,14 +24,14 @@
 {
     [super viewWillAppear:animated];
     _SearchBar.alpha = 1;
-    [self.view endEditing:YES];
+    [_SearchBar resignFirstResponder];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
 
     _SearchBar.alpha = 0;
-    [self.view endEditing:YES];
+    [_SearchBar resignFirstResponder];
 }
 
 
@@ -135,7 +135,7 @@
 //    [self getClassifyData:model.code :model.name];
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
 //    vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-    vc.seriesCode = model.code;
+//    vc.seriesCode = model.code;
     vc.hidesBottomBarWhenPushed = YES;
     vc.title = model.name;
     [self.navigationController pushViewController:vc animated:YES];

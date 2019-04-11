@@ -257,10 +257,9 @@
     }
     if (index.section == 2) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];
-        vc.seriesCode = models.code;
         vc.title = models.name;
-//        vc.model = models;
         vc.hidesBottomBarWhenPushed = YES;
+        vc.models = models;
         [self.navigationController pushViewController:vc animated:YES];
 //        [self getClassifyData:models.code :models.name];
     }
@@ -298,6 +297,7 @@
     http.code = @"630406";
     http.parameters[@"location"] = @"0";
     http.parameters[@"status"] = @"1";
+    http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
         headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self modifyFrame];
@@ -310,6 +310,7 @@
     http1.code = @"630416";
     http1.parameters[@"location"] = @"0";
     http1.parameters[@"status"] = @"1";
+    http1.parameters[@"orderDir"] = @"asc";
     [http1 postWithSuccess:^(id responseObject) {
         headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         [self modifyFrame];
@@ -325,6 +326,7 @@
     http2.code = @"630426";
     http2.parameters[@"location"] = @"0";
     http2.parameters[@"status"] = @"1";
+    http2.parameters[@"orderDir"] = @"asc";
     [http2 postWithSuccess:^(id responseObject) {
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         self.CarModelsCars = [NSMutableArray array];

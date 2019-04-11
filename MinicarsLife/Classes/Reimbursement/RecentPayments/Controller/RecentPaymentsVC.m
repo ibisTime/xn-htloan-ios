@@ -53,11 +53,11 @@
                         @[@"2.0L及以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
     
     
-    self.Array1 = [NSMutableArray array];
+
     self.Array2 = [NSMutableArray array];
     self.Array3 = [NSMutableArray array];
     self.Array4 = [NSMutableArray array];
-    self.Array5 = [NSMutableArray array];
+
     
 
     
@@ -112,18 +112,13 @@
     [self.view addSubview:view];
     
     [self LoadData];
-    [self getData];
 }
 
 //确认按钮a点击方法
 -(void)resultClick{
     
     if (self.CarModels.count == 0) {
-//        [TLAlert alertWithInfo:@"无车型符合要求"];
-//        [TLProgressHUD showInfoWithStatus:@"金额过低"]
         [TLProgressHUD showInfoWithStatus:@"无车型符合要求"];
-//        [SVProgressHUD dismissWithDelay:2];
-        
     }else
     {
         ClassifyListVC * vc = [ClassifyListVC new];
@@ -138,16 +133,16 @@
     
 }
 
-
+//重置
 -(void)resetClick
 {
-    self.selectArray = [NSMutableArray array];
-    [self.selectArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
-    self.selectTitleArray = [NSMutableArray array];
-    [self.selectTitleArray addObjectsFromArray:@[@"",@"",@"",@"",@""]];
+    self.Array1 = @[];
+    [self.Array2 removeAllObjects];
+    [self.Array3 removeAllObjects];
+    [self.Array4 removeAllObjects];
+    self.Array5 = @[];
     self.ResultLab.text = @"您选择的条件会显示在这";
-    
-//    self.CarModels = [NSMutableArray array];
+    self.CarModels = [NSMutableArray array];
     [self.resultBtn setTitle:[NSString stringWithFormat:@"有0款车型符合要求"] forState:(UIControlStateNormal)];
     [self.collectionView reloadData];
 }
@@ -341,18 +336,7 @@
         }
         
     }
-//    if (indexPath.section == 2) {
-//        NSArray *array = @[indexPath.row];
-//        self.Array1 = array;
-//    }
-//    if (indexPath.section == 3) {
-//        NSArray *array = @[indexPath.row];
-//        self.Array1 = array;
-//    }
-//    if (indexPath.section == 4) {
-//        NSArray *array = @[indexPath.row];
-//        self.Array1 = array;
-//    }
+
     
     NSMutableArray *array1 = [NSMutableArray array];
     NSMutableArray *array2 = [NSMutableArray array];
@@ -391,30 +375,8 @@
     
 //    [self.selectArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%ld",indexPath.row]];
     [self getData];
-//
-//
-//
-//
-//    if (indexPath.section == 1) {
-//        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][1][indexPath.row]]];
-//    }
-//    else
-//        [self.selectTitleArray replaceObjectAtIndex:indexPath.section withObject:[NSString stringWithFormat:@"%@",self.titlearray[indexPath.section][indexPath.row]]];
-//
-//    NSMutableArray *newArray = [NSMutableArray array];
-//
-//    for (int i = 0;i < self.selectTitleArray.count; i++) {
-//        NSString *string = [self.selectTitleArray objectAtIndex:i];
-//        if ( ! [newArray containsObject:string] ){
-//            [newArray addObject:string];
-//
-//        }
-//    }
-    
 }
-//-(void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath{
-//     [collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:indexPath.item inSection:indexPath.section] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-//}
+
 
 -(void)getData{
     TLNetworking * http = [[TLNetworking alloc]init];
@@ -481,11 +443,11 @@
     http.parameters[@"structureList"] = self.Array4;
 
     //排量
-    if (self.Array4.count > 0) {
-        int d = [self.Array4[0] intValue];
+    if (self.Array5.count > 0) {
+        int d = [self.Array5[0] intValue];
         switch (d) {
             case 0:{
-                http.parameters[@"displacementStart"] = @"" ;
+                http.parameters[@"displacementStart"] = @"0" ;
                 http.parameters[@"displacementEnd"] = @"2.0";
                 
             }
@@ -520,8 +482,15 @@
     }
     http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
+        
+        
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",self.CarModels.count] forState:(UIControlStateNormal)];
+        NSInteger num = 0;
+        for (int i = 0; i < self.CarModels.count; i ++) {
+            num = num + self.CarModels[i].cars.count;
+        }
+        
+        [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",num] forState:(UIControlStateNormal)];
     } failure:^(NSError *error) {
 
     }];

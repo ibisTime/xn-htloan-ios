@@ -59,7 +59,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
     vc.title = self.CarModels[indexPath.row].name;
-    vc.seriesCode = self.CarModels[indexPath.row].code;
+//    vc.seriesCode = self.CarModels[indexPath.row].code;
+    vc.models = self.CarModels[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -69,28 +70,32 @@
         return;
     }
     MJWeakSelf;
-//    TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
-//    helper.code = @"630426";
-//    helper.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-//    helper.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
-//    helper.parameters[@"brandCode"] = self.brandcode;
-//    helper.parameters[@"isMore"] = self.isMore;
-//    helper.isList = NO;
-//    helper.isCurrency = YES;
-//    helper.tableView = self.tableview;
-//    [helper modelClass:[CarModel class]];
-    [self.tableview addRefreshAction:^{
-//        [helper refresh:^(NSMutableArray *objs, BOOL stillHave) {
-//            NSMutableArray <CarModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                CarModel *model = (CarModel *)obj;
-//                [shouldDisplayCoins addObject:model];
-//            }];
-////            weakSelf.model = shouldDisplayCoins;
-//            weakSelf.CarModels = shouldDisplayCoins;
-//            [weakSelf.tableview reloadData_tl];
-//        } failure:^(NSError *error) {
-//        }];
+
+    if (self.brandcode) {
+        [self.tableview addRefreshAction:^{
+            
+            TLNetworking * http2 = [[TLNetworking alloc]init];
+            http2.showView = weakSelf.view;
+            http2.code = @"630416";
+            http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
+            http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
+            http2.parameters[@"brandCode"] = weakSelf.brandcode;
+//            http2.parameters[@"isMore"] = weakSelf.isMore;
+            [http2 postWithSuccess:^(id responseObject) {
+                //                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+                weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+                [weakSelf.tableview reloadData_tl];
+                [weakSelf.tableview endRefreshHeader];
+            } failure:^(NSError *error) {
+                [weakSelf.tableview endRefreshHeader];
+            }];
+        }];
+        
+        [self.tableview beginRefreshing];
+    }else
+    {
+        [self.tableview addRefreshAction:^{
+            
             TLNetworking * http2 = [[TLNetworking alloc]init];
             http2.showView = weakSelf.view;
             http2.code = @"630426";
@@ -99,30 +104,20 @@
             http2.parameters[@"brandCode"] = weakSelf.brandcode;
             http2.parameters[@"isMore"] = weakSelf.isMore;
             [http2 postWithSuccess:^(id responseObject) {
-//                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+                //                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
                 weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
                 [weakSelf.tableview reloadData_tl];
                 [weakSelf.tableview endRefreshHeader];
             } failure:^(NSError *error) {
                 [weakSelf.tableview endRefreshHeader];
             }];
-    }];
-//    [self.tableview addLoadMoreAction:^{
-//
-//        [helper loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-//            NSLog(@" ==== %@",objs);
-//            NSMutableArray <CarModel *> *shouldDisplayCoins = [[NSMutableArray alloc] init];
-//            [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                CarModel *model = (CarModel *)obj;
-//                [shouldDisplayCoins addObject:model];
-//            }];
-////            weakSelf.model = shouldDisplayCoins;
-//            weakSelf.CarModels = shouldDisplayCoins;
-//            [weakSelf.tableview reloadData_tl];
-//        } failure:^(NSError *error) {
-//        }];
-//    }];
-    [self.tableview beginRefreshing];
+        }];
+        
+        [self.tableview beginRefreshing];
+    }
+    
+    
+    
 }
 
 

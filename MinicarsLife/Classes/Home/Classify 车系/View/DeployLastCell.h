@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DeployLastCell : UITableViewCell
 //@property (nonatomic,strong) CarModel * CarModel;
-@property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
+
+@property (nonatomic,strong)NSArray *configs;
+
 @end
 
 NS_ASSUME_NONNULL_END

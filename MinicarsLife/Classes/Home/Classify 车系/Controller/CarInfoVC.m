@@ -25,10 +25,14 @@
 //@property (nonatomic,strong) UIButton * collectbtn;
 @property (nonatomic,strong) NSMutableArray<DeployModel *> * DeployModels;
 @property (nonatomic,strong) NSString * phonestring;
-@property (nonatomic,strong) NSArray * firstarray;
-@property (nonatomic,strong) NSArray * lastarray;
+@property (nonatomic,strong) NSArray * picArray;
+@property (nonatomic,strong) NSArray * nameArray;
 
 @property (nonatomic , strong)NSArray *dataArray;
+
+
+
+
 
 @end
 
@@ -120,10 +124,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self bannerLoadData];
-    [self getCarDeploy];
+    
     [self loadData];
     [self car_versionLoadData];
-    [self setHistory];
+//    [self setHistory];
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 522.00/750.00 * SCREEN_WIDTH)];
     [view addSubview:self.scrollView];
     self.tableview.tableHeaderView = view;
@@ -136,6 +140,11 @@
     }
 //    NSMutableArray *muArray = [NSMutableArray arrayWithArray:p];
     self.scrollView.data = topImage;
+    
+//    self.configs = self.CarModel.configs;
+//    self.caonfigList = self.CarModel.caonfigList;
+    
+    [self getCarDeploy];
     
     
     self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70, SCREEN_WIDTH, 70)];
@@ -154,20 +163,6 @@
     [self.view addSubview:self.bottomview];
     
     
-//    UIButton * collectbtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 30, 30, 30)];
-////    collectbtn.backgroundColor = [UIColor redColor];
-//    [collectbtn addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
-//    [collectbtn setImage:kImage(@"我的收藏") forState:(UIControlStateNormal)];
-//    [collectbtn setImage:kImage(@"详情收藏-点击") forState:(UIControlStateSelected)];
-//    if ([self.CarModel.isCollect isEqualToString:@"1"]) {
-//        collectbtn.selected = YES;
-//    }
-//
-//
-////    [self.scrollView addSubview:collectbtn];
-//    self.navigationItem.titleView = collectbtn;
-//    self.collectbtn = collectbtn;
-    
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
@@ -181,10 +176,6 @@
     }
 
     [self.RightButton addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
-    
-    
-    
-    
     
     callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
     callNowView.carmodel = self.CarModel;
@@ -206,7 +197,7 @@
             [TLProgressHUD showSuccessWithStatus:@"收藏成功"];
             self.RightButton.selected = !self.RightButton.selected;
             [self reloaddata];
-            [self getCarDeploy];
+//            [self getCarDeploy];
         } failure:^(NSError *error) {
             
         }];
@@ -218,7 +209,7 @@
         [http postWithSuccess:^(id responseObject) {
             [TLProgressHUD showSuccessWithStatus:@"取消收藏"];
             self.RightButton.selected = !self.RightButton.selected;
-            [self getCarDeploy];
+//            [self getCarDeploy];
             [self reloaddata];
         } failure:^(NSError *error) {
             
@@ -269,10 +260,10 @@
 }
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (self.firstarray==nil&&self.lastarray==nil) {
-        return 2;
+    if (self.picArray.count > 0 || self.nameArray.count > 0) {
+        return 3;
     }
-    return 3;
+    return 2;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
@@ -281,22 +272,8 @@
     else if (section == 1){
         return 3;
     }
-    if (self.firstarray.count < 0) {
-        return 0;
-        }
-    if (self.lastarray.count == 0) {
-        return 1;
-    }
-    NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
-    return 1 + arr.count;
+    return 2;
     
-//    if (self.DeployModels.count <= 4) {
-//        return 1;
-//    }
-//    else if (self.DeployModels.count > 4 && self.DeployModels.count <= 6 ){
-//        return 2;
-//    }else
-//        return 3;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -320,8 +297,8 @@
                 cell=[[DeployFirstCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
 //            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
-//            cell.model = [DeployModel mj_objectWithKeyValues:self.DeployModels[indexPath.row]];
-            cell.DeployModels = self.DeployModels;
+//            cell.model = [DeployModel mj_objectWithKeyValues:self.DeployModels[indexPath.row]]picArray
+            cell.caonfigList = self.picArray;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -331,11 +308,11 @@
             if(cell==nil){
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-
-            NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
-            for (int i = 0; i < arr.count; i ++) {
-                cell.DeployModels = (NSMutableArray *)arr[i];
-            }
+            cell.configs = self.nameArray;
+//            NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
+//            for (int i = 0; i < arr.count; i ++) {
+//                cell.DeployModels = (NSMutableArray *)arr[i];
+//            }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -385,20 +362,30 @@
     if (indexPath.section == 0) {
         return 160;
     }
-    else if (indexPath.section == 2){
-        if (indexPath.row == 0) {
+    else if (indexPath.section == 2)
+    {
+        if (indexPath.row == 0)
+        {
             float numberToRound;
             int result;
-            numberToRound = (self.DeployModels.count )/4.0;
+            numberToRound = (self.picArray.count )/4.0;
             result = (int)ceilf(numberToRound);
-            
             return result * 70;
         }
         else
-            return 45;
+        {
+            float numberToRound;
+            int result;
+            numberToRound = (self.nameArray.count )/2.0;
+            result = (int)ceilf(numberToRound);
+            return result * 40;
+        }
     }
     else
+    {
         return 45;
+    }
+    
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -425,6 +412,8 @@
     }else
         return [UIView new];
 }
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return  0.001;
@@ -432,8 +421,8 @@
     else
         return 52.5;
 }
-#pragma mark - 获取数据
 
+#pragma mark - 获取数据
 -(void)bannerLoadData
 {
     //    MinicarsLifeWeakSelf;
@@ -464,25 +453,29 @@
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630448";
     http.parameters[@"carCode"] = self.CarModel.code;
+    http.parameters[@"isPic"] = @"1";
     [http postWithSuccess:^(id responseObject) {
-        self.DeployModels = [DeployModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        if (self.DeployModels.count>0) {
-            NSArray * arr = [self splitArray:self.DeployModels withSubSize:4];
-            self.firstarray = [NSArray array];
-            if (arr.count > 0) {
-                self.firstarray = arr[0];
-            }
-            
-            self.lastarray = [NSArray array];
-            if (arr.count > 1) {
-                self.lastarray = arr[1];
-            }
-//
-        }
+        self.picArray = responseObject[@"data"];
+        
+        [self.tableview reloadData];
+    } failure:^(NSError *error) {
+
+    }];
+    
+    
+    TLNetworking * http1 = [[TLNetworking alloc]init];
+    http1.code = @"630448";
+    http1.parameters[@"carCode"] = self.CarModel.code;
+    http1.parameters[@"isPic"] = @"0";
+    [http1 postWithSuccess:^(id responseObject) {
+        self.nameArray = responseObject[@"data"];
+        
         [self.tableview reloadData];
     } failure:^(NSError *error) {
         
     }];
+    
+    
 }
 - (void)loadData
 {
@@ -492,7 +485,7 @@
     http.showView = self.view;
     http.parameters[@"limit"] = @"20";
     http.parameters[@"start"] = @"1";
-    http.parameters[@"ckey"] = @"telephone";
+    http.parameters[@"ckey"] = @"kf_phone";
     http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
         self.phonestring = responseObject[@"data"][@"list"][0][@"cvalue"];
@@ -500,19 +493,20 @@
         
     }];
 }
--(void)setHistory{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630460";
-    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
-    http.parameters[@"toCode"] = self.CarModel.code;
-    http.parameters[@"toType"] = @"0";
-    http.parameters[@"type"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//-(void)setHistory{
+//    TLNetworking * http = [[TLNetworking alloc]init];
+//    http.code = @"630460";
+//    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+//    http.parameters[@"toCode"] = self.CarModel.code;
+//    http.parameters[@"toType"] = @"0";
+//    http.parameters[@"type"] = @"1";
+//    [http postWithSuccess:^(id responseObject) {
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
+
 -(void)reloaddata{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
@@ -551,6 +545,8 @@
     }
     return [arr copy];
 }
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.001;
 }
