@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UITextField * name;
 @property (nonatomic,weak) id<AskMoneyClickDelegate> delegate;
 @property (nonatomic,strong) CarModel * carmodel;
+
 @end
 
 NS_ASSUME_NONNULL_END

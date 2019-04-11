@@ -189,7 +189,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }else
         {
-            [TLAlert alertWithInfo:@"请选择规格"];
+            [TLProgressHUD showInfoWithStatus:@"请选择规格"];
         }
     }
 

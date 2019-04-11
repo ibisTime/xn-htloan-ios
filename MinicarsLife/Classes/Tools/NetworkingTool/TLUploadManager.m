@@ -113,9 +113,7 @@
 
             if (info.error) {
 
-                [TLAlert alertWithError:@"修改头像失败"];
-                NSLog(@"info.error = %@", info.error);
-
+                [TLProgressHUD showErrorWithStatus:@"修改头像失败"];
                 return ;
             }
 
@@ -157,7 +155,7 @@
             
             if (info.error) {
                 
-                [TLAlert alertWithError:@"上传失败"];
+                [TLProgressHUD showErrorWithStatus:@"上传失败"];
                 NSLog(@"info.error = %@", info.error);
                 
                 return ;

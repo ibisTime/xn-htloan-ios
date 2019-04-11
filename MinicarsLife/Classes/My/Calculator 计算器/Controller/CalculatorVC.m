@@ -225,7 +225,7 @@
             
         }
         
-        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.yjsfAmount floatValue]]]];
+        cell.moneystr = [NSString stringWithFormat:@"%@ 元",[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.yjsfAmount floatValue]/1000]]];
         if (self.CalculatorModel.monthReply) {
             cell.moneyarray = @[[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.monthReply floatValue]/1000],[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.extraAmount floatValue]/1000],[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.totalAmount floatValue]/1000]];
         }
@@ -288,7 +288,7 @@
     else{
         cell.img.hidden = YES;
         if (self.CalculatorModel) {
-            NSString * str4 = [NSString stringWithFormat:@"%.2f%% (%@元) ",[self.CalculatorModel.sfAmount floatValue]/[self.CalculatorModel.saleAmount floatValue] * 100,[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.saleAmount floatValue]/1000]]];
+            NSString * str4 = [NSString stringWithFormat:@"%.2f%% (%@元) ",[self.CalculatorModel.sfAmount floatValue]/[self.CalculatorModel.saleAmount floatValue] * 100,[self NumberWithFromatter:[NSString stringWithFormat:@"%.2f",[self.CalculatorModel.sfAmount floatValue]/1000]]];
             cell.ContentLab.text = str4;
         }else
             cell.ContentLab.text = @"0.00";
@@ -330,7 +330,7 @@
             [self.navigationController pushViewController:vc animated:YES];
         }
         if (indexPath.row == 3) {
-            NSArray * array1 = @[@"一年",@"两年",@"三年"];
+            NSArray * array1 = @[@"1年",@"1.5年",@"2年",@"3年"];
 //            NSMutableArray * array = [NSMutableArray arrayWithArray:array1];
             NSMutableArray *array = [NSMutableArray array];
             for (int i = 0;  i < array1.count; i ++) {
@@ -343,9 +343,39 @@
                 [LEEAlert closeWithCompletionBlock:^{
                     SelectedListModel *model = array[0];
                     NSLog(@"选中第%ld行" , model.sid);
-                    self.DkYear = array1[model.sid];
+                    
                     [self.rightTable reloadData_tl];
-                    [self getData:[NSString stringWithFormat:@"%ld",(model.sid + 1) * 12] total:@"0"];
+                    self.DkYear = model.title;
+                    switch (model.sid) {
+                        case 0:
+                        {
+//                            self.DkYear = @"12";
+                            [self getData:@"12" total:@"0"];
+                        }
+                            break;
+                        case 1:
+                        {
+//                            self.DkYear = @"18";
+                            [self getData:@"18" total:@"0"];
+                        }
+                            break;
+                        case 2:
+                        {
+//                            self.DkYear = @"24";
+                            [self getData:@"24" total:@"0"];
+                        }
+                            break;
+                        case 3:
+                        {
+//                            self.DkYear = @"36";
+                            [self getData:@"36" total:@"0"];
+                        }
+                            break;
+                            
+                        default:
+                            break;
+                    }
+                    
                 }];
             };
             [LEEAlert alert].config

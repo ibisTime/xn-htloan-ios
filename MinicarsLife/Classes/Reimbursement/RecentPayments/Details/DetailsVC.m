@@ -157,7 +157,7 @@
         http.parameters[@"prepayPhoto"] = key;
         [http postWithSuccess:^(id responseObject) {
             [SVProgressHUD dismiss];
-            [TLAlert alertWithSucces:@"上传成功"];
+            [TLProgressHUD showSuccessWithStatus:@"上传成功"];
         } failure:^(NSError *error) {
             [SVProgressHUD dismiss];
 

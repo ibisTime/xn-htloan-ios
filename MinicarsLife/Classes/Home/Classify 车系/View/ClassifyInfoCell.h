@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UILabel * contentlab;
 @property (nonatomic,strong) UIView * view;
 @property (nonatomic,strong) CarModel * carmodel;
+@property (nonatomic,strong) NSArray *dataArray;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -68,11 +68,11 @@
 -(void)chooseViewClick
 {
     if ([USERXX isBlankString:reAddress] == YES) {
-        [TLAlert alertWithInfo:@"请选择收货地址"];
+        [TLProgressHUD showInfoWithStatus:@"请选择收货地址"];
         return;
     }
     if ([USERXX isBlankString:bankcardCode] == YES) {
-        [TLAlert alertWithInfo:@"请选择银行"];
+        [TLProgressHUD showInfoWithStatus:@"请选择银行"];
         return;
     }
     NSString *productSpecsCode;
@@ -95,7 +95,7 @@
 
     [http postWithSuccess:^(id responseObject) {
         WGLog(@"%@",responseObject);
-        [TLAlert alertWithSucces:@"下单成功"];
+        [TLProgressHUD showSuccessWithStatus:@"下单成功"];
         PayVC *vc = [PayVC new];
         vc.price = [dataDic[@"sfRate"] floatValue]*[dataDic[@"price"] floatValue]/1000;
         vc.code = responseObject[@"data"];

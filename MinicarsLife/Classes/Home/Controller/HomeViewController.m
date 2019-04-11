@@ -236,6 +236,7 @@
             case 3:{
                 vc.priceStart = @"";
                 vc.priceEnd = @"";
+                vc.isMore = @"1";
             }
                 break;
             default:
@@ -299,6 +300,7 @@
     http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
         headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self modifyFrame];
     } failure:^(NSError *error) {
         
     }];
@@ -310,24 +312,12 @@
     http1.parameters[@"status"] = @"1";
     [http1 postWithSuccess:^(id responseObject) {
         headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self modifyFrame];
     } failure:^(NSError *error) {
         
     }];
     
-    if (headview.CarBrandModels && headview.CarClassifyModels) {
-        float numberToRound;
-        int result;
-        numberToRound = (headview.CarBrandModels.count)/3.0;
-        result = (int)ceilf(numberToRound);
-        
-        float numberToRound1;
-        int result1;
-        numberToRound1 = (headview.CarClassifyModels.count)/3.0;
-        result1 = (int)ceilf(numberToRound1);
-        
-        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
-        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
-    }
+    
     
     //热门车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
@@ -351,7 +341,24 @@
 }
 
 
-
+-(void)modifyFrame
+{
+    if (headview.CarBrandModels && headview.CarClassifyModels) {
+        float numberToRound;
+        int result;
+        numberToRound = (headview.CarBrandModels.count)/3.0;
+        result = (int)ceilf(numberToRound);
+        
+        float numberToRound1;
+        int result1;
+        numberToRound1 = (headview.CarClassifyModels.count)/3.0;
+        result1 = (int)ceilf(numberToRound1);
+        
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
+        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
+    }
+    [self.tableview reloadData_tl];
+}
 
 
 

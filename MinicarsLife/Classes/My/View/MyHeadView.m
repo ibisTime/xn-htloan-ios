@@ -43,29 +43,7 @@
     return _phoneLabel;
 }
 
-//-(UIButton *)balanceButton
-//{
-//    if (!_balanceButton) {
-//        _balanceButton = [UIButton buttonWithTitle:@"账户余额:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
-//        _balanceButton.frame = CGRectMake(0, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
-//        [_balanceButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//        _balanceButton.tag = 100;
-//
-//    }
-//    return _balanceButton;
-//}
-//
-//-(UIButton *)integralButton
-//{
-//    if (!_integralButton) {
-//        _integralButton = [UIButton buttonWithTitle:@"账户积分:0.00" titleColor:[UIColor whiteColor] backgroundColor:kClearColor titleFont:14];
-//        _integralButton.frame = CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, SCREEN_WIDTH/2, 20);
-//        [_integralButton addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//        _integralButton.tag = 101;
-//
-//    }
-//    return _integralButton;
-//}
+
 
 -(void)ButtonClick:(UIButton *)sender
 {

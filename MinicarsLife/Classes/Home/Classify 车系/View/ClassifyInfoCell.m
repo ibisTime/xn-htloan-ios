@@ -75,20 +75,60 @@
 }
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
+    
     [self.image sd_setImageWithURL:[NSURL URLWithString:[carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     
 
-    self.titlelab.text = [NSString stringWithFormat:@"%@",carmodel.name];
+    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.brandName,carmodel.seriesName,carmodel.name];
     self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
     self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000/1000 ];
     
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+//    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     
     
     self.contentlab.text = @"";
-    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
-    for (int i = 0; i < model.count; i++) {
-        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+    self.contentlab.text = carmodel.Description;
+    
+    int level = [carmodel.level intValue];
+    switch (level) {
+        case 0:
+            self.describdlab.text = @"SUV";
+            break;
+        case 1:
+            self.describdlab.text = @"轿车";
+            break;
+        case 2:
+            self.describdlab.text = @"MPV";
+            break;
+        case 3:
+            self.describdlab.text = @"跑车";
+            break;
+        case 4:
+            self.describdlab.text = @"皮卡";
+            break;
+        case 5:
+            self.describdlab.text = @"房车";
+            break;
+            
+        default:
+            break;
     }
+//    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
+//    for (int i = 0; i < model.count; i++) {
+//        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+//    }
 }
+
+-(void)setDataArray:(NSArray *)dataArray
+{
+//    NSString *version;
+//    for (int i = 0; i<dataArray.count; i ++) {
+//        if ([_carmodel.version isEqualToString:dataArray[i][@"dkey"]]) {
+//            version = dataArray[i][@"dvalue"];
+//            self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",version,[USERXX convertNull: _carmodel.outsideColor],[USERXX convertNull: _carmodel.insideColor], [USERXX convertNull:_carmodel.fromPlace]];
+//        }
+//    }
+    
+}
+
 @end

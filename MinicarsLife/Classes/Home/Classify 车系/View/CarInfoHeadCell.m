@@ -28,13 +28,13 @@
 
         
         UILabel * title = [UILabel labelWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
+//        title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
         title.numberOfLines = 1;
         [self addSubview:title];
         self.titlelab = title;
         
         UILabel * describe = [UILabel labelWithFrame:CGRectMake( 15, title.yy + 5, SCREEN_WIDTH - 120, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
-        describe.text = @"中大型SUV 白/米 车在杭州市";
+//        describe.text = @"中大型SUV 白/米 车在杭州市";
         [self addSubview:describe];
         self.describdlab = describe;
         
@@ -54,7 +54,7 @@
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, money.yy + 10, SCREEN_WIDTH - 30, 50)];
         UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         content.numberOfLines = 2;
-        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
+//        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
         view.backgroundColor = kHexColor(@"#F5F5F5");
         [view addSubview:content];
         [self addSubview:view];
@@ -101,7 +101,7 @@
     
 //    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",CarModel.version,[USERXX convertNull: CarModel.outsideColor],[USERXX convertNull: CarModel.insideColor], [USERXX convertNull:CarModel.fromPlace]];
+    
     
     
     self.contentlab.text = @"";
@@ -110,4 +110,17 @@
         self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
     }
 }
+
+-(void)setDataArray:(NSArray *)dataArray
+{
+    NSString *version;
+    for (int i = 0; i<dataArray.count; i ++) {
+        if ([_CarModel.version isEqualToString:dataArray[i][@"dkey"]]) {
+            version = dataArray[i][@"dvalue"];
+            self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",version,[USERXX convertNull: _CarModel.outsideColor],[USERXX convertNull: _CarModel.insideColor], [USERXX convertNull:_CarModel.fromPlace]];
+        }
+    }
+    
+}
+
 @end

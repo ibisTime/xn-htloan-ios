@@ -88,6 +88,7 @@
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630425";
+    help.parameters[@"status"] = @"1";
     [help modelClass:[CarModel class]];
     help.parameters[@"seriesCode"] = self.seriesCode;
     help.tableView = self.tableview;

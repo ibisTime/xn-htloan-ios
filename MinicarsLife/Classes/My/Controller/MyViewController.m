@@ -221,7 +221,7 @@
             }
             //我的足迹
             else{
-                [TLAlert alertWithInfo:@"我的足迹"];
+//                [TLAlert alertWithInfo:@"我的足迹"];
                 CollectVC * vc = [[CollectVC alloc]init];
                 vc.title = @"我的足迹";
                 vc.type = @"1";
@@ -306,7 +306,7 @@
         NSNumber *num = responseObject[@"data"];
         
         if ([num longValue] >= 3 ||[num longValue] == 0) {
-            [TLAlert alertWithMsg:@"房间已满"];
+            [TLProgressHUD showInfoWithStatus:@"房间已满"];
         }else{
             
         }
@@ -406,7 +406,7 @@
             } failed:^(NSString *module, int errId, NSString *errMsg) {
                 NSLog(@"%@",errMsg);
                 [SVProgressHUD dismiss];
-                [TLAlert alertWithError:[NSString stringWithFormat:@"%@",errMsg]];
+                [TLProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@",errMsg]];
             }];
             NSLog(@"%@",responseObject);
             
@@ -596,7 +596,22 @@
         }
         [USERDEFAULTS setObject:responseObject[@"data"][@"mobile"] forKey:MOBILE];
         [_headView.headImage sd_setImageWithURL:[NSURL URLWithString:[[USERDEFAULTS objectForKey:PHOTO] convertImageUrl]] placeholderImage:HGImage(@"myheadimage")];
-        _headView.nameLabel.text = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:NICKNAME]];
+        
+        NSString *str = [USERDEFAULTS objectForKey:MOBILE];
+        if ([USERXX isBlankString:[USERDEFAULTS objectForKey:NICKNAME]] == YES)
+        {
+            if (str.length > 4) {
+                NSString *str5 = [str substringFromIndex:str.length-4];
+                _headView.nameLabel.text = [NSString stringWithFormat:@"尾号为%@用户",str5];
+            }
+            
+            
+        }else
+        {
+            _headView.nameLabel.text = [NSString stringWithFormat:@"%@",[USERDEFAULTS objectForKey:NICKNAME]];
+        }
+        
+        
         _headView.phoneLabel.text = [USERDEFAULTS objectForKey:MOBILE];
         [weakSelf.tableView reloadData];
         

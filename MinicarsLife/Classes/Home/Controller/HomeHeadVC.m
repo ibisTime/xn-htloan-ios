@@ -117,7 +117,18 @@
         SelectcarFootCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectcarFoot" forIndexPath:indexPath];
         cell.titlelab.text = self.CarClassifyModels[indexPath.row].name;
         
-        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+        
+        
+        NSArray * p= [self.CarClassifyModels[indexPath.row].advPic componentsSeparatedByString:@"||"];
+        NSMutableArray *topImage = [NSMutableArray array];
+        for (int i = 0; i < p.count; i ++) {
+            [topImage addObject:[p[i] convertImageUrl]];
+        }
+        if (topImage.count > 0) {
+            [cell.logo sd_setImageWithURL:[NSURL URLWithString:[topImage[0] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+        }
+        
+//        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
         
 //        cell.backgroundColor = [UIColor redColor];
         //超出容器范围的切除掉

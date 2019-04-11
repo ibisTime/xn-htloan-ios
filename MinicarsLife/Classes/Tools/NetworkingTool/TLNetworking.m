@@ -175,7 +175,11 @@
       if([responseObject[@"errorCode"] isEqual:@"0"]){ //成功
           
           if(success) {
+              if(self.showView){
+                  
               [TLProgressHUD dismiss];
+                  
+              }
               //在主线程中加载UI
               dispatch_async(dispatch_get_main_queue(), ^{
                   
@@ -212,7 +216,8 @@
               return;
           }else
           {
-              [TLAlert alertWithInfo:responseObject[@"errorInfo"]];
+              [TLProgressHUD showInfoWithStatus:responseObject[@"errorInfo"]];
+              
           }
           
           
@@ -220,8 +225,7 @@
       
    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
        
-       [TLAlert alertWithInfo:@"网络异常"];
-
+       [TLProgressHUD showInfoWithStatus:@"网络异常"];
        if(failure) {
            //在主线程中加载UI
            dispatch_async(dispatch_get_main_queue(), ^{

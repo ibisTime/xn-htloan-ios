@@ -24,13 +24,14 @@
 {
     [super viewWillAppear:animated];
     _SearchBar.alpha = 1;
-    
+    [self.view endEditing:YES];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
 
     _SearchBar.alpha = 0;
+    [self.view endEditing:YES];
 }
 
 
@@ -155,7 +156,7 @@
 
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     if (searchBar.text.length == 0) {
-        [TLAlert alertWithMsg:@"请输入搜索内容"];
+        [TLProgressHUD showInfoWithStatus:@"请输入搜索内容"];
     }else{
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"630426";
@@ -164,7 +165,9 @@
         [http postWithSuccess:^(id responseObject) {
             ClassifyListVC * vc = [ClassifyListVC new];
             vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            vc.state = @"1";
             [self.navigationController pushViewController:vc animated:YES];
+            
         } failure:^(NSError *error) {
             
         }];
@@ -191,6 +194,7 @@
     http2.showView = self.view;
     http2.code = @"630426";
     http2.parameters[@"status"] = @"1";
+    http2.parameters[@"location"] = @"0";
     http2.parameters[@"seriesCode"] = code;
     [http2 postWithSuccess:^(id responseObject) {
         ClassifyInfoVC * vc = [ClassifyInfoVC new];

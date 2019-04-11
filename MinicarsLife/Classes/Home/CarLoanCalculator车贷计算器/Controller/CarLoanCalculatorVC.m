@@ -109,7 +109,7 @@
         }
         if (indexPath.row == 1) {
             if ([USERXX isBlankString:brandCode] == YES) {
-                [TLAlert alertWithInfo:@"请输先选择品牌"];
+                [TLProgressHUD showInfoWithStatus:@"请输先选择品牌"];
             }else
             {
                 SelectModelsVC *vc = [[SelectModelsVC alloc]init];
@@ -211,7 +211,7 @@
         http.code = ToApplyForCarLoanURL;
         http.showView = self.view;
         if (!_carModel) {
-            [TLAlert alertWithMsg:@"请选择要购买的车辆"];
+            [TLProgressHUD showInfoWithStatus:@"请选择要购买的车辆"];
             return;
         }
         http.parameters[@"brandCode"] = _carModel.brandCode;

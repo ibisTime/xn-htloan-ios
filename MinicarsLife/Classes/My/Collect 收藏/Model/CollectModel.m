@@ -10,5 +10,8 @@
 
 @implementation CollectModel
 
-
++(NSDictionary *)mj_replacedKeyFromPropertyName
+{
+    return @{@"Description": @"description"};
+}
 @end

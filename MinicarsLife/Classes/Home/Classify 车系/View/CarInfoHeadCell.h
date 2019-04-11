@@ -19,6 +19,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIView * view;
 @property (nonatomic,strong) CarModel * CarModel;
 @property (nonatomic,strong) UIButton * button;
+
+@property (nonatomic , strong)NSArray *dataArray;
+
 @end
 
 NS_ASSUME_NONNULL_END

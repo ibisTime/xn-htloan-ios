@@ -9,23 +9,19 @@
 #ifndef APICodeMacro_h
 #define APICodeMacro_h
 
-
 //研发
 //#define APPURL @"http://120.26.6.213:2401/forward-service//api"
 //测试
 #define APPURL @"http://47.99.163.139:2401/forward-service/api"
 //线上
-//#define APPURL @"http://39.104.89.43:2401/forward-service//api"
+//#define APPURL @"http://39.104.89.43:2401/forward-service/api"
 
 #define QINIUURL @"http://img.fhcdzx.com/"
-
 //验证码
 #define CAPTCHA_CODE @"805950"
 //用户
 #define USER_REG_CODE @"805041"//注册
 #define USER_LOGIN_CODE @"805050"//登录
-
-
 // ====================   个人中心    ===================
 #define VERIFICATION_CODE_CODE @"630090"//发送验证码
 #define ModifyPhoneNumberURL @"805061"//修改手机号
@@ -52,13 +48,8 @@
 #define TheOrderDetailsURL @"808066"//订单详情
 #define MyNewsURL @"805305"//我的消息
 
-
-
-
 // ====================    还款    =================
 #define RepaymentPlanURL @"630540"//还款计划
-
-
 
 // ====================   首页    ===================
 

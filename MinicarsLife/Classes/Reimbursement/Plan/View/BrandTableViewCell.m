@@ -23,14 +23,12 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 50, 25)];
-//        [self.logo sizeToFit];
-//        self.logo.frame = CGRectMake(65 - self.logo.width, 15, self.logo.width, 25);
-        
+        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(15, 10, 30, 30)];
+        self.logo.contentMode =UIViewContentModeScaleAspectFill;
         [self addSubview:self.logo];
         
         
-        self.namelab = [UILabel labelWithFrame:CGRectMake(75, 20, SCREEN_WIDTH - 65 - 15, 17) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        self.namelab = [UILabel labelWithFrame:CGRectMake(55, 20, SCREEN_WIDTH - 55 - 15, 17) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
         [self addSubview:self.namelab];
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 54, SCREEN_WIDTH - 45, 1)];

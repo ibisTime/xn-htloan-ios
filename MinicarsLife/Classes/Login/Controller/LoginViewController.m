@@ -75,11 +75,11 @@
             UITextField *textTF1 = [self.view viewWithTag:1000];
             UITextField *textTF2 = [self.view viewWithTag:1001];
             if ([textTF1.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入手机号"];
+                [TLProgressHUD showInfoWithStatus:@"请输入手机号"];
                 return;
             }
             if ([textTF2.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入密码"];
+                [TLProgressHUD showInfoWithStatus:@"请输入密码"];
                 return;
             }
             TLNetworking *http = [TLNetworking new];

@@ -43,15 +43,15 @@
    
 
     if ([textFid1.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:@"请输入身份证号"];
+        [TLProgressHUD showInfoWithStatus:@"请输入身份证号"];
         return;
     }
     if ([textFid2.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:@"请输入姓名"];
+        [TLProgressHUD showInfoWithStatus:@"请输入姓名"];
         return;
     }
     if ([textFid3.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:@"请输入手机号"];
+        [TLProgressHUD showInfoWithStatus:@"请输入手机号"];
         return;
     }
     TLNetworking *http1 = [TLNetworking new];
@@ -81,7 +81,7 @@
         }
 
         if (dic[@"msg"]) {
-            [TLAlert alertWithInfo:dic[@"msg"]];
+            [TLProgressHUD showInfoWithStatus:dic[@"msg"]];
             return ;
         }
     } failure:^(NSError *error) {
@@ -110,7 +110,7 @@
         NSString *image = dic[@"input"][@"value"];
         NSLog(@"第二次接口");
         if (image == nil) {
-            [TLAlert alertWithInfo:@"链接超时"];
+            [TLProgressHUD showInfoWithStatus:@"链接超时"];
             
             return ;
         }

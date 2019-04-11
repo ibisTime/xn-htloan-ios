@@ -70,7 +70,7 @@
         http.parameters[@"updater"] = [USERDEFAULTS  objectForKey:USER_ID];
         http.parameters[@"code"] = _model.code;
         [http postWithSuccess:^(id responseObject) {
-            [TLAlert alertWithSucces:@"申请提交成功"];
+            [TLProgressHUD showSuccessWithStatus:@"申请提交成功"];
             [self.navigationController popToRootViewControllerAnimated:YES];
         } failure:^(NSError *error) {
             WGLog(@"%@",error);

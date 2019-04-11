@@ -138,7 +138,7 @@
         {
             UITextField *textField1 = [self.view viewWithTag:1000];
             if ([textField1.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入手机号"];
+                [TLProgressHUD showInfoWithStatus:@"请输入手机号"];
                 return;
             }
             //发送验证码
@@ -159,7 +159,7 @@
         case 2:
         {
             if (type == 100) {
-                [TLAlert alertWithInfo:@"请勾选我已阅读并同意《服务条款》"];
+                [TLProgressHUD showInfoWithStatus:@"请勾选我已阅读并同意《服务条款》"];
                 return;
             }
             UITextField *textField1 = [self.view viewWithTag:1000];
@@ -168,24 +168,24 @@
             UITextField *textField4 = [self.view viewWithTag:1003];
             NSLog(@"=============%@",textField1.text);
             if ([textField1.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入手机号"];
+                [TLProgressHUD showInfoWithStatus:@"请输入手机号"];
                 return;
             }
             if ([textField2.text isEqualToString:@""]) {
 
-                [TLAlert alertWithInfo:@"请输入验证码"];
+                [TLProgressHUD showInfoWithStatus:@"请输入验证码"];
                 return;
             }
             if ([textField3.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入密码"];
+                [TLProgressHUD showInfoWithStatus:@"请输入密码"];
                 return;
             }
             if ([textField4.text isEqualToString:@""]) {
-                [TLAlert alertWithInfo:@"请输入确认密码"];
+                [TLProgressHUD showInfoWithStatus:@"请输入确认密码"];
                 return;
             }
             if (![textField3.text isEqualToString:textField4.text]) {
-                [TLAlert alertWithInfo:@"密码不一致"];
+                [TLProgressHUD showInfoWithStatus:@"密码不一致"];
                 return;
             }
             //确认注册
@@ -200,7 +200,7 @@
 
             [http postWithSuccess:^(id responseObject) {
                 WGLog(@"%@",responseObject);
-                [TLAlert alertWithSucces:@"注册成功"];
+                [TLProgressHUD showSuccessWithStatus:@"注册成功"];
                 [self dismissViewControllerAnimated:YES completion:nil];
             } failure:^(NSError *error) {
                 WGLog(@"%@",error);

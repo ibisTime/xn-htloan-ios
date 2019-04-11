@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  }
  */
+@property (nonatomic,copy) NSString * level;
 @property (nonatomic,copy) NSString * code;
 @property (nonatomic,copy) NSString * type;
 @property (nonatomic,copy) NSString * toType;
@@ -29,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * creater;
 @property (nonatomic,copy) NSString * createDatetime;
 @property (nonatomic,copy) NSDictionary * car;
-
+@property (nonatomic,copy) NSString * Description;
 @end
 
 NS_ASSUME_NONNULL_END

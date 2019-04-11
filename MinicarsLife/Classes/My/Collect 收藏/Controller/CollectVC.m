@@ -20,6 +20,9 @@
 @property (nonatomic,strong) NSMutableArray<CollectModel *> * CollectModels;
 
 @property (nonatomic ,strong) NSMutableArray *deleteArray;//删除的数据
+
+@property (nonatomic,strong) NSArray *dataArray;
+
 @end
 
 @implementation CollectVC
@@ -42,6 +45,22 @@
     return _tableview;
 }
 
+
+-(void)car_versionLoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    http.parameters[@"parentKey"] = @"car_version";
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.dataArray = responseObject[@"data"];
+        [self.tableview reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (CollectBottomView *)bottom_view{
     if (!_bottom_view) {
         self.bottom_view = [[CollectBottomView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, SCREEN_WIDTH, 50)];
@@ -61,6 +80,7 @@
     [self.view addSubview:self.tableview];
     [self.tableview addRefreshAction:^{
         [weakSelf getdata];
+        [weakSelf car_versionLoadData];
     }];
     [self.tableview beginRefreshing];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -91,7 +111,8 @@
     backGroundView.backgroundColor = kClearColor;
     cell.view.backgroundColor = kHexColor(@"#F5F5F5");
     cell.selectedBackgroundView = backGroundView;
-    
+    cell.dataArray = self.dataArray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

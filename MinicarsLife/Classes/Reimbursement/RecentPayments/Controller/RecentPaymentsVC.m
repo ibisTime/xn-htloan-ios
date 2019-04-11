@@ -50,7 +50,7 @@
                         @[@"SUV",@"轿车",@"MPV",@"跑车",@"皮卡",@"房车"],
                         @[@"中东",@"美规",@"加规",@"墨版",@"欧规"],
                         @[@"两厢",@"三厢",@"掀背",@"旅行版",@"硬顶敞篷",@"软顶敞篷",@"硬顶跑车"],
-                        @[@"2.0L以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
+                        @[@"2.0L及以下",@"2.1-3.0L",@"3.1-4.0L",@"4.1-5.0L",@"5.0L以上"]];
     
     
     self.Array1 = [NSMutableArray array];
@@ -117,11 +117,21 @@
 
 //确认按钮a点击方法
 -(void)resultClick{
-    ClassifyListVC * vc = [ClassifyListVC new];
-    vc.CarModels = self.CarModels;
-    vc.hidesBottomBarWhenPushed = YES;
-//    vc.title = @"车型";
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if (self.CarModels.count == 0) {
+//        [TLAlert alertWithInfo:@"无车型符合要求"];
+//        [TLProgressHUD showInfoWithStatus:@"金额过低"]
+        [TLProgressHUD showInfoWithStatus:@"无车型符合要求"];
+//        [SVProgressHUD dismissWithDelay:2];
+        
+    }else
+    {
+        ClassifyListVC * vc = [ClassifyListVC new];
+        vc.CarModels = self.CarModels;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
 }
 
 -(void)getClassifyListData:(NSString *)code{
@@ -415,43 +425,43 @@
     int i = [self.Array1[0] intValue];
     switch (i) {
         case 0:{
-            http.parameters[@"priceStart"] =@"" ;
-            http.parameters[@"priceEnd"] = @"350000";
+            http.parameters[@"priceStart"] =@"0" ;
+            http.parameters[@"priceEnd"] = @"350000000";
 
         }
             break;
         case 1:{
-            http.parameters[@"priceStart"] =@"350000" ;
-            http.parameters[@"priceEnd"] = @"500000";
+            http.parameters[@"priceStart"] =@"350000000" ;
+            http.parameters[@"priceEnd"] = @"500000000";
 
         }
             break;
         case 2:{
-            http.parameters[@"priceStart"] =@"500000" ;
-            http.parameters[@"priceEnd"] = @"700000";
+            http.parameters[@"priceStart"] =@"500000000" ;
+            http.parameters[@"priceEnd"] = @"700000000";
 
         }
             break;
         case 3:{
-            http.parameters[@"priceStart"] =@"700000" ;
-            http.parameters[@"priceEnd"] = @"900000";
+            http.parameters[@"priceStart"] =@"700000000" ;
+            http.parameters[@"priceEnd"] = @"900000000";
 
         }
             break;
         case 4:{
-            http.parameters[@"priceStart"] =@"900000" ;
-            http.parameters[@"priceEnd"] = @"1100000";
+            http.parameters[@"priceStart"] =@"900000000" ;
+            http.parameters[@"priceEnd"] = @"1100000000";
 
         }
             break;
         case 5:{
-            http.parameters[@"priceStart"] =@"1100000" ;
-            http.parameters[@"priceEnd"] = @"1500000";
+            http.parameters[@"priceStart"] =@"1100000000" ;
+            http.parameters[@"priceEnd"] = @"1500000000";
 
         }
             break;
         case 6:{
-            http.parameters[@"priceStart"] =@"1500000" ;
+            http.parameters[@"priceStart"] =@"1500000000" ;
             http.parameters[@"priceEnd"] = @"";
 
         }

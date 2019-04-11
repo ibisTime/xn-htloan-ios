@@ -16,12 +16,12 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = randomColor;
-        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(40, 25, 45, 30.2)];
-        self.logo.image = kImage(@"1");
+        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(40, SCREEN_WIDTH/3*0.8/2 - 30, 40, 40)];
+//        self.logo.image = kImage(@"1");
         self.logo.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:self.logo];
         
-        self.brandname = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy + 5.3, self.width, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        self.brandname = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy + 5, self.width, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
         self.brandname.text = @"丰田";
         [self addSubview:self.brandname];
         

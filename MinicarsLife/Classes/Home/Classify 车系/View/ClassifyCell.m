@@ -54,12 +54,17 @@
 
 -(void)setCarmodel:(CarModel *)carmodel{
     _carmodel = carmodel;
-    [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    
+//    [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[carmodel.advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    NSArray * p= [carmodel.advPic componentsSeparatedByString:@"||"];
+    NSMutableArray *topImage = [NSMutableArray array];
+    for (int i = 0; i < p.count; i ++) {
+        [topImage addObject:[p[i] convertImageUrl]];
+    }
+    if (topImage.count > 0) {
+        [self.ClassifyLogo sd_setImageWithURL:[NSURL URLWithString:[topImage[0] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    }
     //超出容器范围的切除掉
-    
     self.ClassifyName.text = carmodel.name;
-//    self.ClassiftType.text = carmodel.remark;
     int level = [carmodel.level intValue];
     switch (level) {
         case 0:

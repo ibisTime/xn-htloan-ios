@@ -193,7 +193,7 @@
 
     }else
     {
-        [TLAlert alertWithInfo:@"暂无该支付方式"];
+        [TLProgressHUD showInfoWithStatus:@"暂无该支付方式"];
         return;
     }
 

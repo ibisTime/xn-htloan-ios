@@ -163,11 +163,11 @@
     }
     
     if (self.phone.text.length == 0) {
-        [TLAlert alertWithMsg:@"请输入手机号!"];
+        [TLProgressHUD showInfoWithStatus:@"请输入手机号!"];
     }else if (![self.phone.text isPhoneNum]){
-        [TLAlert alertWithMsg:@"手机号格式不正确!"];
+        [TLProgressHUD showInfoWithStatus:@"手机号格式不正确!"];
     }else if (self.name.text.length == 0){
-        [TLAlert alertWithMsg:@"请输入姓名!"];
+        [TLProgressHUD showInfoWithStatus:@"请输入姓名!"];
     }
     else {
         if (self.delegate) {

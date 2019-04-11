@@ -15,11 +15,13 @@
     [super setDefaultMaskType:SVProgressHUDMaskTypeClear];
     [super showWithStatus:msg];
     
+    
 }
 
 + (void)showInfoWithStatus:(NSString *)status {
 
     [super showInfoWithStatus:status];
+    
 }
 
 + (void)showSuccessWithStatus:(NSString *)status {
@@ -54,7 +56,7 @@
 
 + (void)showWithStatusAutoDismiss:(NSString *)msg {
 
-    [self showWithStatusAutoDismiss:msg delay:3 completion:nil];
+    [self showWithStatusAutoDismiss:msg delay:2 completion:nil];
 
 }
 

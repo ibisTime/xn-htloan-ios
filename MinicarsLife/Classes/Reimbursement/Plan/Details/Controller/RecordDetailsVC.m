@@ -144,7 +144,7 @@
         http.parameters[@"operator"] = [USERDEFAULTS objectForKey:USER_ID];
         http.parameters[@"prepayPhoto"] = [USERDEFAULTS objectForKey:USER_ID];
         [http postWithSuccess:^(id responseObject) {
-            [TLAlert alertWithSucces:@"上传成功"];
+            [TLProgressHUD showSuccessWithStatus:@"上传成功"];
         } failure:^(NSError *error) {
             
         }];

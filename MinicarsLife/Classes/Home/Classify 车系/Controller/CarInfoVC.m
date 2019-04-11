@@ -27,6 +27,9 @@
 @property (nonatomic,strong) NSString * phonestring;
 @property (nonatomic,strong) NSArray * firstarray;
 @property (nonatomic,strong) NSArray * lastarray;
+
+@property (nonatomic , strong)NSArray *dataArray;
+
 @end
 
 @implementation CarInfoVC
@@ -40,6 +43,7 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self navigationSetDefault];
+    [self.view endEditing:YES];
 }
 
 -(TLTableView *)tableview{
@@ -74,6 +78,8 @@
     UIGraphicsEndImageContext();
     return image;
 }
+
+
 #pragma mark -- 滑动试图懒加载
 -(HW3DBannerView *)scrollView
 {
@@ -86,11 +92,37 @@
     }
     return _scrollView;
 }
+
+
+-(void)car_versionLoadData
+{
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630036";
+    http.parameters[@"parentKey"] = @"car_version";
+    [http postWithSuccess:^(id responseObject) {
+        
+        self.dataArray = responseObject[@"data"];
+        NSString *version;
+        for (int i = 0; i<self.dataArray.count; i ++) {
+            if ([_CarModel.version isEqualToString:self.dataArray[i][@"dkey"]]) {
+                version = self.dataArray[i][@"dvalue"];
+                callNowView.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",version,[USERXX convertNull: self.CarModel.outsideColor],[USERXX convertNull: self.CarModel.insideColor], [USERXX convertNull:self.CarModel.fromPlace]];
+            }
+        }
+        [self.tableview reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self bannerLoadData];
     [self getCarDeploy];
     [self loadData];
+    [self car_versionLoadData];
     [self setHistory];
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 522.00/750.00 * SCREEN_WIDTH)];
     [view addSubview:self.scrollView];
@@ -170,8 +202,8 @@
         http.parameters[@"type"] = @"3";
         [http postWithSuccess:^(id responseObject) {
             
-            [TLAlert alertWithSucces:@"收藏成功"];
             
+            [TLProgressHUD showSuccessWithStatus:@"收藏成功"];
             self.RightButton.selected = !self.RightButton.selected;
             [self reloaddata];
             [self getCarDeploy];
@@ -184,6 +216,7 @@
         http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
         http.parameters[@"carCode"] = self.CarModel.code;
         [http postWithSuccess:^(id responseObject) {
+            [TLProgressHUD showSuccessWithStatus:@"取消收藏"];
             self.RightButton.selected = !self.RightButton.selected;
             [self getCarDeploy];
             [self reloaddata];
@@ -272,9 +305,11 @@
         if(cell==nil){
             cell=[[CarInfoHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
+        
         cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.button addTarget:self action:@selector(goCalculator) forControlEvents:(UIControlEventTouchUpInside)];
+        cell.dataArray = self.dataArray;
         return cell;
     }
     else if (indexPath.section == 2){
