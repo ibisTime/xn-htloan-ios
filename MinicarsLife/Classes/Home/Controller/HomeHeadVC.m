@@ -255,7 +255,7 @@
 
     if (CarBrandModels.count > 0) {
         for (int i = 0; i < CarBrandModels.count - 1 ; i ++) {
-            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 40, 1, 20)];
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 30, 1, 20)];
             lineView.tag = 10000+i;
             lineView.backgroundColor =kLineColor;
             [_collection addSubview:lineView];

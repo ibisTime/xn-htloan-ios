@@ -127,7 +127,7 @@
     
     [self loadData];
     [self car_versionLoadData];
-//    [self setHistory];
+    [self setHistory];
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 522.00/750.00 * SCREEN_WIDTH)];
     [view addSubview:self.scrollView];
     self.tableview.tableHeaderView = view;
@@ -493,19 +493,19 @@
         
     }];
 }
-//-(void)setHistory{
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.code = @"630460";
-//    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
-//    http.parameters[@"toCode"] = self.CarModel.code;
-//    http.parameters[@"toType"] = @"0";
-//    http.parameters[@"type"] = @"1";
-//    [http postWithSuccess:^(id responseObject) {
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
+-(void)setHistory{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.CarModel.code;
+    http.parameters[@"toType"] = @"0";
+    http.parameters[@"type"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+
+    } failure:^(NSError *error) {
+
+    }];
+}
 
 -(void)reloaddata{
     TLNetworking * http = [[TLNetworking alloc]init];
