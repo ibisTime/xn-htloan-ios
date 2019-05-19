@@ -59,7 +59,6 @@
     [self.SearchBar setTranslucent:YES];
     
     kViewRadius(self.SearchBar, 10);
-    
     UITextField * searchField = [self.SearchBar valueForKey:@"_searchField"];
     searchField.backgroundColor = [UIColor whiteColor];
     [searchField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
@@ -134,7 +133,7 @@
      CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
 //    [self getClassifyData:model.code :model.name];
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
-//    vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+    vc.models = model;
 //    vc.seriesCode = model.code;
     vc.hidesBottomBarWhenPushed = YES;
     vc.title = model.name;
@@ -177,7 +176,7 @@
 
 -(void)gethotclassify{
     TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630416";
+    http.code = @"630426";
     http.parameters[@"status"] = @"1";
     http.parameters[@"location"] = @"0";
     [http postWithSuccess:^(id responseObject) {
@@ -188,22 +187,22 @@
     }];
 }
 
--(void)getClassifyData:(NSString*)code :(NSString *)title{
-    //列表查询车型
-    TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
-    http2.code = @"630426";
-    http2.parameters[@"status"] = @"1";
-    http2.parameters[@"location"] = @"0";
-    http2.parameters[@"seriesCode"] = code;
-    [http2 postWithSuccess:^(id responseObject) {
-        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        vc.hidesBottomBarWhenPushed = YES;
-        vc.title = title;
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//-(void)getClassifyData:(NSString*)code :(NSString *)title{
+//    //列表查询车型
+//    TLNetworking * http2 = [[TLNetworking alloc]init];
+//    http2.showView = self.view;
+//    http2.code = @"630426";
+//    http2.parameters[@"status"] = @"1";
+//    http2.parameters[@"location"] = @"0";
+//    http2.parameters[@"seriesCode"] = code;
+//    [http2 postWithSuccess:^(id responseObject) {
+//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+//        vc.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        vc.title = title;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
 @end

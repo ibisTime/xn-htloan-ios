@@ -92,9 +92,9 @@
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     NSString * str;
     if (CarModel.salePrice.length > 5) {
-        str = [NSString stringWithFormat:@"参考价 %.1f万",[CarModel.salePrice floatValue]/10000/1000];
+        str = [NSString stringWithFormat:@"参考价 %.2f万",[CarModel.salePrice floatValue]/10000/1000];
     }else
-        str = [NSString stringWithFormat:@"参考价 %.1f",[CarModel.salePrice floatValue]/1000];
+        str = [NSString stringWithFormat:@"参考价 %.2f",[CarModel.salePrice floatValue]/1000];
     NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:str];
     [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
     self.moneylab.attributedText = att;
@@ -104,11 +104,11 @@
     
     
     
-    self.contentlab.text = @"";
-    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:CarModel.caonfigList];
-    for (int i = 0; i < model.count; i++) {
-        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
-    }
+    self.contentlab.text = CarModel.Description;
+//    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:CarModel.caonfigList];
+//    for (int i = 0; i < model.count; i++) {
+//        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+//    }
 }
 
 -(void)setDataArray:(NSArray *)dataArray
@@ -117,7 +117,7 @@
     for (int i = 0; i<dataArray.count; i ++) {
         if ([_CarModel.version isEqualToString:dataArray[i][@"dkey"]]) {
             version = dataArray[i][@"dvalue"];
-            self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",version,[USERXX convertNull: _CarModel.outsideColor],[USERXX convertNull: _CarModel.insideColor], [USERXX convertNull:_CarModel.fromPlace]];
+            self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",version,[USERXX convertNull: _CarModel.outsideColor],[USERXX convertNull: _CarModel.insideColor], [USERXX convertNull:_CarModel.fromPlace]];
         }
     }
     

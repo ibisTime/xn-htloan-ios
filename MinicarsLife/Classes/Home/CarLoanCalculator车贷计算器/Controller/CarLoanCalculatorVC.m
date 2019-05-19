@@ -228,7 +228,7 @@
         http.parameters[@"seriesName"] = self.carModel.seriesName;
         http.parameters[@"sfAmount"] = [NSString stringWithFormat:@"%.0f",ADownPaymentPrice * 1000];
         NSString *ADownPayment = [ADownPaymentStr stringByReplacingOccurrencesOfString:@"%" withString:@""];
-        http.parameters[@"sfRate"] = [NSString stringWithFormat:@"%.1f",[ADownPayment floatValue]/100];
+        http.parameters[@"sfRate"] = [NSString stringWithFormat:@"%.2f",[ADownPayment floatValue]/100];
         http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
 
         NSLog(@"%@",[USERDEFAULTS objectForKey:USER_ID]);

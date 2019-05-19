@@ -28,21 +28,21 @@
     view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
     view.backgroundColor = kWhiteColor;
     self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
-    self.status.text = @"原创";
+//    self.status.text = @"原创";
     kViewRadius(self.status, 1);
     [view addSubview:self.status];
     
     self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 23, SCREEN_WIDTH - 30, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(18) textColor:kBlackColor];
-    self.timelab.text = @"       奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
+//    self.timelab.text = @"       奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
     self.titlelab.numberOfLines = 3;
     [view addSubview:self.titlelab];
     
     self.authorlab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:MainColor];
-    self.authorlab.text = @"作者：浩源车网";
+//    self.authorlab.text = @"作者：浩源车网";
     [view addSubview:self.authorlab];
     
     self.timelab = [UILabel labelWithFrame:CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-    self.timelab.text = @"2019-01-11发布";
+//    self.timelab.text = @"2019-01-11发布";
     [view addSubview:self.timelab];
     
     self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight )];

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)ClickBtn:(UIButton *)sender;
 -(void)ClickCollectionClassify:(NSIndexPath *)index;
 -(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models;
--(void)bannerUrl:(NSString *)url;
+-(void)bannerUrl:(NSDictionary *)advertisingDic;
 @end
 @interface HomeHeadVC : UIView
 @property (nonatomic,weak) id<ClickBtn> delegate;
@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 
-@property (nonatomic,strong) UICollectionView * collection;
+@property (nonatomic,strong) UICollectionView *collection;
 @end
 
 NS_ASSUME_NONNULL_END

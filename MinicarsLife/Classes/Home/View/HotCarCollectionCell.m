@@ -48,7 +48,7 @@
     self.desribelab.text = [NSString stringWithFormat:@"%@  %@",model.name,model.slogan];
     [self.desribelab sizeToFit];
     
-    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[model.salePrice floatValue]/10000/1000];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[model.salePrice floatValue]/10000/1000];
     self.personlab.text = [NSString stringWithFormat:@"%@人关注",model.collectNumber];
 }
 

@@ -98,7 +98,7 @@
                 }
 
             }
-            NSArray *contactArray = @[[NSString stringWithFormat:@"%.1f%@",_model.sfRate * 100,str],[NSString stringWithFormat:@"%ld年",[_model.periods integerValue]/12],sf];
+            NSArray *contactArray = @[[NSString stringWithFormat:@"%.2f%@",_model.sfRate * 100,str],[NSString stringWithFormat:@"%ld年",[_model.periods integerValue]/12],sf];
             cell.detailedLabel.text = contactArray[indexPath.row];
             
         }

@@ -110,7 +110,7 @@
         for (int i = 0; i<self.dataArray.count; i ++) {
             if ([_CarModel.version isEqualToString:self.dataArray[i][@"dkey"]]) {
                 version = self.dataArray[i][@"dvalue"];
-                callNowView.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",version,[USERXX convertNull: self.CarModel.outsideColor],[USERXX convertNull: self.CarModel.insideColor], [USERXX convertNull:self.CarModel.fromPlace]];
+                callNowView.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",version,[USERXX convertNull: self.CarModel.outsideColor],[USERXX convertNull: self.CarModel.insideColor], [USERXX convertNull:self.CarModel.fromPlace]];
             }
         }
         [self.tableview reloadData];
@@ -173,6 +173,9 @@
     [self.RightButton setImage:kImage(@"详情收藏-点击") forState:UIControlStateSelected];
     if ([self.CarModel.isCollect isEqualToString:@"1"]){
         self.RightButton.selected = YES;
+    }
+    if ([USERXX isBlankString:[USERDEFAULTS objectForKey:USER_ID]] == YES) {
+        self.RightButton.hidden = YES;
     }
 
     [self.RightButton addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
@@ -318,7 +321,6 @@
         }
     }
     NSArray * titlearr = @[@"车源所在地",@"手续",@"更新时间"];
-    
     
     
     static NSString *rid=@"CarInfoCommon";
@@ -493,7 +495,14 @@
         
     }];
 }
+
+//
 -(void)setHistory{
+    
+    if ([USERXX isBlankString:[USERDEFAULTS objectForKey:USER_ID]] == YES) {
+        return;
+    }
+    
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630460";
     http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];

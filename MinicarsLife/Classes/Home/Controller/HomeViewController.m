@@ -77,14 +77,47 @@
     
 }
 
--(void)bannerUrl:(NSString *)url
+
+//banner 点击事件
+
+-(void)bannerUrl:(NSDictionary *)advertisingDic
 {
-    GeneralWebView *vc = [GeneralWebView new];
-    vc.URL = url;
-    vc.name = @"详情";
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    
+    if ([advertisingDic[@"contentType"] isEqualToString:@"1"]) {
+        GeneralWebView *vc = [GeneralWebView new];
+        vc.URL = advertisingDic[@"url"];
+        vc.name = @"详情";
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if ([advertisingDic[@"contentType"] isEqualToString:@"2"]) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630427";
+        http.showView = self.view;
+        http.parameters[@"code"] = advertisingDic[@"parentCode"];
+        http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+        [http postWithSuccess:^(id responseObject) {
+            
+            CarInfoVC * vc = [CarInfoVC new];
+            vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    
+    if ([advertisingDic[@"contentType"] isEqualToString:@"3"]) {
+        NewsInfoVC * vc = [NewsInfoVC new];
+        vc.code = advertisingDic[@"parentCode"];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
+
+
+
 
 -(TLTableView *)tableview{
     if (!_tableview) {
@@ -304,10 +337,11 @@
     } failure:^(NSError *error) {
         
     }];
+    
     //列表查询车系
     TLNetworking * http1 = [[TLNetworking alloc]init];
     http1.showView = self.view;
-    http1.code = @"630416";
+    http1.code = @"630426";
     http1.parameters[@"location"] = @"0";
     http1.parameters[@"status"] = @"1";
     http1.parameters[@"orderDir"] = @"asc";

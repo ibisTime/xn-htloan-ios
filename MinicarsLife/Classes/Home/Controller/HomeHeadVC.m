@@ -14,6 +14,9 @@
 #import "SelectcarFootCell.h"
 #import "SelectBrandCell.h"
 @interface HomeHeadVC ()<HW3DBannerViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+{
+    NSArray *advertisingArray;
+}
 @property (nonatomic,strong)NSArray *urlArray;
 @property (nonatomic,assign) int classifycount;
 @property (nonatomic,assign) int carBrandcount;
@@ -210,11 +213,11 @@
 }
 -(void)HW3DBannerViewClick:(NSInteger)currentImageIndex{
 //    NSLog(@"%ld",currentImageIndex);
-    NSLog(@"%@",self.urlArray[currentImageIndex]);
-    if ([USERXX isBlankString:self.urlArray[currentImageIndex]] == NO) {
-        [_delegate bannerUrl:self.urlArray[currentImageIndex]];
+    if (advertisingArray.count > 0) {
+        [_delegate bannerUrl:advertisingArray[currentImageIndex]];
     }
     
+
 }
 
 #pragma mark - 获取数据
@@ -229,14 +232,13 @@
     
     [http postWithSuccess:^(id responseObject) {
         WGLog(@"%@",responseObject);
-        NSArray *array = responseObject[@"data"];
+        advertisingArray = responseObject[@"data"];
         NSMutableArray *muArray = [NSMutableArray array];
         NSMutableArray *urlArray = [NSMutableArray array];
         
-        for (int i = 0; i < array.count; i ++) {
-            [muArray addObject:[NSString stringWithFormat:@"%@",[array[i][@"pic"] convertImageUrl]]];
-            [urlArray addObject:[NSString stringWithFormat:@"%@",array[i][@"url"]]];
-            
+        for (int i = 0; i < advertisingArray.count; i ++) {
+            [muArray addObject:[NSString stringWithFormat:@"%@",[advertisingArray[i][@"pic"] convertImageUrl]]];
+            [urlArray addObject:[NSString stringWithFormat:@"%@",advertisingArray[i][@"url"]]];
         }
         self.scrollView.data = muArray;
         self.urlArray = urlArray;

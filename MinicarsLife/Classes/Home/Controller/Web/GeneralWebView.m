@@ -70,21 +70,17 @@
     nameLable.textAlignment = NSTextAlignmentCenter;
     nameLable.font = Font(16);
     nameLable.textColor = kWhiteColor;
+    nameLable.text = self.name;
     self.navigationItem.titleView = nameLable;
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 2, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 2)];
     self.webView.delegate = self;
-    self.webView.backgroundColor = kWhiteColor;
-    NSURLRequest *request=[NSURLRequest requestWithURL:[NSURL URLWithString:_URL]];
-    
-    nameLable.text = self.name;
-    
-//    [NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[[NSURL URLWithString:_URL] host]];
-    [NSURLConnection connectionWithRequest:request delegate:self];
-    
-    [_webView loadRequest:request];
     [self.view addSubview:self.webView];
+    
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_URL]]];
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemRefresh) target:self action:@selector(rightBtnClick)];
     
 //    [ NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:_URL];
@@ -93,17 +89,17 @@
 }
 
 
--(BOOL)connection:(NSURLConnection*)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace*)protectionSpace {
-    return[protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
-    
-}
-
--(void)connection:(NSURLConnection*)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
-//    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
-//        if([trustedHosts containsObject:challenge.protectionSpace.host])
-    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
-}
+//-(BOOL)connection:(NSURLConnection*)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace*)protectionSpace {
+//    return[protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
+//
+//}
+//
+//-(void)connection:(NSURLConnection*)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
+////    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
+////        if([trustedHosts containsObject:challenge.protectionSpace.host])
+//    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+//    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
+//}
 //如果使用web view来请求网页的话，添加这么一句
 
 
@@ -130,7 +126,8 @@
 
 -(void)rightBtnClick
 {
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_URL]]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_URL]]];
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",_URL]]]];
 }
 
 @end

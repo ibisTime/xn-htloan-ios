@@ -108,7 +108,7 @@
 
     NSString *str = @"%";
     NSArray *detailTextArray = @[
-      [NSString stringWithFormat:@"%.1f%@",[dataDic[@"sfRate"] floatValue] * 100,str],
+      [NSString stringWithFormat:@"%.2f%@",[dataDic[@"sfRate"] floatValue] * 100,str],
       [NSString stringWithFormat:@"%@",dataDic[@"periods"]],
       [NSString stringWithFormat:@"%.2f%@",[dataDic[@"bankRate"] floatValue]*100,str],
       [NSString stringWithFormat:@"%.2f",[dataDic[@"monthAmount"] floatValue]/1000],

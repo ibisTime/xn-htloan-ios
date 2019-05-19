@@ -131,11 +131,11 @@
     self.titlelab.text = [NSString stringWithFormat:@"%@ ",self.carmodel.name];
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     self.timelab.text = [self.carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.1f万",[self.carmodel.salePrice floatValue]/10000/1000];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[self.carmodel.salePrice floatValue]/10000/1000];
 //    self.contentlab.text =  [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.version,carmodel.seriesName,carmodel.fromPlace];
-    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+    self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     
     
     self.contentlab.text = @"";

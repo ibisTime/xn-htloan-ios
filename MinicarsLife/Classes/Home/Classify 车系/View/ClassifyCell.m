@@ -89,6 +89,18 @@
         default:
             break;
     }
-    self.ClassifyPrice.text = [NSString stringWithFormat:@"%.1f-%.1f",[carmodel.lowest floatValue]/1000,[carmodel.highest floatValue]/1000];
+    self.ClassifyPrice.text = [NSString stringWithFormat:@"%@-%@",[self AddSymbols:[carmodel.lowest floatValue]/1000],[self AddSymbols:[carmodel.highest floatValue]/1000]];
 }
+
+-(NSString *)AddSymbols:(CGFloat)price
+{
+    if (price > 100000000) {
+        return [NSString stringWithFormat:@"%.2f亿",price/100000000];
+    }
+    if (price > 10000) {
+        return [NSString stringWithFormat:@"%.2f万",price/10000];
+    }
+    return [NSString stringWithFormat:@"%.2f",price];
+}
+
 @end
