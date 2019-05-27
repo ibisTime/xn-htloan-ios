@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BaseTabBarViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#import "GuideView.h"
 @interface AppDelegate ()
 
 @end
@@ -25,7 +26,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     BaseTabBarViewController *TabBarVC = [[BaseTabBarViewController alloc]init];
     self.window.rootViewController = TabBarVC;
+//    GuideView *guideView = [[GuideView alloc]init];
+//    self.window.rootViewController = guideView;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

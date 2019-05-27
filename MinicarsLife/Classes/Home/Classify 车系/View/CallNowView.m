@@ -164,7 +164,7 @@
     
     if (self.phone.text.length == 0) {
         [TLProgressHUD showInfoWithStatus:@"请输入手机号!"];
-    }else if (![self.phone.text isPhoneNum]){
+    }else if ([self isMobileNumber:self.phone.text] == NO){
         [TLProgressHUD showInfoWithStatus:@"手机号格式不正确!"];
     }else if (self.name.text.length == 0){
         [TLProgressHUD showInfoWithStatus:@"请输入姓名!"];
@@ -174,8 +174,20 @@
             [self.delegate askmoneyWithphone:self.phone.text name:self.name.text];
         }
     }
-
 }
+
+- (BOOL)isMobileNumber:(NSString *)mobileNum {
+    //    电信号段:133/153/180/181/189/177
+    //    联通号段:130/131/132/155/156/185/186/145/176
+    //    移动号段:134/135/136/137/138/139/150/151/152/157/158/159/182/183/184/187/188/147/178//    虚拟运营商:170
+    NSString *phone = @"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|7[06-8])\\d{8}$";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phone];
+    return [regextestmobile evaluateWithObject:mobileNum];
+    
+}
+    
+
+
 -(void)deleteBtnClick
 {
     if (self.delegate) {

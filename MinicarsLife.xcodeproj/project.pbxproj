@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1C229B893A000F33F0 /* GuideView.m */; };
 		1FA54D5F22393A4F0077FE54 /* LoadSDK.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1FA54CE322393A4F0077FE54 /* LoadSDK.sh */; };
 		1FA54D6022393A4F0077FE54 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54CE522393A4F0077FE54 /* ImSDK.framework */; };
 		1FA54D6122393A4F0077FE54 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54CE622393A4F0077FE54 /* TLSSDK.framework */; };
@@ -104,6 +105,7 @@
 		1FA54DBF22393A500077FE54 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */; };
 		1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */; };
 		1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */; };
+		1FE6D0C7229C1DE4004B76D3 /* 启动图x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE6D0C6229C1DE4004B76D3 /* 启动图x.png */; };
 		1FFB8E9E225AFA8B00B72F31 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */; };
 		1FFB8E9F225AFA8B00B72F31 /* WLWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E95225AFA8B00B72F31 /* WLWebProgressLayer.m */; };
 		1FFB8EA0225AFA8B00B72F31 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E98225AFA8B00B72F31 /* NSTimer+addition.m */; };
@@ -484,6 +486,8 @@
 
 /* Begin PBXFileReference section */
 		12CD421EFB5FADF39C84C4FF /* Pods-MinicarsLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinicarsLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MinicarsLife/Pods-MinicarsLife.debug.xcconfig"; sourceTree = "<group>"; };
+		1F8E0F1C229B893A000F33F0 /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
+		1F8E0F1D229B893A000F33F0 /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
 		1FA54CE322393A4F0077FE54 /* LoadSDK.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = LoadSDK.sh; sourceTree = "<group>"; };
 		1FA54CE522393A4F0077FE54 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		1FA54CE622393A4F0077FE54 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
@@ -589,6 +593,7 @@
 		1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		1FE6D0C6229C1DE4004B76D3 /* 启动图x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "启动图x.png"; path = "Assets.xcassets/LaunchImage.launchimage/启动图x.png"; sourceTree = "<group>"; };
 		1FFB8E92225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+NSURLRequestSSLY.h"; sourceTree = "<group>"; };
 		1FFB8E93225AFA8B00B72F31 /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
@@ -2843,6 +2848,7 @@
 				7A8A5AC820E35905002D9A48 /* Main.storyboard */,
 				7A8A5ACB20E35907002D9A48 /* Assets.xcassets */,
 				7A8A5ACD20E35907002D9A48 /* LaunchScreen.storyboard */,
+				1FE6D0C6229C1DE4004B76D3 /* 启动图x.png */,
 				7A8A5AD020E35907002D9A48 /* Info.plist */,
 				7A8A5AD120E35907002D9A48 /* main.m */,
 			);
@@ -2871,6 +2877,8 @@
 				7A8A5AC320E35905002D9A48 /* AppDelegate.m */,
 				7A8A5AC520E35905002D9A48 /* ViewController.h */,
 				7A8A5AC620E35905002D9A48 /* ViewController.m */,
+				1F8E0F1D229B893A000F33F0 /* GuideView.h */,
+				1F8E0F1C229B893A000F33F0 /* GuideView.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -4064,6 +4072,7 @@
 				1FA54D9B22393A500077FE54 /* ear_15.png in Resources */,
 				1FA54D6D22393A4F0077FE54 /* rixi.png in Resources */,
 				1FA54D8422393A500077FE54 /* tooth_15.png in Resources */,
+				1FE6D0C7229C1DE4004B76D3 /* 启动图x.png in Resources */,
 				7A3CBDBB20F4458A00D795E5 /* UITableViewPlaceholder.bundle in Resources */,
 				1FA54DA822393A500077FE54 /* huzi_7.png in Resources */,
 				1FA54D8622393A500077FE54 /* tooth_10.png in Resources */,
@@ -4358,6 +4367,7 @@
 				363B6134223BA1FF00585061 /* BrandListVC.m in Sources */,
 				367EF90A223F8DAC00C9921D /* SearchVC.m in Sources */,
 				7A8A5C9320E4A7FE002D9A48 /* NSObject+MJKeyValue.m in Sources */,
+				1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */,
 				7A3CBDF920F4AE3100D795E5 /* UIView+SDAutoLayout.m in Sources */,
 				7A3CBD9D20F3217300D795E5 /* UIView+Frame.m in Sources */,
 				7A8A5CFD20E62E3E002D9A48 /* ChooseView.m in Sources */,

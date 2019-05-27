@@ -17,21 +17,21 @@
     if (self) {
 //        self.backgroundColor = randomColor;
         self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, 90)];
-        self.logo.image = kImage(@"1");
+
         kViewRadius(self.logo, 4);
         [self addSubview:self.logo];
         
         self.desribelab = [UILabel labelWithFrame:CGRectMake(0, self.logo.yy + 10, self.width, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
         self.desribelab.numberOfLines = 2;
-        self.desribelab.text= @"塞纳18款3.5四驱 Limited 7座加规";
+        
         [self addSubview:self.desribelab];
         
         self.moneylab = [UILabel labelWithFrame:CGRectMake(0,  150, 80, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(14) textColor:MainColor];
-        self.moneylab.text = @"73万";
+      
         [self addSubview:self.moneylab];
         
         self.personlab = [UILabel labelWithFrame:CGRectMake(self.moneylab.xx, 150, 50, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-        self.personlab.text= @"950人关注";
+       
         [self addSubview:self.personlab];
         
     }
@@ -39,7 +39,7 @@
 }
 -(void)setModel:(CarModel *)model{
     _model = model;
-    self.logo.backgroundColor = [UIColor redColor];
+//    self.logo.backgroundColor = [UIColor redColor];
 //    self.logo.contentMode = UIViewContentModeScaleAspectFill;
     [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     

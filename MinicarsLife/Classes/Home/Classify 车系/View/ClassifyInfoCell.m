@@ -84,7 +84,7 @@
     [self.titlelab sizeToFit];
     
     self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000/1000 ];
+    self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000/1000];
 
     
     self.contentlab.text = @"";

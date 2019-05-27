@@ -18,6 +18,7 @@
 @interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
 {
     CallNowView * callNowView;
+    CarInfoHeadCell *_cell;
 }
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 @property (nonatomic,strong) TLTableView * tableview;
@@ -285,7 +286,7 @@
         if(cell==nil){
             cell=[[CarInfoHeadCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
-        
+        _cell = cell;
         cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell.button addTarget:self action:@selector(goCalculator) forControlEvents:(UIControlEventTouchUpInside)];
@@ -362,7 +363,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return 160;
+        return _cell.view.yy + 15;
     }
     else if (indexPath.section == 2)
     {
