@@ -56,9 +56,13 @@
         
         [TLProgressHUD dismiss];
         
-        NSArray *dataArray = responseObject[@"data"];
-        
-        if (dataArray.count == 0) {
+        NSMutableArray *picAry = [NSMutableArray array];
+        NSDictionary *dic = responseObject[@"data"];
+        NSArray *imgAry = [dic[@"cvalue"] componentsSeparatedByString:@"||"];
+        for (int i = 0; i < imgAry.count; i ++) {
+            [picAry addObject:[imgAry[i] convertImageUrl]];
+        }
+        if (imgAry.count == 0) {
             [self cancelButtonAction];
         }
         
@@ -66,10 +70,10 @@
 //        for (int i = 0; i < dataArray.count; i ++) {
 //            [picAry addObject:[dataArray[i][@"cvalue"] convertImageUrl]];
 //        }
-//        self.imageArray = picAry;
-//        [self createScrollView];
-//        [self createPageControl];
-//        [self createCancelButton];
+        self.imageArray = picAry;
+        [self createScrollView];
+        [self createPageControl];
+        [self createCancelButton];
         
         // 加载完毕开始倒计时
         [self startTimer];

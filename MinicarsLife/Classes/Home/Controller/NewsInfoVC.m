@@ -38,7 +38,7 @@
     [view addSubview:self.titlelab];
     
     self.authorlab = [UILabel labelWithFrame:CGRectMake(15, self.titlelab.yy + 20, SCREEN_WIDTH - 30  - 100, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:MainColor];
-//    self.authorlab.text = @"作者：浩源车网";
+//    self.authorlab.text = @"作者：微车生活";
     [view addSubview:self.authorlab];
     
     self.timelab = [UILabel labelWithFrame:CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
@@ -47,6 +47,7 @@
     
     self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight )];
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
+    self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];
     [self.view addSubview:self.webview];
     [self getData];
@@ -93,23 +94,24 @@
         self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.authorlab.yy, 0, 0, 0);
         
         [self.webview loadHTMLString:self.model.context baseURL:nil];
-        [self getreadnum];
+//        [self getreadnum];
     } failure:^(NSError *error) {
         
     }];
 }
--(void)getreadnum{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630460";
-    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
-    http.parameters[@"toCode"] = self.model.code;
-    http.parameters[@"toType"] = @"1";
-    http.parameters[@"type"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//-(void)getreadnum{
+//
+//    TLNetworking * http = [[TLNetworking alloc]init];
+//    http.code = @"630460";
+//    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
+//    http.parameters[@"toCode"] = self.model.code;
+//    http.parameters[@"toType"] = @"1";
+//    http.parameters[@"type"] = @"1";
+//    [http postWithSuccess:^(id responseObject) {
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
 
 @end

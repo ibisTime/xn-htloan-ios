@@ -9,7 +9,9 @@
 #import "CarInfoHeadCell.h"
 
 @implementation CarInfoHeadCell
-
+{
+    UIView * view1;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -70,12 +72,13 @@
 //        v1.backgroundColor = kBackgroundColor;
 //        [self addSubview:v1];
         
-        UIView * view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18)];
+        view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18)];
         kViewRadius(view1, 2);
         view1.layer.borderColor = kHexColor(@"#FF9402").CGColor;
         view1.layer.borderWidth = 0.5;
         view1.backgroundColor = kHexColor(@"#FF9402");
         view1.alpha = 0.2;
+        [self addSubview:view1];
         
         UIButton * button = [UIButton buttonWithTitle:@"计算器" titleColor:kBlackColor backgroundColor:kClearColor titleFont:10 cornerRadius:2];
         button.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18);
@@ -86,7 +89,7 @@
         self.button = button;
         [self addSubview:button];
         
-        [self addSubview:view1];
+        
     }
     return self;
 }
@@ -95,6 +98,15 @@
     _CarModel = CarModel;
     
     self.titlelab.text = [NSString stringWithFormat:@"%@",CarModel.name];
+    self.titlelab.frame = CGRectMake(15, 15, SCREEN_WIDTH - 30, 22.5);
+    self.titlelab.numberOfLines = 0;
+    [self.titlelab sizeToFit];
+    
+    
+    self.describdlab.frame = CGRectMake( 15, _titlelab.yy + 5, SCREEN_WIDTH - 120, 16.5);
+    self.moneylab.frame = CGRectMake(15, _describdlab.yy + 5, SCREEN_WIDTH - 30 - 100, 16.5);
+    view1.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
+    self.button.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     NSString * str;
     if (CarModel.salePrice.length > 5) {
