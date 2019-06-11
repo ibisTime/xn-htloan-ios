@@ -103,6 +103,7 @@
             http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
             http2.parameters[@"brandCode"] = weakSelf.brandcode;
             http2.parameters[@"isMore"] = weakSelf.isMore;
+            http2.parameters[@"status"] = @"1";
             [http2 postWithSuccess:^(id responseObject) {
                 //                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
                 weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
