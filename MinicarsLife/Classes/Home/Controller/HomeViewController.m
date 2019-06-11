@@ -84,11 +84,14 @@
 {
     
     if ([advertisingDic[@"contentType"] isEqualToString:@"1"]) {
-        GeneralWebView *vc = [GeneralWebView new];
-        vc.URL = advertisingDic[@"url"];
-        vc.name = @"详情";
-        vc.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:vc animated:YES];
+        NSString * str = advertisingDic[@"url"];
+        if (str.length > 0) {
+            GeneralWebView *vc = [GeneralWebView new];
+            vc.URL = advertisingDic[@"url"];
+            vc.name = @"详情";
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
     }
     if ([advertisingDic[@"contentType"] isEqualToString:@"2"]) {
         TLNetworking * http = [[TLNetworking alloc]init];
