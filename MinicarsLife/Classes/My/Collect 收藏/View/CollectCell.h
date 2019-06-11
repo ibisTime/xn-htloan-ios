@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CollectCell : UITableViewCell
 @property (nonatomic,strong) CollectModel * model;
-@property (nonatomic,strong) UIView * view ;
+@property (nonatomic,strong) UILabel * view ;
 @property (nonatomic,strong) NSArray *dataArray;
 @end
 
