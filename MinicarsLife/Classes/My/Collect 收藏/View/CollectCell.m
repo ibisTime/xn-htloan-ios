@@ -60,14 +60,22 @@
         [self addSubview:money];
         self.moneylab = money;
         
-        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+//        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+        
+        
+        
+        UILabel *view = [[UILabel alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+        view.backgroundColor = kHexColor(@"#F5F5F5");
+        self.view = view;
+        [self addSubview:view];
+        
         UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         content.numberOfLines = 2;
 //        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
-        view.backgroundColor = kHexColor(@"#F5F5F5");
+        
         [view addSubview:content];
-        [self addSubview:view];
-        self.view = view;
+        
+        
         self.contentlab = content;
     }
     return self;

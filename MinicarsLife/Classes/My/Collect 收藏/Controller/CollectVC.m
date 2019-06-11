@@ -107,20 +107,25 @@
     CollectCell * cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
     cell.model = self.CollectModels[indexPath.section];
     
+    
+    
     UIView *backGroundView = [[UIView alloc]init];
     backGroundView.backgroundColor = kClearColor;
-    cell.view.backgroundColor = kHexColor(@"#F5F5F5");
+    
     cell.selectedBackgroundView = backGroundView;
+    cell.view.backgroundColor = kHexColor(@"#F5F5F5");
     cell.dataArray = self.dataArray;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 175;
 }
 -(void)confirm:(UIButton *)sender{{
     sender.selected = !sender.selected;
     if (sender.selected) {
+        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 50);
         //点击编辑的时候清空删除数组
 //        [self.deleteArray removeAllObjects];
         [self.RightButton setTitle:@"完成" forState:UIControlStateNormal];
@@ -147,6 +152,7 @@
         
         
     }else{
+        self.tableview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
         [self.RightButton setTitle:@"编辑" forState:UIControlStateNormal];
         _isInsertEdit = NO;
         [_tableview setEditing:NO animated:YES];
