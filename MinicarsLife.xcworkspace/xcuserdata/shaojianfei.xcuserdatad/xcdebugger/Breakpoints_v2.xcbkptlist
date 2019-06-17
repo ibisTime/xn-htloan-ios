@@ -1,0 +1,2030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/V/ClaimsTableView.m"
+            timestampString = "561114815.4073009"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.749603"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-refreshTableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.752099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.75253"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.752947"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/Dishonest&#x5931;&#x4fe1;&#x88ab;&#x6267;&#x884c;&#x4eba;/DishonestVC.m"
+            timestampString = "562514682.754565"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/Involved&#x6d89;&#x6848;&#x4fe1;&#x606f;/InvolvedVC.m"
+            timestampString = "562514682.755146"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/NumberCodeVC.m"
+            timestampString = "563604640.045742"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__20-[NumberCodeVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/NumberCodeVC.m"
+                  timestampString = "567659938.221619"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "1572">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/NumberCodeVC.m"
+                  timestampString = "567659938.225912"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__20-[NumberCodeVC sure]_block_invoke.102"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/NumberCodeVC.m"
+                  timestampString = "567659938.2298959"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/BankCodeVC.m"
+            timestampString = "562514682.755986"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x5f52;&#x5c5e;&#x5730;Place/PhonePlace.m"
+            timestampString = "562514682.756539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__18-[PhonePlace sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%BD%92%E5%B1%9E%E5%9C%B0Place/PhonePlace.m"
+                  timestampString = "567659938.265179"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "1188">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%BD%92%E5%B1%9E%E5%9C%B0Place/PhonePlace.m"
+                  timestampString = "567659938.2701679"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__18-[PhonePlace sure]_block_invoke.78"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%BD%92%E5%B1%9E%E5%9C%B0Place/PhonePlace.m"
+                  timestampString = "567659938.274784"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x5f52;&#x5c5e;&#x5730;Place/PhonePlace.m"
+            timestampString = "562514682.7568901"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/taobao/TaobaoVC.m"
+            timestampString = "562514682.7573349"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-requestWith:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/taobao/TaobaoVC.m"
+            timestampString = "562514682.75783"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
+            landmarkName = "-requestWith:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/Involved&#x6d89;&#x6848;&#x4fe1;&#x606f;/InvolvedVC.m"
+            timestampString = "562514682.7581511"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[InvolvedVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/Involved%E6%B6%89%E6%A1%88%E4%BF%A1%E6%81%AF/InvolvedVC.m"
+                  timestampString = "567659938.418907"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "1128">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__18-[InvolvedVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/Involved%E6%B6%89%E6%A1%88%E4%BF%A1%E6%81%AF/InvolvedVC.m"
+                  timestampString = "567659938.4233021"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/Involved%E6%B6%89%E6%A1%88%E4%BF%A1%E6%81%AF/InvolvedVC.m"
+                  timestampString = "567659938.427598"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/Dishonest&#x5931;&#x4fe1;&#x88ab;&#x6267;&#x884c;&#x4eba;/DishonestVC.m"
+            timestampString = "562514682.758468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/taobao/TaobaoVC.m"
+            timestampString = "562514682.7588201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "-requestWith:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.785683"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__19-[ExommerceVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659938.4596699"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "864">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659938.464402"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__19-[ExommerceVC sure]_block_invoke.85"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659938.4687051"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "89"
+                  endingLineNumber = "89"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.786325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-statesCheck:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.7865911"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.787079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ExommerceVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659939.253163"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__19-[ExommerceVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659939.258352"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E7%94%B5%E5%95%86%E4%BF%A1%E6%81%AF%E6%8A%A5%E5%91%8AExommerce/ExommerceVC.m"
+                  timestampString = "567659939.2628829"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.787406"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/NumberCodeVC.m"
+            timestampString = "563604640.0465159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/BankCodeVC.m"
+            timestampString = "562514682.763008"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/BankCodeVC.m"
+            timestampString = "562514682.763532"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.763955"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.764213"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.764479"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.764899"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.765179"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SheBaoVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/SheBaoVC.m"
+                  timestampString = "567659939.481196"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "2508">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__16-[SheBaoVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/SheBaoVC.m"
+                  timestampString = "567659939.4856499"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.765391"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[PulicCoinVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%85%AC%E7%A7%AF%E9%87%91PulicCoin/PulicCoinVC.m"
+                  timestampString = "567659939.4958611"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "2052">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__19-[PulicCoinVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%85%AC%E7%A7%AF%E9%87%91PulicCoin/PulicCoinVC.m"
+                  timestampString = "567659939.500455"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/PulicCoinVC.m"
+            timestampString = "562514682.765916"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.788429"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/Involved&#x6d89;&#x6848;&#x4fe1;&#x606f;/InvolvedVC.m"
+            timestampString = "562514682.768433"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/SheBaoVC.m"
+            timestampString = "562514682.768684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604640.047106"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.04847"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.0486079"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.048689"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.048756"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-loadWithToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.0488189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "-loadWithToken:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MoblieCodeVC loadWithToken:]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/MoblieCodeVC.m"
+                  timestampString = "567659939.588784"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "268">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__30-[MoblieCodeVC loadWithToken:]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/MoblieCodeVC.m"
+                  timestampString = "567659939.592729"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.114"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/MoblieCodeVC.m"
+                  timestampString = "567659939.596872"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/CarLoanCalculator&#x8f66;&#x8d37;&#x8ba1;&#x7b97;&#x5668;/Controller/CarLoanCalculatorVC.m"
+            timestampString = "567603338.208639"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/CarLoanCalculator&#x8f66;&#x8d37;&#x8ba1;&#x7b97;&#x5668;/Controller/CarLoanCalculatorVC.m"
+            timestampString = "567603338.209684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "217"
+            endingLineNumber = "217"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/BankCodeVC.m"
+            timestampString = "562514682.773863"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BankCodeVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/BankCodeVC.m"
+                  timestampString = "567659939.647423"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "1788">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__18-[BankCodeVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/BankCodeVC.m"
+                  timestampString = "567659939.651756"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/C/BankCodeVC.m"
+                  timestampString = "567659939.656461"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/BankCodeVC.m"
+            timestampString = "562514682.774292"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.791446"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-statesCheck:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.049072"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-loadWithToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/MoblieCodeVC.m"
+            timestampString = "563604640.04914"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-loadWithToken:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.7924761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.792799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "-statesCheck:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x7535;&#x5546;&#x4fe1;&#x606f;&#x62a5;&#x544a;Exommerce/ExommerceVC.m"
+            timestampString = "563537092.793084"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "-refreshAds"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/jingdong/JingDongVC.m"
+            timestampString = "563594915.598866"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-statesCheck:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/jingdong/JingDongVC.m"
+            timestampString = "563594915.599072"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/jingdong/JingDongVC.m"
+            timestampString = "563594915.599313"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
+            landmarkName = "-sureLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/jingdong/JingDongVC.m"
+            timestampString = "563594915.599465"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-refreshAds"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604640.049423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604640.049777"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604640.050108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "-requestCode"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/C/NumberCodeVC.m"
+            timestampString = "563604640.050402"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-sure"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604640.050468"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-requestCode"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Search Credit  &#x5f81;&#x4fe1;&#x67e5;&#x8be2;/M/&#x516c;&#x79ef;&#x91d1;PulicCoin/MobleInfomationVC.m"
+            timestampString = "563604858.552389"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "-sure"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MobleInfomationVC sure]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%85%AC%E7%A7%AF%E9%87%91PulicCoin/MobleInfomationVC.m"
+                  timestampString = "567659941.1168211"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "4296">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__25-[MobleInfomationVC sure]_block_invoke"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%85%AC%E7%A7%AF%E9%87%91PulicCoin/MobleInfomationVC.m"
+                  timestampString = "567659941.1213419"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "113"
+                  endingLineNumber = "113"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/My/Search%20Credit%20%20%E5%BE%81%E4%BF%A1%E6%9F%A5%E8%AF%A2/M/%E5%85%AC%E7%A7%AF%E9%87%91PulicCoin/MobleInfomationVC.m"
+                  timestampString = "567659941.126039"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/Controller/MyViewController.m"
+            timestampString = "567161508.78672"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
+            landmarkName = "-checkIsRoom:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/Controller/RecordDetailsVC.m"
+            timestampString = "567512770.598631"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/Controller/RecordDetailsVC.m"
+            timestampString = "567512770.600394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/Details/DetailsVC.m"
+            timestampString = "567512770.600684"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/Controller/RecentPaymentsDetailsVC.m"
+            timestampString = "566984265.066143"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/Details/DetailsVC.m"
+            timestampString = "567512770.6215529"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/Details/DetailsVC.m"
+            timestampString = "567512770.622509"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/Details/DetailsVC.m"
+            timestampString = "567512770.623282"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-imagePickerController:didFinishPickingMediaWithInfo:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/CarLoanCalculator&#x8f66;&#x8d37;&#x8ba1;&#x7b97;&#x5668;/Controller/CarLoanCalculatorVC.m"
+            timestampString = "567603338.211382"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CarLoanCalculatorVC refreshTableViewButtonClick:button:selectRowAtIndex:]"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/Home/CarLoanCalculator%E8%BD%A6%E8%B4%B7%E8%AE%A1%E7%AE%97%E5%99%A8/Controller/CarLoanCalculatorVC.m"
+                  timestampString = "567659941.2086689"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "3452">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__75-[CarLoanCalculatorVC refreshTableViewButtonClick:button:selectRowAtIndex:]_block_invoke_3"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/Home/CarLoanCalculator%E8%BD%A6%E8%B4%B7%E8%AE%A1%E7%AE%97%E5%99%A8/Controller/CarLoanCalculatorVC.m"
+                  timestampString = "567659941.212859"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.302"
+                  moduleName = "MinicarsLife"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shaojianfei/%E5%8D%8E%E5%9B%BE%E5%BE%AE%E9%80%9A/MinicarsLife/MinicarsLife/Classes/Home/CarLoanCalculator%E8%BD%A6%E8%B4%B7%E8%AE%A1%E7%AE%97%E5%99%A8/Controller/CarLoanCalculatorVC.m"
+                  timestampString = "567659941.216938"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "237"
+                  endingLineNumber = "237"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/Controller/BannerWebViewVC.m"
+            timestampString = "567169879.730786"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-initWebView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/TheBalanceOf&#x4f59;&#x989d;/Withdrawal/Controller/WithdrawalVC.m"
+            timestampString = "567603338.211887"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "-confirmButtonClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/View/RecordDetailsCell.m"
+            timestampString = "567415602.4190381"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-setDic:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/View/RecordDetailsCell.m"
+            timestampString = "567415602.422956"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "-setDic:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/Plan/Details/View/RecordDetailsCell.m"
+            timestampString = "567415602.423396"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-setDic:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/MyCarLoanApplication&#x6211;&#x7684;&#x8f66;&#x8d37;&#x7533;&#x8bf7;/Controller/MyCarLoanDetailsVC.m"
+            timestampString = "567486518.2792161"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/MyCarLoanApplication&#x6211;&#x7684;&#x8f66;&#x8d37;&#x7533;&#x8bf7;/Controller/MyCarLoanDetailsVC.m"
+            timestampString = "567486518.280369"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/MyCarLoanApplication&#x6211;&#x7684;&#x8f66;&#x8d37;&#x7533;&#x8bf7;/Controller/MyCarLoanDetailsVC.m"
+            timestampString = "567486518.280515"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-loadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/MyCarLoanApplication&#x6211;&#x7684;&#x8f66;&#x8d37;&#x7533;&#x8bf7;/View/MyCarLoanDetailsTableView.m"
+            timestampString = "567486518.2806799"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/MyCarLoanApplication&#x6211;&#x7684;&#x8f66;&#x8d37;&#x7533;&#x8bf7;/View/MyCarLoanDetailsTableView.m"
+            timestampString = "567486518.2819951"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/Details/DetailsVC.m"
+            timestampString = "567512770.6249551"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "-viewDidLoad"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = ""
+            moduleName = "">
+            <Locations>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/Controller/BankCardVC.m"
+            timestampString = "567569467.959264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "-refreshTableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/View/AddBankCardTableView.m"
+            timestampString = "567569377.8459719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/Controller/BankCardVC.m"
+            timestampString = "567569467.95987"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-refreshTableView:didSelectRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/Controller/AddBankCardVC.m"
+            timestampString = "567603338.213119"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "-LoadData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/Controller/AddBankCardVC.m"
+            timestampString = "567603338.21394"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "-initTableView"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/View/RecordCell.m"
+            timestampString = "567660173.442657"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-setModel:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/GoodsDetails&#x5546;&#x54c1;&#x8be6;&#x60c5;/Controller/GoodsDetailsViewController.m"
+            timestampString = "569929924.561484"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-addGoodsCartBtnClick"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/CarLoanCalculator&#x8f66;&#x8d37;&#x8ba1;&#x7b97;&#x5668;/Controller/CarLoanCalculatorVC.m"
+            timestampString = "567603338.214422"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Home/CarLoanCalculator&#x8f66;&#x8d37;&#x8ba1;&#x7b97;&#x5668;/Controller/CarLoanCalculatorVC.m"
+            timestampString = "567603338.214797"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "306"
+            endingLineNumber = "306"
+            landmarkName = "-calculateADownPaymentPrice"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/AccountSettings&#x8d26;&#x6237;&#x8bbe;&#x7f6e;/BankCard&#x94f6;&#x884c;&#x5361;/Controller/AddBankCardVC.m"
+            timestampString = "567603338.215149"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "-addBankCard"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/TheOrder&#x6211;&#x7684;&#x8ba2;&#x5355;/Controller/AllOrderVC.m"
+            timestampString = "567603338.215439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:selectRowState:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/My/TheOrder&#x6211;&#x7684;&#x8ba2;&#x5355;/Controller/AllOrderVC.m"
+            timestampString = "567603338.215709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-refreshTableViewButtonClick:button:selectRowAtIndex:selectRowState:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MinicarsLife/Classes/Reimbursement/RecentPayments/View/RecordCell.m"
+            timestampString = "567660173.443334"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "-setModel1:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
