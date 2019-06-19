@@ -80,6 +80,9 @@
         view1.alpha = 0.2;
         [self addSubview:view1];
         
+        
+        
+        
         UIButton * button = [UIButton buttonWithTitle:@"计算器" titleColor:kBlackColor backgroundColor:kClearColor titleFont:10 cornerRadius:2];
         button.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18);
         [button SG_imagePositionStyle:(SGImagePositionStyleDefault) spacing:2 imagePositionBlock:^(UIButton *button) {
@@ -107,6 +110,13 @@
     self.moneylab.frame = CGRectMake(15, _describdlab.yy + 5, SCREEN_WIDTH - 30 - 100, 16.5);
     view1.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
     self.button.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
+    if ([CarModel.type isEqualToString:@"2"]) {
+        self.button.hidden = NO;
+        view1.hidden = NO;
+    }else{
+        self.button.hidden = YES;
+        view1.hidden = YES;
+    }
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
     NSString * str;
     if (CarModel.salePrice.length > 5) {

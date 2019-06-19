@@ -113,6 +113,7 @@
 		1FFB8EA2225AFA8B00B72F31 /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9C225AFA8B00B72F31 /* WYWebProgressLayer.m */; };
 		1FFB8EA3225AFA8B00B72F31 /* GeneralWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */; };
 		1FFB8EB7225C7E9A00B72F31 /* ImageBrowsingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */; };
+		361923E722BA6E7B00876C64 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 361923E622BA6E7B00876C64 /* libstdc++.6.0.9.tbd */; };
 		36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */; };
 		363B6123223B7B9A00585061 /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6122223B7B9A00585061 /* NewsCell.m */; };
 		363B6126223B81A800585061 /* CarNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 363B6125223B81A800585061 /* CarNewsVC.m */; };
@@ -195,7 +196,6 @@
 		7A0F8FB6211BDECD00BA8358 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FB5211BDECC00BA8358 /* libicucore.tbd */; };
 		7A0F8FB8211BDED200BA8358 /* libprotobuf.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FB7211BDED200BA8358 /* libprotobuf.tbd */; };
 		7A0F8FBA211BDEDE00BA8358 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FB9211BDEDD00BA8358 /* libsqlite3.tbd */; };
-		7A0F8FBC211BDEE500BA8358 /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FBB211BDEE400BA8358 /* libstdc++.6.tbd */; };
 		7A0F8FBE211BDEED00BA8358 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FBD211BDEED00BA8358 /* libstdc++.tbd */; };
 		7A0F8FC0211BDEF300BA8358 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A0F8FBF211BDEF300BA8358 /* libz.tbd */; };
 		7A0F8FC3211BDF3600BA8358 /* FaceToFaceSignVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0F8FC2211BDF3600BA8358 /* FaceToFaceSignVC.m */; };
@@ -608,6 +608,7 @@
 		1FFB8E9D225AFA8B00B72F31 /* GeneralWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralWebView.m; sourceTree = "<group>"; };
 		1FFB8EB5225C7E9900B72F31 /* ImageBrowsingVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageBrowsingVC.h; sourceTree = "<group>"; };
 		1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageBrowsingVC.m; sourceTree = "<group>"; };
+		361923E622BA6E7B00876C64 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libstdc++.6.0.9.tbd"; sourceTree = "<group>"; };
 		36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableHeadCell.h; sourceTree = "<group>"; };
 		36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableHeadCell.m; sourceTree = "<group>"; };
 		363B6121223B7B9A00585061 /* NewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsCell.h; sourceTree = "<group>"; };
@@ -749,7 +750,6 @@
 		7A0F8FB5211BDECC00BA8358 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		7A0F8FB7211BDED200BA8358 /* libprotobuf.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libprotobuf.tbd; path = usr/lib/libprotobuf.tbd; sourceTree = SDKROOT; };
 		7A0F8FB9211BDEDD00BA8358 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		7A0F8FBB211BDEE400BA8358 /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		7A0F8FBD211BDEED00BA8358 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7A0F8FBF211BDEF300BA8358 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		7A0F8FC1211BDF3600BA8358 /* FaceToFaceSignVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceToFaceSignVC.h; sourceTree = "<group>"; };
@@ -1310,7 +1310,6 @@
 				1FA54D6722393A4F0077FE54 /* libTXMBasic.a in Frameworks */,
 				7A0F8FC0211BDEF300BA8358 /* libz.tbd in Frameworks */,
 				7A0F8FBE211BDEED00BA8358 /* libstdc++.tbd in Frameworks */,
-				7A0F8FBC211BDEE500BA8358 /* libstdc++.6.tbd in Frameworks */,
 				1FA54D6622393A4F0077FE54 /* libTXMRenderer.a in Frameworks */,
 				7A0F8FBA211BDEDE00BA8358 /* libsqlite3.tbd in Frameworks */,
 				7AB29D7220FC362E0014FCB3 /* libresolv.tbd in Frameworks */,
@@ -1326,6 +1325,7 @@
 				1FA54D6122393A4F0077FE54 /* TLSSDK.framework in Frameworks */,
 				1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */,
 				7A0F8FA8211BDE9100BA8358 /* OpenGLES.framework in Frameworks */,
+				361923E722BA6E7B00876C64 /* libstdc++.6.0.9.tbd in Frameworks */,
 				7A0F8FA6211BDE8300BA8358 /* OpenAL.framework in Frameworks */,
 				7A0F8FA4211BDE7B00BA8358 /* JavaScriptCore.framework in Frameworks */,
 				7A0F8FA2211BDE7500BA8358 /* ImageIO.framework in Frameworks */,
@@ -3881,9 +3881,9 @@
 		F8113ADA12E86CDD2C4993D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				361923E622BA6E7B00876C64 /* libstdc++.6.0.9.tbd */,
 				7A0F8FBF211BDEF300BA8358 /* libz.tbd */,
 				7A0F8FBD211BDEED00BA8358 /* libstdc++.tbd */,
-				7A0F8FBB211BDEE400BA8358 /* libstdc++.6.tbd */,
 				7A0F8FB9211BDEDD00BA8358 /* libsqlite3.tbd */,
 				7A0F8FB7211BDED200BA8358 /* libprotobuf.tbd */,
 				7A0F8FB5211BDECC00BA8358 /* libicucore.tbd */,
@@ -4703,6 +4703,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
+					"$(PROJECT_DIR)",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PublicServicePlatform.servicesb;
@@ -4754,6 +4755,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
+					"$(PROJECT_DIR)",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.PublicServicePlatform.servicesb;
