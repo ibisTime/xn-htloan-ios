@@ -45,7 +45,7 @@
 //    self.timelab.text = @"2019-01-11发布";
     [view addSubview:self.timelab];
     
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight )];
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight + 123 )];
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
     self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];

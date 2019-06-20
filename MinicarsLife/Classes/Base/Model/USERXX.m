@@ -149,7 +149,14 @@
     [_popView pop];
 }
 + (NSString*)convertNull:(id)object{
+    
+    // 转换空串
+    
     if ([object isEqual:[NSNull null]]) {
+        return @"";
+    }
+    else if ([object isEqualToString:@""])
+    {
         return @"";
     }
     else if ([object isKindOfClass:[NSNull class]])
@@ -163,6 +170,11 @@
     else if (object==nil){
         return @"";
     }
+    else if ([object isEqualToString:@"0.00"]){
+        return @"";
+    }
+    
     return object;
+    
 }
 @end
