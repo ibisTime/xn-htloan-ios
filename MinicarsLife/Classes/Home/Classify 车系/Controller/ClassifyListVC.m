@@ -95,7 +95,6 @@
 //    }else
 //    {
         [self.tableview addRefreshAction:^{
-            
             TLNetworking * http2 = [[TLNetworking alloc]init];
             http2.showView = weakSelf.view;
             http2.code = @"630426";
@@ -105,7 +104,6 @@
             http2.parameters[@"isMore"] = weakSelf.isMore;
             http2.parameters[@"status"] = @"1";
             [http2 postWithSuccess:^(id responseObject) {
-                //                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
                 weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
                 [weakSelf.tableview reloadData_tl];
                 [weakSelf.tableview endRefreshHeader];
