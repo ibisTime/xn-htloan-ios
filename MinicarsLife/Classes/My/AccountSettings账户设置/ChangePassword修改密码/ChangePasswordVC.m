@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"修改密码";
+    self.title = @"忘记密码";
     self.view.backgroundColor = BackColor;
     [self TheInterfaceDisplayView];
     if ([_state isEqualToString:@"100"]) {

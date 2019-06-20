@@ -69,6 +69,7 @@
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630415";
     help.parameters[@"status"] = @"1";
+    help.parameters[@"type"] = @"2";
     [help modelClass:[CarModel class]];
     help.parameters[@"brandCode"] = self.brandCode;
     help.tableView = self.tableview;

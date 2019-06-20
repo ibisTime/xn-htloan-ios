@@ -8,7 +8,7 @@
 
 #import "NewsInfoVC.h"
 #import "NewsModel.h"
-@interface NewsInfoVC (){
+@interface NewsInfoVC ()<UIWebViewDelegate>{
     UIView * view;
 }
 @property (nonatomic,strong) UIWebView * webview;
@@ -49,6 +49,7 @@
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
     self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];
+    self.webview.delegate = self;
     [self.view addSubview:self.webview];
     [self getData];
 }
@@ -98,6 +99,13 @@
     } failure:^(NSError *error) {
         
     }];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+    [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
+    
 }
 //-(void)getreadnum{
 //

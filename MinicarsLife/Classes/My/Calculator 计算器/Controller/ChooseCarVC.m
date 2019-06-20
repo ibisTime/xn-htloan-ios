@@ -71,6 +71,7 @@
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630405";
     help.parameters[@"status"] = @"1";
+    help.parameters[@"type"] = @"2";
     [help modelClass:[CarModel class]];
     help.tableView = self.tableview;
     help.isCurrency = YES;

@@ -24,6 +24,7 @@
     [self.view addSubview:title];
     
     UILabel * content = [UILabel labelWithFrame:CGRectMake(15, title.yy + 15, SCREEN_WIDTH - 30, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kBlackColor];
+    content.numberOfLines = 0;
     
     if ([self.model.content hasPrefix:@"<p>"]) {
         NSRange startRange = [self.model.content rangeOfString:@"<p>"];
