@@ -15,6 +15,7 @@
 @interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate,HW3DBannerViewDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * carModel;
 
 @end
 
@@ -34,28 +35,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self getClassifyData];
-   
-    
-//    MinicarsLifeWeakSelf;
     [self.view addSubview:self.tableview];
+    [self loaddata];
     [self car_versionLoadData];
     [self TopView];
-//    if (self.seriesCode) {
-////        [self.tableview addRefreshAction:^{
-////            [weakSelf getClassifyData];
-////
-////        }];
-//    }
     [self.tableview beginRefreshing];
-    // Do any additional setup after loading the view.
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.models.cars.count;
+//    return self.models.cars.count;
+    return self.carModel.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
@@ -63,11 +55,10 @@
     ClassifyInfoCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
     
     if(cell==nil){
-        
         cell=[[ClassifyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
-        
     }
-    cell.carmodel = [CarModel mj_objectWithKeyValues: self.models.cars[indexPath.row]];
+//    cell.carmodel = [CarModel mj_objectWithKeyValues: self.models.cars[indexPath.row]];
+    cell.carmodel = [CarModel mj_objectWithKeyValues:self.carModel[indexPath.row]];
     cell.dataArray = self.dataArray;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -76,8 +67,36 @@
     return 185;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CarModel * model = [CarModel mj_objectWithKeyValues: self.models.cars[indexPath.row]];
+    CarModel * model = [CarModel mj_objectWithKeyValues:self.carModel[indexPath.row]];
     [self getcarinfo:model.code];
+}
+-(void)loaddata{
+    MJWeakSelf;
+    TLPageDataHelper * help = [TLPageDataHelper new];
+    help.code = @"630425";
+    help.parameters[@"seriesCode"] = self.models.code;
+    help.tableView = self.tableview;
+    [help modelClass:[CarModel class]];
+    help.isCurrency = YES;
+    [self.tableview addRefreshAction:^{
+        [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            weakSelf.carModel = objs;
+            [weakSelf.tableview reloadData];
+            [weakSelf.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [weakSelf.tableview endRefreshHeader];
+        }];
+    }];
+    [self.tableview addLoadMoreAction:^{
+        [help loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            weakSelf.carModel = objs;
+            [weakSelf.tableview reloadData];
+            [weakSelf.tableview endRefreshFooter];
+        } failure:^(NSError *error) {
+            [weakSelf.tableview endRefreshFooter];
+        }];
+    }];
+    [self.tableview beginRefreshing];
 }
 //-(void)getClassifyData{
 //    //列表查询车型

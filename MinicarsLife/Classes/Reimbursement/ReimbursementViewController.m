@@ -171,13 +171,9 @@
     if ([self.selectBtn isEqual:btn]) {
         return;
     }
-//    btn.selected = !btn.selected;
-//    _selectBtn.selected = !_selectBtn.selected;
-//    [self.selectBtn setTitleColor:RGB(170, 207, 254) forState:(UIControlStateNormal)];
-//    self.selectBtn.alpha = 0.6;
+
     self.selectBtn = btn;
     [btn setTitleColor:kWhiteColor forState:(UIControlStateNormal)];
-//    btn.alpha = 0.99;
     [UIView animateWithDuration:0.3 animations:^{
         CGFloat w = 50;
         CGFloat x = 130 + self.currentPages * (w + 40);

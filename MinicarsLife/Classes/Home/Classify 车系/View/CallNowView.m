@@ -123,6 +123,9 @@
 }
 -(void)setCarmodel:(CarModel *)carmodel{
     
+    
+    
+    
     _carmodel = carmodel;
     [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     self.image.contentMode =UIViewContentModeScaleAspectFill;
@@ -135,7 +138,7 @@
 //    self.contentlab.text =  [NSString stringWithFormat:@"%@ %@ %@",self.carmodel.brandName,self.carmodel.seriesName,self.carmodel.name];
     
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.version,carmodel.seriesName,carmodel.fromPlace];
-    self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",carmodel.version,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+    self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",[USERXX convertNull:carmodel.version] ,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     
     
     self.contentlab.text = @"";

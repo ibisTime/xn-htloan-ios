@@ -482,17 +482,13 @@
     }
     http.parameters[@"status"] = @"1";
     [http postWithSuccess:^(id responseObject) {
-        
-        
         self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         NSInteger num = 0;
         for (int i = 0; i < self.CarModels.count; i ++) {
             num = num + self.CarModels[i].cars.count;
         }
-        
         [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",num] forState:(UIControlStateNormal)];
     } failure:^(NSError *error) {
-
     }];
 }
 

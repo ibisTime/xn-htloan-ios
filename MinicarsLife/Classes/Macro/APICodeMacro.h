@@ -10,11 +10,11 @@
 #define APICodeMacro_h
 
 //研发
-//#define APPURL @"http://120.26.6.213:2401/forward-service//api"
+#define APPURL @"http://120.26.6.213:2401/forward-service//api"
 //测试
 //#define APPURL @"http://47.99.163.139:2401/forward-service/api"
 //线上
-#define APPURL @"http://47.110.249.120:2401/forward-service/api"
+//#define APPURL @"http://47.110.249.120:2401/forward-service/api"
 
 //线上http://47.110.249.120:2401/forward-service/api
 //#define APPURL @"http://47.110.249.120:2401/forward-service/api"

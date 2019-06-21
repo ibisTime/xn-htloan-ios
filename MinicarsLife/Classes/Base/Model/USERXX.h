@@ -30,7 +30,6 @@
 - (BOOL)isLogin;
 //字符串是否为空
 + (BOOL) isBlankString:(NSString *)string;
-
 //存储用户信息
 - (void)saveUserInfo:(NSDictionary *)userInfo;
 

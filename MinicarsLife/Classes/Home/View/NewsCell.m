@@ -46,7 +46,7 @@
         [self addSubview:self.statuslab];
         
         self.newsfrom = [UILabel labelWithFrame:CGRectMake(55, 80, 50, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-        self.newsfrom.text = @"微车生活";
+        self.newsfrom.text = @"浩源车网";
         [self addSubview:self.newsfrom];
         
         self.looknum = [UILabel labelWithFrame:CGRectMake(self.photo.x - 60 - 70, 80, 70, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
