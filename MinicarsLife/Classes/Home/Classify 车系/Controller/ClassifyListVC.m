@@ -59,7 +59,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
     vc.title = self.CarModels[indexPath.row].name;
-//    vc.seriesCode = self.CarModels[indexPath.row].code;
     vc.models = self.CarModels[indexPath.row];
     [self.navigationController pushViewController:vc animated:YES];
 }
