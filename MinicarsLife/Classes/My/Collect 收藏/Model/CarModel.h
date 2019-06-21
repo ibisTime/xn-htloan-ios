@@ -33,6 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
  "updateDatetime": "Mar 7, 2019 2:38:04 PM",
  "remark": "备注"
  */
+@property (nonatomic,copy) NSString * totalCount;
 @property (nonatomic,copy) NSString * code;
 @property (nonatomic,copy) NSString * name;
 @property (nonatomic,copy) NSString * seriesCode;
