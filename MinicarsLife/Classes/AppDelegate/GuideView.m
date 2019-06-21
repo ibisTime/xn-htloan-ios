@@ -43,9 +43,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - kStatusBarHeight)];
-    img.image = kImage(@"启动页.png");
-    [self.view addSubview:img];
+//    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - kStatusBarHeight)];
+//    img.image = kImage(@"启动页.png");
+//    [self.view addSubview:img];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     TLNetworking *http = [TLNetworking new];
     //    http.isUploadToken = NO;
