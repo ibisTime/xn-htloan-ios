@@ -94,24 +94,53 @@
 //        [self.tableview beginRefreshing];
 //    }else
 //    {
-        [self.tableview addRefreshAction:^{
-            TLNetworking * http2 = [[TLNetworking alloc]init];
-            http2.showView = weakSelf.view;
-            http2.code = @"630426";
-            http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-            http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
-            http2.parameters[@"brandCode"] = weakSelf.brandcode;
-            http2.parameters[@"isMore"] = weakSelf.isMore;
-            http2.parameters[@"status"] = @"1";
-            [http2 postWithSuccess:^(id responseObject) {
-                weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-                [weakSelf.tableview reloadData_tl];
-                [weakSelf.tableview endRefreshHeader];
-            } failure:^(NSError *error) {
-                [weakSelf.tableview endRefreshHeader];
-            }];
+//        [self.tableview addRefreshAction:^{
+//            TLNetworking * http2 = [[TLNetworking alloc]init];
+//            http2.showView = weakSelf.view;
+//            http2.code = @"630426";
+//            http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
+//            http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
+//            http2.parameters[@"brandCode"] = weakSelf.brandcode;
+//            http2.parameters[@"isMore"] = weakSelf.isMore;
+//            http2.parameters[@"status"] = @"1";
+//            [http2 postWithSuccess:^(id responseObject) {
+//                weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//                [weakSelf.tableview reloadData_tl];
+//                [weakSelf.tableview endRefreshHeader];
+//            } failure:^(NSError *error) {
+//                [weakSelf.tableview endRefreshHeader];
+//            }];
+//        }];
+    TLPageDataHelper * http2 = [TLPageDataHelper new];
+    http2.showView = weakSelf.view;
+    http2.code = @"630432";
+    http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
+    http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
+    http2.parameters[@"brandCode"] = weakSelf.brandcode;
+    http2.parameters[@"isMore"] = weakSelf.isMore;
+    http2.parameters[@"status"] = @"1";
+    http2.tableView = self.tableview;
+    [http2 modelClass:[CarModel class]];
+    http2.isCurrency = YES;
+    [self.tableview addRefreshAction:^{
+        [http2 refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:objs];
+            [weakSelf.tableview reloadData_tl];
+            [weakSelf.tableview endRefreshHeader];
+        } failure:^(NSError *error) {
+            [weakSelf.tableview endRefreshHeader];
         }];
-        
+    }];
+    [self.tableview addLoadMoreAction:^{
+        [http2 loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+            weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:objs];
+            [weakSelf.tableview reloadData_tl];
+            [weakSelf.tableview endRefreshFooter];
+        } failure:^(NSError *error) {
+          [weakSelf.tableview endRefreshFooter];
+        }];
+    }];
+    
         [self.tableview beginRefreshing];
 //    }
     
