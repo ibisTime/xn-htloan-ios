@@ -24,6 +24,7 @@
     // 需要下载腾讯云实施音视频SDK 方能正常跑通项目 ILiveSDK 
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
 //    BaseTabBarViewController *TabBarVC = [[BaseTabBarViewController alloc]init];
 //    self.window.rootViewController = TabBarVC;
     GuideView *guideView = [[GuideView alloc]init];
