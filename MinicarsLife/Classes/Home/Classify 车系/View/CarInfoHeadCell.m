@@ -110,7 +110,7 @@
     self.moneylab.frame = CGRectMake(15, _describdlab.yy + 5, SCREEN_WIDTH - 30 - 100, 16.5);
     view1.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
     self.button.frame = CGRectMake(SCREEN_WIDTH - 52 - 15, _describdlab.yy + 5, 52, 18);
-    if ([CarModel.type isEqualToString:@"2"]) {
+    if (![CarModel.type isEqualToString:@"1"]) {
         self.button.hidden = NO;
         view1.hidden = NO;
     }else{

@@ -196,8 +196,7 @@
         http.parameters[@"toType"] = @"0";
         http.parameters[@"type"] = @"3";
         [http postWithSuccess:^(id responseObject) {
-            
-            
+
             [TLProgressHUD showSuccessWithStatus:@"收藏成功"];
             self.RightButton.selected = !self.RightButton.selected;
             [self reloaddata];

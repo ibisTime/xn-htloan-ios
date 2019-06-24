@@ -95,7 +95,7 @@
         self.webview.scrollView.contentInset = UIEdgeInsetsMake(self.authorlab.yy, 0, 0, 0);
         
         [self.webview loadHTMLString:self.model.context baseURL:nil];
-//        [self getreadnum];
+        [self getreadnum];
     } failure:^(NSError *error) {
         
     }];
@@ -107,19 +107,19 @@
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
     
 }
-//-(void)getreadnum{
-//
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.code = @"630460";
-//    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
-//    http.parameters[@"toCode"] = self.model.code;
-//    http.parameters[@"toType"] = @"1";
-//    http.parameters[@"type"] = @"1";
-//    [http postWithSuccess:^(id responseObject) {
-//
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
+-(void)getreadnum{
+
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.model.code;
+    http.parameters[@"toType"] = @"1";
+    http.parameters[@"type"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+
+    } failure:^(NSError *error) {
+
+    }];
+}
 
 @end

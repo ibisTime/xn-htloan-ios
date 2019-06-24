@@ -60,6 +60,8 @@
     ClassifyInfoVC * vc = [ClassifyInfoVC new];
     vc.title = self.CarModels[indexPath.row].name;
     vc.models = self.CarModels[indexPath.row];
+    vc.priceEnd = self.priceEnd;
+    vc.priceStart = self.priceStart;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

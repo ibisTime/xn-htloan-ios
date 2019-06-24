@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ClassifyInfoVC : BaseViewController
 @property (nonatomic,strong)CarModel *models;
+@property (nonatomic,strong) NSString *priceStart;
+@property (nonatomic,strong) NSString *priceEnd;
 //@property (nonatomic,strong) CarModel * seriesCode;
 
 

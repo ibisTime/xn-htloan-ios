@@ -75,6 +75,8 @@
     TLPageDataHelper * help = [TLPageDataHelper new];
     help.code = @"630425";
     help.parameters[@"seriesCode"] = self.models.code;
+    help.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
+    help.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
     help.tableView = self.tableview;
     [help modelClass:[CarModel class]];
     help.isCurrency = YES;

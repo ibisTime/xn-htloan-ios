@@ -10,6 +10,7 @@
 #import "HomeViewController.h"
 #import "ReimbursementViewController.h"
 #import "MyViewController.h"
+#import "CarNewsVC.h"
 @interface BaseTabBarViewController ()<UITabBarControllerDelegate>
 @property (nonatomic,assign) NSInteger index;
 @end
@@ -26,6 +27,7 @@
 - (void)createTabBar{
     [self createControllerWithTitle1:@"首页" image:@"home1"selectedimage:@"home2" className:[HomeViewController class]];
     [self createControllerWithTitle1:@"车型库" image:@"车型库-未选中"selectedimage:@"车型库-选中" className:[ReimbursementViewController class]];
+    [self createControllerWithTitle1:@"微车资讯" image:@"资讯-未点击" selectedimage:@"资讯-点击" className:[CarNewsVC class]];
     [self createControllerWithTitle1:@"我的" image:@"my1"selectedimage:@"my2" className:[MyViewController class]];
 
 }

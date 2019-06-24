@@ -32,7 +32,7 @@
     layout.estimatedItemSize = CGSizeMake(width , 0.8 * width);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    self.collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:layout];
+    self.collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) collectionViewLayout:layout];
     self.collection.backgroundColor = kWhiteColor;
     self.collection.delegate = self;
     self.collection.dataSource = self;
