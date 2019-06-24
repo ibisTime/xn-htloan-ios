@@ -196,6 +196,4 @@
     //设置选中button的样式
     [self setupSelectBtn];
 }
-
-
 @end
