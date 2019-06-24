@@ -15,7 +15,7 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = randomColor;
+        
         self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.width, 90)];
 
         kViewRadius(self.logo, 4);
@@ -39,11 +39,10 @@
 }
 -(void)setModel:(CarModel *)model{
     _model = model;
-//    self.logo.backgroundColor = [UIColor redColor];
-//    self.logo.contentMode = UIViewContentModeScaleAspectFill;
+    
     [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     
-//    self.logo.clipsToBounds = YES;
+    
     self.desribelab.frame = CGRectMake(0, self.logo.yy + 10, self.width, 0);
     self.desribelab.text = [NSString stringWithFormat:@"%@  %@",model.name,model.slogan];
     [self.desribelab sizeToFit];

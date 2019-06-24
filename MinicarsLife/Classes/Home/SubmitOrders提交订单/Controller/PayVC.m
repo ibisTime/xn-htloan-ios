@@ -203,10 +203,7 @@
 -(void)confirmWithdrawalsWithPwd:(NSString *)pwd
 {
     CGFloat f = [[USERDEFAULTS objectForKey:YY] floatValue]/1000;
-//        if (f < self.price) {
-//            [TLAlert alertWithInfo:@"账户余额不足"];
-//            return;
-//        }
+
 
     TLNetworking *http = [TLNetworking new];
     http.code = @"808052";

@@ -29,13 +29,7 @@
 }
 -(void)setConfigs:(NSArray *)configs{
     _configs = configs;
-//    UILabel * label1 = [self viewWithTag:1001];
-//    label1.text = DeployModels[0];
-//    for (int i = 0; i < DeployModels.count; i++) {
-//        UILabel * label1 = [self viewWithTag:1000 + i];
-//        DeployModel * model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
-//        label1.text = [NSString stringWithFormat:@"·%@",model.config[@"name"]];
-//    }
+
     for (int i = 0; i < configs.count; i ++) {
         UILabel * label1 = [UILabel labelWithFrame:CGRectMake(15 + i % 2 * (SCREEN_WIDTH / 2 - 15), i/2 * 40, SCREEN_WIDTH / 2 - 15, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         label1.tag = 1000;
@@ -43,10 +37,6 @@
         [self addSubview:label1];
         
     }
-//    for (int i = 0; i < configs.count; i ++) {
-//        if (configs[i][@""]) {
-//            <#statements#>
-//        }
-//    }
+
 }
 @end

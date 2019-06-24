@@ -100,25 +100,7 @@
     }];
     [self.tableview beginRefreshing];
 }
-//-(void)getClassifyData{
-//    //列表查询车型
-//    if (self.seriesCode) {
-//        TLNetworking * http2 = [[TLNetworking alloc]init];
-//        http2.showView = self.view;
-//        http2.code = @"630426";
-//        http2.parameters[@"status"] = @"1";
-//        http2.parameters[@"seriesCode"] = self.seriesCode;
-//        [http2 postWithSuccess:^(id responseObject) {
-//            self.models = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//            [self TopView];
-//            [self.tableview reloadData];
-//
-//            [self.tableview endRefreshHeader];
-//        } failure:^(NSError *error) {
-//            [self.tableview endRefreshHeader];
-//        }];
-//    }
-//}
+
 
 
 -(void)car_versionLoadData

@@ -27,37 +27,6 @@
 
 @implementation GeneralWebView
 
-//- (void)viewWillAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    self.navigationController.navigationBar.translucent = YES;
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    self.navigationItem.backBarButtonItem = item;
-//    //    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-//
-//
-//
-//
-//}
-//
-////如果仅设置当前页导航透明，需加入下面方法
-//- (void)viewWillDisappear:(BOOL)animated{
-//    [super viewWillDisappear:animated];
-//
-//    self.navigationController.navigationBar.translucent = NO;
-//    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setShadowImage:nil];
-//    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-//    self.navigationController.navigationBar.barTintColor = kHexColor(@"#0848DF");
-//    self.navigationItem.backBarButtonItem = item;
-//    self.navigationController.navigationBar.shadowImage = [UIImage new];
-//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-//
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -83,24 +52,9 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:(UIBarButtonSystemItemRefresh) target:self action:@selector(rightBtnClick)];
     
-//    [ NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:_URL];
-    
-//    [NSURLRequest allowsAnyHTTPSCertificateForHost:_URL];
+
 }
 
-
-//-(BOOL)connection:(NSURLConnection*)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace*)protectionSpace {
-//    return[protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust];
-//
-//}
-//
-//-(void)connection:(NSURLConnection*)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
-////    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust])
-////        if([trustedHosts containsObject:challenge.protectionSpace.host])
-//    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
-//    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
-//}
-//如果使用web view来请求网页的话，添加这么一句
 
 
 

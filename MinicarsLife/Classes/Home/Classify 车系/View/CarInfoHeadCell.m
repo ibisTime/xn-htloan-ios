@@ -31,26 +31,22 @@
 
         
         UILabel * title = [UILabel labelWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-//        title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
+        
         title.numberOfLines = 1;
         [self addSubview:title];
         self.titlelab = title;
         
         UILabel * describe = [UILabel labelWithFrame:CGRectMake( 15, title.yy + 5, SCREEN_WIDTH - 120, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
-//        describe.text = @"中大型SUV 白/米 车在杭州市";
+        
         [self addSubview:describe];
         self.describdlab = describe;
         
-//        UILabel * time = [UILabel labelWithFrame:CGRectMake( 15, describe.yy + 5, 74, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
-//        time.text = @"2019-03-11";
-//        [self addSubview:time];
-//        self.timelab = time;
         
         UILabel * money = [UILabel labelWithFrame:CGRectMake(15, describe.yy + 5, SCREEN_WIDTH - 30 - 100, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
         NSMutableAttributedString * att = [[NSMutableAttributedString alloc]initWithString:@"参考价 54.9万"];
         [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
         money.attributedText = att;
-//        money.text = @"54.9万";
+        
         [self addSubview:money];
         self.moneylab = money;
         
@@ -61,16 +57,14 @@
         
         UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         content.numberOfLines = 0;
-//        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
+        
         
         [view addSubview:content];
        
         
         self.contentlab = content;
         
-//        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 175, SCREEN_WIDTH, 10)];
-//        v1.backgroundColor = kBackgroundColor;
-//        [self addSubview:v1];
+        
         
         view1 = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 52 - 15, describe.yy + 5, 52, 18)];
         kViewRadius(view1, 2);
@@ -117,7 +111,7 @@
         self.button.hidden = YES;
         view1.hidden = YES;
     }
-//    self.describdlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    
     NSString * str;
     if (CarModel.salePrice.length > 5) {
         str = [NSString stringWithFormat:@"参考价 %.2f万",[CarModel.salePrice floatValue]/10000/1000];
@@ -127,7 +121,7 @@
     [att addAttribute:NSForegroundColorAttributeName value:kTextColor2 range:NSMakeRange(0, 3)];
     self.moneylab.attributedText = att;
     
-//    self.contentlab.text = [NSString stringWithFormat:@"%@ %@ %@",CarModel.brandName,CarModel.seriesName,CarModel.name];
+    
     
     
     
@@ -135,10 +129,7 @@
     self.contentlab.text = CarModel.Description;
     [self.contentlab sizeToFit];
     self.view.frame = CGRectMake(15, self.moneylab.yy + 10, SCREEN_WIDTH - 30, self.contentlab.height + 17);
-//    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:CarModel.caonfigList];
-//    for (int i = 0; i < model.count; i++) {
-//        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
-//    }
+
 }
 
 -(void)setDataArray:(NSArray *)dataArray

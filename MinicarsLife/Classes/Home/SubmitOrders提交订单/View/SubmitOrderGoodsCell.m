@@ -24,7 +24,7 @@
     if(!_nameLabel)
     {
         _nameLabel = [UILabel labelWithFrame:CGRectMake(115, 10, SCREEN_WIDTH - 130, 0)  textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:HGfont(16) textColor:[UIColor blackColor]];
-//        _nameLabel.text = @"哈士大夫撒旦撒打飞机撒打发回家撒地方看哈士大夫撒旦撒打飞机撒打发回家撒地方看哈士大夫撒旦撒打飞机撒打发回家撒地方看";
+        
         _nameLabel.numberOfLines = 2;
 
 
@@ -37,7 +37,7 @@
     if(!_introduceLabel)
     {
         _introduceLabel = [UILabel labelWithFrame:CGRectMake(117, 10 + _nameLabel.frame.size.height + 5, SCREEN_WIDTH - 152, 15) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGfont(12) textColor:GaryTextColor];
-//        _introduceLabel.text = @"沃尔沃 2014款 黑色";
+        
 
     }
     return _introduceLabel;

@@ -51,7 +51,7 @@
         button.tag = 100 + i;
         [backView addSubview:button];
 
-//        DeployModel* model = [DeployModel mj_objectWithKeyValues:DeployModels[i]];
+        
         [button setTitle:caonfigList[i][@"config"][@"name"] forState:(UIControlStateNormal)];
         [logo sd_setImageWithURL:[NSURL URLWithString:[caonfigList[i][@"config"][@"pic"] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     }

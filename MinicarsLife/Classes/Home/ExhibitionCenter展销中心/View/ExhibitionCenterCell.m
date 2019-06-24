@@ -55,7 +55,7 @@
 {
     if (!_allPriceLabel) {
         _allPriceLabel = [[UILabel alloc]initWithFrame:CGRectMake(140, 80, 0, 20)];
-//        _allPriceLabel.text = @"总价:20000.00元";
+        
         _allPriceLabel.textColor = PriceColor;
         _allPriceLabel.font = HGfont(15);
 
@@ -67,7 +67,7 @@
 {
     if (!_downPaymentLabel) {
         _downPaymentLabel = [[UILabel alloc]init];
-//        _downPaymentLabel.text = @"首付:40000.00";
+        
         _downPaymentLabel.font = HGfont(13);
         _downPaymentLabel.textColor = GaryTextColor;
     }

@@ -71,47 +71,7 @@
         return;
     }
     MJWeakSelf;
-
-//    if (self.brandcode) {
-//        [self.tableview addRefreshAction:^{
-//
-//            TLNetworking * http2 = [[TLNetworking alloc]init];
-//            http2.showView = weakSelf.view;
-//            http2.code = @"630416";
-//            http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-//            http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
-//            http2.parameters[@"brandCode"] = weakSelf.brandcode;
-////            http2.parameters[@"isMore"] = weakSelf.isMore;
-//            [http2 postWithSuccess:^(id responseObject) {
-//                //                    weakSelf.model = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//                weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//                [weakSelf.tableview reloadData_tl];
-//                [weakSelf.tableview endRefreshHeader];
-//            } failure:^(NSError *error) {
-//                [weakSelf.tableview endRefreshHeader];
-//            }];
-//        }];
-//
-//        [self.tableview beginRefreshing];
-//    }else
-//    {
-//        [self.tableview addRefreshAction:^{
-//            TLNetworking * http2 = [[TLNetworking alloc]init];
-//            http2.showView = weakSelf.view;
-//            http2.code = @"630426";
-//            http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-//            http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
-//            http2.parameters[@"brandCode"] = weakSelf.brandcode;
-//            http2.parameters[@"isMore"] = weakSelf.isMore;
-//            http2.parameters[@"status"] = @"1";
-//            [http2 postWithSuccess:^(id responseObject) {
-//                weakSelf.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//                [weakSelf.tableview reloadData_tl];
-//                [weakSelf.tableview endRefreshHeader];
-//            } failure:^(NSError *error) {
-//                [weakSelf.tableview endRefreshHeader];
-//            }];
-//        }];
+    
     TLPageDataHelper * http2 = [TLPageDataHelper new];
     http2.showView = weakSelf.view;
     http2.code = @"630432";
@@ -151,21 +111,6 @@
 
 
 -(void)getClassifyListData{
-//    if (self.brandcode) {
-//        TLNetworking * http2 = [[TLNetworking alloc]init];
-//        http2.showView = self.view;
-//        http2.code = @"630416";
-//        http2.parameters[@"status"] = @"1";
-//        http2.parameters[@"brandCode"] = self.brandcode;
-//        [http2 postWithSuccess:^(id responseObject) {
-//            self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//            [self.tableview reloadData_tl];
-//            [self.tableview endRefreshHeader];
-//        } failure:^(NSError *error) {
-//            [self.tableview endRefreshHeader];
-//        }];
-//    }else
-//        [self.tableview endRefreshHeader];
     
 }
 

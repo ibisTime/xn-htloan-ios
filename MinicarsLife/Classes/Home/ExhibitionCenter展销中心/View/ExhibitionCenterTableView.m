@@ -65,10 +65,8 @@
 
 }
 //当搜索框中的文本发生变化时
-//-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-//{
-//    [self filterBySubstring:searchText];
-//}
+
+
 //当用户点击虚拟键盘上的search按钮时激发该方法
 -(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {

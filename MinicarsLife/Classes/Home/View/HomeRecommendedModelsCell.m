@@ -55,12 +55,7 @@
         _carImage.frame = CGRectMake(10, 10, WIDTH, WIDTH/3 *2);
         [_carImage sd_setImageWithURL:[NSURL URLWithString:[mondel.pic convertImageUrl]]];
         kViewRadius(_carImage, 5);
-//        [_carImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",QINIUURL,mondel.advPic]] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//
-//            NSLog(@"错误信息:%@",error);
-//
-//        }];
-//        NSLog(@"%@",[NSString stringWithFormat:@"%@%@",QINIUURL,mondel.advPic]);
+        
         [_backButton addSubview:_carImage];
 
         _nameLabel = [UILabel labelWithFrame:CGRectMake(10, 15 + WIDTH/3 *2, WIDTH, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:[UIColor whiteColor] font:HGfont(13) textColor:[UIColor blackColor]];

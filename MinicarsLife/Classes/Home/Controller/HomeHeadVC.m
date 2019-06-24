@@ -66,18 +66,10 @@
 -(UICollectionView *)collection{
     if (!_collection) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-//        CGFloat width = 130 / 375.00 * SCREEN_WIDTH;
-        // 设置每个item的大小
-//        layout.itemSize = CGSizeMake(width, 338.00 / 226.00 * width);
-        // 设置列间距
-//        layout.minimumInteritemSpacing = 15;
-        // 设置行间距
         layout.minimumLineSpacing = 10;
-        //每个分区的四边间距UIEdgeInsetsMake
+        
         layout.sectionInset = UIEdgeInsetsMake(10, 24, 10, 24);
-        // 设置Item的估计大小,用于动态设置item的大小，结合自动布局（self-sizing-cell）
-//        layout.estimatedItemSize = CGSizeMake(width , 338.00 / 226.00 * width);
-        // 设置布局方向(滚动方向)
+        
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         self.layout = layout;
         _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 10,SCREEN_WIDTH , self.bounds.size.height - self.scrollView.yy)collectionViewLayout:self.layout];
@@ -131,11 +123,7 @@
             [cell.logo sd_setImageWithURL:[NSURL URLWithString:[topImage[0] convertImageUrl]] placeholderImage:kImage(@"default_pic")];
         }
         
-//        [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.CarClassifyModels[indexPath.row].advPic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-        
-//        cell.backgroundColor = [UIColor redColor];
-        //超出容器范围的切除掉
-//        cell.logo.clipsToBounds = YES;
+
         return cell;
     }
     if (indexPath.section == 0) {
@@ -145,7 +133,7 @@
         return cell;
     }
     SelectBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SelectBrand" forIndexPath:indexPath];
-//    cell.backgroundColor = [UIColor redColor];
+
     if (self.CarBrandModels) {
         CarModel * model =[CarModel mj_objectWithKeyValues:self.CarBrandModels[indexPath.row]];
         cell.titlelab.text = model.name;
@@ -160,13 +148,7 @@
         
         
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-//        cell.logo.contentMode =UIViewContentModeScaleAspectFill;
-        //超出容器范围的切除掉
-//        cell.logo.clipsToBounds = YES;
-        
-        
-        
-        
+     
         
         cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.titlelab.width, 20);
     }

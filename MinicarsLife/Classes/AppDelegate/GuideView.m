@@ -43,9 +43,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-//    UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - kStatusBarHeight)];
-//    img.image = kImage(@"启动页.png");
-//    [self.view addSubview:img];
     self.view.backgroundColor = [UIColor whiteColor];
     
     TLNetworking *http = [TLNetworking new];
@@ -66,11 +63,7 @@
         if (imgAry.count == 0) {
             [self cancelButtonAction];
         }
-        
-//        NSMutableArray *picAry = [NSMutableArray array];
-//        for (int i = 0; i < dataArray.count; i ++) {
-//            [picAry addObject:[dataArray[i][@"cvalue"] convertImageUrl]];
-//        }
+
         self.imageArray = picAry;
         [self createScrollView];
         [self createPageControl];
@@ -100,18 +93,7 @@
     
     
     
-//    TLNetworking *http = [TLNetworking new];
-//    http.isUploadToken = NO;
-//    http.code = @"630506";
-//    http.parameters[@"location"] = @"app_guide";
-//
-//    [http postWithSuccess:^(id responseObject) {
-    
-        //        self.bannerRoom = [[BannerModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        //                           ]
-        
-    
-    
+
         
         
         for (int i = 0; i < self.imageArray.count; i++) {

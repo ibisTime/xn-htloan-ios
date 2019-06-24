@@ -53,10 +53,9 @@
         NSLog(@"%@",_model.pics);
 
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
-            //            NSLog(@"%ld",currentIndex);
-            //            _currentIndex = currentIndex;
+            
         };
-        //        _scrollView.delegate = self;
+        
     }
     return _scrollView;
 }

@@ -73,10 +73,9 @@
         _scrollView.placeHolderImage = [UIImage imageNamed:@""]; // 设置占位图片
         _scrollView.data = _model.pics;
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
-            //            NSLog(@"%ld",currentIndex);
-            //            _currentIndex = currentIndex;
+            
         };
-        //        _scrollView.delegate = self;
+        
     }
     return _scrollView;
 }
@@ -111,7 +110,7 @@
 
     [self.chooseView.headImage sd_setImageWithURL:[NSURL URLWithString:[self.model.pic convertImageUrl]]];
     self.chooseView.LB_price.text = self.model.name;
-//    self.chooseView.oldPriceLab.text =[NSString stringWithFormat:@"原价¥%.2f ",[self.model.originalPrice floatValue]/1000];
+    
     self.chooseView.LB_detail.text = [NSString stringWithFormat:@"¥%.2f ",[self.model.price floatValue]/1000];
     [self textDic:self.model.productSpecsList[0]];
     [self.view addSubview:self.chooseView];
@@ -136,10 +135,7 @@
     [self.chooseView.buyBtn addTarget:self action:@selector(addGoodsCartBtnClick) forControlEvents:UIControlEventTouchUpInside];
     //取消按钮
     [self.chooseView.cancelBtn addTarget:self action:@selector(dismiss) forControlEvents:UIControlEventTouchUpInside];
-
-    //点击黑色透明视图choseView会消失
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
-//    [backView addGestureRecognizer:tap];
+    
     NSLog(@" ++++++++++++ %@",_model.desc);
     [self.chooseView.headImage sd_setImageWithURL:[NSURL URLWithString:[_model.productSpecsList[0][@"pic"] convertImageUrl]]];
     [self textDic:self.model.productSpecsList[0]];
@@ -161,7 +157,7 @@
     NSLog(@"%@",str);
     self.chooseView.MonthlyPaymentsLabel.attributedText = attrStr;
     self.chooseView.LB_detail.text = [NSString stringWithFormat:@"¥%.2f",[textDic[@"price"] floatValue]/1000];
-//    self.chooseView.oldPriceLab.text =[NSString stringWithFormat:@"原价¥%.2f ",[self.model.originalPrice floatValue]/1000];
+    
     self.chooseView.LB_stock.text = [NSString stringWithFormat:@"库存:%@",textDic[@"quantity"]];
 
 }

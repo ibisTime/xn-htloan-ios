@@ -147,7 +147,7 @@
     HomeHeaderView *header = [tableView dequeueReusableHeaderFooterViewWithIdentifier:HeaderID];
 
     if (header == nil) {
-        //        NSLog(@"实例化标题栏");
+        
         header = [[HomeHeaderView alloc]initWithReuseIdentifier:HeaderID];
     }
     //    header.delegate = self;

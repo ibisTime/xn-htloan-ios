@@ -109,10 +109,10 @@
             [objs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 
                 ExhibitionCenterModel *model = (ExhibitionCenterModel *)obj;
-                //                if ([[CoinUtil shouldDisplayCoinArray] indexOfObject:currencyModel.currency ] != NSNotFound ) {
+                
 
                 [shouldDisplayCoins addObject:model];
-                //                }
+                
 
             }];
 

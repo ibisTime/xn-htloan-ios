@@ -59,7 +59,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.title = @"微车生活";
     UILabel *titleLbl = [[UILabel alloc]init];
     titleLbl.text = @"浩源车网";
     titleLbl.font = Font(18);
@@ -68,9 +67,8 @@
     [self loadData];
     [self getnewsadta];
     
-//    HomeHeadVC * view = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 20)];
     headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 60)];
-//    view.CarStyleModels = self.CarClassifyModels;
+    
     headview.delegate = self;
     self.tableview.tableHeaderView = headview;
     [self.view addSubview:self.tableview];

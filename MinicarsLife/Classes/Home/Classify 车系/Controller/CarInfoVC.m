@@ -62,8 +62,7 @@
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-//    NSLog(@"kHeight = %.2f",(kHeight(432)/3 * 2));
-//    NSLog(@"contentOffset = %.2f",self.tableview.contentOffset.y)
+    
     if (self.tableview.contentOffset.y>(kHeight(432)/3 * 2)) {
         
         [self.navigationController.navigationBar setBackgroundImage:[self imageWithBgColor:[UIColor colorWithRed:0/255.0 green:145/255.0 blue:247/255.0 alpha:1.00]] forBarMetrics:UIBarMetricsDefault];
@@ -139,11 +138,9 @@
     for (int i = 0; i < p.count; i ++) {
         [topImage addObject:[p[i] convertImageUrl]];
     }
-//    NSMutableArray *muArray = [NSMutableArray arrayWithArray:p];
+    
     self.scrollView.data = topImage;
     
-//    self.configs = self.CarModel.configs;
-//    self.caonfigList = self.CarModel.caonfigList;
     
     [self getCarDeploy];
     
@@ -221,7 +218,7 @@
 }
 -(void)ClickBottomBtn:(UIButton *)sender{
     if (sender.tag == 1) {
-//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"telprompt:10086"]];
+        
         [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",self.phonestring]]];
     }
     if (sender.tag == 2) {
@@ -299,8 +296,7 @@
             if(cell==nil){
                 cell=[[DeployFirstCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
-//            cell.CarModel = [CarModel mj_objectWithKeyValues: self.CarModel];
-//            cell.model = [DeployModel mj_objectWithKeyValues:self.DeployModels[indexPath.row]]picArray
+            
             cell.caonfigList = self.picArray;
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -312,10 +308,8 @@
                 cell=[[DeployLastCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
             }
             cell.configs = self.nameArray;
-//            NSArray * arr = [self splitArray:self.lastarray withSubSize:2];
-//            for (int i = 0; i < arr.count; i ++) {
-//                cell.DeployModels = (NSMutableArray *)arr[i];
-//            }
+            
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
         }
@@ -531,25 +525,17 @@
 
 -(NSArray *)splitArray: (NSArray *)array withSubSize : (int )subSize{
     
-//    将数组拆分为指定长度的个数
     unsigned long count = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1);
-//    用来保存制定长度数组的可变数组对象
     NSMutableArray *arr = [[NSMutableArray alloc] init];
-    //利用数组个数迸行循坏，将指定长度的元素加入数组
     for(int i=0;i<count;i++){
-//    / /数组
         int index = i * subSize;
-        //保存拆分的固定氏度的数组元素的可变数组
         NSMutableArray *arr1 = [[NSMutableArray alloc] init];
-//        移除子数组的所有元素
         [arr1 removeAllObjects];
         int j = index;
-    //将数组下标乘以1、2、3,得到拆分吋数组的最大下禄値，但最大不能超大数组的大小
         while (j < subSize*(i + 1) && j < array. count) {
             [arr1 addObject:[array objectAtIndex:j]];
             j+=1;
         }
-/// /將子数组添加到保存子数组的数组中
         [arr addObject:[arr1 copy]];
     }
     return [arr copy];

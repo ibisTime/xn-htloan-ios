@@ -26,10 +26,7 @@
     self.packView = [[UIView alloc] initWithFrame:self.frame];
     self.packView.y = 0;
     
-
-//    UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, screen_Width, 0.5)];
-//    line.backgroundColor = LineBackColor;
-//    [self.packView addSubview:line];
+    
 
     UILabel *titleLB = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, screen_Width, 25)];
     titleLB.text = self.title;
@@ -47,7 +44,7 @@
         NSString *btnName = self.rankArray[i];
 
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [btn setBackgroundColor:BackColor];
+        
         [btn setTitleColor:GaryTextColor forState:UIControlStateNormal];
         
         kViewBorderRadius(btn, 5, 0.5, GaryTextColor);
@@ -96,13 +93,8 @@
         btn.tag = 10000+i;
 
 
-        //        if ([btnName isEqualToString:self.selectStr])
-        //        {
-        //            self.selectBtn = btn;
-        //            self.selectBtn.selected = YES;
-        //            self.selectBtn.backgroundColor = [UIColor greenColor];
-        //        }
 
+        
         if (i == 0) {
             [self btnClick:btn];
         }
@@ -126,7 +118,7 @@
         self.selectBtn.selected = NO;
         kViewBorderRadius(btn, 5, 0.5, GaryTextColor);
 
-        //        NSLog(@"%@-----%@",btn.titleLabel.text,[self.rankArray[btn.tag-10000] sequence]);
+        
     }
     else{
         btn.backgroundColor = MainColor;
