@@ -24,6 +24,26 @@
     [self initWebView];
     // Do any additional setup after loading the view.
 }
+#pragma mark - WKWebViewDelegate
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
+    [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable string, NSError * _Nullable error) {
+        
+        [self changeWebViewHeight:string];
+    }];
+    
+}
+
+- (void)changeWebViewHeight:(NSString *)heightStr {
+    
+    CGFloat height = [heightStr integerValue];
+    
+    // 改变webView和scrollView的高度
+    
+    _webView.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, height);
+    
+}
 - (void)initWebView {
     
     NSString *jS = [NSString stringWithFormat:@"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'); meta.setAttribute('width', %lf); document.getElementsByTagName('head')[0].appendChild(meta);",SCREEN_WIDTH];
@@ -58,26 +78,7 @@
     [_webView loadHTMLString:html baseURL:nil];
 }
 
-#pragma mark - WKWebViewDelegate
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    
-    [webView evaluateJavaScript:@"document.body.scrollHeight" completionHandler:^(id _Nullable string, NSError * _Nullable error) {
-        
-        [self changeWebViewHeight:string];
-    }];
-    
-}
-
-- (void)changeWebViewHeight:(NSString *)heightStr {
-    
-    CGFloat height = [heightStr integerValue];
-    
-    // 改变webView和scrollView的高度
-    
-    _webView.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, height);
-    
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

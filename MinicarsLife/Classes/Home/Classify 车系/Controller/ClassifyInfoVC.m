@@ -117,7 +117,20 @@
         
     }];
 }
-
+-(void)getcarinfo:(NSString *)code{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630427";
+    http.showView = self.view;
+    http.parameters[@"code"] = code;
+    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+    [http postWithSuccess:^(id responseObject) {
+        CarInfoVC * vc = [CarInfoVC new];
+        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+        [self.navigationController pushViewController:vc animated:YES];
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 
 -(void)TopView
@@ -185,18 +198,5 @@
 
 }
 
--(void)getcarinfo:(NSString *)code{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630427";
-    http.showView = self.view;
-    http.parameters[@"code"] = code;
-    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
-    [http postWithSuccess:^(id responseObject) {
-        CarInfoVC * vc = [CarInfoVC new];
-        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
-        [self.navigationController pushViewController:vc animated:YES];
-    } failure:^(NSError *error) {
-        
-    }];
-}
+
 @end

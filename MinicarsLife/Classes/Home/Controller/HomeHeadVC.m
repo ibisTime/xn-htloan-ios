@@ -43,6 +43,37 @@
     }
     return self;
 }
+-(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
+    
+    if (_CarBrandModels.count > 0) {
+        for (int i = 0; i < _CarBrandModels.count; i ++) {
+            UIView *lineView = [self viewWithTag:i + 10000];
+            [lineView removeFromSuperview];
+        }
+    }
+    
+    if (CarBrandModels.count > 0) {
+        for (int i = 0; i < CarBrandModels.count - 1 ; i ++) {
+            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 30, 1, 20)];
+            lineView.tag = 10000+i;
+            lineView.backgroundColor =kLineColor;
+            [_collection addSubview:lineView];
+        }
+    }
+    _CarBrandModels = CarBrandModels;
+    
+    if (self.CarClassifyModels && self.CarBrandModels) {
+        [self bannerLoadData];
+        [self.collection reloadData];
+    }
+}
+-(void)setCarClassifyModels:(NSMutableArray<CarModel *> *)CarClassifyModels{
+    _CarClassifyModels = CarClassifyModels;
+    if (self.CarClassifyModels && self.CarBrandModels) {
+        [self.collection reloadData];
+    }
+    
+}
 
 #pragma mark -- 滑动试图懒加载
 -(HW3DBannerView *)scrollView
@@ -227,37 +258,6 @@
     } failure:^(NSError *error) {
         WGLog(@"%@",error);
     }];
-}
--(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
-    
-    if (_CarBrandModels.count > 0) {
-        for (int i = 0; i < _CarBrandModels.count; i ++) {
-            UIView *lineView = [self viewWithTag:i + 10000];
-            [lineView removeFromSuperview];
-        }
-    }
-
-    if (CarBrandModels.count > 0) {
-        for (int i = 0; i < CarBrandModels.count - 1 ; i ++) {
-            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 30, 1, 20)];
-            lineView.tag = 10000+i;
-            lineView.backgroundColor =kLineColor;
-            [_collection addSubview:lineView];
-        }
-    }
-    _CarBrandModels = CarBrandModels;
-    
-    if (self.CarClassifyModels && self.CarBrandModels) {
-        [self bannerLoadData];
-        [self.collection reloadData];
-    }
-}
--(void)setCarClassifyModels:(NSMutableArray<CarModel *> *)CarClassifyModels{
-    _CarClassifyModels = CarClassifyModels;
-    if (self.CarClassifyModels && self.CarBrandModels) {
-        [self.collection reloadData];
-    }
-    
 }
 
 

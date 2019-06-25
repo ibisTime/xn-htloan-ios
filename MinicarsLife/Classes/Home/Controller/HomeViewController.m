@@ -56,6 +56,30 @@
 //    [self loadData];
 //    [self getnewsadta];
 }
+-(void)modifyFrame
+{
+    if (headview.CarBrandModels && headview.CarClassifyModels) {
+        float numberToRound;
+        int result;
+        numberToRound = (headview.CarBrandModels.count)/3.0;
+        result = (int)ceilf(numberToRound);
+        
+        float numberToRound1;
+        int result1;
+        numberToRound1 = (headview.CarClassifyModels.count)/3.0;
+        result1 = (int)ceilf(numberToRound1);
+        
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
+        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
+    }
+    [self.tableview reloadData_tl];
+}
+
+-(void)morenews{
+    CarNewsVC * vc = [[CarNewsVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -211,11 +235,6 @@
     return [UIView new];
 }
 
--(void)morenews{
-    CarNewsVC * vc = [[CarNewsVC alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
@@ -378,24 +397,7 @@
 }
 
 
--(void)modifyFrame
-{
-    if (headview.CarBrandModels && headview.CarClassifyModels) {
-        float numberToRound;
-        int result;
-        numberToRound = (headview.CarBrandModels.count)/3.0;
-        result = (int)ceilf(numberToRound);
-        
-        float numberToRound1;
-        int result1;
-        numberToRound1 = (headview.CarClassifyModels.count)/3.0;
-        result1 = (int)ceilf(numberToRound1);
-        
-        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
-        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
-    }
-    [self.tableview reloadData_tl];
-}
+
 
 
 

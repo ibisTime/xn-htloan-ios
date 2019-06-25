@@ -16,7 +16,16 @@
 @end
 
 @implementation BrandListVC
-
+-(void)getdata{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630406";
+    http.parameters[@"status"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        [self.collection reloadData];
+    } failure:^(NSError *error) {
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getdata];
@@ -79,15 +88,6 @@
     }];
 }
 
--(void)getdata{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630406";
-    http.parameters[@"status"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        [self.collection reloadData];
-    } failure:^(NSError *error) {
-    }];
-}
+
 
 @end

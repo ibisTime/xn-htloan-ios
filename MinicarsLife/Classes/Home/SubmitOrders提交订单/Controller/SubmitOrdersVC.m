@@ -38,6 +38,20 @@
 
 @implementation SubmitOrdersVC
 
+- (void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        ShippingAddressVC *vc = [ShippingAddressVC new];
+        vc.state = 100;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.section == 1) {
+        BankCardVC *vc = [BankCardVC new];
+        vc.state = 100;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
+
 -(GoodsDetailsBottomView *)BottomView
 {
     if (!_BottomView) {
@@ -212,20 +226,6 @@
     self.tableView.specificationsStr = specifications;
     [self.view addSubview:self.tableView];
 
-}
-
-- (void)refreshTableView:(TLTableView *)refreshTableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        ShippingAddressVC *vc = [ShippingAddressVC new];
-        vc.state = 100;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    if (indexPath.section == 1) {
-        BankCardVC *vc = [BankCardVC new];
-        vc.state = 100;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
 }
 
 

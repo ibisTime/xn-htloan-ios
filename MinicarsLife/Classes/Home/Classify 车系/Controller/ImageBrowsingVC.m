@@ -14,6 +14,13 @@
 @end
 
 @implementation ImageBrowsingVC
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    [ImageBrowserViewController show:window.rootViewController type:PhotoBroswerVCTypeModal index:indexPath.row imagesBlock:^NSArray *{
+        return self.imageArray;
+    }];
+}
 
 -(UICollectionView *)collectionView{
     if (_collectionView==nil) {
@@ -82,13 +89,6 @@
 
 
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    [ImageBrowserViewController show:window.rootViewController type:PhotoBroswerVCTypeModal index:indexPath.row imagesBlock:^NSArray *{
-        return self.imageArray;
-    }];
-}
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 {

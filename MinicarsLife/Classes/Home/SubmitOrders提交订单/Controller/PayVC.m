@@ -38,6 +38,32 @@
     }
     return _tableView;
 }
+-(void)confirmWithdrawalsWithPwd:(NSString *)pwd
+{
+    CGFloat f = [[USERDEFAULTS objectForKey:YY] floatValue]/1000;
+    
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"808052";
+    http.showView = self.view;
+    http.parameters[@"payType"] = @"1";
+    http.parameters[@"code"] = _code;
+    http.parameters[@"tradePwd"] = pwd;
+    
+    
+    [http postWithSuccess:^(id responseObject) {
+        if ([_state isEqualToString:@"100"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else
+        {
+            TheOrderVC *vc = [[TheOrderVC alloc]init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    } failure:^(NSError *error) {
+        WGLog(@"%@",error);
+    }];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -200,31 +226,6 @@
 
 }
 
--(void)confirmWithdrawalsWithPwd:(NSString *)pwd
-{
-    CGFloat f = [[USERDEFAULTS objectForKey:YY] floatValue]/1000;
 
-
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"808052";
-    http.showView = self.view;
-    http.parameters[@"payType"] = @"1";
-    http.parameters[@"code"] = _code;
-    http.parameters[@"tradePwd"] = pwd;
-
-
-    [http postWithSuccess:^(id responseObject) {
-        if ([_state isEqualToString:@"100"]) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }else
-        {
-            TheOrderVC *vc = [[TheOrderVC alloc]init];
-            [self.navigationController pushViewController:vc animated:YES];
-        }
-
-    } failure:^(NSError *error) {
-        WGLog(@"%@",error);
-    }];
-}
 
 @end

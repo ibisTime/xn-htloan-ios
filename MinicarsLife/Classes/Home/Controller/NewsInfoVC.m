@@ -20,6 +20,20 @@
 @end
 
 @implementation NewsInfoVC
+-(void)getreadnum{
+    
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630460";
+    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
+    http.parameters[@"toCode"] = self.model.code;
+    http.parameters[@"toType"] = @"1";
+    http.parameters[@"type"] = @"1";
+    [http postWithSuccess:^(id responseObject) {
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,7 +42,6 @@
     view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
     view.backgroundColor = kWhiteColor;
     self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
-//    self.status.text = @"原创";
     kViewRadius(self.status, 1);
     [view addSubview:self.status];
     
@@ -44,7 +57,7 @@
     
     [view addSubview:self.timelab];
     
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight + 123 )];
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight  )];
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
     self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];
@@ -105,20 +118,6 @@
     
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
     
-}
--(void)getreadnum{
-
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630460";
-    http.parameters[@"creater"]=[USERDEFAULTS objectForKey:USER_ID];
-    http.parameters[@"toCode"] = self.model.code;
-    http.parameters[@"toType"] = @"1";
-    http.parameters[@"type"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-
-    } failure:^(NSError *error) {
-
-    }];
 }
 
 @end

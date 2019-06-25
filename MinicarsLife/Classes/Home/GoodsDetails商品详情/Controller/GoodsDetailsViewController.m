@@ -60,6 +60,27 @@
     }
     return _BottomView;
 }
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 1) {
+        UIView *headView = [[UIView alloc]init];
+        
+        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 8, 3, 14)];
+        lineView.backgroundColor = MainColor;
+        [headView addSubview:lineView];
+        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(33, 5, SCREEN_WIDTH - 33 - 15, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGfont(13) textColor:GaryTextColor];
+        nameLabel.text = @"图文详情";
+        [headView addSubview:nameLabel];
+        
+        return headView;
+    }
+    return nil;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return nil;
+}
 
 
 #pragma mark -- 滑动试图懒加载
@@ -356,27 +377,6 @@
     return 0.1;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (section == 1) {
-        UIView *headView = [[UIView alloc]init];
-
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(15, 8, 3, 14)];
-        lineView.backgroundColor = MainColor;
-        [headView addSubview:lineView];
-        UILabel *nameLabel = [UILabel labelWithFrame:CGRectMake(33, 5, SCREEN_WIDTH - 33 - 15, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGfont(13) textColor:GaryTextColor];
-        nameLabel.text = @"图文详情";
-        [headView addSubview:nameLabel];
-
-        return headView;
-    }
-    return nil;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return nil;
-}
 
 
 @end

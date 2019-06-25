@@ -19,7 +19,31 @@
     }
     return self;
 }
-
+-(void)btnClick:(UIButton *)btn{
+    
+    
+    if (![self.selectBtn isEqual:btn]) {
+        
+        self.selectBtn.backgroundColor = kWhiteColor;
+        self.selectBtn.selected = NO;
+        kViewBorderRadius(btn, 5, 0.5, GaryTextColor);
+        
+        
+    }
+    else{
+        btn.backgroundColor = MainColor;
+        kViewBorderRadius(btn, 5, 0.5, MainColor);
+    }
+    btn.backgroundColor = MainColor;
+    btn.selected = YES;
+    
+    self.selectBtn = btn;
+    
+    if ([self.delegate respondsToSelector:@selector(selectBtnTitle:andBtn:)]) {
+        
+        [self.delegate selectBtnTitle:btn.titleLabel.text andBtn:self.selectBtn];
+    }
+}
 
 -(void)rankView{
 
@@ -109,31 +133,7 @@
 }
 
 
--(void)btnClick:(UIButton *)btn{
 
-
-    if (![self.selectBtn isEqual:btn]) {
-
-        self.selectBtn.backgroundColor = kWhiteColor;
-        self.selectBtn.selected = NO;
-        kViewBorderRadius(btn, 5, 0.5, GaryTextColor);
-
-        
-    }
-    else{
-        btn.backgroundColor = MainColor;
-        kViewBorderRadius(btn, 5, 0.5, MainColor);
-    }
-    btn.backgroundColor = MainColor;
-    btn.selected = YES;
-
-    self.selectBtn = btn;
-
-    if ([self.delegate respondsToSelector:@selector(selectBtnTitle:andBtn:)]) {
-
-        [self.delegate selectBtnTitle:btn.titleLabel.text andBtn:self.selectBtn];
-    }
-}
 
 
 @end

@@ -60,6 +60,23 @@
     }
     return _tableview;
 }
+-(NSArray *)splitArray: (NSArray *)array withSubSize : (int )subSize{
+    
+    unsigned long count = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1);
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    for(int i=0;i<count;i++){
+        int index = i * subSize;
+        NSMutableArray *arr1 = [[NSMutableArray alloc] init];
+        [arr1 removeAllObjects];
+        int j = index;
+        while (j < subSize*(i + 1) && j < array. count) {
+            [arr1 addObject:[array objectAtIndex:j]];
+            j+=1;
+        }
+        [arr addObject:[arr1 copy]];
+    }
+    return [arr copy];
+}
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
@@ -523,23 +540,7 @@
     }];
 }
 
--(NSArray *)splitArray: (NSArray *)array withSubSize : (int )subSize{
-    
-    unsigned long count = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1);
-    NSMutableArray *arr = [[NSMutableArray alloc] init];
-    for(int i=0;i<count;i++){
-        int index = i * subSize;
-        NSMutableArray *arr1 = [[NSMutableArray alloc] init];
-        [arr1 removeAllObjects];
-        int j = index;
-        while (j < subSize*(i + 1) && j < array. count) {
-            [arr1 addObject:[array objectAtIndex:j]];
-            j+=1;
-        }
-        [arr addObject:[arr1 copy]];
-    }
-    return [arr copy];
-}
+
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
