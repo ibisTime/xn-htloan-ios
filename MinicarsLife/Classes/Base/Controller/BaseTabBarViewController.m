@@ -52,7 +52,7 @@
 - (BOOL)tabBarController:(UITabBarController*)tabBarController shouldSelectViewController:(UIViewController*)viewController
 
 {
-    if (viewController ==self.viewControllers[2]) {
+    if (viewController ==self.viewControllers[3]) {
         if([USERXX user].isLogin == NO) {
             LoginViewController *vc = [[LoginViewController alloc]init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];

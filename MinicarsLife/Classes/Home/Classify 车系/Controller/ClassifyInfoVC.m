@@ -12,6 +12,7 @@
 #import "ImageBrowserViewController.h"
 #import "ImageBrowsingVC.h"
 #import "HW3DBannerView.h"
+#import "UITableView+AddForPlaceholder.h"
 @interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate,HW3DBannerViewDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) NSArray *dataArray;
@@ -27,6 +28,8 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
+        _tableview.defaultNoDataText = @"";
+        _tableview.defaultNoDataImage = kImage(@"");
 //        }
         [_tableview registerClass:[ClassifyInfoCell class] forCellReuseIdentifier:@"cell"];
     }
