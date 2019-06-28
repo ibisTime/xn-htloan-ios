@@ -88,7 +88,6 @@
         [self.titlelab sizeToFit];
         self.titlelab.frame = CGRectMake(15, 20, SCREEN_WIDTH - 30, self.titlelab.height);
         
-        
         self.timelab.text = [NSString stringWithFormat:@"%@发布", [self.model.updateDatetime convertToDetailDateWithoutHour]];
         self.timelab.frame = CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20);
         
@@ -116,9 +115,7 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
-    
 }
 
 @end

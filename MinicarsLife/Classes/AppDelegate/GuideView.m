@@ -70,8 +70,7 @@
         [self createCancelButton];
         
         // 加载完毕开始倒计时
-//        [self startTimer];
-        [self start];
+        [self startTimer];
         
     } failure:^(NSError *error) {
         [TLProgressHUD dismiss];
@@ -149,24 +148,7 @@
     [self.view addSubview:_cancelButton];
 }
 
--(void)start{
-    __block NSInteger second = 10;
-    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
-    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
-    dispatch_source_set_event_handler(timer, ^{
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (second >= 0) {
-                [_cancelButton setTitle:[NSString stringWithFormat:@"跳过%lds",second] forState:(UIControlStateNormal)];
-                second --;
-            }
-            else{
-                dispatch_source_cancel(timer);
-                [self cancelButtonAction];
-            }
-        });
-    });
-    dispatch_resume(timer);
-}
+
 
 - (void)startTimer
 {
