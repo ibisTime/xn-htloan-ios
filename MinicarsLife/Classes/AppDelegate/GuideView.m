@@ -70,7 +70,8 @@
         [self createCancelButton];
         
         // 加载完毕开始倒计时
-        [self startTimer];
+//        [self startTimer];
+        [self start];
         
     } failure:^(NSError *error) {
         [TLProgressHUD dismiss];
@@ -91,11 +92,6 @@
     _imageScrollView.contentSize = CGSizeMake(K_Screen_width *self.imageArray.count, K_Screen_height);
     [self.view addSubview:_imageScrollView];
     
-    
-    
-
-        
-        
         for (int i = 0; i < self.imageArray.count; i++) {
             NSString *imageName = self.imageArray[i];
             UIImageView *imageView = [[UIImageView alloc]init];
@@ -107,7 +103,7 @@
             if ( [imageName.pathExtension.lowercaseString isEqualToString:@"gif"]) {
                 // sd_animatedGIFNamed 不能带.gif 后缀否则只能加载第一张
                 // 过滤掉 .gif
-                NSString *tureName = [imageName substringToIndex:imageName.length - 4];
+//                NSString *tureName = [imageName substringToIndex:imageName.length - 4];
 //                imageView.image = [UIImage sd_animatedGIFNamed:tureName];
             }else{
                 //            imageView.image = [UIImage imageNamed:imageName];
@@ -153,6 +149,25 @@
     [self.view addSubview:_cancelButton];
 }
 
+-(void)start{
+    __block NSInteger second = 10;
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(0, 0));
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    dispatch_source_set_event_handler(timer, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (second >= 0) {
+                [_cancelButton setTitle:[NSString stringWithFormat:@"跳过%lds",second] forState:(UIControlStateNormal)];
+                second --;
+            }
+            else{
+                dispatch_source_cancel(timer);
+                [self cancelButtonAction];
+            }
+        });
+    });
+    dispatch_resume(timer);
+}
+
 - (void)startTimer
 {
     __block NSInteger second = 10;
@@ -167,7 +182,7 @@
         //回调主线程，在主线程中操作UI
         dispatch_async(dispatch_get_main_queue(), ^{
             if (second >= 0) {
-                [_cancelButton setTitle:[NSString stringWithFormat:@"跳过%ds",second] forState:UIControlStateNormal];
+                [_cancelButton setTitle:[NSString stringWithFormat:@"跳过%lds",second] forState:UIControlStateNormal];
                 second--;
             }
             else
