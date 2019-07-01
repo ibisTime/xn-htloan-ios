@@ -38,10 +38,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"文章";
+    self.view.backgroundColor = [UIColor whiteColor];
     
     view = [[UIView alloc]initWithFrame:CGRectMake(0, -125, SCREEN_WIDTH, 125)];
     view.backgroundColor = kWhiteColor;
-    self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E ") font:Font(12) textColor:kWhiteColor];
+    self.status = [UILabel labelWithFrame:CGRectMake(15, 21, 35, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kHexColor(@"#FF5E5E") font:Font(12) textColor:kWhiteColor];
     kViewRadius(self.status, 1);
     [view addSubview:self.status];
     
@@ -57,7 +58,7 @@
     
     [view addSubview:self.timelab];
     
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight  )];
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight  )];
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
     self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];
@@ -87,7 +88,6 @@
         [self.titlelab sizeToFit];
         self.titlelab.frame = CGRectMake(15, 20, SCREEN_WIDTH - 30, self.titlelab.height);
         
-        
         self.timelab.text = [NSString stringWithFormat:@"%@发布", [self.model.updateDatetime convertToDetailDateWithoutHour]];
         self.timelab.frame = CGRectMake(self.authorlab.xx, self.titlelab.yy + 20, 100, 20);
         
@@ -115,9 +115,7 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
-    
 }
 
 @end

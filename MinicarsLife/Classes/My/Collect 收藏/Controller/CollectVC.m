@@ -106,12 +106,8 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CollectCell * cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
     cell.model = self.CollectModels[indexPath.section];
-    
-    
-    
     UIView *backGroundView = [[UIView alloc]init];
     backGroundView.backgroundColor = kClearColor;
-    
     cell.selectedBackgroundView = backGroundView;
     cell.view.backgroundColor = kHexColor(@"#F5F5F5");
     cell.dataArray = self.dataArray;

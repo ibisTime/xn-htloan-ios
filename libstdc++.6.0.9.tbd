@@ -1,7 +1,7 @@
 --- !tapi-tbd-v3
 archs:           [ armv7, armv7s, arm64 ]
 uuids:           [ 'armv7: E3EF8E7B-1082-3CA6-A25B-F04E5313B51B', 'armv7s: 589871E0-A5F8-3B7D-86EA-89621B96006A', 
-                   'arm64: E05B7A94-229A-3B71-8A28-610A7B7E727D' ]
+                   'arm64: E05B7A94-229A-3B71-8A28-610A7B7E727D', 'x86_64: 792186AB-1256-3A49-96B6-CA764912266A']
 platform:        ios
 install-name:    '/usr/lib/libstdc++.6.dylib'
 current-version: 104.2

@@ -71,6 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray *caonfigList;
 @property (nonatomic,strong) NSArray *configs;
 @property (nonatomic,copy) NSString * type;
+@property (nonatomic,copy) NSString * brandLogo;
 //@property (nonatomic,copy) NSString * descriptionStr;
 /**
  "price": 0,

@@ -28,6 +28,8 @@
 #import "CollectVC.h"
 
 #import "CalculatorVC.h"
+
+#import "ChangeBrandVC.h"
 //#import "CalculatorVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
@@ -168,7 +170,7 @@
             break;
         case 2:
         {
-            NSArray *nameArray = @[@"联系客服",@"关于我们"];
+            NSArray *nameArray = @[@"联系客服",@"关于我们",@"修改品牌"];
             cell.iconImage.image = HGImage(nameArray[indexPath.row]);
             cell.nameLabel.text = nameArray[indexPath.row];
         }
@@ -244,14 +246,20 @@
                 [self.navigationController pushViewController:vc animated:YES];
             }
             //关于我们
-            else{
+            else if (indexPath.row == 1){
                 AboutUsVC *vc = [[AboutUsVC alloc]init];
                 vc.hidesBottomBarWhenPushed = YES;
                 vc.titleStr = @"关于我们";
                 vc.ckey = @"about_us";
                 [self.navigationController pushViewController:vc animated:YES];
                 
+                
+            }else{
+                ChangeBrandVC * vc = [ChangeBrandVC new];
+                vc.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
             }
+            
         }
             break;
             

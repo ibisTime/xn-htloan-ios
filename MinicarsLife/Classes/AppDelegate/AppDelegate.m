@@ -18,7 +18,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"1080" ofType:@"png"];
+    NSLog(@"%@",jsonPath);
 
+    NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
+    //当前版本号
+    
+    NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
+    
+    NSLog(@"当前版本号%@",currentVersion);
+    
+    
 
     
     // 需要下载腾讯云实施音视频SDK 方能正常跑通项目 ILiveSDK 

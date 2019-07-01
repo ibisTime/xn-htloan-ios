@@ -16,7 +16,9 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = randomColor;
-        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(40, SCREEN_WIDTH/3*0.8/2 - 30, 40, 40)];
+        
+//        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(40, SCREEN_WIDTH/3*0.8/2 - 30, 40, 40)];
+        self.logo = [[UIImageView alloc]initWithFrame:CGRectMake((self.contentView.width - 40) / 2,(self.contentView.height - 40) / 2, 40, 40)];
 //        self.logo.image = kImage(@"1");
         self.logo.contentMode = UIViewContentModeScaleAspectFill;
         [self addSubview:self.logo];
