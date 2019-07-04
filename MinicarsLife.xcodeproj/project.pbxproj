@@ -3832,6 +3832,8 @@
 				B885CB4B2171F1CD001A1258 /* SheBaoVC.h */,
 				B885CB4C2171F1D8001A1258 /* SheBaoVC.m */,
 				B885CB4E2171F1ED001A1258 /* TextFieldCell.h */,
+				B885CB5C2171F693001A1258 /* FilterView.h */,
+				B885CB5B2171F692001A1258 /* FilterView.m */,
 			);
 			path = C;
 			sourceTree = "<group>";
@@ -3839,8 +3841,6 @@
 		B885CB392171F11B001A1258 /* V */ = {
 			isa = PBXGroup;
 			children = (
-				B885CB5C2171F693001A1258 /* FilterView.h */,
-				B885CB5B2171F692001A1258 /* FilterView.m */,
 			);
 			path = V;
 			sourceTree = "<group>";
