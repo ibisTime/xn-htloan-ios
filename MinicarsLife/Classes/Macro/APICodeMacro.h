@@ -19,7 +19,7 @@
 //线上http://47.110.249.120:2401/forward-service/api
 //#define APPURL @"http://47.110.249.120:2401/forward-service/api"
 
-
+#import "UITableView+AddForPlaceholder.h"
 #define QINIUURL @"http://img.fhcdzx.com/"
 //验证码
 #define CAPTCHA_CODE @"805950"

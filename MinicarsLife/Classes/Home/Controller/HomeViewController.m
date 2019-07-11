@@ -150,7 +150,8 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
-        
+        _tableview.defaultNoDataText = @"";
+        _tableview.defaultNoDataImage = nil;
         [_tableview registerClass:[HomeTableHeadCell class] forCellReuseIdentifier:@"HomeTableHead"];
         [_tableview registerClass:[NewsCell class] forCellReuseIdentifier:@"cell"];
     }

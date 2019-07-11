@@ -1,57 +1,55 @@
 {
   "images" : [
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "61555058297_.pic的副本 2.png",
+      "size" : "20x20",
       "scale" : "2x"
     },
     {
-      "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "61555058297_.pic的副本.png",
+      "size" : "20x20",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "1024 5.png",
+      "filename" : "AppIcon29x29@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "1024 4.png",
+      "filename" : "AppIcon29x29@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "1024 3.png",
+      "filename" : "AppIcon40x40@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "1024 2.png",
+      "filename" : "AppIcon40x40@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "1024 2-1.png",
+      "filename" : "AppIcon60x60@2x.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "1024.png",
+      "filename" : "AppIcon60x60@3x.png",
       "scale" : "3x"
     },
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "61555058297_.pic.jpg",
+      "filename" : "AppIcon.png",
       "scale" : "1x"
     }
   ],
