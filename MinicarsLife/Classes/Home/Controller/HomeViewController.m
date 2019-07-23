@@ -151,7 +151,7 @@
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
         _tableview.defaultNoDataText = @"";
-        _tableview.defaultNoDataImage = nil;
+        _tableview.defaultNoDataImage = kImage(@"qq");
         [_tableview registerClass:[HomeTableHeadCell class] forCellReuseIdentifier:@"HomeTableHead"];
         [_tableview registerClass:[NewsCell class] forCellReuseIdentifier:@"cell"];
     }
@@ -160,20 +160,13 @@
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     if (section == 0) {
-        if (self.CarModelsCars.count == 0)
-        {
-            return 0;
-        }
-        else
-        {
-            return 1;
-        }
+        return 1;
     }
     return self.NewsModels.count;
 }
@@ -339,7 +332,6 @@
             [weakSelf.tableview endRefreshHeader];
         }];
     }];
-
     [self.tableview beginRefreshing];
 }
 
