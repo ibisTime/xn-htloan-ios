@@ -31,22 +31,16 @@
         [self addSubview:self.moneylab];
         
         self.personlab = [UILabel labelWithFrame:CGRectMake(self.moneylab.xx, 150, 50, 20) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-       
         [self addSubview:self.personlab];
-        
     }
     return self;
 }
 -(void)setModel:(CarModel *)model{
     _model = model;
-    
     [self.logo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    
-    
     self.desribelab.frame = CGRectMake(0, self.logo.yy + 10, self.width, 0);
-    self.desribelab.text = [NSString stringWithFormat:@"%@  %@",model.name,model.slogan];
+    self.desribelab.text = [NSString stringWithFormat:@"%@",model.name];
     [self.desribelab sizeToFit];
-    
     self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[model.salePrice floatValue]/10000/1000];
     self.personlab.text = [NSString stringWithFormat:@"%@人关注",model.collectNumber];
 }

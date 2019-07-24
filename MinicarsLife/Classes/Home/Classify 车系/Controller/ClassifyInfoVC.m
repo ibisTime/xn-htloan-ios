@@ -39,7 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableview];
-    [self loaddata];
+//    if (self.models.cars.count > 0) {
+//
+//    }
+    self.carModel = [CarModel mj_objectArrayWithKeyValuesArray:self.models.cars];
+//    [self loaddata];
     [self car_versionLoadData];
     [self TopView];
     [self.tableview beginRefreshing];
@@ -73,6 +77,7 @@
     CarModel * model = [CarModel mj_objectWithKeyValues:self.carModel[indexPath.row]];
     [self getcarinfo:model.code];
 }
+
 -(void)loaddata{
     MJWeakSelf;
     TLPageDataHelper * help = [TLPageDataHelper new];
