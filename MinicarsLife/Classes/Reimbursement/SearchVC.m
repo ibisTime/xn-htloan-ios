@@ -10,6 +10,7 @@
 #import "HotBrandCell.h"
 #import "ClassifyListVC.h"
 #import "ClassifyInfoVC.h"
+#import "UICollectionViewLeftAlignedLayout.h"
 @interface SearchVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UISearchBarDelegate>
 @property (nonatomic,strong) UISearchBar * SearchBar;
 @property (nonatomic,strong) UICollectionView * collectionView;
@@ -79,7 +80,7 @@
     self.navigationItem.titleView = view;
     
     
-    UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
+    UICollectionViewLeftAlignedLayout * layout = [[UICollectionViewLeftAlignedLayout alloc]init];
     layout.minimumLineSpacing = 10;
     layout.minimumInteritemSpacing = 10;
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -88,11 +89,11 @@
     // 设置布局方向(滚动方向)
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 25, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#B9B9B9")];
+    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#B9B9B9")];
     label.text = @"热门车系";
     [self.view addSubview:label];
     
-    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, label.yy + 5, SCREEN_WIDTH, SCREEN_HEIGHT - 40 - 45 - kNavigationBarHeight - 50)collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - kNavigationBarHeight)collectionViewLayout:layout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
@@ -125,7 +126,11 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     HotBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
+    cell.titlelab.frame = CGRectMake(0, 0, 0, 40);
+    
     cell.titlelab.text = model.name;
+    [cell.titlelab sizeToFit];
+    cell.titlelab.frame = CGRectMake(0, 0, cell.titlelab.width + 20, 40);
     return cell;
 }
 
@@ -157,30 +162,42 @@
     if (searchBar.text.length == 0) {
         [TLProgressHUD showInfoWithStatus:@"请输入搜索内容"];
     }else{
-        TLNetworking * http = [[TLNetworking alloc]init];
-        http.code = @"630426";
-        http.parameters[@"status"] = @"1";
-        http.parameters[@"queryName"] = searchBar.text;
-        [http postWithSuccess:^(id responseObject) {
-            ClassifyListVC * vc = [ClassifyListVC new];
-            vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            vc.state = @"1";
-            [self.navigationController pushViewController:vc animated:YES];
-            
-        } failure:^(NSError *error) {
-            
-        }];
+        ClassifyListVC * vc = [ClassifyListVC new];
+//        vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        vc.state = @"1";
+        vc.queryName = searchBar.text;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+//        TLNetworking * http = [[TLNetworking alloc]init];
+//        http.code = @"630491";
+//        http.showView = self.view;
+//        http.parameters[@"status"] = @"1";
+//        http.parameters[@"queryName"] = searchBar.text;
+//        [http postWithSuccess:^(id responseObject) {
+//            ClassifyListVC * vc = [ClassifyListVC new];
+//            vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//            vc.state = @"1";
+//            [self.navigationController pushViewController:vc animated:YES];
+//
+//        } failure:^(NSError *error) {
+//
+//        }];
     }
 }
 
 
 -(void)gethotclassify{
     TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630426";
+    http.code = @"630491";
     http.parameters[@"status"] = @"1";
     http.parameters[@"location"] = @"0";
+    http.parameters[@"start"] = @"0";
+    http.parameters[@"limit"] = @"100";
+    http.parameters[@"type"] = @"2";
+    http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
-        self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
         [self.collectionView reloadData];
     } failure:^(NSError *error) {
         

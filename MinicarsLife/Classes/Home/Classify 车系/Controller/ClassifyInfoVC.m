@@ -43,10 +43,12 @@
 //
 //    }
     self.carModel = [CarModel mj_objectArrayWithKeyValuesArray:self.models.cars];
-//    [self loaddata];
-    [self car_versionLoadData];
-    [self TopView];
-    [self.tableview beginRefreshing];
+    [self loaddata];
+//    [self car_versionLoadData];
+    if (self.models) {
+        [self TopView];
+    }
+//    [self.tableview beginRefreshing];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -66,7 +68,7 @@
     }
 //    cell.carmodel = [CarModel mj_objectWithKeyValues: self.models.cars[indexPath.row]];
     cell.carmodel = [CarModel mj_objectWithKeyValues:self.carModel[indexPath.row]];
-    cell.dataArray = self.dataArray;
+//    cell.dataArray = self.dataArray;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -81,10 +83,18 @@
 -(void)loaddata{
     MJWeakSelf;
     TLPageDataHelper * help = [TLPageDataHelper new];
-    help.code = @"630425";
+    help.code = @"630492";
     help.parameters[@"seriesCode"] = self.models.code;
-    help.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-    help.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
+    help.parameters[@"type"] = @"2";
+    help.parameters[@"priceStart"] =[NSString stringWithFormat:@"%.0f",[self.priceStart floatValue]*1000];
+    help.parameters[@"priceEnd"] =[NSString stringWithFormat:@"%.0f",[self.priceEnd floatValue]*1000];
+    
+    help.parameters[@"levelList"] =_levelList;
+    help.parameters[@"versionList"] =_versionList;
+    help.parameters[@"structureList"] =_structureList;
+    help.parameters[@"displacementStart"] =_displacementStart;
+    help.parameters[@"displacementEnd"] =_displacementEnd;
+    help.parameters[@"queryName"] = self.queryName;
     help.tableView = self.tableview;
     [help modelClass:[CarModel class]];
     help.isCurrency = YES;
@@ -111,20 +121,20 @@
 
 
 
--(void)car_versionLoadData
-{
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"630036";
-    http.parameters[@"parentKey"] = @"car_version";
-    [http postWithSuccess:^(id responseObject) {
-        
-        self.dataArray = responseObject[@"data"];
-        [self.tableview reloadData];
-        
-    } failure:^(NSError *error) {
-        
-    }];
-}
+//-(void)car_versionLoadData
+//{
+//    TLNetworking *http = [TLNetworking new];
+//    http.code = @"630036";
+//    http.parameters[@"parentKey"] = @"car_version";
+//    [http postWithSuccess:^(id responseObject) {
+//
+//        self.dataArray = responseObject[@"data"];
+//        [self.tableview reloadData];
+//
+//    } failure:^(NSError *error) {
+//
+//    }];
+//}
 -(void)getcarinfo:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
@@ -203,7 +213,6 @@
     vc.imageArray = topImage;
     vc.title = self.title;
     [self.navigationController pushViewController:vc animated:YES];
-
 }
 
 

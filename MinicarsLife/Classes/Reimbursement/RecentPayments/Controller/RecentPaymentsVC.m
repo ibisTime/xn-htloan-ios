@@ -18,6 +18,21 @@
 #import "ClassifyListVC.h"
 #import "ClassifyInfoVC.h"
 @interface RecentPaymentsVC ()<RefreshDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+
+
+
+
+@property (nonatomic , strong)NSString *priceStart;
+@property (nonatomic , strong)NSString *priceEnd;
+@property (nonatomic , strong)NSArray *levelList;
+@property (nonatomic , strong)NSArray *versionList;
+@property (nonatomic , strong)NSArray *structureList;
+@property (nonatomic , strong)NSString *displacementStart;
+@property (nonatomic , strong)NSString *displacementEnd;
+
+
+
+
 @property (nonatomic , strong)NearFutureTableView *tableView;
 
 @property (nonatomic , strong)NSMutableArray <NearFutureModel *>*model;
@@ -104,7 +119,7 @@
     reset.frame = CGRectMake(15, 7.5, 85, 35);
     [reset addTarget:self action:@selector(resetClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:reset];
-    UIButton * resultBtn = [UIButton buttonWithTitle:@"有0款车型符合要求" titleColor:kWhiteColor backgroundColor:MainColor titleFont:14 cornerRadius:2];
+    UIButton * resultBtn = [UIButton buttonWithTitle:@"搜索车型" titleColor:kWhiteColor backgroundColor:MainColor titleFont:14 cornerRadius:2];
     resultBtn.frame = CGRectMake(reset.xx + 15, 7.5, SCREEN_WIDTH - reset.xx - 15  -15, 35);
     [resultBtn addTarget:self action:@selector(resultClick) forControlEvents:(UIControlEventTouchUpInside)];
     [view addSubview:resultBtn];
@@ -117,15 +132,22 @@
 //确认按钮a点击方法
 -(void)resultClick{
     
-    if (self.CarModels.count == 0) {
-        [TLProgressHUD showInfoWithStatus:@"无车型符合要求"];
-    }else
-    {
-        ClassifyListVC * vc = [ClassifyListVC new];
-        vc.CarModels = self.CarModels;
+//    if (self.CarModels.count == 0) {
+//        [TLProgressHUD showInfoWithStatus:@"无车型符合要求"];
+//    }else
+//    {
+        ClassifyInfoVC * vc = [ClassifyInfoVC new];
+        vc.title = @"车型";
+        vc.priceStart = self.priceStart;
+        vc.priceEnd = self.priceEnd;
+        vc.levelList = self.levelList;
+        vc.versionList = self.versionList;
+        vc.structureList = self.structureList;
+        vc.displacementStart = self.displacementStart;
+        vc.displacementEnd = self.displacementEnd;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
-    }
+//    }
     
 }
 
@@ -143,7 +165,7 @@
     self.Array5 = @[];
     self.ResultLab.text = @"您选择的条件会显示在这";
     self.CarModels = [NSMutableArray array];
-    [self.resultBtn setTitle:[NSString stringWithFormat:@"有0款车型符合要求"] forState:(UIControlStateNormal)];
+//    [self.resultBtn setTitle:[NSString stringWithFormat:@"搜索车型"] forState:(UIControlStateNormal)];
     [self.collectionView reloadData];
 }
 
@@ -379,52 +401,51 @@
 
 
 -(void)getData{
-    TLNetworking * http = [[TLNetworking alloc]init];
-    http.code = @"630426";
-    http.showView = self.view;
+//    TLNetworking * http = [[TLNetworking alloc]init];
+//    http.code = @"630426";
+//    http.showView = self.view;
     //根据价格
     if (self.Array1.count > 0) {
     int i = [self.Array1[0] intValue];
     switch (i) {
         case 0:{
-            http.parameters[@"priceStart"] =@"0" ;
-            http.parameters[@"priceEnd"] = @"350000000";
-
+            _priceStart =@"0" ;
+            _priceEnd = @"350000";
         }
             break;
         case 1:{
-            http.parameters[@"priceStart"] =@"350000000" ;
-            http.parameters[@"priceEnd"] = @"500000000";
+            _priceStart =@"350000";
+            _priceEnd = @"500000";
 
         }
             break;
         case 2:{
-            http.parameters[@"priceStart"] =@"500000000" ;
-            http.parameters[@"priceEnd"] = @"700000000";
+            _priceStart =@"500000";
+            _priceEnd = @"700000";
 
         }
             break;
         case 3:{
-            http.parameters[@"priceStart"] =@"700000000" ;
-            http.parameters[@"priceEnd"] = @"900000000";
+            _priceStart =@"700000";
+            _priceEnd = @"900000";
 
         }
             break;
         case 4:{
-            http.parameters[@"priceStart"] =@"900000000" ;
-            http.parameters[@"priceEnd"] = @"1100000000";
+            _priceStart =@"900000" ;
+            _priceEnd = @"1100000";
 
         }
             break;
         case 5:{
-            http.parameters[@"priceStart"] =@"1100000000" ;
-            http.parameters[@"priceEnd"] = @"1500000000";
+            _priceStart =@"1100000" ;
+            _priceEnd = @"1500000";
 
         }
             break;
         case 6:{
-            http.parameters[@"priceStart"] =@"1500000000" ;
-            http.parameters[@"priceEnd"] = @"";
+            _priceStart =@"1500000" ;
+            _priceEnd = @"";
 
         }
             break;
@@ -434,45 +455,45 @@
     }
     }
     //根据级别
-    http.parameters[@"levelList"] = self.Array2;
+    _levelList = self.Array2;
 
     //根据规格版本
-    http.parameters[@"versionList"] = self.Array3;
+    _versionList = self.Array3;
 
     //根据结构版本
-    http.parameters[@"structureList"] = self.Array4;
+    _structureList = self.Array4;
 
     //排量
     if (self.Array5.count > 0) {
         int d = [self.Array5[0] intValue];
         switch (d) {
             case 0:{
-                http.parameters[@"displacementStart"] = @"0" ;
-                http.parameters[@"displacementEnd"] = @"2.0";
+                _displacementStart = @"0" ;
+                _displacementEnd = @"2.0";
                 
             }
                 break;
             case 1:{
-                http.parameters[@"displacementStart"] =@"2.1" ;
-                http.parameters[@"displacementEnd"] = @"3.0";
+                _displacementStart =@"2.1" ;
+                _displacementEnd = @"3.0";
                 
             }
                 break;
             case 2:{
-                http.parameters[@"displacementStart"] =@"3.1" ;
-                http.parameters[@"displacementEnd"] = @"4.0";
+                _displacementStart =@"3.1" ;
+                _displacementEnd = @"4.0";
                 
             }
                 break;
             case 3:{
-                http.parameters[@"displacementStart"] =@"4.1" ;
-                http.parameters[@"displacementEnd"] = @"5.0";
+                _displacementStart =@"4.1" ;
+                _displacementEnd = @"5.0";
                 
             }
                 break;
             case 4:{
-                http.parameters[@"displacementStart"] =@"5.1" ;
-                http.parameters[@"displacementEnd"] = @"";
+                _displacementStart =@"5.1" ;
+                _displacementEnd = @"";
                 
             }
                 break;
@@ -480,16 +501,16 @@
                 break;
         }
     }
-    http.parameters[@"status"] = @"1";
-    [http postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        NSInteger num = 0;
-        for (int i = 0; i < self.CarModels.count; i ++) {
-            num = num + self.CarModels[i].cars.count;
-        }
-        [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",num] forState:(UIControlStateNormal)];
-    } failure:^(NSError *error) {
-    }];
+//    http.parameters[@"status"] = @"1";
+//    [http postWithSuccess:^(id responseObject) {
+//        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+//        NSInteger num = 0;
+//        for (int i = 0; i < self.CarModels.count; i ++) {
+//            num = num + self.CarModels[i].cars.count;
+//        }
+////        [self.resultBtn setTitle:[NSString stringWithFormat:@"有%ld款车型符合要求",num] forState:(UIControlStateNormal)];
+//    } failure:^(NSError *error) {
+//    }];
 }
 
 

@@ -42,18 +42,18 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self navigationTransparentClearColor];
+//    [self navigationTransparentClearColor];
 
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self navigationSetDefault];
+//    [self navigationSetDefault];
     [self.view endEditing:YES];
 }
 
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 70) style:UITableViewStyleGrouped];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 70 - kNavigationBarHeight) style:UITableViewStyleGrouped];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
@@ -141,7 +141,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self bannerLoadData];
-    
+    self.title = self.CarModel.name;
     [self loadData];
     [self car_versionLoadData];
     [self setHistory];
@@ -162,7 +162,7 @@
     [self getCarDeploy];
     
     
-    self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70, SCREEN_WIDTH, 70)];
+    self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70-kNavigationBarHeight, SCREEN_WIDTH, 70)];
     UIButton * callnow = [UIButton buttonWithTitle:@"打电话" titleColor:kWhiteColor backgroundColor:kHexColor(@"#FF9402") titleFont:16 cornerRadius:2];
     callnow.tag = 1;
     [callnow addTarget:self action:@selector(ClickBottomBtn:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -205,6 +205,7 @@
     if ([self.CarModel.isCollect isEqualToString:@"0"]) {
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"630460";
+        http.showView = self.view;
         http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
         http.parameters[@"toCode"] = self.CarModel.code;
         http.parameters[@"toType"] = @"0";
@@ -221,6 +222,7 @@
     }else{
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"630462";
+        http.showView = self.view;
         http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
         http.parameters[@"carCode"] = self.CarModel.code;
         [http postWithSuccess:^(id responseObject) {
@@ -467,6 +469,7 @@
     http.code = @"630448";
     http.parameters[@"carCode"] = self.CarModel.code;
     http.parameters[@"isPic"] = @"1";
+    http.showView = self.view;
     [http postWithSuccess:^(id responseObject) {
         self.picArray = responseObject[@"data"];
         
@@ -478,6 +481,7 @@
     
     TLNetworking * http1 = [[TLNetworking alloc]init];
     http1.code = @"630448";
+    http1.showView = self.view;
     http1.parameters[@"carCode"] = self.CarModel.code;
     http1.parameters[@"isPic"] = @"0";
     [http1 postWithSuccess:^(id responseObject) {
@@ -487,12 +491,10 @@
     } failure:^(NSError *error) {
         
     }];
-    
-    
 }
+
 - (void)loadData
 {
-    
     TLNetworking *http = [TLNetworking new];
     http.code = TheCalculatorURL;
     http.showView = self.view;
@@ -516,6 +518,7 @@
     
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630460";
+    http.showView = self.view;
     http.parameters[@"creater"] = [USERDEFAULTS objectForKey:USER_ID];
     http.parameters[@"toCode"] = self.CarModel.code;
     http.parameters[@"toType"] = @"0";
@@ -530,6 +533,7 @@
 -(void)reloaddata{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
+    http.showView = self.view;
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     http.parameters[@"code"] = self.CarModel.code;
     [http postWithSuccess:^(id responseObject) {

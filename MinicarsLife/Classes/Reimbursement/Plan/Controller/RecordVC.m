@@ -91,7 +91,7 @@
     BrandCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.titlelab.text = self.HotCarBrands[indexPath.row].name;
     cell.logo.contentMode =UIViewContentModeScaleAspectFill;
-    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
+    [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]]];
     
     return cell;
 }
@@ -179,82 +179,112 @@
     
     
     
-    TLPageDataHelper * http1 = [TLPageDataHelper new];
-    http1.code = @"630405";
+    TLNetworking * http1 = [TLNetworking new];
+    http1.code = @"630406";
     http1.parameters[@"status"] = @"1";
-    [http1 modelClass:[CarModel class]];
-    http1.tableView = self.tableview;
-    http1.isCurrency = YES;
-        [self.tableview addRefreshAction:^{
-            [http1 refresh:^(NSMutableArray *objs, BOOL stillHave) {
-                NSArray<CarModel *> *array = objs;
-                weakSelf.allArray = [NSMutableArray array];
-                for(int i=0;i<26;i++)
-                {
-                    NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
-                    NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
-                    for (int j = 0; j < array.count; j ++) {
-                        if ([str isEqualToString:array[j].letter]) {
-                            [rowArray addObject:array[j]];
-                        }
-                    }
-                    if (rowArray.count > 0) {
-                        [weakSelf.allArray addObject:rowArray];
-                    }
-                    
-                }
-                
-                NSMutableArray *indexArray = [NSMutableArray array];
-                for (int i = 0; i < weakSelf.allArray.count; i ++) {
-                    NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];
-                    [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
-                }
-                weakSelf.tableview.indexArray = indexArray;
-                weakSelf.tableview.normalArray = weakSelf.allArray;
-                [weakSelf.tableview reloadData];
-                [weakSelf.tableview endRefreshHeader];
-        } failure:^(NSError *error) {
-            [weakSelf.tableview endRefreshHeader];
-        }];
-        }];
-    [self.tableview beginRefreshing];
-
-    [self.tableview addLoadMoreAction:^{
-        [http1 loadMore:^(NSMutableArray *objs, BOOL stillHave) {
-            NSArray<CarModel *> *array = objs;
-            weakSelf.allArray = [NSMutableArray array];
-            for(int i=0;i<26;i++)
-            {
-                NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
-                NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
-                for (int j = 0; j < array.count; j ++) {
-                    
-                    if ([str isEqualToString:array[j].letter]) {
-                        [rowArray addObject:array[j]];
-                    }
-                }
-                
-                if (rowArray.count > 0) {
-
-//                    [allArray addObject:rowArray];
-       
-                    [weakSelf.allArray addObject:rowArray];
+    [http1 postWithSuccess:^(id responseObject) {
+        NSArray<CarModel *> *array = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        weakSelf.allArray = [NSMutableArray array];
+        for(int i=0;i<26;i++)
+        {
+            NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+            NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
+            for (int j = 0; j < array.count; j ++) {
+                if ([str isEqualToString:array[j].letter]) {
+                    [rowArray addObject:array[j]];
                 }
             }
-            NSMutableArray *indexArray = [NSMutableArray array];
-            for (int i = 0; i < weakSelf.allArray.count; i ++) {
-                NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];
-                [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
+            if (rowArray.count > 0) {
+                [weakSelf.allArray addObject:rowArray];
             }
-            weakSelf.tableview.indexArray = indexArray;
-            weakSelf.tableview.normalArray = weakSelf.allArray;
-            [weakSelf.tableview reloadData];
-            [weakSelf.tableview endRefreshHeader];
-        } failure:^(NSError *error) {
-            [weakSelf.tableview endRefreshFooter];
-        }];
+            
+        }
+        
+        NSMutableArray *indexArray = [NSMutableArray array];
+        for (int i = 0; i < weakSelf.allArray.count; i ++) {
+            NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];
+            [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
+        }
+        weakSelf.tableview.indexArray = indexArray;
+        weakSelf.tableview.normalArray = weakSelf.allArray;
+        [weakSelf.tableview reloadData];
+        [weakSelf.tableview endRefreshHeader];
+    } failure:^(NSError *error) {
+        
     }];
-    
+//    [http1 modelClass:[CarModel class]];
+//    http1.tableView = self.tableview;
+//    http1.isCurrency = YES;
+//        [self.tableview addRefreshAction:^{
+//            [http1 refresh:^(NSMutableArray *objs, BOOL stillHave) {
+//                NSArray<CarModel *> *array = objs;
+//                weakSelf.allArray = [NSMutableArray array];
+//                for(int i=0;i<26;i++)
+//                {
+//                    NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+//                    NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
+//                    for (int j = 0; j < array.count; j ++) {
+//                        if ([str isEqualToString:array[j].letter]) {
+//                            [rowArray addObject:array[j]];
+//                        }
+//                    }
+//                    if (rowArray.count > 0) {
+//                        [weakSelf.allArray addObject:rowArray];
+//                    }
+//
+//                }
+//
+//                NSMutableArray *indexArray = [NSMutableArray array];
+//                for (int i = 0; i < weakSelf.allArray.count; i ++) {
+//                    NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];
+//                    [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
+//                }
+//                weakSelf.tableview.indexArray = indexArray;
+//                weakSelf.tableview.normalArray = weakSelf.allArray;
+//                [weakSelf.tableview reloadData];
+//                [weakSelf.tableview endRefreshHeader];
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshHeader];
+//        }];
+//        }];
+//    [self.tableview beginRefreshing];
+
+//    [self.tableview addLoadMoreAction:^{
+//        [http1 loadMore:^(NSMutableArray *objs, BOOL stillHave) {
+//            NSArray<CarModel *> *array = objs;
+//            weakSelf.allArray = [NSMutableArray array];
+//            for(int i=0;i<26;i++)
+//            {
+//                NSString *str = [NSString stringWithFormat:@"%c",'A'+ i];
+//                NSMutableArray<CarModel *> *rowArray = [NSMutableArray array];
+//                for (int j = 0; j < array.count; j ++) {
+//
+//                    if ([str isEqualToString:array[j].letter]) {
+//                        [rowArray addObject:array[j]];
+//                    }
+//                }
+//
+//                if (rowArray.count > 0) {
+//
+////                    [allArray addObject:rowArray];
+//
+//                    [weakSelf.allArray addObject:rowArray];
+//                }
+//            }
+//            NSMutableArray *indexArray = [NSMutableArray array];
+//            for (int i = 0; i < weakSelf.allArray.count; i ++) {
+//                NSMutableArray<CarModel *> * model = [CarModel mj_objectArrayWithKeyValuesArray:weakSelf.allArray[i]];
+//                [indexArray addObject:[NSString stringWithFormat:@"%@",model[0].letter]];
+//            }
+//            weakSelf.tableview.indexArray = indexArray;
+//            weakSelf.tableview.normalArray = weakSelf.allArray;
+//            [weakSelf.tableview reloadData];
+//            [weakSelf.tableview endRefreshHeader];
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshFooter];
+//        }];
+//    }];
+//
 }
 
 

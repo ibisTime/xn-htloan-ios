@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSString *priceEnd;
 @property (nonatomic,strong) NSString *isMore;
 @property (nonatomic , copy)NSString *state;
+@property (nonatomic , copy)NSString *queryName;
 @end
 
 NS_ASSUME_NONNULL_END

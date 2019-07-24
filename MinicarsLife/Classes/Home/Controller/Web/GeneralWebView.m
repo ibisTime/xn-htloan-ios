@@ -46,6 +46,7 @@
     
     self.webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 2, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 2)];
     self.webView.delegate = self;
+    self.webView.backgroundColor = kWhiteColor;
     [self.view addSubview:self.webView];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_URL]]];

@@ -14,6 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)CarModel *models;
 @property (nonatomic,strong) NSString *priceStart;
 @property (nonatomic,strong) NSString *priceEnd;
+@property (nonatomic , strong)NSArray *levelList;
+@property (nonatomic , strong)NSArray *versionList;
+@property (nonatomic , strong)NSArray *structureList;
+@property (nonatomic , strong)NSString *displacementStart;
+@property (nonatomic , strong)NSString *displacementEnd;
+@property (nonatomic , strong)NSString *queryName;
 //@property (nonatomic,strong) CarModel * seriesCode;
 
 

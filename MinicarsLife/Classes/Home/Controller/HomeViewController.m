@@ -69,7 +69,7 @@
         numberToRound1 = (headview.CarClassifyModels.count)/3.0;
         result1 = (int)ceilf(numberToRound1);
         
-        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 400.00/750.00 * SCREEN_WIDTH + 20 * result + 100 * result1 + 25);
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * SCREEN_WIDTH + 30 * result + 90 * result1 + 30 + 10);
         headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
     }
     [self.tableview reloadData_tl];
@@ -249,6 +249,7 @@
 -(void)getcarinfo:(NSString *)code{
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
+    http.showView = self.view;
     http.parameters[@"code"] = code;
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
@@ -257,13 +258,14 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     } failure:^(NSError *error) {
-        
+
     }];
 }
 
+
 -(void)ClickCollectionClassify:(NSIndexPath *)index{
     if (index.section == 0) {
-        ClassifyListVC * vc = [[ClassifyListVC alloc]init];
+        ClassifyInfoVC * vc = [[ClassifyInfoVC alloc]init];
         switch (index.row) {
             case 0:{
                 vc.priceStart = @"300000";
@@ -283,7 +285,7 @@
             case 3:{
                 vc.priceStart = @"";
                 vc.priceEnd = @"";
-                vc.isMore = @"1";
+//                vc.isMore = @"1";
             }
                 break;
             default:
@@ -312,7 +314,7 @@
     }
 }
 
-#pragma mark - 获取数据
+#pragma mark - 获取数据   资讯
 -(void)getnewsadta{
     MinicarsLifeWeakSelf;
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
@@ -340,12 +342,15 @@
     //热门品牌
     TLNetworking * http = [[TLNetworking alloc]init];
     http.showView = self.view;
-    http.code = @"630406";
+    http.code = @"630490";
     http.parameters[@"location"] = @"0";
     http.parameters[@"status"] = @"1";
+    http.parameters[@"start"] = @"0";
+    http.parameters[@"limit"] = @"100";
+    http.parameters[@"type"] = @"2";
     http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
-        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
         [self modifyFrame];
     } failure:^(NSError *error) {
         
@@ -354,12 +359,15 @@
     //列表查询车系
     TLNetworking * http1 = [[TLNetworking alloc]init];
     http1.showView = self.view;
-    http1.code = @"630426";
+    http1.code = @"630491";
     http1.parameters[@"location"] = @"0";
     http1.parameters[@"status"] = @"1";
+    http1.parameters[@"start"] = @"0";
+    http1.parameters[@"limit"] = @"100";
+    http1.parameters[@"type"] = @"2";
     http1.parameters[@"orderDir"] = @"asc";
     [http1 postWithSuccess:^(id responseObject) {
-        headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+        headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
         [self modifyFrame];
     } failure:^(NSError *error) {
         
@@ -370,20 +378,15 @@
     //热门车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
-    http2.code = @"630426";
+    http2.code = @"630492";
     http2.parameters[@"location"] = @"0";
     http2.parameters[@"status"] = @"1";
+    http2.parameters[@"start"] = @"0";
+    http2.parameters[@"limit"] = @"100";
+    http2.parameters[@"type"] = @"2";
     http2.parameters[@"orderDir"] = @"asc";
     [http2 postWithSuccess:^(id responseObject) {
-        self.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-        self.CarModelsCars = [NSMutableArray array];
-        for (int j = 0; j < self.CarModels.count; j ++) {
-            for (int i = 0; i < self.CarModels[j].cars.count; i++) {
-                
-                [self.CarModelsCars addObject:self.CarModels[j].cars[i]];
-            }
-            [self.tableview reloadData_tl];
-        }
+        self.CarModelsCars = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
     } failure:^(NSError *error) {
         
     }];

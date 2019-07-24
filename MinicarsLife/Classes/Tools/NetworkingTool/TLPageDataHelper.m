@@ -29,7 +29,7 @@
     if (self = [super init]) {
         
         self.start = 1;
-        self.limit = 20;
+        self.limit = 10;
         self.refreshed = NO;
         self.objs = [[NSMutableArray alloc] init];
         self.parameters = [NSMutableDictionary dictionary];

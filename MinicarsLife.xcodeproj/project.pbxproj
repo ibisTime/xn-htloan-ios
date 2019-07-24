@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */; };
 		1F2536B122BCC65700E67433 /* 1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2536B022BCC65600E67433 /* 1080.png */; };
 		1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1C229B893A000F33F0 /* GuideView.m */; };
 		1FA54D5F22393A4F0077FE54 /* LoadSDK.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1FA54CE322393A4F0077FE54 /* LoadSDK.sh */; };
@@ -491,6 +492,8 @@
 
 /* Begin PBXFileReference section */
 		12CD421EFB5FADF39C84C4FF /* Pods-MinicarsLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinicarsLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MinicarsLife/Pods-MinicarsLife.debug.xcconfig"; sourceTree = "<group>"; };
+		1F1C96AB22E86E57006B629C /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
+		1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		1F2536B022BCC65600E67433 /* 1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080.png; sourceTree = "<group>"; };
 		1F8E0F1C229B893A000F33F0 /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
 		1F8E0F1D229B893A000F33F0 /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
@@ -1383,6 +1386,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F1C96AA22E8567D006B629C /* 废弃 */ = {
+			isa = PBXGroup;
+			children = (
+				7AA906C120EF3962004F2B12 /* GoodsList商品列表 */,
+				7AA906C820EF3CED004F2B12 /* SubmitOrders提交订单 */,
+				7A8A5CC520E6003A002D9A48 /* ExhibitionCenter展销中心 */,
+				7A8A5CCF20E609D4002D9A48 /* VehicleDetails车辆详情 */,
+				7A8A5CD920E6183A002D9A48 /* GoodsDetails商品详情 */,
+			);
+			path = "废弃";
+			sourceTree = "<group>";
+		};
 		1FA54CE222393A4F0077FE54 /* ILiveSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1669,9 +1684,9 @@
 		363B612D223BA12B00585061 /* Classify 车系 */ = {
 			isa = PBXGroup;
 			children = (
+				363B613A223BAA2F00585061 /* Controller */,
 				3698BAEE2244829100EFB576 /* Model */,
 				363B613C223BAA5100585061 /* View */,
-				363B613A223BAA2F00585061 /* Controller */,
 			);
 			path = "Classify 车系";
 			sourceTree = "<group>";
@@ -1688,8 +1703,6 @@
 		363B6135223BA42F00585061 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				363B6132223BA1FF00585061 /* BrandListVC.h */,
-				363B6133223BA1FF00585061 /* BrandListVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1988,6 +2001,8 @@
 			children = (
 				7A8A5CAC20E52B4E002D9A48 /* RecordVC.h */,
 				7A8A5CAD20E52B4E002D9A48 /* RecordVC.m */,
+				363B6132223BA1FF00585061 /* BrandListVC.h */,
+				363B6133223BA1FF00585061 /* BrandListVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2932,15 +2947,10 @@
 		7A8A5B0120E35A06002D9A48 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F1C96AA22E8567D006B629C /* 废弃 */,
 				7A8A5B0220E35A06002D9A48 /* Controller */,
-				7AA906C820EF3CED004F2B12 /* SubmitOrders提交订单 */,
 				363B6131223BA1E000585061 /* Brand 品牌 */,
 				363B612D223BA12B00585061 /* Classify 车系 */,
-				7AA906C120EF3962004F2B12 /* GoodsList商品列表 */,
-				7A8A5CD920E6183A002D9A48 /* GoodsDetails商品详情 */,
-				7A8A5CCF20E609D4002D9A48 /* VehicleDetails车辆详情 */,
-				7A8A5CC520E6003A002D9A48 /* ExhibitionCenter展销中心 */,
-				7A8A5CB520E5CC7D002D9A48 /* CarLoanCalculator车贷计算器 */,
 				7A8A5B0320E35A06002D9A48 /* Model */,
 				7A8A5B0420E35A06002D9A48 /* View */,
 			);
@@ -3110,6 +3120,8 @@
 				7A8A5B1B20E35B52002D9A48 /* ReimbursementViewController.m */,
 				367EF908223F8DAC00C9921D /* SearchVC.h */,
 				367EF909223F8DAC00C9921D /* SearchVC.m */,
+				1F1C96AB22E86E57006B629C /* UICollectionViewLeftAlignedLayout.h */,
+				1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */,
 				367EF90B223F91B400C9921D /* HotBrandCell.h */,
 				367EF90C223F91B400C9921D /* HotBrandCell.m */,
 			);
@@ -3456,6 +3468,7 @@
 		7A8A5CD920E6183A002D9A48 /* GoodsDetails商品详情 */ = {
 			isa = PBXGroup;
 			children = (
+				7A8A5CB520E5CC7D002D9A48 /* CarLoanCalculator车贷计算器 */,
 				7A8A5CDC20E6185E002D9A48 /* Controller */,
 				7A8A5CDB20E6185C002D9A48 /* Model */,
 				7A8A5CDA20E6185A002D9A48 /* View */,
@@ -4267,6 +4280,7 @@
 				7A8A5CA620E4E583002D9A48 /* HomeInstallmentGoodsCell.m in Sources */,
 				B8B4DB7821747E4900BC3DE2 /* MobleInfomationVC.m in Sources */,
 				363B612C223B8F8500585061 /* NewsInfoVC.m in Sources */,
+				1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				7A3CBE0020F4AE3100D795E5 /* ShareView.m in Sources */,
 				36E3A38A223B3CD100B26F4F /* MessageInfoVC.m in Sources */,
 				7A22CDAB20ECC41F0010059D /* AccountSettingsVC.m in Sources */,

@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * createDatetime;
 @property (nonatomic,copy) NSDictionary * car;
 @property (nonatomic,copy) NSString * Description;
+@property (nonatomic,copy) NSString * configName;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -58,7 +58,7 @@
     
     [view addSubview:self.timelab];
     
-    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight  )];
+    self.webview = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight + SCREEN_HEIGHT  )];
     self.webview.scrollView.contentInset = UIEdgeInsetsMake(125, 0, 0, 0);
     self.webview.backgroundColor = kWhiteColor;
     [self.webview.scrollView addSubview:view];
@@ -115,6 +115,7 @@
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    self.webview.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
     [self.webview stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.background='#FFFFFF'"];
 }
 

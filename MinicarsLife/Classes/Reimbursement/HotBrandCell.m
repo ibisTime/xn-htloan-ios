@@ -14,8 +14,9 @@
     if (self) {
         self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         [self addSubview:self.titlelab];
-        self.layer.borderColor = kLineColor.CGColor;
-        self.layer.borderWidth = 1;
+//        self.layer.borderColor = kLineColor.CGColor;
+//        self.layer.borderWidth = 1;
+        kViewBorderRadius(self.titlelab, 2, 1, kLineColor);
     }
     return self;
 }

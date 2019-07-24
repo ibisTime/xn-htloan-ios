@@ -23,21 +23,20 @@
     }
     return _tableview;
 }
+
 -(void)GetClassifyByPrice{
     
-    if (self.CarModels.count > 0 || [_state isEqualToString:@"1"]) {
-        return;
-    }
     MJWeakSelf;
-    
     TLPageDataHelper * http2 = [TLPageDataHelper new];
     http2.showView = weakSelf.view;
-    http2.code = @"630432";
-    http2.parameters[@"priceStart"] =@([self.priceStart floatValue]*1000);
-    http2.parameters[@"priceEnd"] =@([self.priceEnd floatValue]*1000);
+    http2.code = @"630491";
+    http2.parameters[@"priceStart"] =[NSString stringWithFormat:@"%.0f",[self.priceStart floatValue]*1000];
+    http2.parameters[@"priceEnd"] =[NSString stringWithFormat:@"%.0f",[self.priceEnd floatValue]*1000];
     http2.parameters[@"brandCode"] = weakSelf.brandcode;
+    http2.parameters[@"name"] = self.queryName;
     http2.parameters[@"isMore"] = weakSelf.isMore;
     http2.parameters[@"status"] = @"1";
+    http2.parameters[@"type"] = @"2";
     http2.tableView = self.tableview;
     [http2 modelClass:[CarModel class]];
     http2.isCurrency = YES;
@@ -69,10 +68,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self GetClassifyByPrice];
+
     
     self.title = @"车系列表";
-    [self getClassifyListData];
+//    车系
     [self GetClassifyByPrice];
     [self.view addSubview:self.tableview];
 }
@@ -104,6 +103,7 @@
     vc.models = self.CarModels[indexPath.row];
     vc.priceEnd = self.priceEnd;
     vc.priceStart = self.priceStart;
+    vc.queryName = self.queryName;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

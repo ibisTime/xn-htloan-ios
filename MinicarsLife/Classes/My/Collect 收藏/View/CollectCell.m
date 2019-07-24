@@ -151,11 +151,7 @@
         default:
             break;
     }
-    self.contentlab.text = @"";
-    NSMutableArray <DeployModel *> * DeployModels =[DeployModel mj_objectArrayWithKeyValuesArray:car.caonfigList];
-    for (int i = 0; i < DeployModels.count; i++) {
-        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,DeployModels[i].config[@"name"]];
-    }
+    self.contentlab.text = car.configName;
 }
 
 
