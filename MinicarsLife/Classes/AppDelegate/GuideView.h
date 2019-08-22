@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuideView : UIViewController
+@interface GuideView : BaseViewController
 
 /**
  引导页图片数组（gif图 需要添加后缀名：icon.gif）

@@ -10,8 +10,20 @@
 #import "BaseTabBarViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "GuideView.h"
-@interface AppDelegate ()
+#import "ViewController.h"
+#import "XGPush.h"
+#import "NSObject+Tool.h"
 
+#import "NewsInfoVC.h"
+#import "CarInfoVC.h"
+#import "MessageInfoVC.h"
+#import "MessageModel.h"
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+#import <UserNotifications/UserNotifications.h>
+#endif
+
+@interface AppDelegate ()<XGPushDelegate>
+@property (nonatomic , assign)BOOL isLaunchedByNotification;
 @end
 
 @implementation AppDelegate
@@ -25,23 +37,182 @@
     //当前版本号
     
     NSString *currentVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
-    
     NSLog(@"当前版本号%@",currentVersion);
     
-    
-
     
     // 需要下载腾讯云实施音视频SDK 方能正常跑通项目 ILiveSDK 
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
-//    BaseTabBarViewController *TabBarVC = [[BaseTabBarViewController alloc]init];
-//    self.window.rootViewController = TabBarVC;
-    GuideView *guideView = [[GuideView alloc]init];
-    self.window.rootViewController = guideView;
-    [self.window makeKeyAndVisible];
+
     
+    
+//    信鸽推送
+    [[XGPush defaultManager] setEnableDebug:YES];
+    [[XGPush defaultManager] startXGWithAppID:2200341534 appKey:@"I4A92YVD11HI"  delegate:self];
+    //角标设置为0
+    [[XGPush defaultManager] setXgApplicationBadgeNumber:0];
+    //为了更好的了解每一条推送消息的运营效果，需要将用户对消息的行为上报
+    [[XGPush defaultManager] reportXGNotificationInfo:launchOptions];
+
+    
+    if (launchOptions) {
+        self.isLaunchedByNotification = YES;
+//        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        [self receiveRemoteNotificationWithUserInfo:pushNotificationKey];
+        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        [self performSelector:@selector(receiveRemoteNotificationWithUserInfo:) withObject:pushNotificationKey afterDelay:1.0];
+        BaseTabBarViewController *TabBarVC = [[BaseTabBarViewController alloc]init];
+        self.window.rootViewController = TabBarVC;
+    }else{
+        self.isLaunchedByNotification = NO;
+        GuideView *guideView = [[GuideView alloc]init];
+        self.window.rootViewController = guideView;
+        [self.window makeKeyAndVisible];
+    }
     return YES;
+}
+
+
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    //将来需要将此Token上传给后台服务器
+    NSString *XGPushtokenStr = [[XGPushTokenManager defaultTokenManager] deviceTokenString];
+    NSLog(@"XGPushtokenStr===>%@",XGPushtokenStr);
+    
+}
+
+
+
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    NSLog(@"%s======》",__func__);
+    
+    NSString *zero =[[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] objectForKey:@"body"];
+    if (application.applicationState == UIApplicationStateActive) {
+//        [self showAlertViewWithTitle:@"新消息提示" Message:zero ConfirmTitle:@"确定" CancelTitle:nil];
+    }
+//    [self receiveRemoteNotificationWithUserInfo:userInfo];
+
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"%s",__func__);
+    
+    NSLog(@"[XGDemo] receive slient Notification");
+    NSLog(@"[XGDemo] userinfo %@", userInfo);
+    
+    if (self.isLaunchedByNotification == NO) {
+        if (application.applicationState == UIApplicationStateActive) {
+            //iOS10之前，在前台时用自定义AlertView展示消息
+            [self receiveRemoteNotificationWithUserInfo:userInfo];
+        }else {
+            [self receiveRemoteNotificationWithUserInfo:userInfo];
+        }
+    }else{
+        self.isLaunchedByNotification = NO;
+    }
+    
+    //iOS 9.x 及以前，需要在 UIApplicationDelegate 的回调方法(如下)中调用上报数据的接口
+    [[XGPush defaultManager] reportXGNotificationInfo:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+
+    
+}
+
+
+
+
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    [[XGPush defaultManager] reportXGNotificationInfo:notification.request.content.userInfo];
+    //可设置是否在应用内弹出通知
+    completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
+}
+
+
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+- (void)xgPushUserNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    NSLog(@"%s",__func__);
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    NSLog(@"Userinfo %@",response.notification.request.content.userInfo);
+    //处理接收到的消息
+
+    [self receiveRemoteNotificationWithUserInfo:response.notification.request.content.userInfo];
+    [[XGPush defaultManager] reportXGNotificationResponse:response];
+    completionHandler();
+}
+
+-(void)receiveRemoteNotificationWithUserInfo:(NSDictionary *)dic
+{
+
+    UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *nav = tbc.viewControllers[tbc.selectedIndex];
+
+    if ([dic[@"custom"][@"key1"] isEqualToString:@"1"]) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"805307";
+//        http.showView = self.view;
+        http.parameters[@"code"] = dic[@"custom"][@"key2"];
+        http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+        [http postWithSuccess:^(id responseObject) {
+            MessageInfoVC * vc = [MessageInfoVC new];
+            vc.model = [MessageModel mj_objectWithKeyValues:responseObject[@"data"]];
+            vc.hidesBottomBarWhenPushed = YES;
+            
+            [nav pushViewController:vc animated:YES];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+    if ([dic[@"custom"][@"key1"] isEqualToString:@"2"]) {
+        NewsInfoVC *vc = [NewsInfoVC new];
+        vc.code = dic[@"custom"][@"key2"];
+        vc.hidesBottomBarWhenPushed = YES;
+        [nav pushViewController:vc animated:YES];
+    }
+    if ([dic[@"custom"][@"key1"] isEqualToString:@"3"]) {
+        
+    }
+    if ([dic[@"custom"][@"key1"] isEqualToString:@"4"]) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630427";
+//        http.showView = self.view;
+        http.parameters[@"code"] = dic[@"custom"][@"key2"];
+        http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+        [http postWithSuccess:^(id responseObject) {
+            CarInfoVC * vc = [CarInfoVC new];
+            vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
+            vc.hidesBottomBarWhenPushed = YES;
+            [nav pushViewController:vc animated:YES];
+        } failure:^(NSError *error) {
+            
+        }];
+    }
+
+}
+
+
+//推送token传给服务器
+- (void)xgPushDidRegisteredDeviceToken:(nullable NSString *)deviceToken error:(nullable NSError *)error;
+{
+    if ([USERXX user].isLogin == YES) {
+        if (![[USERDEFAULTS objectForKey:@"deviceToken"] isEqualToString:deviceToken]) {
+            TLNetworking * http = [[TLNetworking alloc]init];
+            http.code = @"805085";
+            http.parameters[@"deviceToken"] = deviceToken;
+            http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+            [http postWithSuccess:^(id responseObject) {
+                [USERDEFAULTS setObject:deviceToken forKey:@"deviceToken"];
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    }
 }
 
 

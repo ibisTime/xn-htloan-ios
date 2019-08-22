@@ -27,7 +27,7 @@
         
         UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 110, 82.5)];
         [self addSubview:img];
-        
+        img.contentMode = UIViewContentModeScaleAspectFit;
         self.image = img;
         
         
@@ -53,22 +53,21 @@
         [self addSubview:money];
         self.moneylab = money;
         
-        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
-        self.view = view;
-        [self addSubview:view];
+//        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+//        self.view = view;
+//        [self addSubview:view];
         
         
-        UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-        content.numberOfLines = 2;
-        
-        view.backgroundColor = kHexColor(@"#F5F5F5");
-        [view addSubview:content];
+        UILabel * content = [UILabel labelWithFrame:CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        content.numberOfLines = 0;
+        [self addSubview:content];
         
         
         self.contentlab = content;
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 175, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kBackgroundColor;
+        self.v1 = v1;
         [self addSubview:v1];
     }
     return self;
@@ -84,7 +83,7 @@
     [self.titlelab sizeToFit];
     
     self.timelab.text = [carmodel.updateDatetime convertToDetailDateWithoutHour];
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万", [carmodel.salePrice floatValue]/10000/1000];
+    self.moneylab.text = [NSString stringWithFormat:@"%@", [USERXX AddSymbols:[carmodel.salePrice floatValue]/1000]];
 
     
     self.contentlab.text = @"";
@@ -115,6 +114,10 @@
             break;
     }
     self.contentlab.text = carmodel.configName;
+    self.contentlab.frame = CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0);
+    [self.contentlab sizeToFit];
+    self.v1.frame = CGRectMake(0, self.contentlab.yy + 10, SCREEN_WIDTH, 10);
+    
 }
 
 -(void)setDataArray:(NSArray *)dataArray

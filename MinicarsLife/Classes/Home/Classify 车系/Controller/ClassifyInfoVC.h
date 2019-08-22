@@ -20,8 +20,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong)NSString *displacementStart;
 @property (nonatomic , strong)NSString *displacementEnd;
 @property (nonatomic , strong)NSString *queryName;
-//@property (nonatomic,strong) CarModel * seriesCode;
 
+@property (nonatomic,strong) NSString * brandCode;
+@property (nonatomic,strong) NSString * carDealerCode;
 
 
 @end

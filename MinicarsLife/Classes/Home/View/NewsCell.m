@@ -33,6 +33,9 @@
         self.photo = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 120 - 15, 10, 120, 85)];
 //        self.photo.image = kImage(@"2");
         kViewRadius(self.photo, 2);
+//        self.photo.contentMode = UIViewContentModeScaleAspectFit;
+//        self.photo.autoresizesSubviews = YES;
+//        self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.photo];
         
         self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
@@ -63,9 +66,9 @@
 
 -(void)setModel:(NewsModel *)model{
     [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    self.photo.contentMode =UIViewContentModeScaleAspectFill;
+    
     //超出容器范围的切除掉
-    self.photo.clipsToBounds = YES;
+//    self.photo.clipsToBounds = YES;
     self.titlelab.text = model.title;
     self.titlelab.frame = CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0);
     [self.titlelab sizeToFit];

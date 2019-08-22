@@ -41,7 +41,7 @@
         tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
         _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor=BackColor;
+        _tableView.backgroundColor=kBackgroundColor;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -97,10 +97,10 @@
                 {
                     cell.headImage.image = HGImage(@"myheadimage");
                 }
-            }else
+            }else if (indexPath.row == 1)
             {
                 
-                cell.nameLabel.text = @"昵称";
+                cell.nameLabel.text = @"个人信息";
                 cell.contactLabel.text = [USERDEFAULTS objectForKey:NICKNAME];
             }
         }
@@ -327,10 +327,11 @@
     MinicarsLifeWeakSelf;
     TLNetworking *http = [TLNetworking new];
     http.code = DetailsOfTheUserDataURL;
-    http.showView = self.view;
+//    http.showView = self.view;
     http.isShowMsg = YES;
     http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
+        [USERDEFAULTS setObject:responseObject[@"data"] forKey:@"USERXX"];
         if ([USERXX isBlankString:responseObject[@"data"][@"nickname"]] == YES) {
             [USERDEFAULTS setObject:@"" forKey:NICKNAME];
         }else

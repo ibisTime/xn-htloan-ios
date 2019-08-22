@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
-
+#import "NewsInfoVC.h"
+#import "CarInfoVC.h"
+#import "MessageInfoVC.h"
+#import "MessageModel.h"
 @interface BaseViewController ()
 
 @end
@@ -48,9 +51,6 @@
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back"];
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
     self.navigationItem.backBarButtonItem = item;
-
-
-
 
 }
 

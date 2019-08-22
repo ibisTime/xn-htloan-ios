@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"微车资讯";
+    self.title = @"资讯";
     [self.view addSubview:self.tableview];
     [self getnewsadta];
     // Do any additional setup after loading the view.
@@ -27,7 +27,7 @@
 
 -(TLTableView *)tableview{
     if (!_tableview) {
-        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
+        _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - kTabBarHeight)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;

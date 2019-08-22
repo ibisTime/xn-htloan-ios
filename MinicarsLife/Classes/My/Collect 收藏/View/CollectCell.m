@@ -14,7 +14,7 @@
 @property (nonatomic,strong) UILabel * describdlab;
 @property (nonatomic,strong) UILabel * timelab;
 @property (nonatomic,strong) UILabel * moneylab;
-@property (nonatomic,strong) UILabel * contentlab;
+
 //@property (nonatomic,strong) UIView * view;
 @end
 
@@ -38,6 +38,10 @@
         UIImageView * img = [[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 110, 82.5)];
         [self addSubview:img];
         self.image = img;
+        self.image.contentMode = UIViewContentModeScaleAspectFit;
+//        self.image.autoresizesSubviews = YES;
+//        self.image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
+        
         
         UILabel * title = [UILabel labelWithFrame:CGRectMake(img.xx + 15, 15, SCREEN_WIDTH - 155, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
 //        title.text = @"奔驰SUV 600 xDriv351 基本型 小屏 织物中东";
@@ -64,16 +68,17 @@
         
         
         
-        UILabel *view = [[UILabel alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
-        view.backgroundColor = kHexColor(@"#F5F5F5");
-        self.view = view;
-        [self addSubview:view];
+//        UILabel *view = [[UILabel alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+////        view.backgroundColor = kHexColor(@"#F5F5F5");
+////        self.view = view;
+//        [self addSubview:view];
         
-        UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-        content.numberOfLines = 2;
+        UILabel * content = [UILabel labelWithFrame:CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        content.numberOfLines = 0;
 //        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
         
-        [view addSubview:content];
+        [self addSubview:content];
+        
         
         
         self.contentlab = content;
@@ -115,15 +120,18 @@
 -(void)setModel:(CollectModel *)model{
     _model = model;
     CarModel * car = [CarModel mj_objectWithKeyValues:model.car];
-    self.moneylab.text = [NSString stringWithFormat:@"%.2f万",[car.salePrice floatValue]/10000/1000];
+    
+    self.moneylab.text = [NSString stringWithFormat:@"%@",[USERXX AddSymbols:[car.salePrice floatValue]/1000]];
     self.timelab.text = [car.updateDatetime convertToDetailDateWithoutHour];
 //    self.contentlab.text = car.Description;
 //    self.describdlab.text = car.brandName;
     self.titlelab.text = car.name;
+    
+    
+    
     [self.image sd_setImageWithURL:[NSURL URLWithString:[car.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    self.image.contentMode =UIViewContentModeScaleAspectFill;
     //超出容器范围的切除掉
-    self.image.clipsToBounds = YES;
+//    self.image.clipsToBounds = YES;
     
 //    self.describdlab.text = [NSString stringWithFormat:@"%@ %@/%@ %@",car.version,[USERXX convertNull: car.outsideColor],[USERXX convertNull: car.insideColor], [USERXX convertNull:car.fromPlace]];
     
@@ -151,7 +159,9 @@
         default:
             break;
     }
+    self.contentlab.frame = CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0);
     self.contentlab.text = car.configName;
+    [self.contentlab sizeToFit];
 }
 
 

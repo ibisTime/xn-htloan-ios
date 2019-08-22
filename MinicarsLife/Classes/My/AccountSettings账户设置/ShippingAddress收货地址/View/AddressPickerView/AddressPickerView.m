@@ -91,7 +91,7 @@ static CGFloat const TITLEBUTTONWIDTH = 75.0;
 - (UIPickerView *)addressPickerView{
     if (!_addressPickerView) {
         _addressPickerView = [[UIPickerView alloc]initWithFrame:
-                              CGRectMake(0, TITLEHEIGHT, SELFSIZE.width, 165)];
+                              CGRectMake(0, TITLEHEIGHT, SELFSIZE.width, 250)];
         _addressPickerView.backgroundColor = [UIColor colorWithRed:239/255.f
                                                              green:239/255.f
                                                               blue:244.0/255.f
@@ -305,6 +305,7 @@ numberOfRowsInComponent:(NSInteger)component{
 
 #pragma mark - AddressPickerViewDelegate
 - (void)cancelBtnClicked{
+    [self hide];
     if ([_delegate respondsToSelector:@selector(cancelBtnClick)]) {
         [_delegate cancelBtnClick];
     }
@@ -330,18 +331,19 @@ numberOfRowsInComponent:(NSInteger)component{
         //改变它的frame的x,y的值
         
         if (isShow) {
-            selfkY = [UIScreen mainScreen].bounds.size.height - 215;
+            selfkY = [UIScreen mainScreen].bounds.size.height - 300;
         }
         else {
             selfkY = [UIScreen mainScreen].bounds.size.height;
         }
-        self.frame = CGRectMake(0,selfkY - 64, self.bounds.size.width,215);
+        self.frame = CGRectMake(0,selfkY - 64, self.bounds.size.width,300);
 
         [UIView commitAnimations];
     }];
 }
 
 - (void)sureBtnClicked{
+    [self hide];
     if ([_delegate respondsToSelector:@selector(sureBtnClickReturnProvince:City:Area:)]) {
         NSInteger selectProvince = [self.addressPickerView selectedRowInComponent:0];
         NSInteger selectCity     = [self.addressPickerView selectedRowInComponent:1];

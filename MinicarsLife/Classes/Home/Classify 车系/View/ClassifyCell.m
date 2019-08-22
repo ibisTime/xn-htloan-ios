@@ -29,7 +29,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.ClassifyLogo = [[UIImageView alloc]initWithFrame:CGRectMake(15, 14, 110, 82.5)];
-        
+        self.ClassifyLogo.contentMode = UIViewContentModeScaleAspectFit;
         [self addSubview:self.ClassifyLogo];
         
         self.ClassifyName = [UILabel labelWithFrame:CGRectMake(self.ClassifyLogo.xx + 15, 15, SCREEN_WIDTH - 30 - 85, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kBlackColor];

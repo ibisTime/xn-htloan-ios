@@ -37,7 +37,7 @@
 //#define MainColor RGB(227,0,22)
 #define GaryTextColor RGB(153, 153, 153)
 #define LineBackColor RGB(247.0, 247.0, 247.0)
-#define BackColor RGB(247.0, 247.0, 247.0)
+#define BackColor RGB(255, 255, 255)
 #define PriceColor RGB(255.0, 133.0, 42.0)
 
 
@@ -82,6 +82,7 @@
 
 #define kWidth(x) (x)*(kScreenWidth)/375.0
 #define kHeight(y) (y)*(kScreenHeight)/667.0
+
 
 #define Height_StatusBar [[UIApplication sharedApplication] statusBarFrame].size.height
 

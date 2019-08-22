@@ -12,16 +12,7 @@
 #import "ChooseCarVC.h"
 @implementation HomeTableHeadCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -39,7 +30,7 @@
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
         CGFloat width = 130.00;
         // 设置每个item的大小
-        layout.itemSize = CGSizeMake(width, 170);
+        layout.itemSize = CGSizeMake(width, 190);
         // 设置列间距
         layout.minimumInteritemSpacing = 15;
         // 设置行间距
@@ -51,7 +42,7 @@
         // 设置布局方向(滚动方向)
         layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
         
-        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH , 170 )collectionViewLayout:layout];
+        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0,SCREEN_WIDTH , 190 )collectionViewLayout:layout];
         _collection.delegate = self;
         _collection.dataSource = self;
         _collection.showsVerticalScrollIndicator = NO;

@@ -19,8 +19,9 @@
         topview.backgroundColor = kBlackColor;
         [self addSubview:topview];
         
-        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - ((718.00/1334.00)*SCREEN_HEIGHT), SCREEN_WIDTH, (718.00/1334.00)*SCREEN_HEIGHT)];
+        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT)];
         view.backgroundColor = kWhiteColor;
+        
         UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 16, 65, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
         label.text = @"询价信息";
         [view addSubview:label];
@@ -35,6 +36,9 @@
         [view addSubview:img];
         
         self.image = img;
+        self.image.contentMode = UIViewContentModeScaleAspectFit;
+//        self.image.autoresizesSubviews = YES;
+//        self.image.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
         
         UILabel * title = [UILabel labelWithFrame:CGRectMake(img.xx + 15, 54, SCREEN_WIDTH - 155, 40) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         
@@ -61,7 +65,7 @@
         UILabel * content = [UILabel labelWithFrame:CGRectMake(7.5, 8.5, view1.width - 15, 33) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         content.numberOfLines = 2;
         
-        view1.backgroundColor = kHexColor(@"#F5F5F5");
+//        view1.backgroundColor = kHexColor(@"#F5F5F5");
         [view1 addSubview:content];
         [view addSubview:view1];
         self.view = view1;
@@ -109,6 +113,8 @@
         
         [view addSubview:askbtn];
         
+        view.frame = CGRectMake(0, SCREEN_HEIGHT - kNavigationBarHeight - askbtn.yy - 30, SCREEN_WIDTH, askbtn.yy + 30);
+        
         [self addSubview:view];
     }
     return self;
@@ -123,7 +129,7 @@
     
     _carmodel = carmodel;
     [self.image sd_setImageWithURL:[NSURL URLWithString:[self.carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-    self.image.contentMode =UIViewContentModeScaleAspectFill;
+    
     //超出容器范围的切除掉
     self.image.clipsToBounds = YES;
     self.titlelab.text = [NSString stringWithFormat:@"%@ ",self.carmodel.name];

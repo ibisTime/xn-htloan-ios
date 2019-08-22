@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) UIImageView * logo;
 @property (nonatomic,strong) UILabel * desribelab;
 @property (nonatomic,strong) UILabel * moneylab;
+@property (nonatomic,strong) UILabel * monthAmountlab;
 @property (nonatomic,strong) UILabel * personlab;
 @property (nonatomic,strong) CarModel * model;
 @end

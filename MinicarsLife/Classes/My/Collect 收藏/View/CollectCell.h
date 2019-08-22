@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) CollectModel * model;
 @property (nonatomic,strong) UILabel * view ;
 @property (nonatomic,strong) NSArray *dataArray;
+@property (nonatomic,strong) UILabel * contentlab;
 @end
 
 NS_ASSUME_NONNULL_END

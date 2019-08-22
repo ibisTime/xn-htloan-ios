@@ -90,7 +90,9 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BrandCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.titlelab.text = self.HotCarBrands[indexPath.row].name;
-    cell.logo.contentMode =UIViewContentModeScaleAspectFill;
+    cell.logo.contentMode = UIViewContentModeScaleAspectFit;
+        cell.logo.autoresizesSubviews = YES;
+        cell.logo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
     [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]]];
     
     return cell;

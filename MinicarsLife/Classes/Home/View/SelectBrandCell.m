@@ -13,7 +13,10 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 19, 19)];
-//        self.logo.contentMode =UIViewContentModeScaleAspectFill;
+//
+        self.logo.contentMode = UIViewContentModeScaleAspectFit;
+        self.logo.autoresizesSubviews = YES;
+        self.logo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
         [self addSubview:self.logo];
         
         self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];

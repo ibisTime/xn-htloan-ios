@@ -62,7 +62,7 @@
 
         [_backButton addSubview:_nameLabel];
 
-        _priceLabel = [UILabel labelWithFrame:CGRectMake(10, 20 + WIDTH/3 *2 + 20, WIDTH, 20) textAligment:NSTextAlignmentCenter backgroundColor:[UIColor whiteColor] font:HGfont(13) textColor:PriceColor];
+        _priceLabel = [UILabel labelWithFrame:CGRectMake(10, 20 + WIDTH/3 *2 + 20, WIDTH, 20) textAligment:NSTextAlignmentCenter backgroundColor:[UIColor whiteColor] font:HGfont(15) textColor:PriceColor];
         [_backButton addSubview:_priceLabel];
 
 

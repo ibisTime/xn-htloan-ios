@@ -33,6 +33,12 @@ NS_ASSUME_NONNULL_BEGIN
  "updateDatetime": "Mar 7, 2019 2:38:04 PM",
  "remark": "备注"
  */
+@property (nonatomic,strong) NSDictionary * carDealer;
+@property (nonatomic,copy) NSString * isHighQuality;
+@property (nonatomic,strong) NSArray * brandList;
+@property (nonatomic,copy) NSString * address;
+@property (nonatomic,copy) NSString * fullName;
+@property (nonatomic,copy) NSString * monthAmount;
 @property (nonatomic,copy) NSString * configName;
 @property (nonatomic,copy) NSString * totalCount;
 @property (nonatomic,copy) NSString * code;
@@ -73,6 +79,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSArray *configs;
 @property (nonatomic,copy) NSString * type;
 @property (nonatomic,copy) NSString * brandLogo;
+@property (nonatomic,copy) NSString * abbrName;
+@property (nonatomic,copy) NSString * shopLogo;
 //@property (nonatomic,copy) NSString * descriptionStr;
 /**
  "price": 0,

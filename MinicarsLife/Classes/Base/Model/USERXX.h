@@ -28,6 +28,8 @@
 @property (nonatomic , strong)ZJAnimationPopView *cusPopView;
 //是否为需要登录，如果已登录，取出用户信息
 - (BOOL)isLogin;
+
++(NSString *)AddSymbols:(CGFloat)price;
 //字符串是否为空
 + (BOOL) isBlankString:(NSString *)string;
 //存储用户信息

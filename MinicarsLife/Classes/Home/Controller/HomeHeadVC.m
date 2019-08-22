@@ -168,22 +168,12 @@
     if (self.CarBrandModels) {
         CarModel * model =[CarModel mj_objectWithKeyValues:self.CarBrandModels[indexPath.row]];
         cell.titlelab.text = model.name;
-        
-        
-        
         [cell.titlelab sizeToFit];
-        
-        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 12, 2.5, 15, 15);
-        
-        cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.frame.size.width - cell.logo.xx - 5, 20);
-        
-        
+        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 12 - 2.5, 0, 20, 20);
+        cell.titlelab.frame = CGRectMake(cell.logo.xx + 8 + 2.5, 0, cell.frame.size.width - cell.logo.xx - 5, 20);
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-     
-        
         cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.titlelab.width, 20);
     }
-    
     return cell;
 
 }

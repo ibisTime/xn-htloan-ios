@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1B75EC230AAA160031FB0D /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B75EB230AAA150031FB0D /* libXG-SDK.a */; };
+		1F1B75EE230AAA6A0031FB0D /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B75ED230AAA6A0031FB0D /* UserNotifications.framework */; };
+		1F1B75F0230AAA9A0031FB0D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B75EF230AAA9A0031FB0D /* libsqlite3.0.tbd */; };
 		1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */; };
 		1F2536B122BCC65700E67433 /* 1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2536B022BCC65600E67433 /* 1080.png */; };
 		1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1C229B893A000F33F0 /* GuideView.m */; };
@@ -107,6 +110,20 @@
 		1FA54DBF22393A500077FE54 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */; };
 		1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */; };
 		1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */; };
+		1FE65A58230B923E005F7673 /* USERXX.h in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9E20E4D91D002D9A48 /* USERXX.h */; };
+		1FE65A59230B923E005F7673 /* USERXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9F20E4D91D002D9A48 /* USERXX.m */; };
+		1FE65A5A230B9247005F7673 /* QNUserAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0020FC34670014FCB3 /* QNUserAgent.h */; };
+		1FE65A5B230B9247005F7673 /* QNUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0120FC34670014FCB3 /* QNUserAgent.m */; };
+		1FE65A5E230B9CF5005F7673 /* DealersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */; };
+		1FE65A61230B9E53005F7673 /* HomeDealersCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A60230B9E53005F7673 /* HomeDealersCollCell.m */; };
+		1FE65A67230BBFD8005F7673 /* DealersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A66230BBFD8005F7673 /* DealersVC.m */; };
+		1FE65A6A230BC02D005F7673 /* DealersTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A69230BC02D005F7673 /* DealersTableView.m */; };
+		1FE65A6D230BC04A005F7673 /* DealersHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A6C230BC04A005F7673 /* DealersHeadView.m */; };
+		1FE65A70230BCB35005F7673 /* MainProductsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A6F230BCB35005F7673 /* MainProductsCell.m */; };
+		1FE65A73230BCCFB005F7673 /* MainProductsCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A72230BCCFB005F7673 /* MainProductsCollCell.m */; };
+		1FE65A76230C1A14005F7673 /* CarDetailsDealersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A75230C1A14005F7673 /* CarDetailsDealersCell.m */; };
+		1FE65A7C230D4E54005F7673 /* UIView+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A78230D4E53005F7673 /* UIView+Tool.m */; };
+		1FE65A7D230D4E54005F7673 /* NSObject+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE65A79230D4E53005F7673 /* NSObject+Tool.m */; };
 		1FFB8E9E225AFA8B00B72F31 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */; };
 		1FFB8E9F225AFA8B00B72F31 /* WLWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E95225AFA8B00B72F31 /* WLWebProgressLayer.m */; };
 		1FFB8EA0225AFA8B00B72F31 /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB8E98225AFA8B00B72F31 /* NSTimer+addition.m */; };
@@ -350,7 +367,6 @@
 		7A8A5C9420E4A7FE002D9A48 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C8820E4A7FE002D9A48 /* NSObject+MJProperty.m */; };
 		7A8A5C9520E4A7FE002D9A48 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C8A20E4A7FE002D9A48 /* NSString+MJExtension.m */; };
 		7A8A5C9A20E4B794002D9A48 /* TLAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9920E4B794002D9A48 /* TLAlert.m */; };
-		7A8A5CA020E4D91D002D9A48 /* USERXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9F20E4D91D002D9A48 /* USERXX.m */; };
 		7A8A5CA320E4DD45002D9A48 /* HomeRecommendedModelsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5CA220E4DD45002D9A48 /* HomeRecommendedModelsCell.m */; };
 		7A8A5CA620E4E583002D9A48 /* HomeInstallmentGoodsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5CA520E4E583002D9A48 /* HomeInstallmentGoodsCell.m */; };
 		7A8A5CAB20E52B3F002D9A48 /* RecentPaymentsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5CAA20E52B3F002D9A48 /* RecentPaymentsVC.m */; };
@@ -409,7 +425,6 @@
 		7AB29D1F20FC34670014FCB3 /* QNUrlSafeBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29CF820FC34670014FCB3 /* QNUrlSafeBase64.m */; };
 		7AB29D2020FC34670014FCB3 /* QNResponseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29CFD20FC34670014FCB3 /* QNResponseInfo.m */; };
 		7AB29D2120FC34670014FCB3 /* QNSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29CFF20FC34670014FCB3 /* QNSessionManager.m */; };
-		7AB29D2220FC34670014FCB3 /* QNUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0120FC34670014FCB3 /* QNUserAgent.m */; };
 		7AB29D2320FC34670014FCB3 /* QNFileRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0520FC34670014FCB3 /* QNFileRecorder.m */; };
 		7AB29D2420FC34670014FCB3 /* QNConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0920FC34670014FCB3 /* QNConfiguration.m */; };
 		7AB29D2520FC34670014FCB3 /* QNFormUpload.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0B20FC34670014FCB3 /* QNFormUpload.m */; };
@@ -492,6 +507,11 @@
 
 /* Begin PBXFileReference section */
 		12CD421EFB5FADF39C84C4FF /* Pods-MinicarsLife.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MinicarsLife.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MinicarsLife/Pods-MinicarsLife.debug.xcconfig"; sourceTree = "<group>"; };
+		1F1B75EA230AAA150031FB0D /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		1F1B75EB230AAA150031FB0D /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		1F1B75ED230AAA6A0031FB0D /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		1F1B75EF230AAA9A0031FB0D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		1F1B75F1230AAAB50031FB0D /* MinicarsLife.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MinicarsLife.entitlements; sourceTree = "<group>"; };
 		1F1C96AB22E86E57006B629C /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
 		1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		1F2536B022BCC65600E67433 /* 1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080.png; sourceTree = "<group>"; };
@@ -602,6 +622,26 @@
 		1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		1FE65A5C230B9CF5005F7673 /* DealersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersTableViewCell.h; sourceTree = "<group>"; };
+		1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersTableViewCell.m; sourceTree = "<group>"; };
+		1FE65A5F230B9E53005F7673 /* HomeDealersCollCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDealersCollCell.h; sourceTree = "<group>"; };
+		1FE65A60230B9E53005F7673 /* HomeDealersCollCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDealersCollCell.m; sourceTree = "<group>"; };
+		1FE65A65230BBFD8005F7673 /* DealersVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersVC.h; sourceTree = "<group>"; };
+		1FE65A66230BBFD8005F7673 /* DealersVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersVC.m; sourceTree = "<group>"; };
+		1FE65A68230BC02D005F7673 /* DealersTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersTableView.h; sourceTree = "<group>"; };
+		1FE65A69230BC02D005F7673 /* DealersTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersTableView.m; sourceTree = "<group>"; };
+		1FE65A6B230BC04A005F7673 /* DealersHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersHeadView.h; sourceTree = "<group>"; };
+		1FE65A6C230BC04A005F7673 /* DealersHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersHeadView.m; sourceTree = "<group>"; };
+		1FE65A6E230BCB35005F7673 /* MainProductsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProductsCell.h; sourceTree = "<group>"; };
+		1FE65A6F230BCB35005F7673 /* MainProductsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProductsCell.m; sourceTree = "<group>"; };
+		1FE65A71230BCCFB005F7673 /* MainProductsCollCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainProductsCollCell.h; sourceTree = "<group>"; };
+		1FE65A72230BCCFB005F7673 /* MainProductsCollCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainProductsCollCell.m; sourceTree = "<group>"; };
+		1FE65A74230C1A14005F7673 /* CarDetailsDealersCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarDetailsDealersCell.h; sourceTree = "<group>"; };
+		1FE65A75230C1A14005F7673 /* CarDetailsDealersCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarDetailsDealersCell.m; sourceTree = "<group>"; };
+		1FE65A78230D4E53005F7673 /* UIView+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Tool.m"; sourceTree = "<group>"; };
+		1FE65A79230D4E53005F7673 /* NSObject+Tool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Tool.m"; sourceTree = "<group>"; };
+		1FE65A7A230D4E53005F7673 /* UIView+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Tool.h"; sourceTree = "<group>"; };
+		1FE65A7B230D4E53005F7673 /* NSObject+Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Tool.h"; sourceTree = "<group>"; };
 		1FFB8E92225AFA8B00B72F31 /* NSURLRequest+NSURLRequestSSLY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+NSURLRequestSSLY.h"; sourceTree = "<group>"; };
 		1FFB8E93225AFA8B00B72F31 /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		1FFB8E94225AFA8B00B72F31 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
@@ -1325,6 +1365,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F1B75F0230AAA9A0031FB0D /* libsqlite3.0.tbd in Frameworks */,
+				1F1B75EE230AAA6A0031FB0D /* UserNotifications.framework in Frameworks */,
+				7A0F8F9E211BDE6800BA8358 /* CoreTelephony.framework in Frameworks */,
 				1FA54D6722393A4F0077FE54 /* libTXMBasic.a in Frameworks */,
 				7A0F8FC0211BDEF300BA8358 /* libz.tbd in Frameworks */,
 				7A0F8FBE211BDEED00BA8358 /* libstdc++.tbd in Frameworks */,
@@ -1342,6 +1385,7 @@
 				7A0F8FAA211BDE9800BA8358 /* QuartzCore.framework in Frameworks */,
 				1FA54D6122393A4F0077FE54 /* TLSSDK.framework in Frameworks */,
 				1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */,
+				1F1B75EC230AAA160031FB0D /* libXG-SDK.a in Frameworks */,
 				7A0F8FA8211BDE9100BA8358 /* OpenGLES.framework in Frameworks */,
 				361923E722BA6E7B00876C64 /* libstdc++.6.0.9.tbd in Frameworks */,
 				7A0F8FA6211BDE8300BA8358 /* OpenAL.framework in Frameworks */,
@@ -1349,7 +1393,6 @@
 				7A0F8FA2211BDE7500BA8358 /* ImageIO.framework in Frameworks */,
 				1FA54D6322393A4F0077FE54 /* QALSDK.framework in Frameworks */,
 				7A0F8FA0211BDE6E00BA8358 /* CoreVideo.framework in Frameworks */,
-				7A0F8F9E211BDE6800BA8358 /* CoreTelephony.framework in Frameworks */,
 				7A0F8F9C211BDE6300BA8358 /* CoreMedia.framework in Frameworks */,
 				1FA54D6522393A4F0077FE54 /* QAVSDK.framework in Frameworks */,
 				1FA54D6022393A4F0077FE54 /* ImSDK.framework in Frameworks */,
@@ -1662,6 +1705,50 @@
 			path = ILiveSDK;
 			sourceTree = "<group>";
 		};
+		1FE65A62230BBF98005F7673 /* Dealers经销商 */ = {
+			isa = PBXGroup;
+			children = (
+				1FE65A64230BBFBA005F7673 /* Controller */,
+				1FE65A63230BBFB5005F7673 /* View */,
+			);
+			path = "Dealers经销商";
+			sourceTree = "<group>";
+		};
+		1FE65A63230BBFB5005F7673 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FE65A68230BC02D005F7673 /* DealersTableView.h */,
+				1FE65A69230BC02D005F7673 /* DealersTableView.m */,
+				1FE65A6B230BC04A005F7673 /* DealersHeadView.h */,
+				1FE65A6C230BC04A005F7673 /* DealersHeadView.m */,
+				1FE65A6E230BCB35005F7673 /* MainProductsCell.h */,
+				1FE65A6F230BCB35005F7673 /* MainProductsCell.m */,
+				1FE65A71230BCCFB005F7673 /* MainProductsCollCell.h */,
+				1FE65A72230BCCFB005F7673 /* MainProductsCollCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FE65A64230BBFBA005F7673 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FE65A65230BBFD8005F7673 /* DealersVC.h */,
+				1FE65A66230BBFD8005F7673 /* DealersVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1FE65A77230D4E53005F7673 /* Category(分类) */ = {
+			isa = PBXGroup;
+			children = (
+				1FE65A78230D4E53005F7673 /* UIView+Tool.m */,
+				1FE65A79230D4E53005F7673 /* NSObject+Tool.m */,
+				1FE65A7A230D4E53005F7673 /* UIView+Tool.h */,
+				1FE65A7B230D4E53005F7673 /* NSObject+Tool.h */,
+			);
+			path = "Category(分类)";
+			sourceTree = "<group>";
+		};
 		1FFB8E91225AFA8B00B72F31 /* Web */ = {
 			isa = PBXGroup;
 			children = (
@@ -1691,31 +1778,6 @@
 			path = "Classify 车系";
 			sourceTree = "<group>";
 		};
-		363B6131223BA1E000585061 /* Brand 品牌 */ = {
-			isa = PBXGroup;
-			children = (
-				363B6136223BA43C00585061 /* View */,
-				363B6135223BA42F00585061 /* Controller */,
-			);
-			path = "Brand 品牌";
-			sourceTree = "<group>";
-		};
-		363B6135223BA42F00585061 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		363B6136223BA43C00585061 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				363B6137223BA45C00585061 /* BrandCell.h */,
-				363B6138223BA45C00585061 /* BrandCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		363B613A223BAA2F00585061 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1734,6 +1796,8 @@
 		363B613C223BAA5100585061 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				363B6137223BA45C00585061 /* BrandCell.h */,
+				363B6138223BA45C00585061 /* BrandCell.m */,
 				363B613D223BAB2000585061 /* ClassifyCell.h */,
 				363B613E223BAB2000585061 /* ClassifyCell.m */,
 				363B6143223BB77E00585061 /* ClassifyInfoCell.h */,
@@ -1750,6 +1814,8 @@
 				363B615B223BDB4400585061 /* CallNowView.m */,
 				36428DAC223F37B0007B7D24 /* AskSuccessView.h */,
 				36428DAD223F37B0007B7D24 /* AskSuccessView.m */,
+				1FE65A74230C1A14005F7673 /* CarDetailsDealersCell.h */,
+				1FE65A75230C1A14005F7673 /* CarDetailsDealersCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2878,6 +2944,9 @@
 		7A8A5AC120E35905002D9A48 /* MinicarsLife */ = {
 			isa = PBXGroup;
 			children = (
+				1F1B75F1230AAAB50031FB0D /* MinicarsLife.entitlements */,
+				1F1B75EB230AAA150031FB0D /* libXG-SDK.a */,
+				1F1B75EA230AAA150031FB0D /* XGPush.h */,
 				1FA54CE222393A4F0077FE54 /* ILiveSDK */,
 				7A8A5AF520E359BE002D9A48 /* Classes */,
 				7A8A5AF420E359B7002D9A48 /* Resource */,
@@ -2934,6 +3003,7 @@
 		7A8A5AF620E359C4002D9A48 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
+				1FE65A77230D4E53005F7673 /* Category(分类) */,
 				7A8A5AC220E35905002D9A48 /* AppDelegate.h */,
 				7A8A5AC320E35905002D9A48 /* AppDelegate.m */,
 				7A8A5AC520E35905002D9A48 /* ViewController.h */,
@@ -2949,10 +3019,10 @@
 			children = (
 				1F1C96AA22E8567D006B629C /* 废弃 */,
 				7A8A5B0220E35A06002D9A48 /* Controller */,
-				363B6131223BA1E000585061 /* Brand 品牌 */,
-				363B612D223BA12B00585061 /* Classify 车系 */,
 				7A8A5B0320E35A06002D9A48 /* Model */,
 				7A8A5B0420E35A06002D9A48 /* View */,
+				363B612D223BA12B00585061 /* Classify 车系 */,
+				1FE65A62230BBF98005F7673 /* Dealers经销商 */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -2997,12 +3067,16 @@
 				7A8A5CA220E4DD45002D9A48 /* HomeRecommendedModelsCell.m */,
 				7A8A5CA420E4E583002D9A48 /* HomeInstallmentGoodsCell.h */,
 				7A8A5CA520E4E583002D9A48 /* HomeInstallmentGoodsCell.m */,
+				1FE65A5C230B9CF5005F7673 /* DealersTableViewCell.h */,
+				1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */,
+				1FE65A5F230B9E53005F7673 /* HomeDealersCollCell.h */,
+				1FE65A60230B9E53005F7673 /* HomeDealersCollCell.m */,
+				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
+				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
 				36E3A39E223B673800B26F4F /* HotCarCollectionCell.h */,
 				36E3A39F223B673800B26F4F /* HotCarCollectionCell.m */,
 				363B6121223B7B9A00585061 /* NewsCell.h */,
 				363B6122223B7B9A00585061 /* NewsCell.m */,
-				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
-				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
 				368650652240FA0D00FC39CD /* SelectCarCell.h */,
 				368650662240FA0D00FC39CD /* SelectCarCell.m */,
 				368650682240FA2000FC39CD /* SelectcarFootCell.h */,
@@ -3943,6 +4017,8 @@
 		F8113ADA12E86CDD2C4993D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F1B75EF230AAA9A0031FB0D /* libsqlite3.0.tbd */,
+				1F1B75ED230AAA6A0031FB0D /* UserNotifications.framework */,
 				361923E622BA6E7B00876C64 /* libstdc++.6.0.9.tbd */,
 				7A0F8FBF211BDEF300BA8358 /* libz.tbd */,
 				7A0F8FBD211BDEED00BA8358 /* libstdc++.tbd */,
@@ -4042,6 +4118,17 @@
 				TargetAttributes = {
 					7A8A5ABE20E35905002D9A48 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 0;
+							};
+						};
 					};
 					7A8A5AD620E35908002D9A48 = {
 						CreatedOnToolsVersion = 9.3;
@@ -4235,6 +4322,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FE65A5A230B9247005F7673 /* QNUserAgent.h in Sources */,
+				1FE65A5B230B9247005F7673 /* QNUserAgent.m in Sources */,
+				1FE65A58230B923E005F7673 /* USERXX.h in Sources */,
+				1FE65A59230B923E005F7673 /* USERXX.m in Sources */,
 				363B6159223BDA4600585061 /* ZJAnimationPopView.h in Sources */,
 				36EA74C022C35163000F2BD4 /* UploadIdCardCell.m in Sources */,
 				36E3A391223B3D3000B26F4F /* RemindCell.h in Sources */,
@@ -4263,6 +4354,7 @@
 				B885CB102171CBA0001A1258 /* NSDate+Extension.m in Sources */,
 				7AB29D1520FC34670014FCB3 /* QNPipeline.m in Sources */,
 				7A22CDE520EDBE7D0010059D /* City.m in Sources */,
+				1FE65A7D230D4E54005F7673 /* NSObject+Tool.m in Sources */,
 				7A8A5CFB20E62E3E002D9A48 /* UIView+Extension.m in Sources */,
 				7A8A5B1F20E35B5B002D9A48 /* MyViewController.m in Sources */,
 				363B6145223BB77E00585061 /* ClassifyInfoCell.m in Sources */,
@@ -4278,6 +4370,7 @@
 				7A3CBDD120F4940600D795E5 /* NSString+Date.m in Sources */,
 				7AA906DD20EF51FD004F2B12 /* PayAllPriceCell.m in Sources */,
 				7A8A5CA620E4E583002D9A48 /* HomeInstallmentGoodsCell.m in Sources */,
+				1FE65A67230BBFD8005F7673 /* DealersVC.m in Sources */,
 				B8B4DB7821747E4900BC3DE2 /* MobleInfomationVC.m in Sources */,
 				363B612C223B8F8500585061 /* NewsInfoVC.m in Sources */,
 				1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */,
@@ -4350,6 +4443,7 @@
 				B834011621D75A350089D4DE /* QNDnspodFree.m in Sources */,
 				7AB29D7820FC67B30014FCB3 /* TheDetailTableView.m in Sources */,
 				7A3CBE1A20F5E2C700D795E5 /* BankCardVC.m in Sources */,
+				1FE65A7C230D4E54005F7673 /* UIView+Tool.m in Sources */,
 				7A3CBE0420F4B29C00D795E5 /* CarLoanCalculatorModel.m in Sources */,
 				7A8A5C9120E4A7FE002D9A48 /* NSObject+MJClass.m in Sources */,
 				7A3CBE3820F6FE0700D795E5 /* TFHppleElement.m in Sources */,
@@ -4407,9 +4501,9 @@
 				368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */,
 				7A3CBD9A20F3217300D795E5 /* UIScrollView+TLAdd.m in Sources */,
 				36E3A37E223B3BBD00B26F4F /* LeftFootCell.m in Sources */,
+				1FE65A6A230BC02D005F7673 /* DealersTableView.m in Sources */,
 				B834010B21D75A350089D4DE /* QNIpModel.m in Sources */,
 				3698BAF2224482C200EFB576 /* DeployModel.m in Sources */,
-				7A8A5CA020E4D91D002D9A48 /* USERXX.m in Sources */,
 				7A3CBDCD20F4916400D795E5 /* CreditReportModel.m in Sources */,
 				B88A6D002185DC0B007683AE /* MoblieCodeVC.m in Sources */,
 				36E3A372223B3BA200B26F4F /* CarModel.m in Sources */,
@@ -4430,6 +4524,7 @@
 				B834011121D75A350089D4DE /* QNDnsManager.m in Sources */,
 				B885CB592171F22C001A1258 /* ClaimsTableView.m in Sources */,
 				1FFB8E9E225AFA8B00B72F31 /* UIView+Frame.m in Sources */,
+				1FE65A73230BCCFB005F7673 /* MainProductsCollCell.m in Sources */,
 				363B6134223BA1FF00585061 /* BrandListVC.m in Sources */,
 				367EF90A223F8DAC00C9921D /* SearchVC.m in Sources */,
 				7A8A5C9320E4A7FE002D9A48 /* NSObject+MJKeyValue.m in Sources */,
@@ -4437,6 +4532,7 @@
 				7A3CBDF920F4AE3100D795E5 /* UIView+SDAutoLayout.m in Sources */,
 				7A3CBD9D20F3217300D795E5 /* UIView+Frame.m in Sources */,
 				7A8A5CFD20E62E3E002D9A48 /* ChooseView.m in Sources */,
+				1FE65A76230C1A14005F7673 /* CarDetailsDealersCell.m in Sources */,
 				363B6142223BAF3800585061 /* ClassifyInfoVC.m in Sources */,
 				7A22CDE320EDBE7D0010059D /* AddressPickerView.m in Sources */,
 				7A3CBE2F20F634A300D795E5 /* SubmitOrdersTableView.m in Sources */,
@@ -4453,7 +4549,6 @@
 				7A3CBDD420F49B6500D795E5 /* CarLoanCalculatorTableView.m in Sources */,
 				B834011321D75A350089D4DE /* QNNetworkInfo.m in Sources */,
 				7A3CBDB020F34B1C00D795E5 /* AddressModel.m in Sources */,
-				7AB29D2220FC34670014FCB3 /* QNUserAgent.m in Sources */,
 				7A3CBE2C20F5F52F00D795E5 /* AddBankCardCell.m in Sources */,
 				7A22CDC420EDABC70010059D /* ChangePasswordVC.m in Sources */,
 				36E3A371223B3BA200B26F4F /* CollectModel.m in Sources */,
@@ -4474,6 +4569,7 @@
 				36E3A381223B3BBD00B26F4F /* LeftHeadCell.m in Sources */,
 				7A3CBD6020F0C42D00D795E5 /* TheBalanceOfVC.m in Sources */,
 				7AA906AE20EF1436004F2B12 /* AllOrderVC.m in Sources */,
+				1FE65A70230BCB35005F7673 /* MainProductsCell.m in Sources */,
 				B834011421D75A350089D4DE /* QNDomain.m in Sources */,
 				7A81BF0A20F755AF005699F0 /* OrderDetailsInfoCell.m in Sources */,
 				7A3CBE0120F4AE3100D795E5 /* SignFinishView.m in Sources */,
@@ -4501,6 +4597,7 @@
 				7A3CBE2020F5E38C00D795E5 /* BankCardCell.m in Sources */,
 				7A3CBDBE20F45DE600D795E5 /* MyModel.m in Sources */,
 				7A8A5BF820E3765F002D9A48 /* RegisteredView.m in Sources */,
+				1FE65A5E230B9CF5005F7673 /* DealersTableViewCell.m in Sources */,
 				7A81BF1320F83D8B005699F0 /* MessageTableView.m in Sources */,
 				B82ED84E21D38D100019AAE0 /* ImageBrowserViewController.m in Sources */,
 				7AB29D1620FC34670014FCB3 /* QN_GTM_Base64.m in Sources */,
@@ -4515,7 +4612,9 @@
 				7A81BEF720F72403005699F0 /* MyCarLoanNameCell.m in Sources */,
 				7A3CBD8320F0EFCF00D795E5 /* CKAlertViewController.m in Sources */,
 				7A8A5B1620E35B12002D9A48 /* BaseViewController.m in Sources */,
+				1FE65A61230B9E53005F7673 /* HomeDealersCollCell.m in Sources */,
 				7AA906AB20EF1405004F2B12 /* TheOrderVC.m in Sources */,
+				1FE65A6D230BC04A005F7673 /* DealersHeadView.m in Sources */,
 				7AA906E520EF61EA004F2B12 /* RecordCell.m in Sources */,
 				7A3CBE1D20F5E2EC00D795E5 /* BankCardTableView.m in Sources */,
 				7AB29D2320FC34670014FCB3 /* QNFileRecorder.m in Sources */,
@@ -4737,9 +4836,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_ENTITLEMENTS = MinicarsLife/MinicarsLife.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ZCW993X44;
+				DEVELOPMENT_TEAM = VQPS9BLJYN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4771,9 +4871,10 @@
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MinicarsLife",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PublicServicePlatform.servicesb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.MinicarsLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -4788,9 +4889,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CLANG_WARN_STRICT_PROTOTYPES = NO;
+				CODE_SIGN_ENTITLEMENTS = MinicarsLife/MinicarsLife.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ZCW993X44;
+				DEVELOPMENT_TEAM = VQPS9BLJYN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4822,9 +4924,10 @@
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK",
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MinicarsLife",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PublicServicePlatform.servicesb;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.MinicarsLife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

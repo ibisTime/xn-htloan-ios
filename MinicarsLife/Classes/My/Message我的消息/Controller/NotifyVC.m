@@ -24,7 +24,7 @@
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - 50)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
-        _tableview.backgroundColor = BackColor;
+        _tableview.backgroundColor = kBackgroundColor;
         _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         [_tableview registerClass:[RemindCell class] forCellReuseIdentifier:remind];
     }

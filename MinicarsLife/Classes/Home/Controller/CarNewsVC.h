@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CarNewsVC : BaseViewController
 
+@property (nonatomic , assign)CGFloat *tableHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

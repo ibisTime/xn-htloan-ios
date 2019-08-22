@@ -98,6 +98,17 @@
 
 }
 
++(NSString *)AddSymbols:(CGFloat)price
+{
+    if (price > 100000000) {
+        return [NSString stringWithFormat:@"%.2f亿",price/100000000];
+    }
+    if (price > 10000) {
+        return [NSString stringWithFormat:@"%.2f万",price/10000];
+    }
+    return [NSString stringWithFormat:@"%.2f",price];
+}
+
 
 
 - (void)setUserInfoWithDict:(NSDictionary *)dict {

@@ -32,7 +32,9 @@
 #import "HomeTableHeadCell.h"
 #import "ClassifyInfoVC.h"
 #import "GeneralWebView.h"
-@interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn>{
+#import "DealersTableViewCell.h"
+#import "DealersVC.h"
+@interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn,CollectionSelectRowDelegate>{
     HomeHeadVC * headview;
 }
 //@property (nonatomic , strong)HomeTableView *tableView;
@@ -48,6 +50,7 @@
 
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModelsCars;
+@property (nonatomic,strong) NSMutableArray<CarModel *> * DealersModels;
 @end
 
 @implementation HomeViewController
@@ -76,9 +79,10 @@
 }
 
 -(void)morenews{
-    CarNewsVC * vc = [[CarNewsVC alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+//    CarNewsVC * vc = [[CarNewsVC alloc]init];
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:vc animated:YES];
+    self.tabBarController.selectedIndex = 2;
 }
 
 - (void)viewDidLoad {
@@ -154,25 +158,35 @@
         _tableview.defaultNoDataImage = kImage(@"qq");
         [_tableview registerClass:[HomeTableHeadCell class] forCellReuseIdentifier:@"HomeTableHead"];
         [_tableview registerClass:[NewsCell class] forCellReuseIdentifier:@"cell"];
+        [_tableview registerClass:[DealersTableViewCell class] forCellReuseIdentifier:@"DealersTableViewCell"];
+        
     }
     return _tableview;
 }
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (section == 0) {
+    if (section == 0 || section == 1) {
         return 1;
     }
     return self.NewsModels.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 0) {
+        DealersTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DealersTableViewCell" forIndexPath:indexPath];
+        cell.models = self.DealersModels;
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    if (indexPath.section == 1) {
         HomeTableHeadCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HomeTableHead" forIndexPath:indexPath];
         cell.CarStyleModels = self.CarModelsCars;
         cell.delegate = self;
@@ -184,22 +198,63 @@
     cell.model = self.NewsModels[indexPath.row];
     return cell;
 }
+
+-(void)DealersLoadData
+{
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
+    http.code = @"632065";
+    http.parameters[@"isHighQuality"] = @"1";
+    http.parameters[@"start"] = @"1";
+    http.parameters[@"limit"] = @"10";
+    [http postWithSuccess:^(id responseObject) {
+        self.DealersModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+//        [self modifyFrame];
+        [self.tableview reloadData];
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+//经销商点击方法
+-(void)DealersCollectionSelectRow:(NSInteger)index
+{
+    DealersVC *vc = [DealersVC new];
+    vc.dealersModel = self.DealersModels[index];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
-        return 180;
+        return 165;
+    }
+    if (indexPath.section == 1) {
+        return 200;
     }
     return 105;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
-        return 60;
+        return 10;
     }
     return 60;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    
+    
     if (section == 0) {
+        UIView * view = [[UIView alloc]init];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+        v1.backgroundColor = kBackgroundColor;
+        [view addSubview:v1];
+        return view;
+        
+    }
+    
+    if (section == 1) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kBackgroundColor;
@@ -210,19 +265,20 @@
         [view addSubview:label];
         return view;
     }
-    if (section == 1) {
+    if (section == 2) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 57.5)];
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
         v1.backgroundColor = kBackgroundColor;
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
         UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        label.text = @"微车资讯";
+        label.text = @"资讯";
         [view addSubview:label];
         
-        UIButton * button = [UIButton buttonWithTitle:@"全部" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
+        UIButton * button = [UIButton buttonWithTitle:@"查看更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
         [button addTarget:self action:@selector(morenews) forControlEvents:(UIControlEventTouchUpInside)];
-        button.frame = CGRectMake(SCREEN_WIDTH - 15 - 25, 27, 25, 17);
+        button.frame = CGRectMake(SCREEN_WIDTH - 15 - 50, 27, 50, 17);
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
         [view addSubview:button];
         return view;
     }
@@ -231,7 +287,7 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         NewsInfoVC * vc = [NewsInfoVC new];
         vc.code = self.NewsModels[indexPath.row].code;
         vc.hidesBottomBarWhenPushed = YES;
@@ -327,6 +383,7 @@
     [self.tableview addRefreshAction:^{
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
             weakSelf.NewsModels = objs;
+            [weakSelf DealersLoadData];
             [weakSelf loadData];
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];

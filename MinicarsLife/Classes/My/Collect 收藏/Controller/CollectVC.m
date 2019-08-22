@@ -13,6 +13,9 @@
 #import "CollectModel.h"
 #import "CarInfoVC.h"
 @interface CollectVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
+{
+    CollectCell * cell;
+}
 @property (nonatomic,strong) TLTableView * tableview;
 //@property (nonatomic ,strong) UIButton *btn;//编辑按钮
 @property (nonatomic ,assign) BOOL isInsertEdit;//tableview编辑方式的判断
@@ -105,7 +108,10 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    CollectCell * cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
+    
+    
+    
+    cell = [tableView dequeueReusableCellWithIdentifier:collect forIndexPath:indexPath];
     cell.model = self.CollectModels[indexPath.section];
     UIView *backGroundView = [[UIView alloc]init];
     backGroundView.backgroundColor = kClearColor;
@@ -117,7 +123,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 175;
+    return cell.contentlab.yy + 5;
 }
 -(void)confirm:(UIButton *)sender{{
     sender.selected = !sender.selected;

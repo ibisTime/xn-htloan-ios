@@ -15,6 +15,8 @@
 #import "AskSuccessView.h"
 #import "CalculatorVC.h"
 #import "DeployModel.h"
+#import "CarDetailsDealersCell.h"
+#import "DealersVC.h"
 @interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
 {
     CallNowView * callNowView;
@@ -30,10 +32,6 @@
 @property (nonatomic,strong) NSArray * nameArray;
 
 @property (nonatomic , strong)NSArray *dataArray;
-
-
-
-
 
 @end
 
@@ -57,9 +55,12 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
+        [_tableview registerClass:[CarDetailsDealersCell class] forCellReuseIdentifier:@"CarDetailsDealersCell"];
+        
     }
     return _tableview;
 }
+
 -(NSArray *)splitArray: (NSArray *)array withSubSize : (int )subSize{
     
     unsigned long count = array.count % subSize == 0 ? (array.count / subSize) : (array.count / subSize + 1);
@@ -77,6 +78,7 @@
     }
     return [arr copy];
 }
+
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
@@ -162,7 +164,7 @@
     [self getCarDeploy];
     
     
-    self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70-kNavigationBarHeight, SCREEN_WIDTH, 70)];
+    self.bottomview = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 70 -kNavigationBarHeight, SCREEN_WIDTH, 70)];
     UIButton * callnow = [UIButton buttonWithTitle:@"打电话" titleColor:kWhiteColor backgroundColor:kHexColor(@"#FF9402") titleFont:16 cornerRadius:2];
     callnow.tag = 1;
     [callnow addTarget:self action:@selector(ClickBottomBtn:) forControlEvents:(UIControlEventTouchUpInside)];
@@ -195,7 +197,8 @@
 
     [self.RightButton addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
     
-    callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    
+    callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
     callNowView.carmodel = self.CarModel;
     callNowView.delegate = self;
     [self.view addSubview:callNowView];
@@ -243,7 +246,7 @@
     if (sender.tag == 2) {
         [UIView animateWithDuration:0.1 animations:^{
 //            self.view.alpha = 0.6;
-            callNowView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            callNowView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
         }];
     }
 }
@@ -259,7 +262,7 @@
     http.parameters[@"userMobile"] = phone;
     http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
-        callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+        callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
         AskSuccessView * vc = [[AskSuccessView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         vc.delegate = self;
         [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:vc BGAlpha:0.5 isClickBGDismiss:YES];
@@ -268,7 +271,7 @@
     }];
 }
 -(void)deleteBtnClickDelegate{
-    callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+    callNowView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight);
 }
 -(void)BackToHomeClick{
     BaseTabBarViewController *tabBarCtrl = [[BaseTabBarViewController alloc] init];
@@ -280,15 +283,22 @@
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     if (self.picArray.count > 0 || self.nameArray.count > 0) {
-        return 3;
+        return 4;
     }
-    return 2;
+    return 3;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
         return 1;
     }
-    else if (section == 1){
+    if (section == 1) {
+        if ([USERXX isBlankString:self.CarModel.carDealer[@"fullName"]] == YES) {
+            return 0;
+        }
+        return 1;
+    }
+    
+    else if (section == 2){
         return 3;
     }
     return 2;
@@ -308,7 +318,14 @@
         cell.dataArray = self.dataArray;
         return cell;
     }
-    else if (indexPath.section == 2){
+    if (indexPath.section == 1) {
+        CarDetailsDealersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CarDetailsDealersCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.carDealer = [CarModel mj_objectWithKeyValues:self.CarModel.carDealer];
+        return cell;
+    }
+    
+    if (indexPath.section == 3){
         if (indexPath.row == 0) {
             static NSString *rid=@"DeployFirst";
             DeployFirstCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
@@ -368,6 +385,24 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        if ([self.status isEqualToString:@"1"]) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }else
+        {
+            DealersVC *vc = [DealersVC new];
+            vc.dealersModel = [CarModel mj_objectWithKeyValues:self.CarModel.carDealer];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        
+    }
+}
+
+
+
 -(void)goCalculator{
     CalculatorVC * vc = [CalculatorVC new];
     vc.carcode = self.CarModel.code;
@@ -375,9 +410,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return _cell.view.yy + 15;
+        return _cell.contentlab.yy + 15;
     }
-    else if (indexPath.section == 2)
+    if (indexPath.section == 1) {
+        return 78;
+    }
+    else if (indexPath.section == 3)
     {
         if (indexPath.row == 0)
         {
@@ -404,7 +442,18 @@
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if (section == 1 || section == 2) {
+    if (section == 1) {
+        if ([USERXX isBlankString:self.CarModel.carDealer[@"fullName"]] == NO) {
+            UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52.5)];
+            view.backgroundColor = kWhiteColor;
+            UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+            v1.backgroundColor = kBackgroundColor;
+            [view addSubview:v1];
+            return view;
+        }
+        
+    }
+    if (section == 2 || section == 3) {
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 52.5)];
         view.backgroundColor = kWhiteColor;
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
@@ -416,11 +465,11 @@
         v2.backgroundColor = MainColor;
         [view addSubview:v2];
         UILabel * label = [UILabel labelWithFrame:CGRectMake(v2.xx + 5, v1.yy + 10, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        if (section == 1) {
+        if (section == 2) {
             label.text = @"库存信息";
         }
-        else if (section == 2){
-            label.text = @"配置";
+        else if (section == 3){
+            label.text = @"主要配置";
         }
         [view addSubview:label];
         return view;
@@ -432,6 +481,12 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section == 0) {
         return  0.001;
+    }else if(section == 1)
+    {
+        if ([USERXX isBlankString:self.CarModel.carDealer[@"fullName"]] == NO) {
+            return 10;
+        }
+        return 0.01;
     }
     else
         return 52.5;
@@ -509,7 +564,7 @@
     }];
 }
 
-//
+//浏览
 -(void)setHistory{
     
     if ([USERXX isBlankString:[USERDEFAULTS objectForKey:USER_ID]] == YES) {
@@ -529,6 +584,7 @@
 
     }];
 }
+
 
 -(void)reloaddata{
     TLNetworking * http = [[TLNetworking alloc]init];

@@ -105,7 +105,7 @@
         tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor=BackColor;
+        _tableView.backgroundColor=kBackgroundColor;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -500,6 +500,9 @@
     http.isShowMsg = YES;
     http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
+        
+        
+        [USERDEFAULTS setObject:responseObject[@"data"] forKey:@"USERXX"];
         if ([USERXX isBlankString:responseObject[@"data"][@"nickname"]] == YES) {
             [USERDEFAULTS setObject:@"" forKey:NICKNAME];
         }else
@@ -534,6 +537,7 @@
         
         
         _headView.phoneLabel.text = [USERDEFAULTS objectForKey:MOBILE];
+        
         [weakSelf.tableView reloadData];
         
     } failure:^(NSError *error) {

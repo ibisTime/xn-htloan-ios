@@ -95,6 +95,23 @@
                 [USERDEFAULTS setObject:responseObject[@"data"][@"userId"] forKey:USER_ID];
                 [[USERXX user] updateUserInfoWithNotification];
 
+                
+                
+                
+                TLNetworking * http1 = [[TLNetworking alloc]init];
+                http1.code = @"805085";
+                http1.parameters[@"deviceToken"] = [USERDEFAULTS objectForKey:@"deviceToken"];
+                http1.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
+                [http1 postWithSuccess:^(id responseObject) {
+//                    [USERDEFAULTS setObject:deviceToken forKey:@"deviceToken"];
+                } failure:^(NSError *error) {
+                    
+                }];
+                
+                
+                
+                
+                
                 [self backViewController];
             } failure:^(NSError *error) {
                 WGLog(@"%@",error);

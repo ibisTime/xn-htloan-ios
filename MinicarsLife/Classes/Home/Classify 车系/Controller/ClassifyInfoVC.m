@@ -14,6 +14,9 @@
 #import "HW3DBannerView.h"
 #import "UITableView+AddForPlaceholder.h"
 @interface ClassifyInfoVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate,HW3DBannerViewDelegate>
+{
+    ClassifyInfoCell *cell;
+}
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) NSArray *dataArray;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * carModel;
@@ -61,7 +64,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *rid=@"cell";
     
-    ClassifyInfoCell *cell=[tableView dequeueReusableCellWithIdentifier:rid];
+    cell=[tableView dequeueReusableCellWithIdentifier:rid];
     
     if(cell==nil){
         cell=[[ClassifyInfoCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
@@ -73,7 +76,7 @@
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 185;
+    return cell.v1.yy;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CarModel * model = [CarModel mj_objectWithKeyValues:self.carModel[indexPath.row]];
@@ -85,6 +88,8 @@
     TLPageDataHelper * help = [TLPageDataHelper new];
     help.code = @"630492";
     help.parameters[@"seriesCode"] = self.models.code;
+    help.parameters[@"brandCode"] = self.brandCode;
+    help.parameters[@"carDealerCode"] = self.carDealerCode;
     help.parameters[@"type"] = @"2";
     help.parameters[@"priceStart"] =[NSString stringWithFormat:@"%.0f",[self.priceStart floatValue]*1000];
     help.parameters[@"priceEnd"] =[NSString stringWithFormat:@"%.0f",[self.priceEnd floatValue]*1000];
