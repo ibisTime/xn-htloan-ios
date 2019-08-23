@@ -25,6 +25,23 @@
         backImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120 - 64 + kNavigationBarHeight)];
         [self addSubview:backImg];
         
+//        UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120 - 64 + kNavigationBarHeight)];
+//        backView.backgroundColor = kHexColor(@"#000000");
+//        backView.alpha = 0.5;
+//        [self addSubview:backView];
+        
+        
+        CAGradientLayer *gl = [CAGradientLayer layer];
+        gl.frame = CGRectMake(0, 0, SCREEN_WIDTH, 120 - 64 + kNavigationBarHeight);
+        gl.startPoint = CGPointMake(0.5, 0);
+        gl.endPoint = CGPointMake(0.5, 1);
+        gl.colors = @[(__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.0].CGColor, (__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5].CGColor];
+        gl.locations = @[@(0), @(1.0f)];
+//        [self addSubview:gl];
+//        [backImg addSubview:gl];
+        [self.layer addSublayer:gl];
+        
+        
         nameLbl = [UILabel labelWithFrame:CGRectMake(15, kStatusBarHeight + 9, SCREEN_WIDTH - 30 - 50, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(18) textColor:kWhiteColor];
         [self addSubview:nameLbl];
         
@@ -84,7 +101,7 @@
 
 -(void)setDealersModel:(CarModel *)dealersModel
 {
-    [backImg sd_setImageWithURL:[NSURL URLWithString:[dealersModel.shopLogo convertImageUrl]]];
+    [backImg sd_setImageWithURL:[NSURL URLWithString:[dealersModel.shopBackGround convertImageUrl]]];
     nameLbl.text = dealersModel.fullName;
     addressLbl.text = dealersModel.address;
     

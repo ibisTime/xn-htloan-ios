@@ -62,7 +62,7 @@
 }
 
 - (void)initTableView {
-    self.tableView = [[DealersTableView alloc] initWithFrame:CGRectMake(0, _headView.yy, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
+    self.tableView = [[DealersTableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
     self.tableView.refreshDelegate = self;
     [self.view addSubview:self.tableView];
 }

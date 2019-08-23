@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * isHighQuality;
 @property (nonatomic,strong) NSArray * brandList;
 @property (nonatomic,copy) NSString * address;
+@property (nonatomic,copy) NSString * shopBackGround;
 @property (nonatomic,copy) NSString * fullName;
 @property (nonatomic,copy) NSString * monthAmount;
 @property (nonatomic,copy) NSString * configName;
