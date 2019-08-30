@@ -139,7 +139,7 @@
     
     
     
-    self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",[USERXX convertNull:carmodel.version] ,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
+    self.describdlab.text = [NSString stringWithFormat:@"%@ 外观:%@ 内饰:%@ %@",[USERXX convertNull:carmodel.version] ,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     
     
     self.contentlab.text = @"";

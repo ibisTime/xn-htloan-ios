@@ -78,7 +78,7 @@
     helper.code = MyNewsURL;
     helper.isList = NO;
     helper.isCurrency = YES;
-    helper.parameters[@"type"] = @"2";
+//    helper.parameters[@"type"] = @"2";
     helper.tableView = self.tableview;
     [helper modelClass:[MessageModel class]];
     [self.tableview addRefreshAction:^{

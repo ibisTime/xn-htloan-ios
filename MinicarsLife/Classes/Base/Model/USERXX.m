@@ -159,6 +159,24 @@
     // 4.显示弹框
     [_popView pop];
 }
+
+//查询未读消息条数
++(void)QueriesNumberOfUnreadMessageBars
+{
+    if ([USERDEFAULTS objectForKey:TOKEN_ID]) {
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"805309";
+        http.parameters[@"token"] = [USERDEFAULTS objectForKey:TOKEN_ID];
+        [http postWithSuccess:^(id responseObject) {
+            [USERDEFAULTS setObject:responseObject[@"data"] forKey:@"unreadnumber"];
+            [[XGPush defaultManager] setXgApplicationBadgeNumber:[responseObject[@"data"] integerValue]];
+        } failure:^(NSError *error) {
+            
+        }];
+        
+    }
+}
+
 + (NSString*)convertNull:(id)object{
     
     // 转换空串

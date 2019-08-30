@@ -110,6 +110,7 @@
 //    http2.showView = self.view;
     
     http2.code = @"630455";
+    http2.parameters[@"orderDir" ]=@"asc";
     http2.parameters[@"carDealerCode"] = dealersModel.code;
     http2.parameters[@"status"] = @"1";
     http2.parameters[@"start"] = @"1";

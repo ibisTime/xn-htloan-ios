@@ -90,7 +90,7 @@
     help.parameters[@"seriesCode"] = self.models.code;
     help.parameters[@"brandCode"] = self.brandCode;
     help.parameters[@"carDealerCode"] = self.carDealerCode;
-    help.parameters[@"type"] = @"2";
+//    help.parameters[@"type"] = @"2";
     help.parameters[@"priceStart"] =[NSString stringWithFormat:@"%.0f",[self.priceStart floatValue]*1000];
     help.parameters[@"priceEnd"] =[NSString stringWithFormat:@"%.0f",[self.priceEnd floatValue]*1000];
     

@@ -38,21 +38,21 @@
 //        self.photo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.photo];
         
-        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
-        self.titlelab.numberOfLines = 3;
-        self.titlelab.text = @"雷克萨斯LX570正在优惠降价，点击立即询价";
+        self.titlelab = [UILabel labelWithFrame:CGRectMake(15, 20, SCREEN_WIDTH - 120 - 15 - 15, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(18) textColor:kBlackColor];
+        self.titlelab.numberOfLines = 2;
+//        self.titlelab.text = @"雷克萨斯LX570正在优惠降价，点击立即询价雷克萨斯LX570正在优惠降价";
         [self addSubview:self.titlelab];
         
-        self.statuslab = [UILabel labelWithFrame:CGRectMake(15, 80, 30, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(10) textColor:kHexColor(@"#FF5E5E")];
+        self.statuslab = [UILabel labelWithFrame:CGRectMake(15, 70, 30, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(10) textColor:kHexColor(@"#FF5E5E")];
         kViewBorderRadius(self.statuslab, 3, 1, kHexColor(@"#FF5E5E"));
         self.statuslab.text = @"原创";
         [self addSubview:self.statuslab];
         
-        self.newsfrom = [UILabel labelWithFrame:CGRectMake(55, 80, 50, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        self.newsfrom = [UILabel labelWithFrame:CGRectMake(55, 70, 50, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         self.newsfrom.text = @"浩源车网";
         [self addSubview:self.newsfrom];
         
-        self.looknum = [UILabel labelWithFrame:CGRectMake(self.photo.x - 60 - 70, 80, 70, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
+        self.looknum = [UILabel labelWithFrame:CGRectMake(self.photo.x - 60 - 70, 70, 70, 16) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
         self.looknum.text = @"1.5万次浏览";
         [self addSubview:self.looknum];
         
@@ -65,31 +65,18 @@
 }
 
 -(void)setModel:(NewsModel *)model{
+    _model = model;
     [self.photo sd_setImageWithURL:[NSURL URLWithString:[model.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     
     //超出容器范围的切除掉
 //    self.photo.clipsToBounds = YES;
     self.titlelab.text = model.title;
-    self.titlelab.frame = CGRectMake(15, 10, SCREEN_WIDTH - 120 - 15 - 15, 0);
+    self.titlelab.frame = CGRectMake(15, 20, SCREEN_WIDTH - 120 - 15 - 15, 0);
     [self.titlelab sizeToFit];
     
     self.newsfrom.text = model.author;
-    self.statuslab.text = model.tag;
-    [self.statuslab sizeToFit];
-    self.statuslab.frame = CGRectMake(15, 80, self.statuslab.width + 10, 15);
     
-    [self.newsfrom sizeToFit];
-    
-    if (self.newsfrom.width >  100)
-    {
-        self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 80, 100, 15);
-    }
-    else
-    {
-        self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 80, self.newsfrom.width, 15);
-    }
-    
-    self.looknum.frame = CGRectMake(self.newsfrom.xx + 10, 80, SCREEN_WIDTH - self.newsfrom.xx - 10 - 120 - 25, 15);
+   
     
     float count = [model.readCount floatValue];
     NSString * str;
@@ -102,4 +89,26 @@
         self.looknum.text = [NSString stringWithFormat:@"%@次浏览",model.readCount];
     
 }
+
+-(void)setNewstagDataAry:(NSArray *)newstagDataAry
+{
+    for (int i = 0; i < newstagDataAry.count; i ++) {
+        if ([_model.tag isEqualToString:newstagDataAry[i][@"dkey"]]) {
+            self.statuslab.text = newstagDataAry[i][@"dvalue"];
+            [self.statuslab sizeToFit];
+            self.statuslab.frame = CGRectMake(15, 70, self.statuslab.width + 10, 15);
+            [self.newsfrom sizeToFit];
+            if (self.newsfrom.width >  100)
+            {
+                self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 70, 100, 15);
+            }
+            else
+            {
+                self.newsfrom.frame = CGRectMake(self.statuslab.xx + 10, 70, self.newsfrom.width, 15);
+            }
+            self.looknum.frame = CGRectMake(self.newsfrom.xx + 10, 70, SCREEN_WIDTH - self.newsfrom.xx - 10 - 120 - 25, 15);
+        }
+    }
+}
+
 @end

@@ -66,6 +66,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
     NewsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = self.NewsModels[indexPath.row];
+    cell.newstagDataAry = self.newstagDataAry;
     return cell;
 }
 
@@ -107,7 +108,7 @@ static NSString *MyAsstes = @"MyAsstesCell";
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
-    NSArray *ary = @[@"店内主营",@"精选车源",@"店铺动态"];
+    NSArray *ary = @[@"店内主营",@"经典车型",@"店铺动态"];
     UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 0, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
     label.text = ary[section];
     [view addSubview:label];

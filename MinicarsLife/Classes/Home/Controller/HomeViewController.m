@@ -36,6 +36,7 @@
 #import "DealersVC.h"
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn,CollectionSelectRowDelegate>{
     HomeHeadVC * headview;
+    
 }
 //@property (nonatomic , strong)HomeTableView *tableView;
 @property (nonatomic , strong)UIWebView *webView;
@@ -51,6 +52,7 @@
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModelsCars;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * DealersModels;
+@property (nonatomic,strong)NSArray *newstagDataAry;
 @end
 
 @implementation HomeViewController
@@ -58,6 +60,7 @@
     [super viewWillAppear:animated];
 //    [self loadData];
 //    [self getnewsadta];
+    [self PopularModels];
 }
 -(void)modifyFrame
 {
@@ -72,8 +75,9 @@
         numberToRound1 = (headview.CarClassifyModels.count)/3.0;
         result1 = (int)ceilf(numberToRound1);
         
-        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * SCREEN_WIDTH + 30 * result + 90 * result1 + 30 + 10);
-        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 10,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy);
+        headview.frame = CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * (SCREEN_WIDTH - 30) + 30 + 40 * result + 95 * result1 + 30);
+//        0, self.scrollView.yy + 15,SCREEN_WIDTH
+        headview.collection.frame = CGRectMake(0, headview.scrollView.yy + 15,SCREEN_WIDTH , headview.bounds.size.height - headview.scrollView.yy -15);
     }
     [self.tableview reloadData_tl];
 }
@@ -95,7 +99,7 @@
     [self loadData];
     [self getnewsadta];
     
-    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 673.00/750.00 * SCREEN_WIDTH + 60)];
+    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * (SCREEN_WIDTH - 30) + 30 + 30)];
     
     headview.delegate = self;
     self.tableview.tableHeaderView = headview;
@@ -196,6 +200,7 @@
     NewsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = self.NewsModels[indexPath.row];
+    cell.newstagDataAry = self.newstagDataAry;
     return cell;
 }
 
@@ -207,6 +212,7 @@
     http.parameters[@"isHighQuality"] = @"1";
     http.parameters[@"start"] = @"1";
     http.parameters[@"limit"] = @"10";
+    http.parameters[@"location"]= @"0";
     [http postWithSuccess:^(id responseObject) {
         self.DealersModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
 //        [self modifyFrame];
@@ -261,7 +267,7 @@
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
         UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        label.text = @"精选车源";
+        label.text = @"经典车型";
         [view addSubview:label];
         return view;
     }
@@ -272,7 +278,7 @@
         [view addSubview:v1];
         view.backgroundColor = kWhiteColor;
         UILabel * label = [UILabel labelWithFrame:CGRectMake(15, 10, 70, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
-        label.text = @"资讯";
+        label.text = @"玩车资讯";
         [view addSubview:label];
         
         UIButton * button = [UIButton buttonWithTitle:@"查看更多" titleColor:kTextColor2 backgroundColor:kClearColor titleFont:12 cornerRadius:0];
@@ -377,6 +383,8 @@
     help.code = @"630455";
     help.parameters[@"location"] = @"0";
     help.parameters[@"status"] = @"1";
+    help.parameters[@"orderDir" ]=@"asc";
+//    help.parameters[@"orderColumn"] = @"";
     [help modelClass:[NewsModel class]];
     help.tableView = self.tableview;
     help.isCurrency = YES;
@@ -384,14 +392,35 @@
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
             weakSelf.NewsModels = objs;
             [weakSelf DealersLoadData];
+            [weakSelf car_news_tag];
             [weakSelf loadData];
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];
+            
         } failure:^(NSError *error) {
             [weakSelf.tableview endRefreshHeader];
         }];
     }];
     [self.tableview beginRefreshing];
+}
+
+-(void)car_news_tag
+{
+    //标签数据字典
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
+    http.code = @"630036";
+    http.parameters[@"parentKey"] = @"car_news_tag";
+
+    [http postWithSuccess:^(id responseObject) {
+//        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+//        [self modifyFrame];
+        self.newstagDataAry = responseObject[@"data"];
+        [self.tableview reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)loadData{
@@ -404,7 +433,7 @@
     http.parameters[@"status"] = @"1";
     http.parameters[@"start"] = @"0";
     http.parameters[@"limit"] = @"100";
-    http.parameters[@"type"] = @"2";
+//    http.parameters[@"type"] = @"2";
     http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
         headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
@@ -421,7 +450,7 @@
     http1.parameters[@"status"] = @"1";
     http1.parameters[@"start"] = @"0";
     http1.parameters[@"limit"] = @"100";
-    http1.parameters[@"type"] = @"2";
+    http1.parameters[@"orderColumn"] = @"order_no";
     http1.parameters[@"orderDir"] = @"asc";
     [http1 postWithSuccess:^(id responseObject) {
         headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
@@ -429,18 +458,20 @@
     } failure:^(NSError *error) {
         
     }];
+    [self PopularModels];
+}
+
+//热门车型
+-(void)PopularModels
+{
     
-    
-    
-    //热门车型
     TLNetworking * http2 = [[TLNetworking alloc]init];
-    http2.showView = self.view;
     http2.code = @"630492";
     http2.parameters[@"location"] = @"0";
     http2.parameters[@"status"] = @"1";
     http2.parameters[@"start"] = @"0";
     http2.parameters[@"limit"] = @"100";
-    http2.parameters[@"type"] = @"2";
+    //    http2.parameters[@"type"] = @"2";
     http2.parameters[@"orderDir"] = @"asc";
     [http2 postWithSuccess:^(id responseObject) {
         self.CarModelsCars = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
@@ -448,11 +479,6 @@
         
     }];
 }
-
-
-
-
-
 
 
 

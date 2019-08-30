@@ -37,7 +37,7 @@
     nameLable = [[UILabel alloc]initWithFrame:CGRectMake(54, kStatusBarHeight, kScreenWidth - 108, 44)];
 //    nameLable.text = [LangSwitcher switchLang:@"攻略" key:nil];
     nameLable.textAlignment = NSTextAlignmentCenter;
-    nameLable.font = Font(16);
+    nameLable.font = Font(18);
     nameLable.textColor = kWhiteColor;
     nameLable.text = self.name;
     self.navigationItem.titleView = nameLable;

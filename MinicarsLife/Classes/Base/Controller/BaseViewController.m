@@ -17,6 +17,10 @@
 
 @implementation BaseViewController
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [USERXX QueriesNumberOfUnreadMessageBars];
+}
 
 -(UIButton *)LeftBackbButton
 {
@@ -51,7 +55,8 @@
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"back"];
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"back"];
     self.navigationItem.backBarButtonItem = item;
-
+//    未付消息
+    
 }
 
 - (void)didReceiveMemoryWarning {

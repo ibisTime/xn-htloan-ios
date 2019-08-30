@@ -28,7 +28,7 @@
         [self addSubview:self.logo];
         
         
-        self.namelab = [UILabel labelWithFrame:CGRectMake(55, 10, SCREEN_WIDTH - 55 - 15, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        self.namelab = [UILabel labelWithFrame:CGRectMake(55, 10, SCREEN_WIDTH - 55 - 15, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         [self addSubview:self.namelab];
         
         UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 54, SCREEN_WIDTH - 45, 1)];

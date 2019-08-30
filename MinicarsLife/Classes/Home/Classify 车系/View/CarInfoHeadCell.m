@@ -158,7 +158,7 @@
     for (int i = 0; i<dataArray.count; i ++) {
         if ([_CarModel.version isEqualToString:dataArray[i][@"dkey"]]) {
             version = dataArray[i][@"dvalue"];
-            self.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",version,[USERXX convertNull: _CarModel.outsideColor],[USERXX convertNull: _CarModel.insideColor], [USERXX convertNull:_CarModel.fromPlace]];
+            self.describdlab.text = [NSString stringWithFormat:@"%@ 外观:%@ 内饰:%@ %@",version,[USERXX convertNull: _CarModel.outsideColor],[USERXX convertNull: _CarModel.insideColor], [USERXX convertNull:_CarModel.fromPlace]];
         }
     }
     

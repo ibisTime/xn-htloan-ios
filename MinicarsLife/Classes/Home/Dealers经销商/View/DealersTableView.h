@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic , strong)NSMutableArray <CarModel *>*CarModelsCars;
 @property (nonatomic , strong)NSMutableArray <NewsModel *>*NewsModels;
 @property (nonatomic , strong)CarModel *dealersModel;
+@property (nonatomic ,strong)NSArray *newstagDataAry;
 @end
 
 NS_ASSUME_NONNULL_END

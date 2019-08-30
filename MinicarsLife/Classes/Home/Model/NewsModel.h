@@ -40,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * updater ;
 @property (nonatomic,copy) NSString * updateDatetime ;
 @property (nonatomic,copy) NSString * remark ;
+
+@property (nonatomic,copy) NSString * refSeriesName ;
+@property (nonatomic,copy) NSString * refCarName ;
+@property (nonatomic,copy) NSString * refCarCode ;
+@property (nonatomic,copy) NSString * refBrandName ;
+@property (nonatomic,copy) NSString * carPic;
 @end
 
 NS_ASSUME_NONNULL_END

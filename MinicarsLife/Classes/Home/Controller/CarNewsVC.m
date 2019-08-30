@@ -13,16 +13,41 @@
 @interface CarNewsVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) NSMutableArray<NewsModel *> * NewsModels;
+@property (nonatomic , strong)NSArray *newstagDataAry;
 @end
 
 @implementation CarNewsVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"资讯";
+//    self.title = @"玩车资讯";
+    UILabel *titleLbl = [[UILabel alloc]init];
+    titleLbl.text = @"玩车资讯";
+    titleLbl.font = Font(18);
+    titleLbl.textColor = [UIColor whiteColor];
+    self.navigationItem.titleView = titleLbl;
     [self.view addSubview:self.tableview];
     [self getnewsadta];
     // Do any additional setup after loading the view.
+}
+
+-(void)car_news_tag
+{
+    //标签数据字典
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
+    http.code = @"630036";
+    http.parameters[@"parentKey"] = @"car_news_tag";
+    
+    [http postWithSuccess:^(id responseObject) {
+        //        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+        //        [self modifyFrame];
+        self.newstagDataAry = responseObject[@"data"];
+        [self.tableview reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(TLTableView *)tableview{
@@ -42,11 +67,14 @@
     TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
     help.code = @"630455";
     help.parameters[@"status"] = @"1";
+    help.parameters[@"orderDir" ]=@"asc";
     [help modelClass:[NewsModel class]];
     help.tableView = self.tableview;
     help.isCurrency = YES;
     [self.tableview addRefreshAction:^{
+        [weakSelf car_news_tag];
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
+            
             weakSelf.NewsModels = objs;
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];
@@ -75,7 +103,7 @@
     NewsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.model = self.NewsModels[indexPath.row];
-
+    cell.newstagDataAry = self.newstagDataAry;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

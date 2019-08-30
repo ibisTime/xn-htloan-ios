@@ -37,11 +37,13 @@
 //"createDatetime": "Mar 14, 2019 4:38:19 PM",
 //"updater": "tao"
 @property (nonatomic,copy) NSString * code;
+@property (nonatomic,copy) NSString * refCode;
 @property (nonatomic,copy) NSString * type;
 @property (nonatomic,copy) NSString * title;
 @property (nonatomic,copy) NSString * content;
 @property (nonatomic,copy) NSString * status;
 @property (nonatomic,copy) NSString * createDatetime;
 @property (nonatomic,copy) NSString * updater;
+@property (nonatomic,copy) NSString * isAlreadyRead;
 
 @end

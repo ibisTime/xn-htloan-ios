@@ -15,5 +15,6 @@
 @property (nonatomic , strong)UILabel *nameLabel;
 
 @property (nonatomic , strong)UILabel *detailLabel;
-
+@property (nonatomic , strong)UILabel *numberLbl;
+@property (nonatomic , assign)NSInteger number;
 @end

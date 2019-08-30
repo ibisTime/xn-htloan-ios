@@ -225,6 +225,8 @@
                 vc.state = @"100";
                 [USERDEFAULTS removeObjectForKey:USER_ID];
                 [USERDEFAULTS removeObjectForKey:TOKEN_ID];
+                [[XGPush defaultManager] setBadge:0];
+                [[XGPush defaultManager] setXgApplicationBadgeNumber:0];
                 [rootViewController presentViewController:nav animated:YES completion:nil];
             } confirm:^(UIAlertAction *action) {
                 

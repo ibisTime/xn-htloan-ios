@@ -129,10 +129,10 @@
 //            self.parameters[@"systemCode"] = [[self class] systemCode];
         }
         
-//        if ([TLUser user].token) {
-//
-//            self.parameters[@"token"] = [TLUser user].token;
-//        }
+        if ([USERDEFAULTS objectForKey:TOKEN_ID]) {
+
+            self.parameters[@"token"] = [USERDEFAULTS objectForKey:TOKEN_ID];
+        }
 //
 //        self.parameters[@"companyCode"] = [[self class] companyCode];
 
@@ -201,14 +201,16 @@
               failure(nil);
           }
           
-          if ([responseObject[@"errorCode"] isEqual:@"4"] && ![self.code isEqualToString:@"632942"]) {
+          if ([responseObject[@"errorCode"] isEqual:@"4"]) {
               //token错误  4
-              
+              [TLProgressHUD dismiss];
               [TLAlert alertWithTitle:@"提示" message:@"为了您的账户安全,请重新登录" confirmAction:^{
                   LoginViewController *vc = [[LoginViewController alloc]init];
                   UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-//                  vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//                  vc.modalPresentationStyle = UIModalTransitionStyleFlipHorizontal;
+                  [USERDEFAULTS removeObjectForKey:USER_ID];
+                  [USERDEFAULTS removeObjectForKey:TOKEN_ID];
+                  [[XGPush defaultManager] setBadge:0];
+                  [[XGPush defaultManager] setXgApplicationBadgeNumber:0];
                   vc.state = @"100";
                   UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
                   [rootViewController presentViewController:nav animated:YES completion:nil];
@@ -216,6 +218,7 @@
               return;
           }else
           {
+              
               [TLProgressHUD showInfoWithStatus:responseObject[@"errorInfo"]];
               
           }

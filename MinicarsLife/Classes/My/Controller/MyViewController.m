@@ -30,12 +30,14 @@
 #import "CalculatorVC.h"
 
 #import "ChangeBrandVC.h"
-//#import "CalculatorVC.h"
+#import "NoticeVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
 {
     NSString *accountNumber;
     NSString *faceStr;
+    MYCell *cell;
+    NSInteger number;
 }
 @property (nonatomic , strong)UITableView *tableView;
 @property (nonatomic , strong)MyHeadView *headView;
@@ -48,11 +50,13 @@
 
 @implementation MyViewController
 
+
+
 -(UILabel *)titleLabel
 {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, kStatusBarHeight, SCREEN_WIDTH, 44)];
-        _titleLabel.text = @"我的";
+        _titleLabel.text = @"玩会员";
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName :@"Georgia-Bold" size:18];
@@ -149,7 +153,7 @@
 #pragma mark -- tableView
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MYCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MYCell" forIndexPath:indexPath];
+    cell = [tableView dequeueReusableCellWithIdentifier:@"MYCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     switch (indexPath.section) {
         case 0:
@@ -163,7 +167,13 @@
         case 1:
         {
             NSArray *nameArray = @[@"我的消息",@"我的收藏",@"我的足迹"];
-            
+            if (indexPath.row == 0) {
+                 cell.numberLbl.hidden = NO;
+                cell.number = number;
+            }else
+            {
+                 cell.numberLbl.hidden = YES;
+            }
             cell.iconImage.image = HGImage(nameArray[indexPath.row]);
             cell.nameLabel.text = nameArray[indexPath.row];
         }
@@ -210,7 +220,7 @@
         {
             //我的消息
             if (indexPath.row == 0) {
-                MessageVC *vc = [[MessageVC alloc]init];
+                NoticeVC *vc = [[NoticeVC alloc]init];
                 vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }
@@ -479,6 +489,9 @@
 {
     [super viewWillAppear:animated];
     [self loadData];
+    number = [[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue];
+//    cell.numberLbl.text = [NSString stringWithFormat:@"%ld",[[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue]];
+    [self.tableView reloadData];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
@@ -496,7 +509,7 @@
     MinicarsLifeWeakSelf;
     TLNetworking *http = [TLNetworking new];
     http.code = DetailsOfTheUserDataURL;
-    http.showView = self.view;
+//    http.showView = self.view;
     http.isShowMsg = YES;
     http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
@@ -546,7 +559,7 @@
     
     TLNetworking *http1 = [TLNetworking new];
     http1.code = AccountsCheckingListURL;
-    http1.showView = self.view;
+//    http1.showView = self.view;
     http1.isShowMsg = YES;
     http1.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     [http1 postWithSuccess:^(id responseObject) {

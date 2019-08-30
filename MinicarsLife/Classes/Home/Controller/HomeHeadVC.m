@@ -44,22 +44,7 @@
     return self;
 }
 -(void)setCarBrandModels:(NSMutableArray<CarModel *> *)CarBrandModels{
-    
-//    if (_CarBrandModels.count > 0) {
-//        for (int i = 0; i < _CarBrandModels.count; i ++) {
-//            UIView *lineView = [self viewWithTag:i + 10000];
-//            [lineView removeFromSuperview];
-//        }
-//    }
-    
-//    if (CarBrandModels.count > 0) {
-//        for (int i = 0; i < CarBrandModels.count - 1 ; i ++) {
-//            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 50 + i % 3 * 30, 1, 20)];
-//            lineView.tag = 10000+i;
-//            lineView.backgroundColor =kLineColor;
-//            [_collection addSubview:lineView];
-//        }
-//    }
+
     _CarBrandModels = CarBrandModels;
     
     if (self.CarClassifyModels && self.CarBrandModels) {
@@ -80,10 +65,25 @@
 {
     if (!_scrollView) {
         MJWeakSelf;
-        _scrollView = [HW3DBannerView initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300.00/750.00 * SCREEN_WIDTH) imageSpacing:0 imageWidth:SCREEN_WIDTH];
-        _scrollView.userInteractionEnabled=YES;
-        _scrollView.autoScrollTimeInterval = 3;
-        _scrollView.placeHolderImage = kImage(@"default_pic"); // 设置占位图片
+//        _scrollView = [HW3DBannerView initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 300.00/750.00 * (SCREEN_WIDTH - 30)) imageSpacing:0 imageWidth:SCREEN_WIDTH - 30];
+//        _scrollView.userInteractionEnabled=YES;
+//        _scrollView.autoScrollTimeInterval = 3;
+//        _scrollView.placeHolderImage = kImage(@"default_pic"); // 设置占位图片
+        
+        
+        _scrollView = [HW3DBannerView initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 300.00/750.00 * (SCREEN_WIDTH - 30)) imageSpacing:10 imageWidth:SCREEN_WIDTH - 30];
+        _scrollView.initAlpha = 0; // 设置两边卡片的透明度
+        _scrollView.imageRadius = 6.5; // 设置卡片圆角
+        //        _scrollView.imageHeightPoor = 20;// 设置占位图片
+        _scrollView.delegate = self;
+        _scrollView.autoScrollTimeInterval = 4;
+        
+        
+        
+        
+        
+        
+        
         
         _scrollView.clickImageBlock = ^(NSInteger currentIndex) {
             //            NSLog(@"%ld",currentIndex);
@@ -97,13 +97,11 @@
 -(UICollectionView *)collection{
     if (!_collection) {
         UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-        layout.minimumLineSpacing = 10;
-        
-        layout.sectionInset = UIEdgeInsetsMake(10, 24, 10, 24);
-        
+        layout.minimumLineSpacing = 0;
+        layout.sectionInset = UIEdgeInsetsMake(0, 24, 0, 24);
         layout.scrollDirection = UICollectionViewScrollDirectionVertical;
         self.layout = layout;
-        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 10,SCREEN_WIDTH , self.bounds.size.height - self.scrollView.yy)collectionViewLayout:self.layout];
+        _collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, self.scrollView.yy + 15,SCREEN_WIDTH , self.bounds.size.height - self.scrollView.yy)collectionViewLayout:self.layout];
         _collection.delegate = self;
         _collection.dataSource = self;
         _collection.showsVerticalScrollIndicator = NO;
@@ -114,11 +112,11 @@
         [_collection registerClass:[SelectCarCell class] forCellWithReuseIdentifier:@"cell"];
         [_collection registerClass:[SelectBrandCell class] forCellWithReuseIdentifier:@"SelectBrand"];
         
-        for (int i = 0; i < 3 ; i ++) {
-            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 10, 1, 20)];
-            lineView.backgroundColor =kLineColor;
-            [_collection addSubview:lineView];
-        }
+//        for (int i = 0; i < 3 ; i ++) {
+//            UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4 + i % 3 * SCREEN_WIDTH/4, 10, 1, 20)];
+//            lineView.backgroundColor =kLineColor;
+//            [_collection addSubview:lineView];
+//        }
         
     }
     return _collection;
@@ -169,21 +167,21 @@
         CarModel * model =[CarModel mj_objectWithKeyValues:self.CarBrandModels[indexPath.row]];
         cell.titlelab.text = model.name;
         [cell.titlelab sizeToFit];
-        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 12 - 2.5, 0, 20, 20);
-        cell.titlelab.frame = CGRectMake(cell.logo.xx + 8 + 2.5, 0, cell.frame.size.width - cell.logo.xx - 5, 20);
+        cell.logo.frame = CGRectMake(cell.width/2 - (cell.titlelab.width)/2 - 30/2 - 2, 0, 30, 30);
+        cell.titlelab.frame = CGRectMake(cell.logo.xx + 4 , 0, cell.frame.size.width - cell.logo.xx, 30);
         [cell.logo sd_setImageWithURL:[NSURL URLWithString:[model.logo convertImageUrl]] placeholderImage:kImage(@"default_pic")];
-        cell.titlelab.frame = CGRectMake(cell.logo.xx + 5, 0, cell.titlelab.width, 20);
+        cell.titlelab.frame = CGRectMake(cell.logo.xx + 4, 0, cell.titlelab.width, 30);
     }
     return cell;
-
 }
+
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        return CGSizeMake((SCREEN_WIDTH - 120) /4, 20);
+        return CGSizeMake((SCREEN_WIDTH - 120) /4, 30);
     }else if (indexPath.section == 1){
-        return CGSizeMake((SCREEN_WIDTH - 120) / 4  , 20);
+        return CGSizeMake((SCREEN_WIDTH - 120) / 4  , 40);
     }
-    return CGSizeMake((SCREEN_WIDTH - 96) /3, 80);
+    return CGSizeMake((SCREEN_WIDTH - 96) /3, 95);
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {

@@ -36,7 +36,7 @@
     http2.parameters[@"name"] = self.queryName;
     http2.parameters[@"isMore"] = weakSelf.isMore;
     http2.parameters[@"status"] = @"1";
-    http2.parameters[@"type"] = @"2";
+//    http2.parameters[@"type"] = @"2";
     http2.tableView = self.tableview;
     [http2 modelClass:[CarModel class]];
     http2.isCurrency = YES;

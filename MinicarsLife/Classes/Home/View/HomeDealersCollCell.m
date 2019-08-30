@@ -21,11 +21,9 @@
         iconImg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 90, 68)];
         kViewRadius(iconImg, 2);
         iconImg.contentMode = UIViewContentModeScaleAspectFit;
-//        iconImg.autoresizesSubviews = YES;
-//        iconImg.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
         [self addSubview:iconImg];
         
-        nameLbl = [UILabel labelWithFrame:CGRectMake(0, iconImg.yy + 6, 90, 17) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        nameLbl = [UILabel labelWithFrame:CGRectMake(0, iconImg.yy + 6, 90, 17) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         [self addSubview:nameLbl];
     }
     return self;

@@ -14,7 +14,7 @@
     if (self) {
 //        self.backgroundColor = [UIColor redColor];
         
-            self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+            self.titlelab = [UILabel labelWithFrame:CGRectMake(0, 0, self.width, 20) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
             [self addSubview:self.titlelab];
         
     }

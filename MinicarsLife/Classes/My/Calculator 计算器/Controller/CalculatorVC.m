@@ -437,7 +437,7 @@
     TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630427";
     http.parameters[@"code"] = code;
-    http.showView = self.view;
+//    http.showView = self.view;
     [http postWithSuccess:^(id responseObject) {
         self.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
         [self.leftTable reloadData_tl];

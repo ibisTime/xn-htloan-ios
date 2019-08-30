@@ -72,7 +72,7 @@
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    self.RightButton.titleLabel.font = Font(16);
+    self.RightButton.titleLabel.font = Font(18);
     [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-57.5, 30, 42.5, 45)];
     [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
     [self.RightButton addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
@@ -194,7 +194,7 @@
     http.parameters[@"location"] = @"0";
     http.parameters[@"start"] = @"0";
     http.parameters[@"limit"] = @"100";
-    http.parameters[@"type"] = @"2";
+//    http.parameters[@"type"] = @"2";
     http.parameters[@"orderDir"] = @"asc";
     [http postWithSuccess:^(id responseObject) {
         self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];

@@ -19,7 +19,7 @@
         self.logo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
         [self addSubview:self.logo];
         
-        self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kBlackColor];
+        self.titlelab = [UILabel labelWithFrame:self.bounds textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(14) textColor:kBlackColor];
         self.titlelab.frame = CGRectMake(self.logo.xx + 5, 0, (SCREEN_WIDTH - 75) /4 - 19, 20);
         [self addSubview:self.titlelab];
     }

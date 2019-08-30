@@ -11,7 +11,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "GuideView.h"
 #import "ViewController.h"
-#import "XGPush.h"
+
 #import "NSObject+Tool.h"
 
 #import "NewsInfoVC.h"
@@ -22,7 +22,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate ()<XGPushDelegate>
+@interface AppDelegate ()<XGPushDelegate,UNUserNotificationCenterDelegate>
 @property (nonatomic , assign)BOOL isLaunchedByNotification;
 @end
 
@@ -44,26 +44,22 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
+    [USERXX QueriesNumberOfUnreadMessageBars];
+    [self XGPushSetUp];
+    
 
-    
-    
-//    信鸽推送
-    [[XGPush defaultManager] setEnableDebug:YES];
-    [[XGPush defaultManager] startXGWithAppID:2200341534 appKey:@"I4A92YVD11HI"  delegate:self];
-    //角标设置为0
-    [[XGPush defaultManager] setXgApplicationBadgeNumber:0];
+//    [self registerAPNS];
     //为了更好的了解每一条推送消息的运营效果，需要将用户对消息的行为上报
     [[XGPush defaultManager] reportXGNotificationInfo:launchOptions];
-
-    
     if (launchOptions) {
         self.isLaunchedByNotification = YES;
-//        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-//        [self receiveRemoteNotificationWithUserInfo:pushNotificationKey];
-        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        [self performSelector:@selector(receiveRemoteNotificationWithUserInfo:) withObject:pushNotificationKey afterDelay:1.0];
+
         BaseTabBarViewController *TabBarVC = [[BaseTabBarViewController alloc]init];
         self.window.rootViewController = TabBarVC;
+        
+        NSDictionary *pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        [self performSelector:@selector(receiveRemoteNotificationWithUserInfo:) withObject:pushNotificationKey afterDelay:2.0];
+        
     }else{
         self.isLaunchedByNotification = NO;
         GuideView *guideView = [[GuideView alloc]init];
@@ -72,6 +68,40 @@
     }
     return YES;
 }
+
+
+-(void)XGPushSetUp
+{
+    
+    //    信鸽推送
+    [[XGPush defaultManager] setEnableDebug:YES];
+    [[XGPush defaultManager] startXGWithAppID:2200341534 appKey:@"I4A92YVD11HI"  delegate:self];
+    //角标设置
+    //    [[XGPush defaultManager] setXgApplicationBadgeNumber:4];
+    
+    //    在通知消息中创建一个可以点击的事件行为
+    XGNotificationAction *action1 = [XGNotificationAction actionWithIdentifier:@"xgaction001" title:@"xgAction1" options:XGNotificationActionOptionNone];
+    XGNotificationAction *action2 = [XGNotificationAction actionWithIdentifier:@"xgaction002" title:@"xgAction2" options:XGNotificationActionOptionNone];
+    
+    
+    XGNotificationCategory *category = [XGNotificationCategory categoryWithIdentifier:@"xgCategory" actions:@[action1, action2] intentIdentifiers:@[] options:XGNotificationCategoryOptionNone];
+    XGNotificationConfigure *configure = [XGNotificationConfigure configureNotificationWithCategories:[NSSet setWithObject:category] types:XGUserNotificationTypeAlert|XGUserNotificationTypeBadge|XGUserNotificationTypeSound];
+    
+    [[XGPush defaultManager] setNotificationConfigure:configure];
+    
+    //    上报角标s
+    NSInteger number;
+    if ([USERDEFAULTS objectForKey:USER_ID]) {
+//        [[XGPush defaultManager] setXgApplicationBadgeNumber:[ integerValue]]
+        number = [[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue];
+    }else
+    {
+        number = 0;
+    }
+    
+    [[XGPush defaultManager] setBadge:number];
+}
+
 
 
 - (void)application:(UIApplication *)application
@@ -120,10 +150,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [[XGPush defaultManager] reportXGNotificationInfo:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 
-    
 }
-
-
 
 
 //#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
@@ -153,7 +180,8 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
     UINavigationController *nav = tbc.viewControllers[tbc.selectedIndex];
 
-    if ([dic[@"custom"][@"key1"] isEqualToString:@"1"]) {
+    
+    if ([dic[@"custom"][@"key1"] isEqualToString:@"1"] || [dic[@"custom"][@"key1"] isEqualToString:@"3"]) {
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"805307";
 //        http.showView = self.view;
@@ -175,9 +203,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         vc.hidesBottomBarWhenPushed = YES;
         [nav pushViewController:vc animated:YES];
     }
-    if ([dic[@"custom"][@"key1"] isEqualToString:@"3"]) {
-        
-    }
+
     if ([dic[@"custom"][@"key1"] isEqualToString:@"4"]) {
         TLNetworking * http = [[TLNetworking alloc]init];
         http.code = @"630427";
@@ -194,7 +220,15 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
         }];
     }
 
+//    [[XGPush defaultManager] setXgApplicationBadgeNumber:[[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue] - 1];
+    
 }
+
+
+
+
+
+
 
 
 //推送token传给服务器

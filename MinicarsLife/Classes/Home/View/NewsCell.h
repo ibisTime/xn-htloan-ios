@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NewsCell : UITableViewCell
 @property (nonatomic,strong) NewsModel * model;
+@property (nonatomic ,strong)NSArray *newstagDataAry;
 @end
 
 NS_ASSUME_NONNULL_END

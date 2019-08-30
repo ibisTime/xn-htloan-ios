@@ -19,7 +19,7 @@
 @property (nonatomic , strong)NSMutableArray <NewsModel *>*NewsModels;
 @property (nonatomic , strong)DealersHeadView *headView;
 @property (nonatomic , strong)DealersTableView *tableView;
-
+@property (nonatomic ,strong)NSArray *newstagDataAry;
 @end
 
 @implementation DealersVC
@@ -157,10 +157,12 @@
     help.code = @"630455";
     help.parameters[@"status"] = @"1";
     help.parameters[@"carDealerCode"] = self.dealersModel.code;
+    help.parameters[@"orderDir" ]=@"asc";
     [help modelClass:[NewsModel class]];
     help.tableView = self.tableView;
     help.isCurrency = YES;
     [self.tableView addRefreshAction:^{
+        [weakSelf car_news_tag];
         [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
             weakSelf.NewsModels = objs;
             weakSelf.tableView.NewsModels = weakSelf.NewsModels;
@@ -174,6 +176,26 @@
         }];
     }];
     [self.tableView beginRefreshing];
+}
+
+-(void)car_news_tag
+{
+    //标签数据字典
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.showView = self.view;
+    http.code = @"630036";
+    http.parameters[@"parentKey"] = @"car_news_tag";
+    
+    [http postWithSuccess:^(id responseObject) {
+        //        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
+        //        [self modifyFrame];
+        self.newstagDataAry = responseObject[@"data"];
+        self.tableView.newstagDataAry = self.newstagDataAry;
+        [self.tableView reloadData];
+        
+    } failure:^(NSError *error) {
+        
+    }];
 }
 
 -(void)carsLoadData

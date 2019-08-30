@@ -57,7 +57,7 @@
     [self setupChildViewControll];
     //设置分页按钮
     [self setupPageButton];
-    self.WeiGreLabel = [[UILabel alloc]initWithFrame:CGRectMake(133, 40 , 24, 2)];
+    self.WeiGreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 100 + 35, 40 , 30, 2)];
     self.WeiGreLabel.backgroundColor = kLineColor;
     [self.backView addSubview:self.WeiGreLabel];
 //    [self setupSelectBtn];
@@ -136,8 +136,8 @@
 //    CGFloat w = SCREEN_WIDTH / (kPageCount + 1);
     CGFloat h = kButton_H;
 //    CGFloat x = index * w;
-    CGFloat w = 50;
-    CGFloat x = 116 + index * (w + 40);
+    CGFloat w = 100;
+    CGFloat x = SCREEN_WIDTH/2 - 100 + index * 100;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setTitle:title forState:(UIControlStateNormal)];
     btn.frame = CGRectMake(x, y, w, h);
@@ -175,11 +175,12 @@
     self.selectBtn = btn;
     [btn setTitleColor:kWhiteColor forState:(UIControlStateNormal)];
     [UIView animateWithDuration:0.3 animations:^{
-        CGFloat w = 50;
-        CGFloat x = 130 + self.currentPages * (w + 40);
+//        CGFloat w = 50;
+//        CGFloat x = 130 + self.currentPages * (w + 40);
 //        CGFloat x = btn.centerX;
 //        _WeiGreLabel.frame = CGRectMake((self.currentPages + 1)*SCREEN_WIDTH/kPageCount - SCREEN_WIDTH/kPageCount/2 - 15, 40 , 30, 2);
-         _WeiGreLabel.frame = CGRectMake(x, 40 , 30, 2);
+         _WeiGreLabel.frame = CGRectMake(SCREEN_WIDTH/2 - 100 + 35 + self.currentPages*100, 40 , 30, 2);
+//        _WeiGreLabel.centerX = btn.centerX;
     }];
 }
 #pragma mark -   进入当前的选定页面

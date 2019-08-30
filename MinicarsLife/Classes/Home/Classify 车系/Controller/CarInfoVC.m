@@ -129,7 +129,7 @@
         for (int i = 0; i<self.dataArray.count; i ++) {
             if ([_CarModel.version isEqualToString:self.dataArray[i][@"dkey"]]) {
                 version = self.dataArray[i][@"dvalue"];
-                callNowView.describdlab.text = [NSString stringWithFormat:@"%@ 外色:%@ 内色:%@ %@",version,[USERXX convertNull: self.CarModel.outsideColor],[USERXX convertNull: self.CarModel.insideColor], [USERXX convertNull:self.CarModel.fromPlace]];
+                callNowView.describdlab.text = [NSString stringWithFormat:@"%@ 外观:%@ 内饰:%@ %@",version,[USERXX convertNull: self.CarModel.outsideColor],[USERXX convertNull: self.CarModel.insideColor], [USERXX convertNull:self.CarModel.fromPlace]];
             }
         }
         [self.tableview reloadData];

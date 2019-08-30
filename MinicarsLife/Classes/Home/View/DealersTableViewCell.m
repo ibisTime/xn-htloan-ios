@@ -16,7 +16,7 @@
     if (self) {
         
         UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(15, 0, SCREEN_WIDTH - 30, 50) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kBlackColor];
-        nameLbl.text = @"优质经销商";
+        nameLbl.text = @"优质车商";
         [self addSubview:nameLbl];
         
         [self addSubview:self.collection];

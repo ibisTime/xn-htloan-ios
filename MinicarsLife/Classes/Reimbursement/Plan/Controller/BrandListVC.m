@@ -62,7 +62,7 @@
     cell.layer.borderColor = kLineColor.CGColor;
     cell.layer.borderWidth = 1;
     return cell;
-    cell.width;
+//    cell.width;
 }
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     

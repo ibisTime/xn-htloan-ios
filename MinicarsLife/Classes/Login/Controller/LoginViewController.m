@@ -96,7 +96,7 @@
                 [[USERXX user] updateUserInfoWithNotification];
 
                 
-                
+                [USERXX QueriesNumberOfUnreadMessageBars];
                 
                 TLNetworking * http1 = [[TLNetworking alloc]init];
                 http1.code = @"805085";

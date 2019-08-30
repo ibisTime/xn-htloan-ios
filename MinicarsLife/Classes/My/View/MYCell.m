@@ -19,6 +19,22 @@
     return _iconImage;
 }
 
+-(UILabel *)numberLbl
+{
+    if (!_numberLbl) {
+        _numberLbl = [UILabel labelWithFrame:CGRectMake(22.5, 10, 15, 15) textAligment:(NSTextAlignmentCenter) backgroundColor:MainColor font:HGfont(9) textColor:[UIColor whiteColor]];
+        kViewRadius(_numberLbl, 7.5);
+        _numberLbl.text = [NSString stringWithFormat:@"%ld",[[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue]];
+        _numberLbl.hidden = YES;
+    }
+    return _numberLbl;
+}
+
+-(void)setNumber:(NSInteger)number
+{
+     _numberLbl.text = [NSString stringWithFormat:@"%ld",number];
+}
+
 -(UILabel *)nameLabel
 {
     if (!_nameLabel) {
@@ -42,6 +58,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         [self addSubview:self.iconImage];
+        [self addSubview:self.numberLbl];
         [self addSubview:self.nameLabel];
         [self addSubview:self.detailLabel];
 

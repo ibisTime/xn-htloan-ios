@@ -36,7 +36,7 @@
 #import "NSString+Check.h"
 #define kDeviceStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 #define USERDEFAULTS [NSUserDefaults standardUserDefaults]
-
+#import "XGPush.h"
 #define TOKEN_ID @"token_id"
 #define USER_ID @"user_id"
 #define MOBILE @"mobile_id"
