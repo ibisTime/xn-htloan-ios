@@ -21,7 +21,6 @@
         kViewRadius(_timeLabel, 3);
         _timeLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:_timeLabel];
-
         self.backgroundColor = BackColor;
     }
     return self;

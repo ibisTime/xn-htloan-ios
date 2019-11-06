@@ -31,6 +31,13 @@
 
 #import "ChangeBrandVC.h"
 #import "NoticeVC.h"
+#import "FaceSignView.h"
+
+#import "CarNewsVC.h"
+#import "HighQualityVC.h"
+#import "HighQualityVC.h"
+#import "ClassifyInfoVC.h"
+#import "MyApplicationVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
 {
@@ -44,7 +51,10 @@
 @property (nonatomic , strong)UILabel *titleLabel;
 @property (nonatomic , copy) NSString *strid ;
 
-@property (nonatomic, strong) UIAlertController *alertCtrl;
+@property (nonatomic , strong) UIAlertController *alertCtrl;
+@property (nonatomic , strong)UIView *signBackView;
+@property (nonatomic , strong)FaceSignView *signView;
+
 
 @end
 
@@ -59,7 +69,7 @@
         _titleLabel.text = @"玩会员";
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.font = [UIFont fontWithName :@"Georgia-Bold" size:18];
+        _titleLabel.font = HGboldfont(18);
     }
     return _titleLabel;
 }
@@ -68,7 +78,7 @@
 -(MyHeadView *)headView
 {
     if (!_headView) {
-        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 155 - 64 + kNavigationBarHeight)];
+        _headView = [[MyHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 235 - 64 + kNavigationBarHeight)];
         _headView.delegate = self;
     }
     return _headView;
@@ -78,21 +88,26 @@
 {
     if (tag == 0)
     {
-        NSLog(@"账户");
-        
-        TheBalanceOfVC *vc = [[TheBalanceOfVC alloc]init];
+        MessageVC *vc = [[MessageVC alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+
     }
     else if (tag == 1)
     {
-        NSLog(@"积分");
-        IntegralVC *vc = [[IntegralVC alloc]init];
+        CollectVC * vc = [[CollectVC alloc]init];
+        vc.type = @"3";
+        vc.title = @"我的关注";
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
+
+        NSLog(@"积分");
+//        IntegralVC *vc = [[IntegralVC alloc]init];
+//        vc.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:vc animated:YES];
     }else
     {
-        AccountSettingsVC *vc = [[AccountSettingsVC alloc]init];
+        MyApplicationVC *vc = [[MyApplicationVC alloc]init];
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -102,174 +117,157 @@
 
 
 #pragma mark -- tableView懒加载
--(UITableView *)tableView{
-    if (_tableView == nil) {
-        CGRect tableView_frame;
-        NSLog(@"%d",kStatusBarHeight);
-        tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-        _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.backgroundColor=kBackgroundColor;
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [_tableView registerClass:[MYCell class] forCellReuseIdentifier:@"MYCell"];
-    }
-    return _tableView;
-}
+//-(UITableView *)tableView{
+//    if (_tableView == nil) {
+//        CGRect tableView_frame;
+//        NSLog(@"%d",kStatusBarHeight);
+//        tableView_frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+//        _tableView = [[UITableView alloc] initWithFrame:tableView_frame style:UITableViewStyleGrouped];
+//        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//        _tableView.backgroundColor=kBackgroundColor;
+//        _tableView.showsVerticalScrollIndicator = NO;
+//        _tableView.delegate = self;
+//        _tableView.dataSource = self;
+//        [_tableView registerClass:[MYCell class] forCellReuseIdentifier:@"MYCell"];
+//    }
+//    return _tableView;
+//}
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.navigationController.navigationBar.translucent = NO;
-    [self.view addSubview:self.tableView];
+//    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.headView];
+    
+    
+    
     [self.view addSubview:self.titleLabel];
-    self.tableView.tableHeaderView = self.headView;
+    
+    [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH- 44 - 15, kStatusBarHeight, 44, 44)];
+    [self.RightButton setImage:kImage(@"设置") forState:(UIControlStateNormal)];
+    [self.RightButton addTarget:self action:@selector(RightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:self.RightButton];
+    
+    [self collView];
     [self loadData];
     faceStr = @"";
-//    self.strid = @"546547";
+    
+    
+    _signBackView = [[UIView alloc]initWithFrame:CGRectMake(0, -kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _signBackView.backgroundColor = kBlackColor;
+    _signBackView.alpha = 0;
+    [self.view addSubview:_signBackView];
+    
+    [self.view addSubview:self.signView];
+    
 }
 
-
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(FaceSignView *)signView
 {
-    return 3;
-}
-
-#pragma mark -- 行数
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 2;
+    if (!_signView) {
+        _signView = [[FaceSignView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 - kNavigationBarHeight - 207/2 + SCREEN_HEIGHT, 300, 207)];
+        kViewRadius(_signView, 8);
+        _signView.backgroundColor = kWhiteColor;
+        [_signView.confirmBtn addTarget:self action:@selector(confirmBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     }
-    else if (section == 1){
-        return 3;
-    }
-    return 2;
+    return _signView;
 }
 
-#pragma mark -- tableView
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//面签确认按钮
+-(void)confirmBtnClick
 {
-    cell = [tableView dequeueReusableCellWithIdentifier:@"MYCell" forIndexPath:indexPath];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    switch (indexPath.section) {
+    if ([_signView.roomNumberTF.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入房间号"];
+        return;
+    }
+    self.strid = _signView.roomNumberTF.text;
+    [self checkCount];
+}
+
+-(void)collView
+{
+    UIView *backView = [[UIView alloc]initWithFrame:CGRectMake(0, 219 - 64 + kNavigationBarHeight, SCREEN_WIDTH, SCREEN_HEIGHT - (219 - 64 + kNavigationBarHeight - kTabBarHeight))];
+    backView.backgroundColor = kWhiteColor;
+    [self.view addSubview:backView];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:backView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(16, 16)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = backView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    backView.layer.mask = maskLayer;
+    
+    UILabel *topLbl = [UILabel labelWithFrame:CGRectMake(17, 30, SCREEN_WIDTH - 17, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kBlackColor];
+    topLbl.text = @"我的工具";
+    [backView addSubview:topLbl];
+    
+    NSArray *ary = @[@"面签工具",@"玩车视频",@"玩车资讯",@"经典车型",@"分期购车",@"玩转售后",@"优质车行",@"计算器"];
+    for (int i = 0; i < 8 ; i ++) {
+        UIButton *btn = [UIButton buttonWithTitle:ary[i] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:12];
+        btn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, topLbl.yy + 15 + i / 4 * 75, SCREEN_WIDTH/4, 65);
+        [btn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(ary[i]) forState:(UIControlStateNormal)];
+        }];
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        btn.tag = i;
+        [backView addSubview:btn];
+    }
+    
+}
+
+-(void)btnClick:(UIButton *)sender
+{
+    switch (sender.tag) {
         case 0:
         {
-            NSArray *nameArray = @[@"开始面签",@"购车计算器"];
-            //            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
-            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
-            cell.nameLabel.text = nameArray[indexPath.row];
+            [[USERXX user]showPopAnimationWithAnimationStyle:3 showView:self.signView BGAlpha:0.5 isClickBGDismiss:NO];
+//            [UIView animateWithDuration:0.3 animations:^{
+//                _signView.frame = CGRectMake(SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 - kNavigationBarHeight - 207/2, 300, 217);
+//                _signBackView.alpha = 0.3;
+//            }];
         }
             break;
         case 1:
         {
-            NSArray *nameArray = @[@"我的消息",@"我的收藏",@"我的足迹"];
-            if (indexPath.row == 0) {
-                 cell.numberLbl.hidden = NO;
-                cell.number = number;
-            }else
-            {
-                 cell.numberLbl.hidden = YES;
-            }
-            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
-            cell.nameLabel.text = nameArray[indexPath.row];
-        }
-            break;
-        case 2:
-        {
-            NSArray *nameArray = @[@"联系客服",@"关于我们",@"修改品牌"];
-            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
-            cell.nameLabel.text = nameArray[indexPath.row];
-        }
-            break;
-        default:
-            break;
-    }
-    
-    return cell;
-    
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    switch (indexPath.section) {
-        case 0:
-        {
-            //面签
-            if (indexPath.row == 0) {
-                [self AlertControllerView];
-            }
-            //购车计算器
-            else if (indexPath.row == 1){
-                //                [TLAlert alertWithInfo:@"购车计算器"];
-                CalculatorVC * vc = [[CalculatorVC alloc]init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-                //                PersionalCreditVC *vc = [[PersionalCreditVC alloc]init];
-                //                vc.hidesBottomBarWhenPushed = YES;
-                //                vc.accountNumber = accountNumber;
-                //                [self.navigationController pushViewController:vc animated:YES];
-            }
-        }
-            break;
-        case 1:
-        {
-            //我的消息
-            if (indexPath.row == 0) {
-                NoticeVC *vc = [[NoticeVC alloc]init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            //我的收藏
-            else if (indexPath.row == 1){
-                CollectVC * vc = [[CollectVC alloc]init];
-                vc.type = @"3";
-                vc.title = @"我的收藏";
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            //我的足迹
-            else{
-                //                [TLAlert alertWithInfo:@"我的足迹"];
-                CollectVC * vc = [[CollectVC alloc]init];
-                vc.title = @"我的足迹";
-                vc.type = @"1";
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            //            CreditReportVC *vc = [[CreditReportVC alloc]init];
-            //            vc.hidesBottomBarWhenPushed = YES;
-            //            vc.accountNumber = accountNumber;
-            //            [self.navigationController pushViewController:vc animated:YES];
-        }
-            break;
-        case 2:
-        {
-            //联系客服
-            if (indexPath.row == 0) {
-                ContactVC *vc = [[ContactVC alloc]init];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
-            //关于我们
-            else if (indexPath.row == 1){
-                AboutUsVC *vc = [[AboutUsVC alloc]init];
-                vc.hidesBottomBarWhenPushed = YES;
-                vc.titleStr = @"关于我们";
-                vc.ckey = @"about_us";
-                [self.navigationController pushViewController:vc animated:YES];
-                
-                
-            }else{
-                ChangeBrandVC * vc = [ChangeBrandVC new];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController pushViewController:vc animated:YES];
-            }
             
+        }
+            break;
+        case 2:
+        {
+            CarNewsVC *vc = [CarNewsVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 3:
+        {
+            ClassifyInfoVC *vc = [ClassifyInfoVC new];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 4:
+        {
+            self.tabBarController.selectedIndex =0;
+        }
+            break;
+        case 5:
+        {
+            self.tabBarController.selectedIndex =3;
+        }
+            break;
+        case 6:
+        {
+            HighQualityVC *vc = [HighQualityVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case 7:
+        {
+            CalculatorVC * vc = [[CalculatorVC alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+
         }
             break;
             
@@ -278,6 +276,159 @@
             break;
     }
 }
+
+-(void)RightButtonClick
+{
+    AccountSettingsVC *vc = [[AccountSettingsVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 3;
+//}
+//
+//#pragma mark -- 行数
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    if (section == 0) {
+//        return 2;
+//    }
+//    else if (section == 1){
+//        return 3;
+//    }
+//    return 2;
+//}
+//
+//#pragma mark -- tableView
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    cell = [tableView dequeueReusableCellWithIdentifier:@"MYCell" forIndexPath:indexPath];
+//    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//    switch (indexPath.section) {
+//        case 0:
+//        {
+//            NSArray *nameArray = @[@"开始面签",@"购车计算器"];
+//            //            NSArray *imageArray = @[HGImage(@"myicon2"),HGImage(@"myicon3")];
+//            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
+//            cell.nameLabel.text = nameArray[indexPath.row];
+//        }
+//            break;
+//        case 1:
+//        {
+//            NSArray *nameArray = @[@"我的消息",@"我的收藏",@"我的足迹"];
+//            if (indexPath.row == 0) {
+//                 cell.numberLbl.hidden = NO;
+//                cell.number = number;
+//            }else
+//            {
+//                 cell.numberLbl.hidden = YES;
+//            }
+//            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
+//            cell.nameLabel.text = nameArray[indexPath.row];
+//        }
+//            break;
+//        case 2:
+//        {
+//            NSArray *nameArray = @[@"联系客服",@"关于我们",@"修改品牌"];
+//            cell.iconImage.image = HGImage(nameArray[indexPath.row]);
+//            cell.nameLabel.text = nameArray[indexPath.row];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
+//
+//    return cell;
+//
+//}
+//
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//    switch (indexPath.section) {
+//        case 0:
+//        {
+//            //面签
+//            if (indexPath.row == 0) {
+//                [self AlertControllerView];
+//            }
+//            //购车计算器
+//            else if (indexPath.row == 1){
+//                //                [TLAlert alertWithInfo:@"购车计算器"];
+//                CalculatorVC * vc = [[CalculatorVC alloc]init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//                //                PersionalCreditVC *vc = [[PersionalCreditVC alloc]init];
+//                //                vc.hidesBottomBarWhenPushed = YES;
+//                //                vc.accountNumber = accountNumber;
+//                //                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//        }
+//            break;
+//        case 1:
+//        {
+//            //我的消息
+//            if (indexPath.row == 0) {
+//                NoticeVC *vc = [[NoticeVC alloc]init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//            //我的收藏
+//            else if (indexPath.row == 1){
+//                CollectVC * vc = [[CollectVC alloc]init];
+//                vc.type = @"3";
+//                vc.title = @"我的收藏";
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//            //我的足迹
+//            else{
+//                //                [TLAlert alertWithInfo:@"我的足迹"];
+//                CollectVC * vc = [[CollectVC alloc]init];
+//                vc.title = @"我的足迹";
+//                vc.type = @"1";
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//            //            CreditReportVC *vc = [[CreditReportVC alloc]init];
+//            //            vc.hidesBottomBarWhenPushed = YES;
+//            //            vc.accountNumber = accountNumber;
+//            //            [self.navigationController pushViewController:vc animated:YES];
+//        }
+//            break;
+//        case 2:
+//        {
+//            //联系客服
+//            if (indexPath.row == 0) {
+//                ContactVC *vc = [[ContactVC alloc]init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//            //关于我们
+//            else if (indexPath.row == 1){
+//                AboutUsVC *vc = [[AboutUsVC alloc]init];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                vc.titleStr = @"关于我们";
+//                vc.ckey = @"about_us";
+//                [self.navigationController pushViewController:vc animated:YES];
+//
+//
+//            }else{
+//                ChangeBrandVC * vc = [ChangeBrandVC new];
+//                vc.hidesBottomBarWhenPushed = YES;
+//                [self.navigationController pushViewController:vc animated:YES];
+//            }
+//
+//        }
+//            break;
+//
+//
+//        default:
+//            break;
+//    }
+//}
 
 
 //- (void)checkIsRoom:(NSString *)idstr
@@ -415,32 +566,6 @@
     }];
 }
 
--(void)AlertControllerView
-{
-    
-    
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"面签" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
-        for(UITextField *text in alert.textFields){
-            self.strid = text.text;
-            [self checkCount];
-            
-        }
-    }];
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
-        NSLog(@"action = %@", alert.textFields);
-    }];
-    [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        textField.placeholder = @"请输入面签房间号";
-        textField.borderStyle = UITextBorderStyleRoundedRect;
-        textField.frame = CGRectMake(0, 0, textField.frame.size.width, 50);
-    }];
-    [alert addAction:okAction];
-    [alert addAction:cancelAction];
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
 #pragma mark - Accessor
 - (UIAlertController *)alertCtrl {
     if (!_alertCtrl) {
@@ -453,36 +578,36 @@
     return _alertCtrl;
 }
 
-#pragma mark -- 行高
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
-}
-
-#pragma mark -- 区头高度
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 0.01;
-    }
-    return 10;
-}
-
-#pragma mark -- 区尾高度
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 0.1;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return nil;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return nil;
-}
+//#pragma mark -- 行高
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 50;
+//}
+//
+//#pragma mark -- 区头高度
+//-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    if (section == 0) {
+//        return 0.01;
+//    }
+//    return 10;
+//}
+//
+//#pragma mark -- 区尾高度
+//-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+//{
+//    return 0.1;
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    return nil;
+//}
+//
+//-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//    return nil;
+//}
 
 #pragma mark -- 页面即将显示
 -(void)viewWillAppear:(BOOL)animated
@@ -600,20 +725,20 @@
 
 
 
-#pragma mark -- 滑动动画效果
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    // 获取到tableView偏移量
-    CGFloat Offset_y = scrollView.contentOffset.y;
-    // 下拉 纵向偏移量变小 变成负的
-    if ( Offset_y < 0) {
-        // 拉伸后图片的高度
-        CGFloat totalOffset =(155 - 64 + kNavigationBarHeight) - Offset_y;
-        // 图片放大比例
-        CGFloat scale = totalOffset / (155 - 64 + kNavigationBarHeight);
-        CGFloat width = SCREEN_WIDTH;
-        // 拉伸后图片位置
-        self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);
-    }
-}
+//#pragma mark -- 滑动动画效果
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+//{
+//    // 获取到tableView偏移量
+//    CGFloat Offset_y = scrollView.contentOffset.y;
+//    // 下拉 纵向偏移量变小 变成负的
+//    if ( Offset_y < 0) {
+//        // 拉伸后图片的高度
+//        CGFloat totalOffset =(155 - 64 + kNavigationBarHeight) - Offset_y;
+//        // 图片放大比例
+//        CGFloat scale = totalOffset / (155 - 64 + kNavigationBarHeight);
+//        CGFloat width = SCREEN_WIDTH;
+//        // 拉伸后图片位置
+//        self.headView.backImage.frame = CGRectMake(-(width * scale - width) / 2, Offset_y, width * scale, totalOffset);
+//    }
+//}
 @end

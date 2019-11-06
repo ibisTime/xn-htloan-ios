@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "CarModel.h"
+#import "SelVideoPlayer.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol ClickBtn <NSObject>
 
@@ -15,12 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)ClickCollectionClassify:(NSIndexPath *)index;
 -(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models;
 -(void)bannerUrl:(NSDictionary *)advertisingDic;
+-(void)clickImage:(NSInteger)inter;
+
 @end
 @interface HomeHeadVC : UIView
 @property (nonatomic,weak) id<ClickBtn> delegate;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarBrandModels;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
-
+@property (nonatomic, strong) SelVideoPlayer *player;
 @property (nonatomic , strong)HW3DBannerView *scrollView;
 
 @property (nonatomic,strong) UICollectionView *collection;

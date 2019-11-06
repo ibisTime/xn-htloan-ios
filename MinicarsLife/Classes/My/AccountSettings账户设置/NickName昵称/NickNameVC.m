@@ -51,17 +51,14 @@
     [self.RightButton addTarget:self action:@selector(rightButtonClick) forControlEvents:(UIControlEventTouchUpInside)];
     [self TheInterfaceDisplayView];
     [self.view addSubview:self.pickerView];
-    
-    
 }
 
 -(void)rightButtonClick
 {
-    
-    
     TLNetworking *http = [TLNetworking new];
     http.code = @"805084";
     http.showView = self.view;
+    
 //    nickname        昵称
 //    photo    头像
 //    idNo        证件号

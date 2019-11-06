@@ -117,10 +117,10 @@
     _vc2.view.frame = CGRectMake(SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 }
+
 #pragma mark - 设置分页按钮
 - (void)setupPageButton{
     //button的index值应当从0开始
-
     UIButton *btn = [self setupButtonWithTitle:@"按条件" Index:0];
     [self setupButtonWithTitle:@"按品牌" Index:1];
 //    btn.alpha = 0.99;

@@ -12,6 +12,9 @@
     UILabel * titlelab;
     UILabel * contentlab;
     UILabel *haveReadLbl;
+    UIImageView *headImg;
+    UILabel *timeLbl;
+    UIView *pointView;
 }
 
 - (void)awakeFromNib {
@@ -27,71 +30,53 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+
         
-        haveReadLbl = [UILabel labelWithFrame:CGRectMake(15, 17, 30, 16) textAligment:(NSTextAlignmentCenter) backgroundColor:MainColor font:Font(10) textColor:kWhiteColor];
-        haveReadLbl.text = @"未读";
-        kViewRadius(haveReadLbl, 2);
-        [self addSubview:haveReadLbl];
+        headImg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 18.5, 41, 41)];
+//        headImg.image = kImage(@"");
+        [self addSubview:headImg];
         
-        
-        
-        UILabel * title = [UILabel labelWithFrame:CGRectMake(haveReadLbl.xx + 5, 15, SCREEN_WIDTH - haveReadLbl.xx - 20, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
+        UILabel * title = [UILabel labelWithFrame:CGRectMake(headImg.xx + 8, 18.5, SCREEN_WIDTH - headImg.xx - 20, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(15) textColor:kBlackColor];
         title.text = @"APP更新";
         [self addSubview:title];
         titlelab = title;
+
         
-        UILabel * content = [UILabel labelWithFrame:CGRectMake(15, title.yy + 5, SCREEN_WIDTH - 30, 45) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
-        content.text = @"V1.0版本正式上线，如遇问题欢迎使用智能客服";
-        content.numberOfLines = 2;
-        [self addSubview:content];
-        contentlab = content;
+        timeLbl = [UILabel labelWithFrame:CGRectMake(headImg.xx + 8, 43, SCREEN_WIDTH - headImg.xx - 20, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
+        [self addSubview:timeLbl];
         
-        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 85, SCREEN_WIDTH - 30, 1)];
+        UIView * v1 = [[UIView alloc]initWithFrame:CGRectMake(15, 78, SCREEN_WIDTH - 30, 1)];
         v1.backgroundColor = kLineColor;
         [self addSubview:v1];
         
-        UILabel * label = [UILabel labelWithFrame:CGRectMake(15, v1.yy + 5, 100, 25) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(13) textColor:kTextColor3];
-        label.text = @"查看详情";
-        [self addSubview:label];
-        
-        UIImageView * image = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 21, v1.yy + 10, 6, 11)];
-        image.image = kImage(@"you");
-        [self addSubview:image];
-        
+        pointView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, 36.5, 5, 5)];
+        pointView.backgroundColor = kHexColor(@"#FF3F3F");
+        kViewRadius(pointView, 2.5);
+        pointView.hidden = YES;
+        [self addSubview:pointView];
     }
     return self;
 }
 
 -(void)setModel:(MessageModel *)model{
     _model = model;
-    
-    if ([model.content hasPrefix:@"<p>"]) {
-        NSRange startRange = [model.content rangeOfString:@"<p>"];
-        NSRange endRange = [model.content rangeOfString:@"</p>"];
-        NSRange range = NSMakeRange(startRange.location + startRange.length, endRange.location - startRange.location - startRange.length);
-        NSString * con = [model.content substringWithRange:range];
-        contentlab.text = con;
-    }else
-    {
-        contentlab.text = model.content;
-    }
-    contentlab.frame = CGRectMake(15, 40, SCREEN_WIDTH - 30, 45);
-    [contentlab sizeToFit];
-
     if ([USERXX isBlankString:model.isAlreadyRead] == NO && [model.isAlreadyRead isEqualToString:@"0"]) {
-        haveReadLbl.text = @"未读";
-        haveReadLbl.backgroundColor = MainColor;
+        pointView.hidden = NO;
     }
     else
     {
-        haveReadLbl.text = @"已读";
-        haveReadLbl.backgroundColor = RGB(220, 220, 220);
+        pointView.hidden = YES;
     }
+    
     titlelab.text = model.title;
-    
-    
+    timeLbl.text = [model.createDatetime convertToDetailDate];
+    if ([model.type isEqualToString:@"1"]) {
+        headImg.image = kImage(@"公告");
+    }
+    else
+    {
+        headImg.image = kImage(@"通知");
+    }
 }
-
-
 
 @end

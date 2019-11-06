@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Extension)
-
+- (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize;
 // 处理空字符串
 + (NSString *)convertNullOrNil:(NSString *)str;
 

@@ -11,6 +11,9 @@
 #import "ReimbursementViewController.h"
 #import "MyViewController.h"
 #import "CarNewsVC.h"
+#import "AfterSaleVC.h"
+#import "InstallmentVC.h"
+#import "InsuranceVC.h"
 
 @interface BaseTabBarViewController ()<UITabBarControllerDelegate>
 @property (nonatomic,assign) NSInteger index;
@@ -26,10 +29,11 @@
 
 }
 - (void)createTabBar{
-    [self createControllerWithTitle1:@"首页" image:@"home1"selectedimage:@"home2" className:[HomeViewController class]];
-    [self createControllerWithTitle1:@"车型库" image:@"车型库-未选中"selectedimage:@"车型库-选中" className:[ReimbursementViewController class]];
-    [self createControllerWithTitle1:@"资讯" image:@"资讯-未点击" selectedimage:@"资讯-点击" className:[CarNewsVC class]];
-    [self createControllerWithTitle1:@"玩会员" image:@"my1"selectedimage:@"my2" className:[MyViewController class]];
+    [self createControllerWithTitle1:@"玩分期" image:@"玩分期-未点击"selectedimage:@"玩分期-点击" className:[InstallmentVC class]];
+    [self createControllerWithTitle1:@"玩保险" image:@"玩保险-未点击"selectedimage:@"玩保险-点击" className:[InsuranceVC class]];
+    [self createControllerWithTitle1:@"玩汽车" image:@"玩汽车-未点击" selectedimage:@"玩汽车-点击" className:[HomeViewController class]];
+    [self createControllerWithTitle1:@"玩售后" image:@"玩售后-未点击" selectedimage:@"玩售后-点击" className:[AfterSaleVC class]];
+    [self createControllerWithTitle1:@"玩会员" image:@"玩会员-未点击"selectedimage:@"玩会员-点击" className:[MyViewController class]];
 
 }
 
@@ -53,7 +57,7 @@
 - (BOOL)tabBarController:(UITabBarController*)tabBarController shouldSelectViewController:(UIViewController*)viewController
 
 {
-    if (viewController ==self.viewControllers[3]) {
+    if (viewController ==self.viewControllers[4]) {
         if([USERXX user].isLogin == NO) {
             LoginViewController *vc = [[LoginViewController alloc]init];
             UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];

@@ -38,41 +38,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self gethotclassify];
-    
-    
     
     self.titlearray = [[NSArray alloc]init];
 
     UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 100, 44)];
     view.backgroundColor = kClearColor;
 //    view.backgroundColor = [UIColor redColor];
-    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(40, kStatusBarHeight + 5.5, SCREEN_WIDTH - 100, 33)];
+    
+    self.SearchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(-15, 5.5, SCREEN_WIDTH - 100, 33)];
 //    self.SearchBar.layer.borderWidth = 1;
-    self.SearchBar.placeholder = @"请搜索品牌或车系";
+    self.SearchBar.placeholder = @"请搜索车系";
     self.SearchBar.backgroundColor = kWhiteColor;
-    
-    
     self.SearchBar.delegate = self;
     self.SearchBar.backgroundImage = [UIImage imageNamed:@"PYSearch.bundle/clearImage"];
     [self.SearchBar setBackgroundImage:[UIImage new]];
     [self.SearchBar setTranslucent:YES];
+    [view addSubview:self.SearchBar];
     
-    kViewRadius(self.SearchBar, 10);
+    kViewRadius(self.SearchBar, 16.5);
     UITextField * searchField = [self.SearchBar valueForKey:@"_searchField"];
     searchField.backgroundColor = [UIColor whiteColor];
-    [searchField setValue:[UIFont boldSystemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
-    searchField.font = HGfont(14);
+    [searchField setValue:[UIFont boldSystemFontOfSize:12] forKeyPath:@"_placeholderLabel.font"];
+    searchField.font = HGfont(12);
     
-    [self.navigationController.view addSubview:self.SearchBar];
-
+//    [self.navigationController.view addSubview:self.SearchBar];
+    self.navigationItem.titleView = view;
 
     
     UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
     self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    self.RightButton.titleLabel.font = Font(18);
+    self.RightButton.titleLabel.font = Font(16);
     [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-57.5, 30, 42.5, 45)];
     [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
     [self.RightButton addTarget:self action:@selector(searchClick) forControlEvents:(UIControlEventTouchUpInside)];
@@ -89,11 +86,11 @@
     // 设置布局方向(滚动方向)
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 10, SCREEN_WIDTH - 30, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#B9B9B9")];
+    UILabel* label = [UILabel labelWithFrame:CGRectMake(15, 25, SCREEN_WIDTH - 30, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(16) textColor:kHexColor(@"#333333")];
     label.text = @"热门车系";
     [self.view addSubview:label];
     
-    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, SCREEN_HEIGHT - 50 - kNavigationBarHeight)collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH, SCREEN_HEIGHT - 60 - kNavigationBarHeight)collectionViewLayout:layout];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
@@ -127,10 +124,12 @@
     HotBrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
     cell.titlelab.frame = CGRectMake(0, 0, 0, 40);
-    
+    cell.backgroundColor = kHexColor(@"#F5F5F5");
+    kViewRadius(cell, 20);
     cell.titlelab.text = model.name;
     [cell.titlelab sizeToFit];
     cell.titlelab.frame = CGRectMake(0, 0, cell.titlelab.width + 20, 40);
+    
     return cell;
 }
 
@@ -148,7 +147,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     CarModel * model = [CarModel mj_objectWithKeyValues:self.carmodels[indexPath.row]];
-    CGSize size = [model.name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:Font(14),NSFontAttributeName,nil]];
+    CGSize size = [model.name sizeWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:Font(12),NSFontAttributeName,nil]];
     // 名字的H
     CGFloat nameW = size.width;
     return CGSizeMake(nameW + 20, 40);

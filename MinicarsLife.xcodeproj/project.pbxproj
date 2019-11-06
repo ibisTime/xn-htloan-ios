@@ -12,7 +12,21 @@
 		1F1B75F0230AAA9A0031FB0D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B75EF230AAA9A0031FB0D /* libsqlite3.0.tbd */; };
 		1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */; };
 		1F2536B122BCC65700E67433 /* 1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2536B022BCC65600E67433 /* 1080.png */; };
+		1F8056802371CB4E00A14BE9 /* TelephoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80567F2371CB4E00A14BE9 /* TelephoneView.m */; };
+		1F8056832371D1EC00A14BE9 /* ConsultingZoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056822371D1EC00A14BE9 /* ConsultingZoneVC.m */; };
+		1F8056892372A18F00A14BE9 /* MyApplicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056882372A18F00A14BE9 /* MyApplicationVC.m */; };
+		1F80568C2372A1BB00A14BE9 /* ApplicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80568B2372A1BB00A14BE9 /* ApplicationVC.m */; };
+		1F80568F2372A2DB00A14BE9 /* ApplicationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80568E2372A2DB00A14BE9 /* ApplicationTableView.m */; };
+		1F8056922372A2F000A14BE9 /* ApplicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056912372A2F000A14BE9 /* ApplicationCell.m */; };
 		1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1C229B893A000F33F0 /* GuideView.m */; };
+		1F9C1CD2236FCEB60062B08C /* InstallmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CD1236FCEB60062B08C /* InstallmentVC.m */; };
+		1F9C1CD5236FCECC0062B08C /* InsuranceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CD4236FCECC0062B08C /* InsuranceVC.m */; };
+		1F9C1CD8236FCED80062B08C /* AfterSaleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CD7236FCED80062B08C /* AfterSaleVC.m */; };
+		1F9C1CE5236FD06D0062B08C /* SelPlaybackControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CDA236FD06D0062B08C /* SelPlaybackControls.m */; };
+		1F9C1CE6236FD06D0062B08C /* SelVideoPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CDB236FD06D0062B08C /* SelVideoPlayer.m */; };
+		1F9C1CE7236FD06D0062B08C /* UIViewController+PlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CDF236FD06D0062B08C /* UIViewController+PlayerRotation.m */; };
+		1F9C1CE8236FD06D0062B08C /* SelPlayerConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CE2236FD06D0062B08C /* SelPlayerConfiguration.m */; };
+		1F9C1CE9236FD06D0062B08C /* SelVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CE4236FD06D0062B08C /* SelVideoSlider.m */; };
 		1FA54D5F22393A4F0077FE54 /* LoadSDK.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1FA54CE322393A4F0077FE54 /* LoadSDK.sh */; };
 		1FA54D6022393A4F0077FE54 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54CE522393A4F0077FE54 /* ImSDK.framework */; };
 		1FA54D6122393A4F0077FE54 /* TLSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54CE622393A4F0077FE54 /* TLSSDK.framework */; };
@@ -110,6 +124,19 @@
 		1FA54DBF22393A500077FE54 /* ILiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */; };
 		1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */; };
 		1FA54DC122393A500077FE54 /* TILLiveSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */; };
+		1FB4477E236FF9CD00D15BE3 /* StageProcessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4477D236FF9CD00D15BE3 /* StageProcessView.m */; };
+		1FB44782236FFA8A00D15BE3 /* UIView+Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB44781236FFA8A00D15BE3 /* UIView+Banner.m */; };
+		1FB4478C23704D4D00D15BE3 /* HighQualityVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4478B23704D4D00D15BE3 /* HighQualityVC.m */; };
+		1FB4478F23704D5A00D15BE3 /* HighQualityTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4478E23704D5A00D15BE3 /* HighQualityTableView.m */; };
+		1FB4479223704D7900D15BE3 /* HighQualityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4479123704D7900D15BE3 /* HighQualityCell.m */; };
+		1FB44798237059D000D15BE3 /* CarsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB44797237059D000D15BE3 /* CarsVC.m */; };
+		1FB4479B237059F100D15BE3 /* CarsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4479A237059F100D15BE3 /* CarsTableView.m */; };
+		1FB4479E23705A1400D15BE3 /* CarsHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB4479D23705A1400D15BE3 /* CarsHeadView.m */; };
+		1FB447A12370621300D15BE3 /* PopularBrandCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447A02370621300D15BE3 /* PopularBrandCell.m */; };
+		1FB447B72371499700D15BE3 /* UIView+JKUiviewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447B52371499700D15BE3 /* UIView+JKUiviewExtension.m */; };
+		1FB447B82371499700D15BE3 /* JKSmallLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447B62371499700D15BE3 /* JKSmallLabels.m */; };
+		1FB447BB237170C200D15BE3 /* FaceSignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447BA237170C200D15BE3 /* FaceSignView.m */; };
+		1FD330B72371C00500CF444F /* DetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD330B62371C00500CF444F /* DetailsView.m */; };
 		1FE65A58230B923E005F7673 /* USERXX.h in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9E20E4D91D002D9A48 /* USERXX.h */; };
 		1FE65A59230B923E005F7673 /* USERXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9F20E4D91D002D9A48 /* USERXX.m */; };
 		1FE65A5A230B9247005F7673 /* QNUserAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0020FC34670014FCB3 /* QNUserAgent.h */; };
@@ -181,8 +208,6 @@
 		36E3A380223B3BBD00B26F4F /* CommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A379223B3BBD00B26F4F /* CommonCell.m */; };
 		36E3A381223B3BBD00B26F4F /* LeftHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A37D223B3BBD00B26F4F /* LeftHeadCell.m */; };
 		36E3A38A223B3CD100B26F4F /* MessageInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A382223B3CD100B26F4F /* MessageInfoVC.m */; };
-		36E3A38B223B3CD100B26F4F /* NotifyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A383223B3CD100B26F4F /* NotifyVC.m */; };
-		36E3A38C223B3CD100B26F4F /* RemindVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A385223B3CD100B26F4F /* RemindVC.m */; };
 		36E3A38D223B3CD100B26F4F /* NoticeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A388223B3CD100B26F4F /* NoticeVC.m */; };
 		36E3A390223B3CE300B26F4F /* RemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A38F223B3CE300B26F4F /* RemindCell.m */; };
 		36E3A391223B3D3000B26F4F /* RemindCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A38E223B3CE300B26F4F /* RemindCell.h */; };
@@ -515,8 +540,36 @@
 		1F1C96AB22E86E57006B629C /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
 		1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		1F2536B022BCC65600E67433 /* 1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080.png; sourceTree = "<group>"; };
+		1F80567E2371CB4E00A14BE9 /* TelephoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TelephoneView.h; sourceTree = "<group>"; };
+		1F80567F2371CB4E00A14BE9 /* TelephoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelephoneView.m; sourceTree = "<group>"; };
+		1F8056812371D1EC00A14BE9 /* ConsultingZoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsultingZoneVC.h; sourceTree = "<group>"; };
+		1F8056822371D1EC00A14BE9 /* ConsultingZoneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConsultingZoneVC.m; sourceTree = "<group>"; };
+		1F8056872372A18F00A14BE9 /* MyApplicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyApplicationVC.h; sourceTree = "<group>"; };
+		1F8056882372A18F00A14BE9 /* MyApplicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyApplicationVC.m; sourceTree = "<group>"; };
+		1F80568A2372A1BB00A14BE9 /* ApplicationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationVC.h; sourceTree = "<group>"; };
+		1F80568B2372A1BB00A14BE9 /* ApplicationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationVC.m; sourceTree = "<group>"; };
+		1F80568D2372A2DB00A14BE9 /* ApplicationTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationTableView.h; sourceTree = "<group>"; };
+		1F80568E2372A2DB00A14BE9 /* ApplicationTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationTableView.m; sourceTree = "<group>"; };
+		1F8056902372A2F000A14BE9 /* ApplicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationCell.h; sourceTree = "<group>"; };
+		1F8056912372A2F000A14BE9 /* ApplicationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationCell.m; sourceTree = "<group>"; };
 		1F8E0F1C229B893A000F33F0 /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
 		1F8E0F1D229B893A000F33F0 /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
+		1F9C1CD0236FCEB60062B08C /* InstallmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallmentVC.h; sourceTree = "<group>"; };
+		1F9C1CD1236FCEB60062B08C /* InstallmentVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstallmentVC.m; sourceTree = "<group>"; };
+		1F9C1CD3236FCECC0062B08C /* InsuranceVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsuranceVC.h; sourceTree = "<group>"; };
+		1F9C1CD4236FCECC0062B08C /* InsuranceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsuranceVC.m; sourceTree = "<group>"; };
+		1F9C1CD6236FCED80062B08C /* AfterSaleVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AfterSaleVC.h; sourceTree = "<group>"; };
+		1F9C1CD7236FCED80062B08C /* AfterSaleVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AfterSaleVC.m; sourceTree = "<group>"; };
+		1F9C1CDA236FD06D0062B08C /* SelPlaybackControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelPlaybackControls.m; sourceTree = "<group>"; };
+		1F9C1CDB236FD06D0062B08C /* SelVideoPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelVideoPlayer.m; sourceTree = "<group>"; };
+		1F9C1CDC236FD06D0062B08C /* SelVideoSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelVideoSlider.h; sourceTree = "<group>"; };
+		1F9C1CDD236FD06D0062B08C /* SelPlaybackControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelPlaybackControls.h; sourceTree = "<group>"; };
+		1F9C1CDF236FD06D0062B08C /* UIViewController+PlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PlayerRotation.m"; sourceTree = "<group>"; };
+		1F9C1CE0236FD06D0062B08C /* SelPlayerConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelPlayerConfiguration.h; sourceTree = "<group>"; };
+		1F9C1CE1236FD06D0062B08C /* UIViewController+PlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PlayerRotation.h"; sourceTree = "<group>"; };
+		1F9C1CE2236FD06D0062B08C /* SelPlayerConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelPlayerConfiguration.m; sourceTree = "<group>"; };
+		1F9C1CE3236FD06D0062B08C /* SelVideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelVideoPlayer.h; sourceTree = "<group>"; };
+		1F9C1CE4236FD06D0062B08C /* SelVideoSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelVideoSlider.m; sourceTree = "<group>"; };
 		1FA54CE322393A4F0077FE54 /* LoadSDK.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = LoadSDK.sh; sourceTree = "<group>"; };
 		1FA54CE522393A4F0077FE54 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		1FA54CE622393A4F0077FE54 /* TLSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TLSSDK.framework; sourceTree = "<group>"; };
@@ -622,6 +675,32 @@
 		1FA54D5C22393A4F0077FE54 /* ILiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveSDK.framework; sourceTree = "<group>"; };
 		1FA54D5D22393A4F0077FE54 /* ILiveLogReport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ILiveLogReport.framework; sourceTree = "<group>"; };
 		1FA54D5E22393A4F0077FE54 /* TILLiveSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TILLiveSDK.framework; sourceTree = "<group>"; };
+		1FB4477C236FF9CD00D15BE3 /* StageProcessView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StageProcessView.h; sourceTree = "<group>"; };
+		1FB4477D236FF9CD00D15BE3 /* StageProcessView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StageProcessView.m; sourceTree = "<group>"; };
+		1FB44780236FFA8A00D15BE3 /* UIView+Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Banner.h"; sourceTree = "<group>"; };
+		1FB44781236FFA8A00D15BE3 /* UIView+Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Banner.m"; sourceTree = "<group>"; };
+		1FB4478A23704D4D00D15BE3 /* HighQualityVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighQualityVC.h; sourceTree = "<group>"; };
+		1FB4478B23704D4D00D15BE3 /* HighQualityVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighQualityVC.m; sourceTree = "<group>"; };
+		1FB4478D23704D5A00D15BE3 /* HighQualityTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighQualityTableView.h; sourceTree = "<group>"; };
+		1FB4478E23704D5A00D15BE3 /* HighQualityTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighQualityTableView.m; sourceTree = "<group>"; };
+		1FB4479023704D7900D15BE3 /* HighQualityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HighQualityCell.h; sourceTree = "<group>"; };
+		1FB4479123704D7900D15BE3 /* HighQualityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HighQualityCell.m; sourceTree = "<group>"; };
+		1FB44796237059D000D15BE3 /* CarsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarsVC.h; sourceTree = "<group>"; };
+		1FB44797237059D000D15BE3 /* CarsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarsVC.m; sourceTree = "<group>"; };
+		1FB44799237059F100D15BE3 /* CarsTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarsTableView.h; sourceTree = "<group>"; };
+		1FB4479A237059F100D15BE3 /* CarsTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarsTableView.m; sourceTree = "<group>"; };
+		1FB4479C23705A1400D15BE3 /* CarsHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarsHeadView.h; sourceTree = "<group>"; };
+		1FB4479D23705A1400D15BE3 /* CarsHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarsHeadView.m; sourceTree = "<group>"; };
+		1FB4479F2370621300D15BE3 /* PopularBrandCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopularBrandCell.h; sourceTree = "<group>"; };
+		1FB447A02370621300D15BE3 /* PopularBrandCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopularBrandCell.m; sourceTree = "<group>"; };
+		1FB447B22371499600D15BE3 /* JKSmallLabels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKSmallLabels.h; sourceTree = "<group>"; };
+		1FB447B42371499700D15BE3 /* UIView+JKUiviewExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JKUiviewExtension.h"; sourceTree = "<group>"; };
+		1FB447B52371499700D15BE3 /* UIView+JKUiviewExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JKUiviewExtension.m"; sourceTree = "<group>"; };
+		1FB447B62371499700D15BE3 /* JKSmallLabels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKSmallLabels.m; sourceTree = "<group>"; };
+		1FB447B9237170C200D15BE3 /* FaceSignView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FaceSignView.h; sourceTree = "<group>"; };
+		1FB447BA237170C200D15BE3 /* FaceSignView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceSignView.m; sourceTree = "<group>"; };
+		1FD330B52371C00500CF444F /* DetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsView.h; sourceTree = "<group>"; };
+		1FD330B62371C00500CF444F /* DetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsView.m; sourceTree = "<group>"; };
 		1FE65A5C230B9CF5005F7673 /* DealersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersTableViewCell.h; sourceTree = "<group>"; };
 		1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersTableViewCell.m; sourceTree = "<group>"; };
 		1FE65A5F230B9E53005F7673 /* HomeDealersCollCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDealersCollCell.h; sourceTree = "<group>"; };
@@ -752,13 +831,9 @@
 		36E3A37C223B3BBD00B26F4F /* RightHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightHeaderCell.h; sourceTree = "<group>"; };
 		36E3A37D223B3BBD00B26F4F /* LeftHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftHeadCell.m; sourceTree = "<group>"; };
 		36E3A382223B3CD100B26F4F /* MessageInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageInfoVC.m; sourceTree = "<group>"; };
-		36E3A383223B3CD100B26F4F /* NotifyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotifyVC.m; sourceTree = "<group>"; };
 		36E3A384223B3CD100B26F4F /* MessageInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInfoVC.h; sourceTree = "<group>"; };
-		36E3A385223B3CD100B26F4F /* RemindVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindVC.m; sourceTree = "<group>"; };
 		36E3A386223B3CD100B26F4F /* NoticeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeVC.h; sourceTree = "<group>"; };
-		36E3A387223B3CD100B26F4F /* NotifyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotifyVC.h; sourceTree = "<group>"; };
 		36E3A388223B3CD100B26F4F /* NoticeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeVC.m; sourceTree = "<group>"; };
-		36E3A389223B3CD100B26F4F /* RemindVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindVC.h; sourceTree = "<group>"; };
 		36E3A38E223B3CE300B26F4F /* RemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindCell.h; sourceTree = "<group>"; };
 		36E3A38F223B3CE300B26F4F /* RemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindCell.m; sourceTree = "<group>"; };
 		36E3A392223B3D6B00B26F4F /* HomeHeadVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeHeadVC.h; sourceTree = "<group>"; };
@@ -1441,6 +1516,149 @@
 			path = "废弃";
 			sourceTree = "<group>";
 		};
+		1F8056842372A15800A14BE9 /* MyApplication */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056862372A17B00A14BE9 /* Controller */,
+				1F8056852372A17700A14BE9 /* View */,
+			);
+			path = MyApplication;
+			sourceTree = "<group>";
+		};
+		1F8056852372A17700A14BE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F80568D2372A2DB00A14BE9 /* ApplicationTableView.h */,
+				1F80568E2372A2DB00A14BE9 /* ApplicationTableView.m */,
+				1F8056902372A2F000A14BE9 /* ApplicationCell.h */,
+				1F8056912372A2F000A14BE9 /* ApplicationCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8056862372A17B00A14BE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056872372A18F00A14BE9 /* MyApplicationVC.h */,
+				1F8056882372A18F00A14BE9 /* MyApplicationVC.m */,
+				1F80568A2372A1BB00A14BE9 /* ApplicationVC.h */,
+				1F80568B2372A1BB00A14BE9 /* ApplicationVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F9C1CC7236FCD960062B08C /* Installment玩分期 */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CCB236FCE800062B08C /* Controller */,
+				1FB4477F236FFA5500D15BE3 /* Model */,
+				1F9C1CCA236FCE7C0062B08C /* View */,
+			);
+			path = "Installment玩分期";
+			sourceTree = "<group>";
+		};
+		1F9C1CC8236FCDF60062B08C /* Insurance玩保险 */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CCD236FCE900062B08C /* Controller */,
+				1F9C1CCC236FCE8D0062B08C /* View */,
+			);
+			path = "Insurance玩保险";
+			sourceTree = "<group>";
+		};
+		1F9C1CC9236FCE190062B08C /* AfterSale玩售后 */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CCF236FCE9D0062B08C /* Controller */,
+				1F9C1CCE236FCE9A0062B08C /* View */,
+			);
+			path = "AfterSale玩售后";
+			sourceTree = "<group>";
+		};
+		1F9C1CCA236FCE7C0062B08C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CD9236FD06D0062B08C /* VideoPlayer */,
+				1FB4477C236FF9CD00D15BE3 /* StageProcessView.h */,
+				1FB4477D236FF9CD00D15BE3 /* StageProcessView.m */,
+				1FB44780236FFA8A00D15BE3 /* UIView+Banner.h */,
+				1FB44781236FFA8A00D15BE3 /* UIView+Banner.m */,
+				1FD330B52371C00500CF444F /* DetailsView.h */,
+				1FD330B62371C00500CF444F /* DetailsView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F9C1CCB236FCE800062B08C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CD0236FCEB60062B08C /* InstallmentVC.h */,
+				1F9C1CD1236FCEB60062B08C /* InstallmentVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F9C1CCC236FCE8D0062B08C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F9C1CCD236FCE900062B08C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CD3236FCECC0062B08C /* InsuranceVC.h */,
+				1F9C1CD4236FCECC0062B08C /* InsuranceVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F9C1CCE236FCE9A0062B08C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F80567E2371CB4E00A14BE9 /* TelephoneView.h */,
+				1F80567F2371CB4E00A14BE9 /* TelephoneView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F9C1CCF236FCE9D0062B08C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CD6236FCED80062B08C /* AfterSaleVC.h */,
+				1F9C1CD7236FCED80062B08C /* AfterSaleVC.m */,
+				1F8056812371D1EC00A14BE9 /* ConsultingZoneVC.h */,
+				1F8056822371D1EC00A14BE9 /* ConsultingZoneVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F9C1CD9236FD06D0062B08C /* VideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CDA236FD06D0062B08C /* SelPlaybackControls.m */,
+				1F9C1CDB236FD06D0062B08C /* SelVideoPlayer.m */,
+				1F9C1CDC236FD06D0062B08C /* SelVideoSlider.h */,
+				1F9C1CDD236FD06D0062B08C /* SelPlaybackControls.h */,
+				1F9C1CDE236FD06D0062B08C /* Configs */,
+				1F9C1CE3236FD06D0062B08C /* SelVideoPlayer.h */,
+				1F9C1CE4236FD06D0062B08C /* SelVideoSlider.m */,
+			);
+			path = VideoPlayer;
+			sourceTree = "<group>";
+		};
+		1F9C1CDE236FD06D0062B08C /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				1F9C1CDF236FD06D0062B08C /* UIViewController+PlayerRotation.m */,
+				1F9C1CE0236FD06D0062B08C /* SelPlayerConfiguration.h */,
+				1F9C1CE1236FD06D0062B08C /* UIViewController+PlayerRotation.h */,
+				1F9C1CE2236FD06D0062B08C /* SelPlayerConfiguration.m */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
 		1FA54CE222393A4F0077FE54 /* ILiveSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -1705,6 +1923,122 @@
 			path = ILiveSDK;
 			sourceTree = "<group>";
 		};
+		1FB4477F236FFA5500D15BE3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1FB4478623704D1200D15BE3 /* HighQuality优质商家 */ = {
+			isa = PBXGroup;
+			children = (
+				1FE65A62230BBF98005F7673 /* Dealers经销商 */,
+				1FB4478923704D3800D15BE3 /* Controller */,
+				1FB4478823704D3500D15BE3 /* View */,
+			);
+			path = "HighQuality优质商家";
+			sourceTree = "<group>";
+		};
+		1FB4478823704D3500D15BE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FB4478D23704D5A00D15BE3 /* HighQualityTableView.h */,
+				1FB4478E23704D5A00D15BE3 /* HighQualityTableView.m */,
+				1FB4479023704D7900D15BE3 /* HighQualityCell.h */,
+				1FB4479123704D7900D15BE3 /* HighQualityCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FB4478923704D3800D15BE3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FB4478A23704D4D00D15BE3 /* HighQualityVC.h */,
+				1FB4478B23704D4D00D15BE3 /* HighQualityVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1FB44793237059A000D15BE3 /* Cars名车展 */ = {
+			isa = PBXGroup;
+			children = (
+				1FB44795237059B100D15BE3 /* Controller */,
+				1FB44794237059AC00D15BE3 /* View */,
+			);
+			path = "Cars名车展";
+			sourceTree = "<group>";
+		};
+		1FB44794237059AC00D15BE3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1FB4479C23705A1400D15BE3 /* CarsHeadView.h */,
+				1FB4479D23705A1400D15BE3 /* CarsHeadView.m */,
+				1FB44799237059F100D15BE3 /* CarsTableView.h */,
+				1FB4479A237059F100D15BE3 /* CarsTableView.m */,
+				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
+				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
+				36E3A39E223B673800B26F4F /* HotCarCollectionCell.h */,
+				36E3A39F223B673800B26F4F /* HotCarCollectionCell.m */,
+				1FB4479F2370621300D15BE3 /* PopularBrandCell.h */,
+				1FB447A02370621300D15BE3 /* PopularBrandCell.m */,
+				364C607A2242093800C35897 /* BrandCollectionCell.h */,
+				364C607B2242093800C35897 /* BrandCollectionCell.m */,
+				367EF8F2223F858100C9921D /* BrandTableViewCell.h */,
+				367EF8F3223F858100C9921D /* BrandTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1FB44795237059B100D15BE3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FB44796237059D000D15BE3 /* CarsVC.h */,
+				1FB44797237059D000D15BE3 /* CarsVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1FB447A223711DBA00D15BE3 /* MotorcycleType车型 */ = {
+			isa = PBXGroup;
+			children = (
+				1FB447B32371499700D15BE3 /* JKUiviewExtension */,
+				363B6140223BAF3800585061 /* ClassifyInfoVC.h */,
+				363B6141223BAF3800585061 /* ClassifyInfoVC.m */,
+				363B6143223BB77E00585061 /* ClassifyInfoCell.h */,
+				363B6144223BB77E00585061 /* ClassifyInfoCell.m */,
+				1FB447B22371499600D15BE3 /* JKSmallLabels.h */,
+				1FB447B62371499700D15BE3 /* JKSmallLabels.m */,
+			);
+			path = "MotorcycleType车型";
+			sourceTree = "<group>";
+		};
+		1FB447A323711E4500D15BE3 /* MotorcycleTypeDetails车型详情 */ = {
+			isa = PBXGroup;
+			children = (
+				363B6146223BBF8300585061 /* CarInfoVC.h */,
+				363B6147223BBF8300585061 /* CarInfoVC.m */,
+				363B6149223BC84000585061 /* CarInfoHeadCell.h */,
+				363B614A223BC84000585061 /* CarInfoHeadCell.m */,
+				1FE65A74230C1A14005F7673 /* CarDetailsDealersCell.h */,
+				1FE65A75230C1A14005F7673 /* CarDetailsDealersCell.m */,
+				363B614F223BCDA900585061 /* DeployFirstCell.h */,
+				363B6150223BCDA900585061 /* DeployFirstCell.m */,
+				363B614C223BCA0E00585061 /* CarInfoCommonCell.h */,
+				363B614D223BCA0E00585061 /* CarInfoCommonCell.m */,
+			);
+			path = "MotorcycleTypeDetails车型详情";
+			sourceTree = "<group>";
+		};
+		1FB447B32371499700D15BE3 /* JKUiviewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				1FB447B42371499700D15BE3 /* UIView+JKUiviewExtension.h */,
+				1FB447B52371499700D15BE3 /* UIView+JKUiviewExtension.m */,
+			);
+			path = JKUiviewExtension;
+			sourceTree = "<group>";
+		};
 		1FE65A62230BBF98005F7673 /* Dealers经销商 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1783,10 +2117,6 @@
 			children = (
 				363B612E223BA14700585061 /* ClassifyListVC.h */,
 				363B612F223BA14700585061 /* ClassifyListVC.m */,
-				363B6140223BAF3800585061 /* ClassifyInfoVC.h */,
-				363B6141223BAF3800585061 /* ClassifyInfoVC.m */,
-				363B6146223BBF8300585061 /* CarInfoVC.h */,
-				363B6147223BBF8300585061 /* CarInfoVC.m */,
 				1FFB8EB5225C7E9900B72F31 /* ImageBrowsingVC.h */,
 				1FFB8EB6225C7E9900B72F31 /* ImageBrowsingVC.m */,
 			);
@@ -1800,22 +2130,12 @@
 				363B6138223BA45C00585061 /* BrandCell.m */,
 				363B613D223BAB2000585061 /* ClassifyCell.h */,
 				363B613E223BAB2000585061 /* ClassifyCell.m */,
-				363B6143223BB77E00585061 /* ClassifyInfoCell.h */,
-				363B6144223BB77E00585061 /* ClassifyInfoCell.m */,
-				363B6149223BC84000585061 /* CarInfoHeadCell.h */,
-				363B614A223BC84000585061 /* CarInfoHeadCell.m */,
-				363B614C223BCA0E00585061 /* CarInfoCommonCell.h */,
-				363B614D223BCA0E00585061 /* CarInfoCommonCell.m */,
-				363B614F223BCDA900585061 /* DeployFirstCell.h */,
-				363B6150223BCDA900585061 /* DeployFirstCell.m */,
 				363B6152223BCFC400585061 /* DeployLastCell.h */,
 				363B6153223BCFC400585061 /* DeployLastCell.m */,
 				363B615A223BDB4400585061 /* CallNowView.h */,
 				363B615B223BDB4400585061 /* CallNowView.m */,
 				36428DAC223F37B0007B7D24 /* AskSuccessView.h */,
 				36428DAD223F37B0007B7D24 /* AskSuccessView.m */,
-				1FE65A74230C1A14005F7673 /* CarDetailsDealersCell.h */,
-				1FE65A75230C1A14005F7673 /* CarDetailsDealersCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2045,10 +2365,6 @@
 				7A81BF1C20F84863005699F0 /* ReimbursementTableView.m */,
 				367EF8EC223F7F4C00C9921D /* BrandTableView.h */,
 				367EF8ED223F7F4C00C9921D /* BrandTableView.m */,
-				367EF8F2223F858100C9921D /* BrandTableViewCell.h */,
-				367EF8F3223F858100C9921D /* BrandTableViewCell.m */,
-				364C607A2242093800C35897 /* BrandCollectionCell.h */,
-				364C607B2242093800C35897 /* BrandCollectionCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2098,8 +2414,6 @@
 			isa = PBXGroup;
 			children = (
 				7A22CD9F20ECC2F90010059D /* Conreoller */,
-				7A22CD9E20ECC2F60010059D /* Model */,
-				7A22CD9D20ECC2F40010059D /* View */,
 			);
 			path = "FaceToFaceSign开始面签";
 			sourceTree = "<group>";
@@ -2253,20 +2567,6 @@
 			path = Conreollwe;
 			sourceTree = "<group>";
 		};
-		7A22CD9D20ECC2F40010059D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		7A22CD9E20ECC2F60010059D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		7A22CD9F20ECC2F90010059D /* Conreoller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2305,16 +2605,12 @@
 		7A22CDA220ECC30B0010059D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				7A22CE1020EE24670010059D /* MessageVC.h */,
+				7A22CE1120EE24680010059D /* MessageVC.m */,
 				36E3A386223B3CD100B26F4F /* NoticeVC.h */,
 				36E3A388223B3CD100B26F4F /* NoticeVC.m */,
 				36E3A384223B3CD100B26F4F /* MessageInfoVC.h */,
 				36E3A382223B3CD100B26F4F /* MessageInfoVC.m */,
-				36E3A387223B3CD100B26F4F /* NotifyVC.h */,
-				36E3A383223B3CD100B26F4F /* NotifyVC.m */,
-				36E3A389223B3CD100B26F4F /* RemindVC.h */,
-				36E3A385223B3CD100B26F4F /* RemindVC.m */,
-				7A22CE1020EE24670010059D /* MessageVC.h */,
-				7A22CE1120EE24680010059D /* MessageVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2993,8 +3289,11 @@
 				7A8A5B1120E35A33002D9A48 /* Tools */,
 				7A8A5B1320E35AA7002D9A48 /* Base */,
 				7A8A5B0520E35A0C002D9A48 /* Login */,
+				1F9C1CC7236FCD960062B08C /* Installment玩分期 */,
+				1F9C1CC8236FCDF60062B08C /* Insurance玩保险 */,
 				7A8A5B0120E35A06002D9A48 /* Home */,
 				7A8A5B0D20E35A27002D9A48 /* Reimbursement */,
+				1F9C1CC9236FCE190062B08C /* AfterSale玩售后 */,
 				7A8A5B0920E35A1A002D9A48 /* My */,
 			);
 			path = Classes;
@@ -3021,8 +3320,11 @@
 				7A8A5B0220E35A06002D9A48 /* Controller */,
 				7A8A5B0320E35A06002D9A48 /* Model */,
 				7A8A5B0420E35A06002D9A48 /* View */,
+				1FB4478623704D1200D15BE3 /* HighQuality优质商家 */,
+				1FB44793237059A000D15BE3 /* Cars名车展 */,
 				363B612D223BA12B00585061 /* Classify 车系 */,
-				1FE65A62230BBF98005F7673 /* Dealers经销商 */,
+				1FB447A223711DBA00D15BE3 /* MotorcycleType车型 */,
+				1FB447A323711E4500D15BE3 /* MotorcycleTypeDetails车型详情 */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -3063,18 +3365,14 @@
 				7A3CBDA020F3228B00D795E5 /* HomeTableView.m */,
 				7A8A5C4320E4838C002D9A48 /* HomeHeaderView.h */,
 				7A8A5C4420E4838C002D9A48 /* HomeHeaderView.m */,
-				7A8A5CA120E4DD45002D9A48 /* HomeRecommendedModelsCell.h */,
-				7A8A5CA220E4DD45002D9A48 /* HomeRecommendedModelsCell.m */,
-				7A8A5CA420E4E583002D9A48 /* HomeInstallmentGoodsCell.h */,
-				7A8A5CA520E4E583002D9A48 /* HomeInstallmentGoodsCell.m */,
 				1FE65A5C230B9CF5005F7673 /* DealersTableViewCell.h */,
 				1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */,
 				1FE65A5F230B9E53005F7673 /* HomeDealersCollCell.h */,
 				1FE65A60230B9E53005F7673 /* HomeDealersCollCell.m */,
-				36346AA622409BBC001FFDEF /* HomeTableHeadCell.h */,
-				36346AA722409BBC001FFDEF /* HomeTableHeadCell.m */,
-				36E3A39E223B673800B26F4F /* HotCarCollectionCell.h */,
-				36E3A39F223B673800B26F4F /* HotCarCollectionCell.m */,
+				7A8A5CA120E4DD45002D9A48 /* HomeRecommendedModelsCell.h */,
+				7A8A5CA220E4DD45002D9A48 /* HomeRecommendedModelsCell.m */,
+				7A8A5CA420E4E583002D9A48 /* HomeInstallmentGoodsCell.h */,
+				7A8A5CA520E4E583002D9A48 /* HomeInstallmentGoodsCell.m */,
 				363B6121223B7B9A00585061 /* NewsCell.h */,
 				363B6122223B7B9A00585061 /* NewsCell.m */,
 				368650652240FA0D00FC39CD /* SelectCarCell.h */,
@@ -3131,6 +3429,7 @@
 		7A8A5B0920E35A1A002D9A48 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				1F8056842372A15800A14BE9 /* MyApplication */,
 				36EA74A522C34836000F2BD4 /* ChangeBrand */,
 				366ADDC2223A201300623EC6 /* Calculator 计算器 */,
 				36AC10EF223901DE00861133 /* Collect 收藏 */,
@@ -3157,6 +3456,8 @@
 			children = (
 				7A8A5B1D20E35B5B002D9A48 /* MyViewController.h */,
 				7A8A5B1E20E35B5B002D9A48 /* MyViewController.m */,
+				1FB447B9237170C200D15BE3 /* FaceSignView.h */,
+				1FB447BA237170C200D15BE3 /* FaceSignView.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -4125,6 +4426,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
 							com.apple.Siri = {
 								enabled = 0;
 							};
@@ -4337,6 +4641,7 @@
 				7A81BEF120F7229E005699F0 /* MyCarLoanDetailsTableView.m in Sources */,
 				364C60832242102F00C35897 /* ChineseString.m in Sources */,
 				B8A70B0021CE4FCA00E97EFD /* BannerWebViewVC.m in Sources */,
+				1FB447B72371499700D15BE3 /* UIView+JKUiviewExtension.m in Sources */,
 				7A8A5CBE20E5D1D5002D9A48 /* CarLoanCalculatorHeadCell.m in Sources */,
 				3678459522C352160076E118 /* UpdateBrandTableView.m in Sources */,
 				1FFB8EB7225C7E9A00B72F31 /* ImageBrowsingVC.m in Sources */,
@@ -4385,6 +4690,7 @@
 				7A22CE1520EE24B90010059D /* MessageHeadView.m in Sources */,
 				7A8A5C9020E4A7FE002D9A48 /* MJPropertyType.m in Sources */,
 				36428DB1223F689D007B7D24 /* CarCell.m in Sources */,
+				1FB447BB237170C200D15BE3 /* FaceSignView.m in Sources */,
 				7A8A5CA320E4DD45002D9A48 /* HomeRecommendedModelsCell.m in Sources */,
 				B885CB582171F22C001A1258 /* PersionalCreditVC.m in Sources */,
 				7AB29D2720FC34680014FCB3 /* QNUploadManager.m in Sources */,
@@ -4395,11 +4701,13 @@
 				7A22CE1820EE27DA0010059D /* MessageCell.m in Sources */,
 				7A22CDC820EDB02F0010059D /* ModifyayPasswordVC.m in Sources */,
 				363B6129223B897F00585061 /* NewsModel.m in Sources */,
+				1F9C1CE5236FD06D0062B08C /* SelPlaybackControls.m in Sources */,
 				7A3CBE2920F5F4E700D795E5 /* AddBankCardTableView.m in Sources */,
 				7A81BF0120F754D6005699F0 /* OrderDetailsVC.m in Sources */,
 				B885CB562171F22C001A1258 /* NumberCodeVC.m in Sources */,
 				7A8A5C0320E38154002D9A48 /* UIButton+SGImagePosition.m in Sources */,
 				7A8A5CC420E5DC5C002D9A48 /* ApplyForView.m in Sources */,
+				1FD330B72371C00500CF444F /* DetailsView.m in Sources */,
 				36E3A39A223B470300B26F4F /* ClassifyCarVC.m in Sources */,
 				36428DB4223F7122007B7D24 /* CollectionHeaderView.m in Sources */,
 				1FFB8EA3225AFA8B00B72F31 /* GeneralWebView.m in Sources */,
@@ -4410,6 +4718,7 @@
 				7A3CBDF720F4AE3100D795E5 /* LEEAlert.m in Sources */,
 				7A81BF0D20F7572C005699F0 /* OrderDetailsModel.m in Sources */,
 				7A3CBD9B20F3217300D795E5 /* CDCommon.m in Sources */,
+				1FB4478F23704D5A00D15BE3 /* HighQualityTableView.m in Sources */,
 				7AB29D7520FC65270014FCB3 /* RecentPaymentsDetailsVC.m in Sources */,
 				3686506A2240FA2000FC39CD /* SelectcarFootCell.m in Sources */,
 				7A8A5C9520E4A7FE002D9A48 /* NSString+MJExtension.m in Sources */,
@@ -4422,6 +4731,7 @@
 				B8B4DB6F21743C9500BC3DE2 /* TaobaoVC.m in Sources */,
 				7A0593012100ADDC00075FE8 /* DetailsVC.m in Sources */,
 				363B615C223BDB4400585061 /* CallNowView.m in Sources */,
+				1F9C1CD8236FCED80062B08C /* AfterSaleVC.m in Sources */,
 				7AA906B420EF1474004F2B12 /* DropShippingOrderVC.m in Sources */,
 				364C60862242303900C35897 /* CalculatorModel.m in Sources */,
 				7A0592F2210098BD00075FE8 /* NearFutureModel.m in Sources */,
@@ -4446,6 +4756,7 @@
 				1FE65A7C230D4E54005F7673 /* UIView+Tool.m in Sources */,
 				7A3CBE0420F4B29C00D795E5 /* CarLoanCalculatorModel.m in Sources */,
 				7A8A5C9120E4A7FE002D9A48 /* NSObject+MJClass.m in Sources */,
+				1FB447A12370621300D15BE3 /* PopularBrandCell.m in Sources */,
 				7A3CBE3820F6FE0700D795E5 /* TFHppleElement.m in Sources */,
 				363B614E223BCA0E00585061 /* CarInfoCommonCell.m in Sources */,
 				7A8A5CD220E60A12002D9A48 /* VehicleDetailsVC.m in Sources */,
@@ -4484,30 +4795,35 @@
 				7A8A5BFB20E3786F002D9A48 /* SendVerificationCodeView.m in Sources */,
 				7A81BF1D20F84863005699F0 /* ReimbursementTableView.m in Sources */,
 				B8B4DB7521743CC000BC3DE2 /* PhonePlace.m in Sources */,
+				1FB44798237059D000D15BE3 /* CarsVC.m in Sources */,
 				7A3CBD8920F3211A00D795E5 /* TLTableView.m in Sources */,
 				7A3CBDAD20F348E400D795E5 /* ShippingAddressTableView.m in Sources */,
 				B8B4DB6C21743C7C00BC3DE2 /* PulicCoinVC.m in Sources */,
 				B856855A21705A00005BEA09 /* TextFieldCell.m in Sources */,
 				7AB29D2420FC34670014FCB3 /* QNConfiguration.m in Sources */,
 				7A81BF0720F7553A005699F0 /* OrderDetailsTableView.m in Sources */,
+				1FB4478C23704D4D00D15BE3 /* HighQualityVC.m in Sources */,
 				7A22CDD220EDB2950010059D /* ShippingAddressCell.m in Sources */,
 				B885CB462171F15F001A1258 /* UIButton+CZHExtension.m in Sources */,
+				1F8056892372A18F00A14BE9 /* MyApplicationVC.m in Sources */,
 				7A22CDE620EDBE7D0010059D /* Province.m in Sources */,
 				3698BAFB2244C09800EFB576 /* SelectBrandCell.m in Sources */,
 				7A22CE1220EE24680010059D /* MessageVC.m in Sources */,
 				367EF8F4223F858100C9921D /* BrandTableViewCell.m in Sources */,
 				7A8A5BFE20E37FCA002D9A48 /* TermsOfServiceView.m in Sources */,
 				364C607C2242093800C35897 /* BrandCollectionCell.m in Sources */,
+				1F9C1CE8236FD06D0062B08C /* SelPlayerConfiguration.m in Sources */,
 				368650672240FA0D00FC39CD /* SelectCarCell.m in Sources */,
 				7A3CBD9A20F3217300D795E5 /* UIScrollView+TLAdd.m in Sources */,
+				1F9C1CE7236FD06D0062B08C /* UIViewController+PlayerRotation.m in Sources */,
 				36E3A37E223B3BBD00B26F4F /* LeftFootCell.m in Sources */,
+				1F80568C2372A1BB00A14BE9 /* ApplicationVC.m in Sources */,
 				1FE65A6A230BC02D005F7673 /* DealersTableView.m in Sources */,
 				B834010B21D75A350089D4DE /* QNIpModel.m in Sources */,
 				3698BAF2224482C200EFB576 /* DeployModel.m in Sources */,
 				7A3CBDCD20F4916400D795E5 /* CreditReportModel.m in Sources */,
 				B88A6D002185DC0B007683AE /* MoblieCodeVC.m in Sources */,
 				36E3A372223B3BA200B26F4F /* CarModel.m in Sources */,
-				36E3A38B223B3CD100B26F4F /* NotifyVC.m in Sources */,
 				7A22CDBF20ECD4A90010059D /* SendCodeView.m in Sources */,
 				7AB29D7B20FC68610014FCB3 /* TheDetailModel.m in Sources */,
 				7A3CBD8020F0E4F700D795E5 /* WLDecimalKeyboard.m in Sources */,
@@ -4535,16 +4851,19 @@
 				1FE65A76230C1A14005F7673 /* CarDetailsDealersCell.m in Sources */,
 				363B6142223BAF3800585061 /* ClassifyInfoVC.m in Sources */,
 				7A22CDE320EDBE7D0010059D /* AddressPickerView.m in Sources */,
+				1F9C1CE6236FD06D0062B08C /* SelVideoPlayer.m in Sources */,
 				7A3CBE2F20F634A300D795E5 /* SubmitOrdersTableView.m in Sources */,
+				1FB4477E236FF9CD00D15BE3 /* StageProcessView.m in Sources */,
 				7AA906FA20F0BCF4004F2B12 /* RepaymentPlanCell.m in Sources */,
 				7A8A5CB420E539B9002D9A48 /* MYCell.m in Sources */,
+				1F9C1CD5236FCECC0062B08C /* InsuranceVC.m in Sources */,
 				B834010A21D75A350089D4DE /* QNAssessment.m in Sources */,
+				1F80568F2372A2DB00A14BE9 /* ApplicationTableView.m in Sources */,
 				36E3A375223B3BB700B26F4F /* CalculatorVC.m in Sources */,
 				7A8A5CC120E5D200002D9A48 /* CarLoanCalculatorChooseCell.m in Sources */,
 				7A3CBE3920F6FE0700D795E5 /* XPathQuery.m in Sources */,
 				7A81BF1020F75F5B005699F0 /* OrderDetailsGoodsCell.m in Sources */,
 				B834011521D75A350089D4DE /* QNRecord.m in Sources */,
-				36E3A38C223B3CD100B26F4F /* RemindVC.m in Sources */,
 				7A3CBDFB20F4AE3100D795E5 /* OpenPushView.m in Sources */,
 				7A3CBDD420F49B6500D795E5 /* CarLoanCalculatorTableView.m in Sources */,
 				B834011321D75A350089D4DE /* QNNetworkInfo.m in Sources */,
@@ -4560,6 +4879,7 @@
 				7A8A5CFC20E62E3E002D9A48 /* ChooseRank.m in Sources */,
 				7A3CBDC720F48E9C00D795E5 /* IntegralTableView.m in Sources */,
 				7A3CBDFA20F4AE3100D795E5 /* FontSizeView.m in Sources */,
+				1FB4479B237059F100D15BE3 /* CarsTableView.m in Sources */,
 				363B613F223BAB2000585061 /* ClassifyCell.m in Sources */,
 				36428DAE223F37B1007B7D24 /* AskSuccessView.m in Sources */,
 				3698BAF82244A3D000EFB576 /* BrandCollectionReusableView.m in Sources */,
@@ -4576,6 +4896,7 @@
 				364C60822242102F00C35897 /* pinyin.m in Sources */,
 				7AB29D1D20FC34670014FCB3 /* QNPHAssetResource.m in Sources */,
 				7AA906E020EF53B6004F2B12 /* PayWayCell.m in Sources */,
+				1FB4479E23705A1400D15BE3 /* CarsHeadView.m in Sources */,
 				7A3CBE2320F5E76500D795E5 /* BankCardModel.m in Sources */,
 				7A8A5C9220E4A7FE002D9A48 /* NSObject+MJCoding.m in Sources */,
 				7AB29D2620FC34680014FCB3 /* QNResumeUpload.m in Sources */,
@@ -4585,6 +4906,7 @@
 				7A8A5C4120E3DC92002D9A48 /* HW3DBannerView.m in Sources */,
 				7A81BF1620F83F8B005699F0 /* MessageModel.m in Sources */,
 				7AABE3522137995E00283BC7 /* PrepaymentVC.m in Sources */,
+				1FB447B82371499700D15BE3 /* JKSmallLabels.m in Sources */,
 				7A3CBD7A20F0E30F00D795E5 /* WithdrawalCell.m in Sources */,
 				363B6154223BCFC400585061 /* DeployLastCell.m in Sources */,
 				7A3CBD6620F0C77600D795E5 /* TheBalanceOfCell.m in Sources */,
@@ -4604,17 +4926,20 @@
 				36E3A36C223B3B9A00B26F4F /* CollectCell.m in Sources */,
 				7A81BEFD20F73714005699F0 /* OrderModel.m in Sources */,
 				36E3A390223B3CE300B26F4F /* RemindCell.m in Sources */,
+				1FB44782236FFA8A00D15BE3 /* UIView+Banner.m in Sources */,
 				7A22CE1F20EE36FD0010059D /* CarLoansAllVC.m in Sources */,
 				7A8A5CD820E60CBC002D9A48 /* IntroductionCell.m in Sources */,
 				7AB29D2120FC34670014FCB3 /* QNSessionManager.m in Sources */,
 				363B6158223BDA2400585061 /* ZJAnimationPopView.m in Sources */,
 				36346AA822409BBC001FFDEF /* HomeTableHeadCell.m in Sources */,
+				1FB4479223704D7900D15BE3 /* HighQualityCell.m in Sources */,
 				7A81BEF720F72403005699F0 /* MyCarLoanNameCell.m in Sources */,
 				7A3CBD8320F0EFCF00D795E5 /* CKAlertViewController.m in Sources */,
 				7A8A5B1620E35B12002D9A48 /* BaseViewController.m in Sources */,
 				1FE65A61230B9E53005F7673 /* HomeDealersCollCell.m in Sources */,
 				7AA906AB20EF1405004F2B12 /* TheOrderVC.m in Sources */,
 				1FE65A6D230BC04A005F7673 /* DealersHeadView.m in Sources */,
+				1F8056802371CB4E00A14BE9 /* TelephoneView.m in Sources */,
 				7AA906E520EF61EA004F2B12 /* RecordCell.m in Sources */,
 				7A3CBE1D20F5E2EC00D795E5 /* BankCardTableView.m in Sources */,
 				7AB29D2320FC34670014FCB3 /* QNFileRecorder.m in Sources */,
@@ -4624,6 +4949,7 @@
 				B834011821D75A350089D4DE /* QNRefresher.m in Sources */,
 				7A8A5C1520E3C8DB002D9A48 /* UIButton+Custom.m in Sources */,
 				7A8A5C8D20E4A7FE002D9A48 /* MJFoundation.m in Sources */,
+				1F9C1CE9236FD06D0062B08C /* SelVideoSlider.m in Sources */,
 				7AA906DA20EF4F4E004F2B12 /* PayVC.m in Sources */,
 				7AA906EE20EF6756004F2B12 /* RecordDetailsHeadCell.m in Sources */,
 				B834010E21D75A350089D4DE /* QNResolver.m in Sources */,
@@ -4632,10 +4958,13 @@
 				7AB29D1920FC34670014FCB3 /* QNCrc32.m in Sources */,
 				B885CB452171F15F001A1258 /* UIView+CZHExtension.m in Sources */,
 				7A3CBDFC20F4AE3100D795E5 /* SelectedListModel.m in Sources */,
+				1F9C1CD2236FCEB60062B08C /* InstallmentVC.m in Sources */,
 				7A8A5AC420E35905002D9A48 /* AppDelegate.m in Sources */,
 				7A8A5B1920E35B47002D9A48 /* HomeViewController.m in Sources */,
 				B834010721D75A350089D4DE /* QNHex.m in Sources */,
+				1F8056922372A2F000A14BE9 /* ApplicationCell.m in Sources */,
 				36E3A38D223B3CD100B26F4F /* NoticeVC.m in Sources */,
+				1F8056832371D1EC00A14BE9 /* ConsultingZoneVC.m in Sources */,
 				7A8A5CAE20E52B4E002D9A48 /* RecordVC.m in Sources */,
 				363B6148223BBF8300585061 /* CarInfoVC.m in Sources */,
 				7A8A5C1220E3C801002D9A48 /* UILable+convience.m in Sources */,

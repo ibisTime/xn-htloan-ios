@@ -13,9 +13,9 @@
 -(UIImageView *)headImage
 {
     if (!_headImage) {
-        _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(10, kStatusBarHeight + 55, 60, 60)];
+        _headImage = [[UIImageView alloc]initWithFrame:CGRectMake(17, kNavigationBarHeight + 18.5, 55, 55)];
         _headImage.layer.masksToBounds = YES;
-        _headImage.layer.cornerRadius = 30;
+        _headImage.layer.cornerRadius = 27.5;
         _headImage.image = HGImage(@"myheadimage");
 
         NSLog(@"%@",[[USERDEFAULTS objectForKey:PHOTO] convertImageUrl]);
@@ -26,7 +26,7 @@
 -(UILabel *)nameLabel
 {
     if (!_nameLabel) {
-        _nameLabel = [UILabel labelWithFrame:CGRectMake(80 , kStatusBarHeight + 60, SCREEN_WIDTH - 110, 30) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGfont(20) textColor:[UIColor whiteColor]];
+        _nameLabel = [UILabel labelWithFrame:CGRectMake(85 , kNavigationBarHeight + 22, SCREEN_WIDTH - 85 - 15, 24) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGfont(18) textColor:[UIColor whiteColor]];
         
     }
     return _nameLabel;
@@ -35,8 +35,8 @@
 -(UILabel *)phoneLabel
 {
     if (!_phoneLabel) {
-        _phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(80 , kStatusBarHeight + 90, SCREEN_WIDTH - 110, 20)];
-        _phoneLabel.font = HGfont(13);
+        _phoneLabel = [[UILabel alloc]initWithFrame:CGRectMake(85 , kNavigationBarHeight + 110 - 64, SCREEN_WIDTH - 110, 24)];
+        _phoneLabel.font = HGfont(14);
         _phoneLabel.textColor = [UIColor whiteColor];
         
     }
@@ -56,34 +56,49 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        _backImage = [[UIImageView alloc]init];
-        _backImage.image = HGImage(@"myback");
+        _backImage = [[UIImageView alloc]initWithFrame:self.bounds];
+        _backImage.image = HGImage(@"我的背景");
         [self addSubview:_backImage];
 
         [self addSubview:self.headImage];
         [self addSubview:self.nameLabel];
         [self addSubview:self.phoneLabel];
 
-        UIImageView *youImage = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 20, kStatusBarHeight + 60 + 19.5, 6, 11)];
-        youImage.image = HGImage(@"whiteYOU");
-        [self addSubview:youImage];
-
-//        [self addSubview:self.balanceButton];
-//        [self addSubview:self.integralButton];
-//
-//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2, self.frame.size.height - 25, 1, 20)];
-//        lineView.backgroundColor = [UIColor whiteColor];
-//        [self addSubview:lineView];
-
-        UIButton *button = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        button.frame = CGRectMake(0, kStatusBarHeight + 60, SCREEN_WIDTH, 50);
-        [button addTarget:self action:@selector(ButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        button.tag = 102;
-        [self addSubview:button];
-
-
+        NSArray *ary = @[@"我的消息",@"我的关注",@"我的申请"];
+        for (int i = 0; i < 3; i ++) {
+            UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+            backBtn.frame = CGRectMake(i % 3 * (SCREEN_WIDTH/3), _headImage.yy + 20, SCREEN_WIDTH/3, 42);
+            backBtn.tag = i;
+            [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            [self addSubview:backBtn];
+            
+            UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
+            if (i == 0) {
+                numberLbl.text = @"44";
+            }
+            if (i == 1) {
+                numberLbl.text = @"0";
+            }
+            if (i == 2) {
+                numberLbl.text = @"0";
+            }
+            [backBtn addSubview:numberLbl];
+            
+            UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 25, SCREEN_WIDTH/3, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
+            nameLbl.text = ary[i];
+            [backBtn addSubview:nameLbl];
+        }
+ 
+        
+        
     }
     return self;
 }
+
+-(void)backBtnClick:(UIButton *)sender
+{
+    [_delegate MyHeadButton:sender.tag];
+}
+
 
 @end

@@ -123,7 +123,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
     
     UIImageView *imageView = self.defaultNoDataNoticeImageView;
     
-    UIImage *image = self.defaultNoDataImage ? : [UIImage imageNamed:@"暂无订单"];;
+    UIImage *image = self.defaultNoDataImage;
     imageView.image = image;
     CGFloat X = (self.bounds.size.width - image.size.width - self.contentInset.left - self.contentInset.right) / 2;
     CGFloat Y = (self.bounds.size.height - image.size.height - self.contentInset.top - self.contentInset.bottom) / 2 - 50;
@@ -189,7 +189,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
     UILabel *label = objc_getAssociatedObject(self, _cmd);
     if (!label) {
         label = [[UILabel alloc] init];
-        label.text = self.defaultNoDataText ? : @"暂无数据";
+        label.text = self.defaultNoDataText;
         label.font = [UIFont systemFontOfSize:11];
         label.textAlignment = NSTextAlignmentCenter;
         objc_setAssociatedObject(self, _cmd, label, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -202,7 +202,7 @@ void swizzMethod(SEL oriSel, SEL newSel) {
     UIImageView *imageView = objc_getAssociatedObject(self, _cmd);
     if (!imageView) {
         imageView = [[UIImageView alloc] init];
-        imageView.image = self.defaultNoDataImage ? : [UIImage imageNamed:@"暂无订单"];
+        imageView.image = self.defaultNoDataImage;
         imageView.contentMode = UIViewContentModeCenter;
         objc_setAssociatedObject(self, _cmd, imageView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }

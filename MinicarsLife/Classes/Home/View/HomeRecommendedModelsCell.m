@@ -21,9 +21,10 @@
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
 
-        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, (SCREEN_WIDTH - 40)/3/3 *2 + 70  , SCREEN_WIDTH, 10)];
-        lineView.backgroundColor = BackColor;
-        [self addSubview:lineView];
+        
+//        UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, (SCREEN_WIDTH - 40)/3/3 *2 + 70  , SCREEN_WIDTH, 10)];
+//        lineView.backgroundColor = BackColor;
+//        [self addSubview:lineView];
 
     }
     return self;

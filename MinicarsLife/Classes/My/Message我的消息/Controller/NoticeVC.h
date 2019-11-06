@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NoticeVC : BaseViewController
 
+@property (nonatomic , strong)NSArray *typeList;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -33,16 +33,16 @@
     
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
-    CGFloat  width = (SCREEN_WIDTH - 0.0004) / 3;
+    CGFloat  width = (SCREEN_WIDTH - 4) / 3;
     layout.itemSize = CGSizeMake(width, 0.8 * width);
     layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    layout.minimumInteritemSpacing = 0.0001;
-    layout.minimumLineSpacing = 0.0001;
+    layout.minimumInteritemSpacing = 1;
+    layout.minimumLineSpacing = 1;
     layout.estimatedItemSize = CGSizeMake(width , 0.8 * width);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
     self.collection = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight) collectionViewLayout:layout];
-    self.collection.backgroundColor = kWhiteColor;
+    self.collection.backgroundColor = kHexColor(@"F5F5F5");
     self.collection.delegate = self;
     self.collection.dataSource = self;
     [self.collection registerClass:[BrandCell class] forCellWithReuseIdentifier:@"cell"];
@@ -59,8 +59,9 @@
 
     BrandCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:rid forIndexPath:indexPath];
     cell.carmodel = self.CarModels[indexPath.row];
-    cell.layer.borderColor = kLineColor.CGColor;
-    cell.layer.borderWidth = 1;
+//    cell.layer.borderColor = kLineColor.CGColor;
+//    cell.layer.borderWidth = 1;
+    cell.backgroundColor = kWhiteColor;
     return cell;
 //    cell.width;
 }

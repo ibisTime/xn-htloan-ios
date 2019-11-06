@@ -87,6 +87,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.HotCarBrands.count;
 }
+
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     BrandCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.titlelab.text = self.HotCarBrands[indexPath.row].name;
@@ -94,17 +95,16 @@
         cell.logo.autoresizesSubviews = YES;
         cell.logo.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;;
     [cell.logo sd_setImageWithURL:[NSURL URLWithString:[self.HotCarBrands[indexPath.row].logo convertImageUrl]]];
-    
     return cell;
 }
+
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     BrandCollectionReusableView * view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"headerView" forIndexPath:indexPath];
 //    view.leftlab.text = @"预算";
     [view.morebtn addTarget:self action:@selector(moreBrand) forControlEvents:(UIControlEventTouchUpInside)];
-
-    
     return view;
 }
+
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake(SCREEN_WIDTH, 40);
 }
@@ -123,6 +123,7 @@
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 -(void)getClassifyListData:(NSString *)code{
     TLNetworking * http2 = [[TLNetworking alloc]init];
     http2.showView = self.view;
@@ -173,8 +174,8 @@
         result = (int)ceilf(numberToRound);
         
         self.CollectionView.frame = CGRectMake(0, 0, SCREEN_WIDTH, width *result + 40 + 20);
-        
         [self.CollectionView reloadData];
+        
     } failure:^(NSError *error) {
         
     }];

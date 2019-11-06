@@ -13,6 +13,8 @@
 {
     CustomTextFieldView *tfView;
     SendCodeView *codeView;
+    CustomTextFieldView *tfView1;
+    SendCodeView *codeView1;
 }
 @end
 
@@ -28,21 +30,37 @@
 
 -(void)TheInterfaceDisplayView
 {
-    tfView = [[CustomTextFieldView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 60)];
+    tfView1 = [[CustomTextFieldView alloc]initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 60)];
+    tfView1.nameLabel.text = @"手机号";
+    tfView1.nameTextField.placeholder = @"请输入手机号";
+    tfView1.nameTextField.keyboardType = UIKeyboardTypePhonePad;
+    [self.view addSubview:tfView1];
+    
+    codeView1 = [[SendCodeView alloc]initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH, 60)];
+    codeView1.nameLabel.text = @"验证码";
+    codeView1.nameTextField.placeholder = @"请输入验证码";
+    codeView1.nameTextField.keyboardType = UIKeyboardTypePhonePad;
+    [codeView1.sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    [self.view addSubview:codeView1];
+    
+    tfView = [[CustomTextFieldView alloc]initWithFrame:CGRectMake(0, 130, SCREEN_WIDTH, 60)];
     tfView.nameLabel.text = @"新手机号";
     tfView.nameTextField.placeholder = @"请输入手机号";
     tfView.nameTextField.keyboardType = UIKeyboardTypePhonePad;
     [self.view addSubview:tfView];
 
-    codeView = [[SendCodeView alloc]initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH, 60)];
+    codeView = [[SendCodeView alloc]initWithFrame:CGRectMake(0, 190, SCREEN_WIDTH, 60)];
     codeView.nameLabel.text = @"验证码";
     codeView.nameTextField.placeholder = @"请输入验证码";
     codeView.nameTextField.keyboardType = UIKeyboardTypePhonePad;
     [codeView.sendButton addTarget:self action:@selector(sendButtonClick:) forControlEvents:(UIControlEventTouchUpInside)];
     [self.view addSubview:codeView];
+    
+    
+    
 
     UIButton *confirmButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-    confirmButton.frame = CGRectMake(20, 160, SCREEN_WIDTH - 40, 50);
+    confirmButton.frame = CGRectMake(20, 290, SCREEN_WIDTH - 40, 50);
     [confirmButton setTitle:@"确认" forState:(UIControlStateNormal)];
     confirmButton.backgroundColor = MainColor;
     kViewRadius(confirmButton, 5);
@@ -53,10 +71,6 @@
 
 -(void)sendButtonClick:(UIButton *)sender
 {
-    if ([tfView.nameTextField.text isEqualToString:@""]) {
-        [TLAlert alertWithInfo:@"请输入手机号"];
-        return;
-    }
     //发送验证码
     TLNetworking *http = [TLNetworking new];
     http.code = VERIFICATION_CODE_CODE;
@@ -115,14 +129,23 @@
         [TLAlert alertWithInfo:@"请输入验证码"];
         return;
     }
+    if ([tfView1.nameTextField.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入手机号"];
+        return;
+    }
+    if ([codeView1.nameTextField.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入验证码"];
+        return;
+    }
     //发送验证码
     TLNetworking *http = [TLNetworking new];
     http.code = ModifyPhoneNumberURL;
     http.showView = self.view;
     http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     http.parameters[@"newMobile"] = tfView.nameTextField.text;
-    http.parameters[@"smsCaptcha"] = codeView.nameTextField.text;
-
+    http.parameters[@"newCaptcha"] = codeView.nameTextField.text;
+    http.parameters[@"oldMobile"] = tfView1.nameTextField.text;
+    http.parameters[@"oldCaptcha"] = codeView1.nameTextField.text;
     [http postWithSuccess:^(id responseObject) {
         [TLAlert alertWithSucces:@"修改成功"];
         [self.navigationController popViewControllerAnimated:YES];

@@ -19,6 +19,8 @@
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
         _tableview.delegate = self;
         _tableview.dataSource = self;
+        _tableview.defaultNoDataText = @"暂无数据";
+        _tableview.defaultNoDataImage = kImage(@"暂无订单");
         [_tableview registerClass:[ClassifyCell class] forCellReuseIdentifier:@"cell"];
     }
     return _tableview;

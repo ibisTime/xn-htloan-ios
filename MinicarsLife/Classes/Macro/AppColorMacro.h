@@ -33,7 +33,7 @@
 
 #define ButtonTextColor RGB(2, 142, 255)
 #define TextColor RGB(51, 51, 51)
-#define MainColor RGB(0, 145, 247)
+#define MainColor [UIColor colorWithHexString:@"#F89C44"]
 //#define MainColor RGB(227,0,22)
 #define GaryTextColor RGB(153, 153, 153)
 #define LineBackColor RGB(247.0, 247.0, 247.0)

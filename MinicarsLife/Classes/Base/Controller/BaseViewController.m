@@ -20,6 +20,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [USERXX QueriesNumberOfUnreadMessageBars];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 -(UIButton *)LeftBackbButton
