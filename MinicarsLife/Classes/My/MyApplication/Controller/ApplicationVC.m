@@ -38,9 +38,10 @@
     TLPageDataHelper *helper = [[TLPageDataHelper alloc] init];
     helper.tableView = self.tableView;
     //    self.helper = helper;
-    helper.code = @"632065";
-    helper.parameters[@"isHighQuality"] = @"1";
-    helper.parameters[@"location"]= @"0";
+    helper.code = @"630435";
+    helper.parameters[@"type"] = self.type;
+    helper.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
+//    helper.parameters[@"location"]= @"0";
     helper.start = 1;
     helper.limit = 10;
     [helper modelClass:[CarModel class]];

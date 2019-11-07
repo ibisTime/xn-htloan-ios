@@ -11,6 +11,7 @@
 #import "SelPlayerConfiguration.h"
 #import "StageProcessView.h"
 #import "DetailsView.h"
+#import "ApplyVC.h"
 @interface InstallmentVC ()<ChooseSuperNodeViewDelegate>
 
 @property (nonatomic, strong) SelVideoPlayer *player;
@@ -38,8 +39,11 @@
     return _detailsView;
 }
 
+
+
 -(void)viewWillDisappear:(BOOL)animated
 {
+    
     [self.player _pauseVideo];
 }
 
@@ -94,6 +98,20 @@
 
 -(void)playBtnClick
 {
+    
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630588";
+
+    http.parameters[@"code"] = _videoDic[@"code"];
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
     SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
     configuration.shouldAutoPlay = YES;
     configuration.supportedDoubleTap = YES;
@@ -131,7 +149,7 @@
     [self.view addSubview:playBtn];
     
     CAGradientLayer *gl = [CAGradientLayer layer];
-    gl.frame = CGRectMake(15, 7.5 + (SCREEN_WIDTH - 30)/345*200 - 80, SCREEN_WIDTH - 30, 76);
+    gl.frame = CGRectMake(15, 7.5 + (SCREEN_WIDTH - 30)/345*200 - 80, SCREEN_WIDTH - 30, 80);
     gl.startPoint = CGPointMake(0.5, 0);
     gl.endPoint = CGPointMake(0.5, 1);
     gl.colors = @[(__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.0].CGColor, (__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5].CGColor];
@@ -168,8 +186,17 @@
     
     UIButton *applyBtn = [UIButton buttonWithTitle:@"分期申请" titleColor:kWhiteColor backgroundColor:MainColor titleFont:16 cornerRadius:4];
     applyBtn.titleLabel.font = HGboldfont(16);
+    [applyBtn addTarget:self action:@selector(applyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
     applyBtn.frame = CGRectMake(15, self.scrollView.yy + 28, SCREEN_WIDTH - 30, 45);
     [self.view addSubview:applyBtn];
+}
+
+-(void)applyBtnClick
+{
+    ApplyVC *vc = [ApplyVC new];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.title = @"分期申请";
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(StageProcessView *)scrollView

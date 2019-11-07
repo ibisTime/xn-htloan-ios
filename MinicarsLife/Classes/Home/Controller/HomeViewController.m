@@ -38,6 +38,7 @@
 #import "HighQualityVC.h"
 #import "CarsVC.h"
 #import "SearchVC.h"
+#import "PlayCarVideoVC.h"
 @interface HomeViewController ()<RefreshDelegate,UIWebViewDelegate,UITableViewDelegate,UITableViewDataSource,ClickBtn,CollectionSelectRowDelegate>{
     HomeHeadVC * headview;
     NSArray *advertisingArray;
@@ -104,7 +105,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH/375*189 - 16 + 200 + (SCREEN_WIDTH - 30)/345*200)];
+    headview = [[HomeHeadVC alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_WIDTH/375*(189 - 64) - 16 + 200 + (SCREEN_WIDTH - 30)/345*200)];
     headview.delegate = self;
 //    headview.backgroundColor = kBlackColor;
 //    [self.view addSubview:headview];
@@ -136,6 +137,9 @@
         case 2:
         {
 
+            PlayCarVideoVC *vc = [PlayCarVideoVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
@@ -247,7 +251,7 @@
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -326,105 +330,62 @@
     }
 }
 
-//点击collectionview cell
-//-(void)ClickCollection:(NSInteger)index{
-//    NSLog(@"tag%ld",index);
-//    CarModel * model = [CarModel mj_objectWithKeyValues: self.CarModelsCars[index]];
-//    [self getcarinfo:model.code];
-//}
 
-//-(void)getcarinfo:(NSString *)code{
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.code = @"630427";
-//    http.showView = self.view;
-//    http.parameters[@"code"] = code;
-//    http.parameters[@"userId"] = [USERDEFAULTS objectForKey:USER_ID];
-//    [http postWithSuccess:^(id responseObject) {
-//        CarInfoVC * vc = [CarInfoVC new];
-//        vc.CarModel = [CarModel mj_objectWithKeyValues:responseObject[@"data"]];
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
-
-
-//-(void)ClickCollectionClassify:(NSIndexPath *)index{
-//    if (index.section == 0) {
-//        ClassifyInfoVC * vc = [[ClassifyInfoVC alloc]init];
-//        switch (index.row) {
-//            case 0:{
-//                vc.priceStart = @"300000";
-//                vc.priceEnd = @"500000";
-//            }
-//                break;
-//            case 1:{
-//                vc.priceStart = @"500000";
-//                vc.priceEnd = @"700000";
-//            }
-//                break;
-//            case 2:{
-//                vc.priceStart = @"700000";
-//                vc.priceEnd = @"";
-//            }
-//                break;
-//            case 3:{
-//                vc.priceStart = @"";
-//                vc.priceEnd = @"";
-////                vc.isMore = @"1";
-//            }
-//                break;
-//            default:
-//                break;
-//        }
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
-//}
-
-//-(void)ClickCollectionClassify:(NSIndexPath *)index withmodels:(CarModel *)models{
-//    if (index.section == 1) {
-//        ClassifyListVC * vc = [ClassifyListVC new];
-//        vc.brandcode = models.code;
-//        vc.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:vc animated:YES];
-////        [self getClassifyListData:models.code];
-//    }
-//    if (index.section == 2) {
-//        ClassifyInfoVC * vc = [ClassifyInfoVC new];
-//        vc.title = models.name;
-//        vc.hidesBottomBarWhenPushed = YES;
-//        vc.models = models;
-//        [self.navigationController pushViewController:vc animated:YES];
-////        [self getClassifyData:models.code :models.name];
-//    }
-//}
 
 #pragma mark - 获取数据   资讯
 -(void)getnewsadta{
     MinicarsLifeWeakSelf;
-    TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
-    help.code = @"630455";
-    help.parameters[@"location"] = @"0";
-    help.parameters[@"status"] = @"1";
-    help.parameters[@"orderDir" ]=@"asc";
-//    help.parameters[@"orderColumn"] = @"";
-    [help modelClass:[NewsModel class]];
-    help.tableView = self.tableview;
-    help.isCurrency = YES;
+//    TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
+//    help.code = @"630455";
+//    help.parameters[@"location"] = @"0";
+//    help.parameters[@"status"] = @"1";
+//    help.parameters[@"orderDir" ]=@"asc";
+////    help.parameters[@"orderColumn"] = @"";
+//    [help modelClass:[NewsModel class]];
+//    help.tableView = self.tableview;
+//    help.isCurrency = YES;
     [self.tableview addRefreshAction:^{
-        [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
-            weakSelf.NewsModels = objs;
-            [weakSelf car_news_tag];
-            [weakSelf bannerLoadData];
-//            [weakSelf loadData];
+   
+        [weakSelf car_news_tag];
+        [weakSelf bannerLoadData];
+
+        TLNetworking *http = [TLNetworking new];
+        http.code = @"630455";
+        http.parameters[@"location"] = @"1";
+        http.parameters[@"status"] = @"1";
+        http.parameters[@"orderDir" ]=@"asc";
+        http.parameters[@"start"] = @"1";
+        http.parameters[@"limit"] = @"1000";
+        http.showView = weakSelf.view;
+        
+        [http postWithSuccess:^(id responseObject) {
+            
+            weakSelf.NewsModels = [NewsModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
             [weakSelf.tableview reloadData_tl];
             [weakSelf.tableview endRefreshHeader];
             
         } failure:^(NSError *error) {
+            WGLog(@"%@",error);
             [weakSelf.tableview endRefreshHeader];
         }];
+        
+        
+        
+        
+        
+        
+        
+//        [help refresh:^(NSMutableArray *objs, BOOL stillHave) {
+//            weakSelf.NewsModels = objs;
+//            [weakSelf car_news_tag];
+//            [weakSelf bannerLoadData];
+////            [weakSelf loadData];
+//            [weakSelf.tableview reloadData_tl];
+//            [weakSelf.tableview endRefreshHeader];
+//
+//        } failure:^(NSError *error) {
+//            [weakSelf.tableview endRefreshHeader];
+//        }];
     }];
     [self.tableview beginRefreshing];
 }
@@ -472,65 +433,6 @@
         
     }];
 }
-
-//-(void)loadData{
-//
-//    //热门品牌
-//    TLNetworking * http = [[TLNetworking alloc]init];
-//    http.showView = self.view;
-//    http.code = @"630490";
-//    http.parameters[@"location"] = @"0";
-//    http.parameters[@"status"] = @"1";
-//    http.parameters[@"start"] = @"0";
-//    http.parameters[@"limit"] = @"100";
-////    http.parameters[@"type"] = @"2";
-//    http.parameters[@"orderDir"] = @"asc";
-//    [http postWithSuccess:^(id responseObject) {
-//        headview.CarBrandModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
-//        [self modifyFrame];
-//    } failure:^(NSError *error) {
-//
-//    }];
-//
-//    //列表查询车系
-//    TLNetworking * http1 = [[TLNetworking alloc]init];
-//    http1.showView = self.view;
-//    http1.code = @"630491";
-//    http1.parameters[@"location"] = @"0";
-//    http1.parameters[@"status"] = @"1";
-//    http1.parameters[@"start"] = @"0";
-//    http1.parameters[@"limit"] = @"100";
-//    http1.parameters[@"orderColumn"] = @"order_no";
-//    http1.parameters[@"orderDir"] = @"asc";
-//    [http1 postWithSuccess:^(id responseObject) {
-//        headview.CarClassifyModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
-//        [self modifyFrame];
-//    } failure:^(NSError *error) {
-//
-//    }];
-//    [self PopularModels];
-//}
-
-//热门车型
-//-(void)PopularModels
-//{
-//
-//    TLNetworking * http2 = [[TLNetworking alloc]init];
-//    http2.code = @"630492";
-//    http2.parameters[@"location"] = @"0";
-//    http2.parameters[@"status"] = @"1";
-//    http2.parameters[@"start"] = @"0";
-//    http2.parameters[@"limit"] = @"100";
-//    //    http2.parameters[@"type"] = @"2";
-//    http2.parameters[@"orderDir"] = @"asc";
-//    [http2 postWithSuccess:^(id responseObject) {
-//        self.CarModelsCars = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
-//    } failure:^(NSError *error) {
-//
-//    }];
-//}
-
-
 
 
 

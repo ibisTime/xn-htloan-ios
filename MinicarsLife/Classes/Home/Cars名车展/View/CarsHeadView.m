@@ -19,20 +19,50 @@
         topView.backgroundColor = MainColor;
         [self addSubview:topView];
         
-        SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
-        configuration.shouldAutoPlay = NO;
-        configuration.supportedDoubleTap = YES;
-        configuration.shouldAutorotate = NO;
-        configuration.repeatPlay = NO;
-        configuration.statusBarHideState = SelStatusBarHideStateAlways;
-        configuration.sourceUrl = [NSURL URLWithString:[@"ltRc65IOy2glJ6O4TpIIzAuI5qtC" convertImageUrl]];
-        configuration.videoGravity = SelVideoGravityResize;
         
-        //    CGFloat width = self.view.frame.size.width;
-        _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, 7.5, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];
-        //    _player.backgroundColor = kWhiteColor;
-        kViewRadius(_player, 4);
-        [self addSubview:_player];
+        
+        TLNetworking * http = [[TLNetworking alloc]init];
+        http.code = @"630587";
+        http.showView = self;
+        http.parameters[@"bizCode"] = @"RT201911011052313086637";
+        http.parameters[@"status"] = @"1";
+        [http postWithSuccess:^(id responseObject) {
+            
+            NSMutableArray *_videoAry = [NSMutableArray array];
+            NSDictionary *_videoDic;
+            NSArray *dataAry = responseObject[@"data"];
+            for (int i = 0; i < dataAry.count; i ++) {
+                if ([dataAry[i][@"kind"] isEqualToString:@"1"]) {
+                    [_videoAry addObject:dataAry[i]];
+                }
+            }
+            for (int i = 0;  i < _videoAry.count; i ++) {
+                if ([_videoAry[i][@"location"] isEqualToString:@"1"]) {
+                    if ([USERXX isBlankString:_videoDic[@"code"]] == YES) {
+                        _videoDic = _videoAry[i];
+                    }
+                }
+            }
+            SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
+            configuration.shouldAutoPlay = NO;
+            configuration.supportedDoubleTap = YES;
+            configuration.shouldAutorotate = NO;
+            configuration.repeatPlay = NO;
+            configuration.statusBarHideState = SelStatusBarHideStateAlways;
+            configuration.sourceUrl = [NSURL URLWithString:[_videoDic[@"url"] convertImageUrl]];
+            configuration.videoGravity = SelVideoGravityResize;
+            
+            _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, 7.5, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];
+            kViewRadius(_player, 4);
+            [self addSubview:_player];
+            //        _scrollView.data = _imgAry;
+            
+        } failure:^(NSError *error) {
+            
+        }];
+        
+        
+        
     }
     return self;
 }

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>微车生活名车体验馆</string>
+	<string>会玩车</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -28,11 +28,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>是否允许微车生活名车体验馆访问您的相机,用于更换您的头像</string>
+	<string>是否允许会玩车访问您的相机,用于更换您的头像</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>是否允许微车生活名车体验馆访问您的摄像头</string>
+	<string>是否允许会玩车访问您的摄像头</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>是否允许微车生活名车体验馆访问您的相册,用于更换您的头像</string>
+	<string>是否允许会玩车访问您的相册,用于更换您的头像</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

@@ -25,6 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarClassifyModels;
 @property (nonatomic, strong) SelVideoPlayer *player;
 @property (nonatomic , strong)HW3DBannerView *scrollView;
+@property (nonatomic , strong)NSDictionary *videoDic;
+@property (nonatomic , strong)NSMutableArray *videoAry;
+
+@property (nonatomic , assign)NSInteger indexRow;
 
 @property (nonatomic,strong) UICollectionView *collection;
 @end

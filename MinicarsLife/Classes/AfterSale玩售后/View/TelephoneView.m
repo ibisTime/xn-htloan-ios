@@ -9,6 +9,9 @@
 #import "TelephoneView.h"
 
 @implementation TelephoneView
+{
+    UILabel *lbl;
+}
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -26,8 +29,8 @@
         iconImg.image = kImage(@"客服电话");
         [self addSubview:iconImg];
         
-        UILabel *lbl = [UILabel labelWithFrame:CGRectMake(0, 66.5, 300, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(16) textColor:kBlackColor];
-        lbl.text = @"客服电话：400-8888-666";
+        lbl = [UILabel labelWithFrame:CGRectMake(0, 66.5, 300, 22.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(16) textColor:kBlackColor];
+//        lbl.text = @"客服电话：400-8888-666";
         [backView addSubview:lbl];
         
         UIButton *cancelBtn = [UIButton buttonWithTitle:@"取消" titleColor:kHexColor(@"#666666") backgroundColor:kHexColor(@"#F0F0F0") titleFont:16];
@@ -51,10 +54,16 @@
     [[USERXX user].cusPopView dismiss];
 }
 
+-(void)setTele:(NSString *)tele
+{
+    _tele = tele;
+    lbl.text = [NSString stringWithFormat:@"客服电话：%@",tele];
+}
+
 -(void)confirmBtnClick
 {
     [[USERXX user].cusPopView dismiss];
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",@"4008888666"]]];
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt:%@",_tele]]];
 }
 
 @end

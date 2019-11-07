@@ -59,14 +59,6 @@
     http.code = @"805084";
     http.showView = self.view;
     
-//    nickname        昵称
-//    photo    头像
-//    idNo        证件号
-//    realName    真实姓名
-//    province        省
-//    city        市
-//    area        区
-//    address        详细地址
     UITextField *textFid1 = [self.view viewWithTag:100];
     UITextField *textFid2 = [self.view viewWithTag:101];
     UITextField *textFid3 = [self.view viewWithTag:102];

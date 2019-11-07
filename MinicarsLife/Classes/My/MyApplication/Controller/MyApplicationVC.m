@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"我的消息";
+    self.title = @"我的申请";
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -86,7 +86,8 @@
     self.vc1 = [[ApplicationVC alloc]init];
     self.vc2 = [[ApplicationVC alloc]init];
 
-    
+    self.vc1.type = @"1";
+    self.vc2.type = @"2";
 
     //指定该控制器为其子控制器
     [self addChildViewController:_vc1];

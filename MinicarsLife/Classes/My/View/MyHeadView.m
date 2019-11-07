@@ -9,6 +9,12 @@
 #import "MyHeadView.h"
 
 @implementation MyHeadView
+{
+    UILabel *numberLbl1;
+    UILabel *numberLbl2;
+    UILabel *numberLbl3;
+    UIView *pointView;
+}
 
 -(UIImageView *)headImage
 {
@@ -74,13 +80,20 @@
             
             UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
             if (i == 0) {
-                numberLbl.text = @"44";
+                numberLbl1 = numberLbl;
+                
+                pointView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 + 15, _headImage.yy + 21, 6, 6)];
+                pointView.backgroundColor = kHexColor(@"#FF4D4D");
+                kViewBorderRadius(pointView, 3, 1, kWhiteColor);
+                pointView.hidden = YES;
+                [self addSubview:pointView];
+                
             }
             if (i == 1) {
-                numberLbl.text = @"0";
+                numberLbl2 = numberLbl;
             }
             if (i == 2) {
-                numberLbl.text = @"0";
+                numberLbl3 = numberLbl;
             }
             [backBtn addSubview:numberLbl];
             
@@ -93,6 +106,23 @@
         
     }
     return self;
+}
+
+-(void)setNumber:(NSInteger)number
+{
+    if (number == 0) {
+        pointView.hidden = YES;
+    }else
+    {
+        pointView.hidden = NO;
+    }
+}
+
+-(void)setDataDic:(NSDictionary *)dataDic
+{
+    numberLbl1.text = [NSString stringWithFormat:@"%ld",[dataDic[@"newsCount"] integerValue]];
+    numberLbl2.text = [NSString stringWithFormat:@"%ld",[dataDic[@"followCount"] integerValue]];
+    numberLbl3.text = [NSString stringWithFormat:@"%ld",[dataDic[@"applyCount"] integerValue]];
 }
 
 -(void)backBtnClick:(UIButton *)sender

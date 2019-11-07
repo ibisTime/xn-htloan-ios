@@ -103,6 +103,7 @@
     
     [self.navigationItem setTitleView:segmentedControl];
 }
+
 -(void)indexDidChangeForSegmentedControl:(UISegmentedControl *)sender
 {
     //我定义了一个 NSInteger tag，是为了记录我当前选择的是分段控件的左边还是右边。
@@ -450,6 +451,7 @@
         [self.rightTable endRefreshHeader];
     }];
 }
+
 -(NSString *)NumberWithFromatter:(NSString *)moneystr{
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     NSNumber *number = [formatter numberFromString:moneystr];

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface TelephoneView : UIView
 
 @property (nonatomic , strong)UIButton *confirmBtn;
-
+@property (nonatomic , strong)NSString *tele;
 @end
 
 NS_ASSUME_NONNULL_END

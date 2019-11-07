@@ -37,7 +37,7 @@
 #pragma mark - UITableViewDataSource;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 10;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -45,7 +45,7 @@
     
     ApplicationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ApplicationCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//    cell.model = self.models[indexPath.row];
+    cell.model = self.models[indexPath.row];
     return cell;
 }
 

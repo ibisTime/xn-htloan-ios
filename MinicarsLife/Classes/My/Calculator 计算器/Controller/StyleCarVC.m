@@ -9,6 +9,7 @@
 #import "StyleCarVC.h"
 #import "CarModel.h"
 #import "CalculatorVC.h"
+#import "ApplyVC.h"
 @interface StyleCarVC ()<UITableViewDelegate,UITableViewDataSource,RefreshDelegate>
 @property (nonatomic,strong) TLTableView * tableview;
 @property (nonatomic,strong) NSMutableArray<CarModel *> * CarModels;
@@ -20,9 +21,11 @@
 -(TLTableView *)tableview{
     if (!_tableview) {
         _tableview = [[TLTableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight)];
-                _tableview.delegate = self;
-                _tableview.dataSource = self;
-                _tableview.refreshDelegate = self;
+        _tableview.delegate = self;
+        _tableview.dataSource = self;
+        _tableview.refreshDelegate = self;
+        _tableview.defaultNoDataText = @"暂无数据";
+        _tableview.defaultNoDataImage = kImage(@"暂无订单");
     }
     return _tableview;
 }
@@ -101,6 +104,11 @@
     for (UIViewController *controller in self.navigationController.viewControllers) {
         if ([controller isKindOfClass:[CalculatorVC class]]) {
             CalculatorVC *revise =(CalculatorVC *)controller;
+            revise.carcode = self.CarModels[indexPath.row].code;
+            [self.navigationController popToViewController:revise animated:YES];
+        }
+        if ([controller isKindOfClass:[ApplyVC class]]) {
+            ApplyVC *revise =(ApplyVC *)controller;
             revise.carcode = self.CarModels[indexPath.row].code;
             [self.navigationController popToViewController:revise animated:YES];
         }

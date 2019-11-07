@@ -25,13 +25,50 @@
 #import "TLUploadManager.h"
 
 #import "BaseTabBarViewController.h"
+#import "NickNameView.h"
 @interface AccountSettingsVC ()<UITableViewDelegate,UITableViewDataSource,UIImagePickerControllerDelegate, UINavigationControllerDelegate
 >
 @property (nonatomic , strong)UITableView *tableView;
-
+@property (nonatomic , strong)NickNameView *signView;
 @end
 
 @implementation AccountSettingsVC
+
+-(NickNameView *)signView
+{
+    if (!_signView) {
+        _signView = [[NickNameView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 150, SCREEN_HEIGHT/2 - kNavigationBarHeight - 207/2 + SCREEN_HEIGHT, 300, 207)];
+        kViewRadius(_signView, 8);
+        _signView.backgroundColor = kWhiteColor;
+        [_signView.confirmBtn addTarget:self action:@selector(confirmBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    }
+    return _signView;
+}
+
+-(void)confirmBtnClick
+{
+    if ([_signView.roomNumberTF.text isEqualToString:@""]) {
+        [TLAlert alertWithInfo:@"请输入昵称"];
+        return;
+    }
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"805084";
+    http.showView = self.view;
+    
+    http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
+    http.parameters[@"nickname"] = _signView.roomNumberTF.text;
+    
+    [http postWithSuccess:^(id responseObject) {
+        WGLog(@"%@",responseObject);
+//        [TLAlert alertWithSucces:@"修改成功"];
+        [self loadData];
+        [[USERXX user].cusPopView dismiss];
+        
+    } failure:^(NSError *error) {
+        WGLog(@"%@",error);
+    }];
+}
 
 #pragma mark -- tableView懒加载
 -(UITableView *)tableView{
@@ -198,8 +235,9 @@
                 [self presentViewController:alertController animated:YES completion:nil];
             }
             if (indexPath.row == 1) {
-                NickNameVC *vc = [[NickNameVC alloc]init];
-                [self.navigationController pushViewController:vc animated:YES];
+//                NickNameVC *vc = [[NickNameVC alloc]init];
+//                [self.navigationController pushViewController:vc animated:YES];
+                [[USERXX user]showPopAnimationWithAnimationStyle:1 showView:self.signView BGAlpha:0.5 isClickBGDismiss:NO];
             }
         }
             break;

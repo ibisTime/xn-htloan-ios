@@ -18,6 +18,14 @@
 		1F80568C2372A1BB00A14BE9 /* ApplicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80568B2372A1BB00A14BE9 /* ApplicationVC.m */; };
 		1F80568F2372A2DB00A14BE9 /* ApplicationTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80568E2372A2DB00A14BE9 /* ApplicationTableView.m */; };
 		1F8056922372A2F000A14BE9 /* ApplicationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056912372A2F000A14BE9 /* ApplicationCell.m */; };
+		1F8056952372B6CC00A14BE9 /* ApplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056942372B6CC00A14BE9 /* ApplyVC.m */; };
+		1F80569B2372CDFC00A14BE9 /* ClassicCarsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80569A2372CDFC00A14BE9 /* ClassicCarsVC.m */; };
+		1F80569E2372CF1D00A14BE9 /* ClassicCarsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80569D2372CF1D00A14BE9 /* ClassicCarsCell.m */; };
+		1F8056A42372D31D00A14BE9 /* PlayCarVideoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056A32372D31D00A14BE9 /* PlayCarVideoVC.m */; };
+		1F8056A72372E1F500A14BE9 /* PlatCarVideoTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056A62372E1F500A14BE9 /* PlatCarVideoTableView.m */; };
+		1F8056AA2372E21600A14BE9 /* PlatCarVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056A92372E21600A14BE9 /* PlatCarVideoCell.m */; };
+		1F8056AD2372E30800A14BE9 /* PlayCarVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056AC2372E30800A14BE9 /* PlayCarVideoModel.m */; };
+		1F8057022372FD0D00A14BE9 /* NickNameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8057012372FD0D00A14BE9 /* NickNameView.m */; };
 		1F8E0F1E229B893E000F33F0 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E0F1C229B893A000F33F0 /* GuideView.m */; };
 		1F9C1CD2236FCEB60062B08C /* InstallmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CD1236FCEB60062B08C /* InstallmentVC.m */; };
 		1F9C1CD5236FCECC0062B08C /* InsuranceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9C1CD4236FCECC0062B08C /* InsuranceVC.m */; };
@@ -552,6 +560,22 @@
 		1F80568E2372A2DB00A14BE9 /* ApplicationTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationTableView.m; sourceTree = "<group>"; };
 		1F8056902372A2F000A14BE9 /* ApplicationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplicationCell.h; sourceTree = "<group>"; };
 		1F8056912372A2F000A14BE9 /* ApplicationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplicationCell.m; sourceTree = "<group>"; };
+		1F8056932372B6CC00A14BE9 /* ApplyVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyVC.h; sourceTree = "<group>"; };
+		1F8056942372B6CC00A14BE9 /* ApplyVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyVC.m; sourceTree = "<group>"; };
+		1F8056992372CDFC00A14BE9 /* ClassicCarsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassicCarsVC.h; sourceTree = "<group>"; };
+		1F80569A2372CDFC00A14BE9 /* ClassicCarsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassicCarsVC.m; sourceTree = "<group>"; };
+		1F80569C2372CF1D00A14BE9 /* ClassicCarsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassicCarsCell.h; sourceTree = "<group>"; };
+		1F80569D2372CF1D00A14BE9 /* ClassicCarsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassicCarsCell.m; sourceTree = "<group>"; };
+		1F8056A22372D31D00A14BE9 /* PlayCarVideoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayCarVideoVC.h; sourceTree = "<group>"; };
+		1F8056A32372D31D00A14BE9 /* PlayCarVideoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayCarVideoVC.m; sourceTree = "<group>"; };
+		1F8056A52372E1F500A14BE9 /* PlatCarVideoTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatCarVideoTableView.h; sourceTree = "<group>"; };
+		1F8056A62372E1F500A14BE9 /* PlatCarVideoTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatCarVideoTableView.m; sourceTree = "<group>"; };
+		1F8056A82372E21600A14BE9 /* PlatCarVideoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlatCarVideoCell.h; sourceTree = "<group>"; };
+		1F8056A92372E21600A14BE9 /* PlatCarVideoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlatCarVideoCell.m; sourceTree = "<group>"; };
+		1F8056AB2372E30800A14BE9 /* PlayCarVideoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayCarVideoModel.h; sourceTree = "<group>"; };
+		1F8056AC2372E30800A14BE9 /* PlayCarVideoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayCarVideoModel.m; sourceTree = "<group>"; };
+		1F8057002372FD0D00A14BE9 /* NickNameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NickNameView.h; sourceTree = "<group>"; };
+		1F8057012372FD0D00A14BE9 /* NickNameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NickNameView.m; sourceTree = "<group>"; };
 		1F8E0F1C229B893A000F33F0 /* GuideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideView.m; sourceTree = "<group>"; };
 		1F8E0F1D229B893A000F33F0 /* GuideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideView.h; sourceTree = "<group>"; };
 		1F9C1CD0236FCEB60062B08C /* InstallmentVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstallmentVC.h; sourceTree = "<group>"; };
@@ -1547,6 +1571,64 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1F8056962372CDD300A14BE9 /* ClassicCars */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056982372CDE800A14BE9 /* Controller */,
+				1F8056972372CDE500A14BE9 /* View */,
+			);
+			path = ClassicCars;
+			sourceTree = "<group>";
+		};
+		1F8056972372CDE500A14BE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F80569C2372CF1D00A14BE9 /* ClassicCarsCell.h */,
+				1F80569D2372CF1D00A14BE9 /* ClassicCarsCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8056982372CDE800A14BE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056992372CDFC00A14BE9 /* ClassicCarsVC.h */,
+				1F80569A2372CDFC00A14BE9 /* ClassicCarsVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1F80569F2372D2AF00A14BE9 /* PlayCarVideo */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056A12372D2E200A14BE9 /* Controller */,
+				1F8056A02372D2DF00A14BE9 /* View */,
+			);
+			path = PlayCarVideo;
+			sourceTree = "<group>";
+		};
+		1F8056A02372D2DF00A14BE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056A52372E1F500A14BE9 /* PlatCarVideoTableView.h */,
+				1F8056A62372E1F500A14BE9 /* PlatCarVideoTableView.m */,
+				1F8056A82372E21600A14BE9 /* PlatCarVideoCell.h */,
+				1F8056A92372E21600A14BE9 /* PlatCarVideoCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1F8056A12372D2E200A14BE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F8056A22372D31D00A14BE9 /* PlayCarVideoVC.h */,
+				1F8056A32372D31D00A14BE9 /* PlayCarVideoVC.m */,
+				1F8056AB2372E30800A14BE9 /* PlayCarVideoModel.h */,
+				1F8056AC2372E30800A14BE9 /* PlayCarVideoModel.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		1F9C1CC7236FCD960062B08C /* Installment玩分期 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1594,6 +1676,8 @@
 			children = (
 				1F9C1CD0236FCEB60062B08C /* InstallmentVC.h */,
 				1F9C1CD1236FCEB60062B08C /* InstallmentVC.m */,
+				1F8056932372B6CC00A14BE9 /* ApplyVC.h */,
+				1F8056942372B6CC00A14BE9 /* ApplyVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2698,6 +2782,8 @@
 			children = (
 				7A22CDB020ECCBBE0010059D /* NickNameVC.h */,
 				7A22CDB120ECCBBE0010059D /* NickNameVC.m */,
+				1F8057002372FD0D00A14BE9 /* NickNameView.h */,
+				1F8057012372FD0D00A14BE9 /* NickNameView.m */,
 			);
 			path = "NickName昵称";
 			sourceTree = "<group>";
@@ -3429,6 +3515,8 @@
 		7A8A5B0920E35A1A002D9A48 /* My */ = {
 			isa = PBXGroup;
 			children = (
+				1F80569F2372D2AF00A14BE9 /* PlayCarVideo */,
+				1F8056962372CDD300A14BE9 /* ClassicCars */,
 				1F8056842372A15800A14BE9 /* MyApplication */,
 				36EA74A522C34836000F2BD4 /* ChangeBrand */,
 				366ADDC2223A201300623EC6 /* Calculator 计算器 */,
@@ -4667,6 +4755,7 @@
 				7A0F8FC3211BDF3600BA8358 /* FaceToFaceSignVC.m in Sources */,
 				7AB29D2820FC34680014FCB3 /* QNUploadOption.m in Sources */,
 				7A3CBDFF20F4AE3100D795E5 /* ShareButton.m in Sources */,
+				1F8056AA2372E21600A14BE9 /* PlatCarVideoCell.m in Sources */,
 				36E3A37F223B3BBD00B26F4F /* RightHeaderCell.m in Sources */,
 				7AA906F120EF6CFA004F2B12 /* RecordPlanCell.m in Sources */,
 				367EF8EB223F7B0900C9921D /* CarlevelCell.m in Sources */,
@@ -4738,6 +4827,7 @@
 				7A8A5CCE20E60617002D9A48 /* ExhibitionCenterCell.m in Sources */,
 				7A22CDB220ECCBBE0010059D /* NickNameVC.m in Sources */,
 				36E3A380223B3BBD00B26F4F /* CommonCell.m in Sources */,
+				1F80569B2372CDFC00A14BE9 /* ClassicCarsVC.m in Sources */,
 				B834010921D75A350089D4DE /* QNIP.m in Sources */,
 				7A8A5C5C20E492F7002D9A48 /* UIColor+Extension.m in Sources */,
 				7A81BEFA20F735F2005699F0 /* OrderTableView.m in Sources */,
@@ -4773,6 +4863,7 @@
 				B834011221D75A350089D4DE /* QNLruCache.m in Sources */,
 				7AA906F720EF6F3E004F2B12 /* RepaymentPlanHeadCell.m in Sources */,
 				7A8A5C8E20E4A7FE002D9A48 /* MJProperty.m in Sources */,
+				1F80569E2372CF1D00A14BE9 /* ClassicCarsCell.m in Sources */,
 				7A3CBDC420F4634800D795E5 /* AccountModel.m in Sources */,
 				7A8A5C0E20E38D67002D9A48 /* NSDictionary+SetNullWithStr.m in Sources */,
 				7AA906D120EF3E94004F2B12 /* SubmitOrderAddressCell.m in Sources */,
@@ -4803,6 +4894,7 @@
 				7AB29D2420FC34670014FCB3 /* QNConfiguration.m in Sources */,
 				7A81BF0720F7553A005699F0 /* OrderDetailsTableView.m in Sources */,
 				1FB4478C23704D4D00D15BE3 /* HighQualityVC.m in Sources */,
+				1F8056A42372D31D00A14BE9 /* PlayCarVideoVC.m in Sources */,
 				7A22CDD220EDB2950010059D /* ShippingAddressCell.m in Sources */,
 				B885CB462171F15F001A1258 /* UIButton+CZHExtension.m in Sources */,
 				1F8056892372A18F00A14BE9 /* MyApplicationVC.m in Sources */,
@@ -4826,6 +4918,7 @@
 				36E3A372223B3BA200B26F4F /* CarModel.m in Sources */,
 				7A22CDBF20ECD4A90010059D /* SendCodeView.m in Sources */,
 				7AB29D7B20FC68610014FCB3 /* TheDetailModel.m in Sources */,
+				1F8056A72372E1F500A14BE9 /* PlatCarVideoTableView.m in Sources */,
 				7A3CBD8020F0E4F700D795E5 /* WLDecimalKeyboard.m in Sources */,
 				7AA906BD20EF16B9004F2B12 /* OrderCell.m in Sources */,
 				1FFB8EA2225AFA8B00B72F31 /* WYWebProgressLayer.m in Sources */,
@@ -4887,6 +4980,7 @@
 				7A3CBE2620F5F40B00D795E5 /* AddBankCardVC.m in Sources */,
 				7A8A5C4220E3DC92002D9A48 /* UIView+Banner.m in Sources */,
 				36E3A381223B3BBD00B26F4F /* LeftHeadCell.m in Sources */,
+				1F8056952372B6CC00A14BE9 /* ApplyVC.m in Sources */,
 				7A3CBD6020F0C42D00D795E5 /* TheBalanceOfVC.m in Sources */,
 				7AA906AE20EF1436004F2B12 /* AllOrderVC.m in Sources */,
 				1FE65A70230BCB35005F7673 /* MainProductsCell.m in Sources */,
@@ -4902,6 +4996,7 @@
 				7AB29D2620FC34680014FCB3 /* QNResumeUpload.m in Sources */,
 				36EA74B022C34D72000F2BD4 /* UpdateBrandVC.m in Sources */,
 				B8B4DB7221743CA900BC3DE2 /* JingDongVC.m in Sources */,
+				1F8057022372FD0D00A14BE9 /* NickNameView.m in Sources */,
 				7A3CBDCA20F48EC600D795E5 /* CreditReportTableView.m in Sources */,
 				7A8A5C4120E3DC92002D9A48 /* HW3DBannerView.m in Sources */,
 				7A81BF1620F83F8B005699F0 /* MessageModel.m in Sources */,
@@ -4959,6 +5054,7 @@
 				B885CB452171F15F001A1258 /* UIView+CZHExtension.m in Sources */,
 				7A3CBDFC20F4AE3100D795E5 /* SelectedListModel.m in Sources */,
 				1F9C1CD2236FCEB60062B08C /* InstallmentVC.m in Sources */,
+				1F8056AD2372E30800A14BE9 /* PlayCarVideoModel.m in Sources */,
 				7A8A5AC420E35905002D9A48 /* AppDelegate.m in Sources */,
 				7A8A5B1920E35B47002D9A48 /* HomeViewController.m in Sources */,
 				B834010721D75A350089D4DE /* QNHex.m in Sources */,

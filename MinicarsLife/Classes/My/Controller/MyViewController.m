@@ -38,6 +38,8 @@
 #import "HighQualityVC.h"
 #import "ClassifyInfoVC.h"
 #import "MyApplicationVC.h"
+#import "ClassicCarsVC.h"
+#import "PlayCarVideoVC.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeadDelegate
 >
 {
@@ -229,7 +231,9 @@
             break;
         case 1:
         {
-            
+            PlayCarVideoVC *vc= [PlayCarVideoVC new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         case 2:
@@ -241,7 +245,8 @@
             break;
         case 3:
         {
-            ClassifyInfoVC *vc = [ClassifyInfoVC new];
+            ClassicCarsVC *vc = [ClassicCarsVC new];
+            vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
@@ -614,11 +619,29 @@
 {
     [super viewWillAppear:animated];
     [self loadData];
+//    [self my];
     number = [[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue];
+    self.headView.number = number;
 //    cell.numberLbl.text = [NSString stringWithFormat:@"%ld",[[USERDEFAULTS objectForKey:@"unreadnumber"] integerValue]];
     [self.tableView reloadData];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
+
+//-(void)my
+//{
+//    TLNetworking *http1 = [TLNetworking new];
+//    http1.code = @"805121";
+//    //    http1.showView = self.view;
+//    http1.isShowMsg = YES;
+//    http1.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
+//    [http1 postWithSuccess:^(id responseObject) {
+//
+//        self.headView.dataDic = responseObject[@"data"];
+//
+//    } failure:^(NSError *error) {
+//        WGLog(@"%@",error);
+//    }];
+//}
 
 #pragma mark -- 页面即将消失
 -(void)viewWillDisappear:(BOOL)animated
@@ -639,6 +662,7 @@
     http.parameters[@"userId"] = [USERDEFAULTS  objectForKey:USER_ID];
     [http postWithSuccess:^(id responseObject) {
         
+        self.headView.dataDic = responseObject[@"data"];
         
         [USERDEFAULTS setObject:responseObject[@"data"] forKey:@"USERXX"];
         if ([USERXX isBlankString:responseObject[@"data"][@"nickname"]] == YES) {

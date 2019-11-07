@@ -21,6 +21,8 @@
         _tableview.delegate = self;
         _tableview.dataSource = self;
         _tableview.refreshDelegate = self;
+        _tableview.defaultNoDataText = @"暂无数据";
+        _tableview.defaultNoDataImage = kImage(@"暂无订单");
     }
     return _tableview;
 }

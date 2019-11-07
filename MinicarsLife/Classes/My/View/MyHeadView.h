@@ -30,5 +30,8 @@
 
 @property (nonatomic , strong)UIButton *integralButton;
 
+@property (nonatomic , strong)NSDictionary *dataDic;
+
+@property (nonatomic , assign)NSInteger number;
 
 @end

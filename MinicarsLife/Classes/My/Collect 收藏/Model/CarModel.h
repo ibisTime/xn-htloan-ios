@@ -12,27 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CarModel : NSObject
 
-/**
- "code": "C201903071433051666580",
- "name": "豪华版",
- "seriesCode": "S201903071411292394034",
- "seriesName": "S400L",
- "brandCode": "B201806190344172014125",
- "brandName": "奔驰",
- "originalPrice": 1400000,
- "salePrice": 1400000,
- "sfAmount": 1000000,
- "location": 10,
- "orderNo": 10,
- "slogan": "极致享受",
- "advPic": "advPic",
- "pic": "缩略图",
- "description": "豪华体验",
- "status": "2",
- "updater": "admin",
- "updateDatetime": "Mar 7, 2019 2:38:04 PM",
- "remark": "备注"
- */
+@property (nonatomic,copy) NSString * createDatetime;
 @property (nonatomic,strong) NSDictionary * carDealer;
 @property (nonatomic,copy) NSString * isHighQuality;
 @property (nonatomic,strong) NSArray * brandList;
@@ -44,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * totalCount;
 @property (nonatomic,copy) NSString * code;
 @property (nonatomic,copy) NSString * name;
+@property (nonatomic,copy) NSDictionary * car;
 @property (nonatomic,copy) NSString * seriesCode;
 @property (nonatomic,copy) NSString * seriesName;
 @property (nonatomic,copy) NSString * brandCode;
@@ -57,6 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSString * pic;
 @property (nonatomic,copy) NSString * Description;
 @property (nonatomic,copy) NSString * status;
+@property (nonatomic,copy) NSString * statusStr;
 @property (nonatomic,copy) NSString * updater;
 @property (nonatomic,copy) NSString * updateDatetime;
 @property (nonatomic,copy) NSString * remark;

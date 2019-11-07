@@ -16,6 +16,9 @@
 #import "BrandListVC.h"
 #import "ClassifyInfoVC.h"
 @interface CarsVC ()<RefreshDelegate>
+{
+    CarsHeadView *headView;
+}
 
 @property (nonatomic , strong)CarsHeadView *headView;
 
@@ -30,7 +33,10 @@
 
 @implementation CarsVC
 
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [headView.player _pauseVideo];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,7 +48,7 @@
     self.tableView.backgroundColor = kHexColor(@"#F5F5F5");
     [self.view addSubview:self.tableView];
     
-    CarsHeadView *headView = [[CarsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH - 30)/345*200 + 15)];
+    headView = [[CarsHeadView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (SCREEN_WIDTH - 30)/345*200 + 15)];
     self.tableView.tableHeaderView = headView;
     
     [self PopularModels];

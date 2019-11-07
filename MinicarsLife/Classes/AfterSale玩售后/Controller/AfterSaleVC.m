@@ -12,6 +12,9 @@
 #import "TelephoneView.h"
 #import "ConsultingZoneVC.h"
 @interface AfterSaleVC ()
+{
+    NSDictionary *dataDic;
+}
 
 @property (nonatomic, strong) SelVideoPlayer *player;
 
@@ -54,6 +57,9 @@
 //    [self videoView];
     self.videoAry = [NSMutableArray array];
     [self loadData];
+    
+    
+    
     
 }
 
@@ -101,6 +107,8 @@
         [self videoView];
 //        _scrollView.data = _imgAry;
         
+        
+        
     } failure:^(NSError *error) {
         
     }];
@@ -108,6 +116,18 @@
 
 -(void)playBtnClick
 {
+    
+    TLNetworking * http = [[TLNetworking alloc]init];
+    http.code = @"630588";
+    http.parameters[@"code"] = _videoDic[@"code"];
+    [http postWithSuccess:^(id responseObject) {
+        
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
     SelPlayerConfiguration *configuration = [[SelPlayerConfiguration alloc]init];
     configuration.shouldAutoPlay = YES;
     configuration.supportedDoubleTap = YES;
@@ -145,7 +165,7 @@
     [self.view addSubview:playBtn];
     
     CAGradientLayer *gl = [CAGradientLayer layer];
-    gl.frame = CGRectMake(15, 7.5 + (SCREEN_WIDTH - 30)/345*200 - 80, SCREEN_WIDTH - 30, 76);
+    gl.frame = CGRectMake(15, 7.5 + (SCREEN_WIDTH - 30)/345*200 - 80, SCREEN_WIDTH - 30, 80);
     gl.startPoint = CGPointMake(0.5, 0);
     gl.endPoint = CGPointMake(0.5, 1);
     gl.colors = @[(__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.0].CGColor, (__bridge id)[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.5].CGColor];
@@ -203,34 +223,55 @@
         
     }
     
-    NSArray *introduceAry = @[@"在线客服业务范围：车辆使用，售后跟踪",@"在线客服工作时间工作日 9:00-24:00"];
-    for (int i = 0 ; i < 2; i ++) {
-        UIView *point = [[UIView alloc]initWithFrame:CGRectMake(15, _nameLbl.yy + 95 + 19 + i % 2 * (18 + 4), 4, 4)];
-        kViewRadius(point, 2);
-        point.backgroundColor = kHexColor(@"#D8D8D8");
-        [self.view addSubview:point];
+    
+    TLNetworking *http = [TLNetworking new];
+    http.code = @"630048";
+    http.parameters[@"type"] = @"shouhou";
+    http.showView = self.view;
+    
+    [http postWithSuccess:^(id responseObject) {
         
-        UILabel *lbl = [UILabel labelWithFrame:CGRectMake(25, _nameLbl.yy + 95 + 15 + i % 2 * (18 + 4), SCREEN_WIDTH - 25, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
-        lbl.text = introduceAry[i];
-        [self.view addSubview:lbl];
+        dataDic = responseObject[@"data"];
         
-        if ( i == 1) {
-            UIButton *applyBtn = [UIButton buttonWithTitle:@"客服电话" titleColor:kWhiteColor backgroundColor:MainColor titleFont:16 cornerRadius:4];
-            applyBtn.titleLabel.font = HGboldfont(16);
-            applyBtn.frame = CGRectMake(15, lbl.yy + 52, SCREEN_WIDTH - 30, 45);
-            [applyBtn addTarget:self action:@selector(applyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
-            [self.view addSubview:applyBtn];
+        //        _telephoneView.lbl = dataDic[@"customerServicePhone"];
+        NSArray *introduceAry = @[[NSString stringWithFormat:@"在线客服业务范围：%@",responseObject[@"data"][@"serviceRange"]],
+                                  [NSString stringWithFormat:@"在线客服工作时间工作日 %@",responseObject[@"data"][@"workDatetime"]]];
+        
+        for (int i = 0 ; i < 2; i ++) {
+            UIView *point = [[UIView alloc]initWithFrame:CGRectMake(15, _nameLbl.yy + 95 + 19 + i % 2 * (18 + 4), 4, 4)];
+            kViewRadius(point, 2);
+            point.backgroundColor = kHexColor(@"#D8D8D8");
+            [self.view addSubview:point];
+            
+            UILabel *lbl = [UILabel labelWithFrame:CGRectMake(25, _nameLbl.yy + 95 + 15 + i % 2 * (18 + 4), SCREEN_WIDTH - 25, 12) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kHexColor(@"#999999")];
+            lbl.text = introduceAry[i];
+            [self.view addSubview:lbl];
+            
+            if ( i == 1) {
+                UIButton *applyBtn = [UIButton buttonWithTitle:@"客服电话" titleColor:kWhiteColor backgroundColor:MainColor titleFont:16 cornerRadius:4];
+                applyBtn.titleLabel.font = HGboldfont(16);
+                applyBtn.frame = CGRectMake(15, lbl.yy + 52, SCREEN_WIDTH - 30, 45);
+                [applyBtn addTarget:self action:@selector(applyBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+                [self.view addSubview:applyBtn];
+            }
+            
+            
+            
         }
         
         
+    } failure:^(NSError *error) {
+        WGLog(@"%@",error);
         
-    }
+    }];
+    
     
 }
 
 -(void)applyBtnClick
 {
     [[USERXX user] showPopAnimationWithAnimationStyle:1 showView:self.telephoneView BGAlpha:0.5 isClickBGDismiss:NO];
+    _telephoneView.tele = dataDic[@"customerServicePhone"];;
 }
 
 /*
