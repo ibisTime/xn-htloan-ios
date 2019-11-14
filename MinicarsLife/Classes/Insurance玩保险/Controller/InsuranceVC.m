@@ -110,7 +110,7 @@
     configuration.repeatPlay = NO;
     configuration.statusBarHideState = SelStatusBarHideStateAlways;
     configuration.sourceUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@",[_videoDic[@"url"] convertImageUrl]]];
-    configuration.videoGravity = SelVideoGravityResize;
+    configuration.videoGravity = SelVideoGravityResizeAspect;
     
     //    CGFloat width = self.view.frame.size.width;
     _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, 7.5, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];
@@ -220,6 +220,8 @@
 
 -(void)centerIVBtnClick
 {
+    [_detailsView removeFromSuperview];
+    _detailsView = [[DetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [[USERXX user]showPopAnimationWithAnimationStyle:1 showView:self.detailsView BGAlpha:0.5 isClickBGDismiss:YES];
     self.detailsView.url = self.imgAry[_indexRow][@"url"];
 }

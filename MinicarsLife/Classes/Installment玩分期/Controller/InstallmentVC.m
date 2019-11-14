@@ -12,6 +12,7 @@
 #import "StageProcessView.h"
 #import "DetailsView.h"
 #import "ApplyVC.h"
+#import "ImageBrowserVC.h"
 @interface InstallmentVC ()<ChooseSuperNodeViewDelegate>
 
 @property (nonatomic, strong) SelVideoPlayer *player;
@@ -34,7 +35,7 @@
 -(DetailsView *)detailsView
 {
     if (!_detailsView) {
-        _detailsView = [[DetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        
     }
     return _detailsView;
 }
@@ -229,8 +230,17 @@
 
 -(void)centerIVBtnClick
 {
+    [_detailsView removeFromSuperview];
+    _detailsView = [[DetailsView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [[USERXX user]showPopAnimationWithAnimationStyle:1 showView:self.detailsView BGAlpha:0.5 isClickBGDismiss:YES];
     self.detailsView.url = self.imgAry[_indexRow][@"url"];
+//    NSArray *ary = @[[self.imgAry[_indexRow][@"url"] convertImageUrl]];
+//    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+//    [ImageBrowserVC show:window.rootViewController type:PhotoBroswerVCTypeModal index:0 imagesBlock:^NSArray *{
+//        return ary;
+//    }];
+    
+//    self.detailsView.url = self.imgAry[_indexRow][@"url"];
 }
 
 /*

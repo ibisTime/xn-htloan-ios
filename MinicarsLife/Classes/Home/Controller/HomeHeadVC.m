@@ -69,23 +69,23 @@
         [backView addSubview:merchantsBtn];
         
         
-//        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(21, 19, merchantsBtn.width - 21, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(14) textColor:kWhiteColor];
-//        nameLbl.text = @"优质商家";
-//        [merchantsBtn addSubview:nameLbl];
-//
-//        UILabel *infomationLbl = [UILabel labelWithFrame:CGRectMake(21, nameLbl.yy + 6, merchantsBtn.width - 21, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
-//        infomationLbl.text = @"万千优质汽车经销商";
-//        [merchantsBtn addSubview:infomationLbl];
-//
-//        UIButton *moreBtn = [UIButton buttonWithTitle:@"查看更多" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:11];
-//        moreBtn.frame = CGRectMake(21, infomationLbl.yy + 13, merchantsBtn.width - 21, 12);
-//        [moreBtn SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:0 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(@"查看更多") forState:(UIControlStateNormal)];
-//        }];
-//        moreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//        [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//        moreBtn.tag = 0;
-//        [merchantsBtn addSubview:moreBtn];
+        UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(21, 19, merchantsBtn.width - 21, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(14) textColor:kWhiteColor];
+        nameLbl.text = @"优质商家";
+        [merchantsBtn addSubview:nameLbl];
+
+        UILabel *infomationLbl = [UILabel labelWithFrame:CGRectMake(21, nameLbl.yy + 6, merchantsBtn.width - 21, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
+        infomationLbl.text = @"万千优质汽车经销商";
+        [merchantsBtn addSubview:infomationLbl];
+
+        UIButton *moreBtn = [UIButton buttonWithTitle:@"查看更多" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:11];
+        moreBtn.frame = CGRectMake(21, infomationLbl.yy + 13, merchantsBtn.width - 21, 12);
+        [moreBtn SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:0 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"查看更多") forState:(UIControlStateNormal)];
+        }];
+        moreBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [moreBtn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        moreBtn.tag = 0;
+        [merchantsBtn addSubview:moreBtn];
         
         UIButton *carsBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         carsBtn.frame = CGRectMake(merchantsBtn.xx + 3, 22, SCREEN_WIDTH/2 - 9 - 1.5, 112);
@@ -94,23 +94,23 @@
         carsBtn.tag = 1;
         [backView addSubview:carsBtn];
         
-//        UILabel *nameLbl1 = [UILabel labelWithFrame:CGRectMake(21, 19, carsBtn.width - 21, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(14) textColor:kWhiteColor];
-//        nameLbl1.text = @"名车展";
-//        [carsBtn addSubview:nameLbl1];
-//
-//        UILabel *infomationLbl1 = [UILabel labelWithFrame:CGRectMake(21, nameLbl1.yy + 6, carsBtn.width - 21, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
-//        infomationLbl1.text = @"所有车型一应俱全";
-//        [carsBtn addSubview:infomationLbl1];
-//
-//        UIButton *moreBtn1 = [UIButton buttonWithTitle:@"查看更多" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:11];
-//        moreBtn1.frame = CGRectMake(21, infomationLbl1.yy + 13, carsBtn.width - 21, 12);
-//        moreBtn1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-//        [moreBtn1 SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:3 imagePositionBlock:^(UIButton *button) {
-//            [button setImage:kImage(@"查看更多") forState:(UIControlStateNormal)];
-//        }];
-//        [moreBtn1 addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-//        moreBtn1.tag = 1;
-//        [carsBtn addSubview:moreBtn1];
+        UILabel *nameLbl1 = [UILabel labelWithFrame:CGRectMake(21, 19, carsBtn.width - 21, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:HGboldfont(14) textColor:kWhiteColor];
+        nameLbl1.text = @"车型库";
+        [carsBtn addSubview:nameLbl1];
+
+        UILabel *infomationLbl1 = [UILabel labelWithFrame:CGRectMake(21, nameLbl1.yy + 6, carsBtn.width - 21, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
+        infomationLbl1.text = @"所有车型一应俱全";
+        [carsBtn addSubview:infomationLbl1];
+
+        UIButton *moreBtn1 = [UIButton buttonWithTitle:@"查看更多" titleColor:kWhiteColor backgroundColor:kClearColor titleFont:11];
+        moreBtn1.frame = CGRectMake(21, infomationLbl1.yy + 13, carsBtn.width - 21, 12);
+        moreBtn1.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        [moreBtn1 SG_imagePositionStyle:(SGImagePositionStyleRight) spacing:3 imagePositionBlock:^(UIButton *button) {
+            [button setImage:kImage(@"查看更多") forState:(UIControlStateNormal)];
+        }];
+        [moreBtn1 addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+        moreBtn1.tag = 1;
+        [carsBtn addSubview:moreBtn1];
         
         
         label = [UILabel labelWithFrame:CGRectMake(15, carsBtn.yy + 11, 100, 22.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:boldFont(16) textColor:kBlackColor];
@@ -183,7 +183,7 @@
     configuration.repeatPlay = NO;
     configuration.statusBarHideState = SelStatusBarHideStateAlways;
     configuration.sourceUrl = [NSURL URLWithString:[_videoDic[@"url"] convertImageUrl]];
-    configuration.videoGravity = SelVideoGravityResize;
+    configuration.videoGravity = SelVideoGravityResizeAspect;
     
     //    CGFloat width = self.view.frame.size.width;
     _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, label.yy + 10, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];
@@ -215,7 +215,7 @@
     gl.locations = @[@(0), @(1.0f)];
     [backView.layer addSublayer:gl];
     
-    UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(30, label.yy + 10 + thumbnailImg.height - 27.5 - 20 + 7.5, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+    UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(30, label.yy + 10 + thumbnailImg.height - 27.5 - 20, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
     nameLbl.text = _videoDic[@"name"];
     [backView addSubview:nameLbl];
     

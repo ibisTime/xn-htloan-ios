@@ -145,6 +145,7 @@
 		1FB447B82371499700D15BE3 /* JKSmallLabels.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447B62371499700D15BE3 /* JKSmallLabels.m */; };
 		1FB447BB237170C200D15BE3 /* FaceSignView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB447BA237170C200D15BE3 /* FaceSignView.m */; };
 		1FD330B72371C00500CF444F /* DetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD330B62371C00500CF444F /* DetailsView.m */; };
+		1FD5BE3D237AC0B700ADD7AA /* ImageBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD5BE3C237AC0B700ADD7AA /* ImageBrowserVC.m */; };
 		1FE65A58230B923E005F7673 /* USERXX.h in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9E20E4D91D002D9A48 /* USERXX.h */; };
 		1FE65A59230B923E005F7673 /* USERXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A8A5C9F20E4D91D002D9A48 /* USERXX.m */; };
 		1FE65A5A230B9247005F7673 /* QNUserAgent.h in Sources */ = {isa = PBXBuildFile; fileRef = 7AB29D0020FC34670014FCB3 /* QNUserAgent.h */; };
@@ -725,6 +726,8 @@
 		1FB447BA237170C200D15BE3 /* FaceSignView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FaceSignView.m; sourceTree = "<group>"; };
 		1FD330B52371C00500CF444F /* DetailsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsView.h; sourceTree = "<group>"; };
 		1FD330B62371C00500CF444F /* DetailsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsView.m; sourceTree = "<group>"; };
+		1FD5BE3B237AC0B700ADD7AA /* ImageBrowserVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageBrowserVC.h; sourceTree = "<group>"; };
+		1FD5BE3C237AC0B700ADD7AA /* ImageBrowserVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageBrowserVC.m; sourceTree = "<group>"; };
 		1FE65A5C230B9CF5005F7673 /* DealersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DealersTableViewCell.h; sourceTree = "<group>"; };
 		1FE65A5D230B9CF5005F7673 /* DealersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DealersTableViewCell.m; sourceTree = "<group>"; };
 		1FE65A5F230B9E53005F7673 /* HomeDealersCollCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDealersCollCell.h; sourceTree = "<group>"; };
@@ -1667,6 +1670,8 @@
 				1FB44781236FFA8A00D15BE3 /* UIView+Banner.m */,
 				1FD330B52371C00500CF444F /* DetailsView.h */,
 				1FD330B62371C00500CF444F /* DetailsView.m */,
+				1FD5BE3B237AC0B700ADD7AA /* ImageBrowserVC.h */,
+				1FD5BE3C237AC0B700ADD7AA /* ImageBrowserVC.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1721,12 +1726,12 @@
 		1F9C1CD9236FD06D0062B08C /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				1F9C1CDA236FD06D0062B08C /* SelPlaybackControls.m */,
+				1F9C1CE3236FD06D0062B08C /* SelVideoPlayer.h */,
 				1F9C1CDB236FD06D0062B08C /* SelVideoPlayer.m */,
 				1F9C1CDC236FD06D0062B08C /* SelVideoSlider.h */,
 				1F9C1CDD236FD06D0062B08C /* SelPlaybackControls.h */,
+				1F9C1CDA236FD06D0062B08C /* SelPlaybackControls.m */,
 				1F9C1CDE236FD06D0062B08C /* Configs */,
-				1F9C1CE3236FD06D0062B08C /* SelVideoPlayer.h */,
 				1F9C1CE4236FD06D0062B08C /* SelVideoSlider.m */,
 			);
 			path = VideoPlayer;
@@ -4160,9 +4165,9 @@
 		B82ED84921D38D0F0019AAE0 /* SJChartVeiw */ = {
 			isa = PBXGroup;
 			children = (
+				B82ED84C21D38D0F0019AAE0 /* ImageBrowserViewController.h */,
 				B82ED84A21D38D0F0019AAE0 /* ImageBrowserViewController.m */,
 				B82ED84B21D38D0F0019AAE0 /* PhotoView.h */,
-				B82ED84C21D38D0F0019AAE0 /* ImageBrowserViewController.h */,
 				B82ED84D21D38D0F0019AAE0 /* PhotoView.m */,
 			);
 			path = SJChartVeiw;
@@ -5041,6 +5046,7 @@
 				36E3A3A0223B673800B26F4F /* HotCarCollectionCell.m in Sources */,
 				7A8A5C8F20E4A7FE002D9A48 /* MJPropertyKey.m in Sources */,
 				7A3CBE3720F6FE0700D795E5 /* TFHpple.m in Sources */,
+				1FD5BE3D237AC0B700ADD7AA /* ImageBrowserVC.m in Sources */,
 				B834011821D75A350089D4DE /* QNRefresher.m in Sources */,
 				7A8A5C1520E3C8DB002D9A48 /* UIButton+Custom.m in Sources */,
 				7A8A5C8D20E4A7FE002D9A48 /* MJFoundation.m in Sources */,

@@ -50,7 +50,7 @@
             configuration.repeatPlay = NO;
             configuration.statusBarHideState = SelStatusBarHideStateAlways;
             configuration.sourceUrl = [NSURL URLWithString:[_videoDic[@"url"] convertImageUrl]];
-            configuration.videoGravity = SelVideoGravityResize;
+            configuration.videoGravity = SelVideoGravityResizeAspect;
             
             _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, 7.5, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];
             kViewRadius(_player, 4);

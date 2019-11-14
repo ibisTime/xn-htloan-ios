@@ -167,21 +167,7 @@
         vc.queryName = searchBar.text;
         [self.navigationController pushViewController:vc animated:YES];
         
-        
-//        TLNetworking * http = [[TLNetworking alloc]init];
-//        http.code = @"630491";
-//        http.showView = self.view;
-//        http.parameters[@"status"] = @"1";
-//        http.parameters[@"queryName"] = searchBar.text;
-//        [http postWithSuccess:^(id responseObject) {
-//            ClassifyListVC * vc = [ClassifyListVC new];
-//            vc.CarModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-//            vc.state = @"1";
-//            [self.navigationController pushViewController:vc animated:YES];
-//
-//        } failure:^(NSError *error) {
-//
-//        }];
+
     }
 }
 

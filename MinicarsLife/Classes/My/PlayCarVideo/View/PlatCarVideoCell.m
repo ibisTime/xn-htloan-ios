@@ -41,7 +41,7 @@
         gl.locations = @[@(0), @(1.0f)];
         [self.layer addSublayer:gl];
         
-        nameLbl = [UILabel labelWithFrame:CGRectMake(30, 15 + thumbnailImg.height - 27.5 - 20 + 7.5, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
+        nameLbl = [UILabel labelWithFrame:CGRectMake(30, 15 + thumbnailImg.height - 27.5 - 20, SCREEN_WIDTH - 60, 20) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(14) textColor:kWhiteColor];
 //        nameLbl.text = _videoDic[@"name"];
         [self addSubview:nameLbl];
         
@@ -79,7 +79,7 @@
     configuration.repeatPlay = NO;
     configuration.statusBarHideState = SelStatusBarHideStateAlways;
     configuration.sourceUrl = [NSURL URLWithString:[_model.url convertImageUrl]];
-    configuration.videoGravity = SelVideoGravityResize;
+    configuration.videoGravity = SelVideoGravityResizeAspect;
     
     //    CGFloat width = self.view.frame.size.width;
     _player = [[SelVideoPlayer alloc]initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, (SCREEN_WIDTH - 30)/345*200) configuration:configuration];

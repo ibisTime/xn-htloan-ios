@@ -10,10 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DetailsView : UIView
+@interface DetailsView : UIView<UIScrollViewDelegate>
 
 @property (nonatomic , strong)NSString *url;
-
+@property (nonatomic , strong)UIScrollView *scrollView;
+@property (nonatomic , strong)UIImageView *imageView;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -158,6 +158,7 @@
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * action) {
         [action setValue:HGColor(138, 138, 138) forKey:@"titleTextColor"];
     }];
+    
     UIAlertAction* fromPhotoAction = [UIAlertAction actionWithTitle:@"拍照" style:UIAlertActionStyleDefault                                                                 handler:^(UIAlertAction * action) {
         
         //创建UIImagePickerController对象，并设置代理和可编辑

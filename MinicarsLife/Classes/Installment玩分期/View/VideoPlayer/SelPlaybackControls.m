@@ -171,25 +171,25 @@ static const CGFloat PlaybackControlsAutoHideTimeInterval = 0.3f;
 /** 显示或隐藏状态栏 */
 - (void)_showOrHideStatusBar
 {
-    switch (_statusBarHideState) {
-        case SelStatusBarHideStateFollowControls:
-        {
-            [[UIApplication sharedApplication] setStatusBarHidden:!self.isShowing];
-        }
-            break;
-        case SelStatusBarHideStateNever:
-        {
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
-        }
-            break;
-        case SelStatusBarHideStateAlways:
-        {
-            [[UIApplication sharedApplication] setStatusBarHidden:YES];
-        }
-            break;
-        default:
-            break;
-    }
+//    switch (_statusBarHideState) {
+//        case SelStatusBarHideStateFollowControls:
+//        {
+//            [[UIApplication sharedApplication] setStatusBarHidden:!self.isShowing];
+//        }
+//            break;
+//        case SelStatusBarHideStateNever:
+//        {
+//            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+//        }
+//            break;
+//        case SelStatusBarHideStateAlways:
+//        {
+//            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//        }
+//            break;
+//        default:
+//            break;
+//    }
 //    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
@@ -251,7 +251,10 @@ static const CGFloat PlaybackControlsAutoHideTimeInterval = 0.3f;
     }];
     
     [_bottomControlsBar mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.bottom.equalTo(self);
+//        make.left.right.bottom.equalTo(self);
+        make.left.mas_equalTo(10);
+        make.right.mas_equalTo(-10);
+        make.bottom.mas_equalTo(-10);
         make.height.equalTo(@30);
     }];
     
