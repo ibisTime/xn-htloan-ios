@@ -11,7 +11,7 @@
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "GuideView.h"
 #import "ViewController.h"
-
+#import "TLWXManager.h"
 #import "NSObject+Tool.h"
 
 #import "NewsInfoVC.h"
@@ -66,6 +66,10 @@
         self.window.rootViewController = guideView;
         [self.window makeKeyAndVisible];
     }
+    
+    [WXApi registerApp:@"wx14ce9b413e063005"
+         universalLink:@"https://share.ios.fhcdzx.com/"];
+    
     return YES;
 }
 
@@ -227,6 +231,35 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 
 
 
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray *))restorationHandler
+{
+    NSLog(@"userActivity : %@",userActivity.webpageURL.description);
+    if ([userActivity.activityType isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL *webpageURL = userActivity.webpageURL;
+        NSString *host = webpageURL.host;
+        //        if ([host isEqualToString:@"yohunl.com"]) {
+        //            //进行我们需要的处理
+        //        }
+        //        else {
+        //            [[UIApplication sharedApplication]openURL:webpageURL];
+        //        }
+    }
+    
+    return YES;
+    
+}
+
+
+// iOS9 NS_AVAILABLE_IOS
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    return [WXApi handleOpenURL:url delegate:[TLWXManager manager]];
+}
+
+// iOS9 NS_DEPRECATED_IOS
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    return [WXApi handleOpenURL:url delegate:[TLWXManager manager]];
+}
 
 
 

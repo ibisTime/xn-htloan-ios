@@ -29,11 +29,20 @@
 
 }
 - (void)createTabBar{
-    [self createControllerWithTitle1:@"玩分期" image:@"玩分期-未点击"selectedimage:@"玩分期-点击" className:[InstallmentVC class]];
-    [self createControllerWithTitle1:@"玩保险" image:@"玩保险-未点击"selectedimage:@"玩保险-点击" className:[InsuranceVC class]];
-    [self createControllerWithTitle1:@"玩汽车" image:@"玩汽车-未点击" selectedimage:@"玩汽车-点击" className:[HomeViewController class]];
-    [self createControllerWithTitle1:@"玩售后" image:@"玩售后-未点击" selectedimage:@"玩售后-点击" className:[AfterSaleVC class]];
-    [self createControllerWithTitle1:@"玩会员" image:@"玩会员-未点击"selectedimage:@"玩会员-点击" className:[MyViewController class]];
+    NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
+    if ([ISSHELVES isEqualToString:@"1"]) {
+        [self createControllerWithTitle1:@"玩汽车" image:@"玩汽车-未点击" selectedimage:@"玩汽车-点击" className:[HomeViewController class]];
+        [self createControllerWithTitle1:@"玩售后" image:@"玩售后-未点击" selectedimage:@"玩售后-点击" className:[AfterSaleVC class]];
+        [self createControllerWithTitle1:@"玩会员" image:@"玩会员-未点击"selectedimage:@"玩会员-点击" className:[MyViewController class]];
+    }
+    else
+    {
+        [self createControllerWithTitle1:@"玩分期" image:@"玩分期-未点击"selectedimage:@"玩分期-点击" className:[InstallmentVC class]];
+        [self createControllerWithTitle1:@"玩保险" image:@"玩保险-未点击"selectedimage:@"玩保险-点击" className:[InsuranceVC class]];
+        [self createControllerWithTitle1:@"玩汽车" image:@"玩汽车-未点击" selectedimage:@"玩汽车-点击" className:[HomeViewController class]];
+        [self createControllerWithTitle1:@"玩售后" image:@"玩售后-未点击" selectedimage:@"玩售后-点击" className:[AfterSaleVC class]];
+        [self createControllerWithTitle1:@"玩会员" image:@"玩会员-未点击"selectedimage:@"玩会员-点击" className:[MyViewController class]];
+    }
 
 }
 
@@ -57,18 +66,39 @@
 - (BOOL)tabBarController:(UITabBarController*)tabBarController shouldSelectViewController:(UIViewController*)viewController
 
 {
-    if (viewController ==self.viewControllers[4]) {
-        if([USERXX user].isLogin == NO) {
-            LoginViewController *vc = [[LoginViewController alloc]init];
-            UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-            UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
-            [rootViewController presentViewController:nav animated:YES completion:nil];
-            return NO;
-        }else
-        {
-            return YES;
+    
+    
+    NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
+    if ([ISSHELVES isEqualToString:@"1"]) {
+        if (viewController ==self.viewControllers[2]) {
+            if([USERXX user].isLogin == NO) {
+                LoginViewController *vc = [[LoginViewController alloc]init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+                [rootViewController presentViewController:nav animated:YES completion:nil];
+                return NO;
+            }else
+            {
+                return YES;
+            }
+        }
+    }else
+    {
+        if (viewController ==self.viewControllers[4]) {
+            if([USERXX user].isLogin == NO) {
+                LoginViewController *vc = [[LoginViewController alloc]init];
+                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+                UIViewController *rootViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+                [rootViewController presentViewController:nav animated:YES completion:nil];
+                return NO;
+            }else
+            {
+                return YES;
+            }
         }
     }
+    
+    
     return YES;
 
 

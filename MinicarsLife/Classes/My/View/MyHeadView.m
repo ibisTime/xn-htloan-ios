@@ -70,37 +70,79 @@
         [self addSubview:self.nameLabel];
         [self addSubview:self.phoneLabel];
 
-        NSArray *ary = @[@"我的消息",@"我的关注",@"我的申请"];
-        for (int i = 0; i < 3; i ++) {
-            UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-            backBtn.frame = CGRectMake(i % 3 * (SCREEN_WIDTH/3), _headImage.yy + 20, SCREEN_WIDTH/3, 42);
-            backBtn.tag = i;
-            [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-            [self addSubview:backBtn];
-            
-            UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
-            if (i == 0) {
-                numberLbl1 = numberLbl;
+        
+        
+        NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
+        if ([ISSHELVES isEqualToString:@"1"]) {
+            NSArray *ary = @[@"我的消息",@"我的关注"];
+            for (int i = 0; i < 2; i ++) {
+                UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+                backBtn.frame = CGRectMake(i % 2 * (SCREEN_WIDTH/2), _headImage.yy + 20, SCREEN_WIDTH/2, 42);
+                backBtn.tag = i;
+                [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+                [self addSubview:backBtn];
                 
-                pointView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 + 15, _headImage.yy + 21, 6, 6)];
-                pointView.backgroundColor = kHexColor(@"#FF4D4D");
-                kViewBorderRadius(pointView, 3, 1, kWhiteColor);
-                pointView.hidden = YES;
-                [self addSubview:pointView];
+                UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/2, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
+                if (i == 0) {
+                    numberLbl1 = numberLbl;
+                    
+                    pointView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2/2 + 15, _headImage.yy + 21, 6, 6)];
+                    pointView.backgroundColor = kHexColor(@"#FF4D4D");
+                    kViewBorderRadius(pointView, 3, 1, kWhiteColor);
+                    pointView.hidden = YES;
+                    [self addSubview:pointView];
+                    
+                }
+                if (i == 1) {
+                    numberLbl2 = numberLbl;
+                }
+                if (i == 2) {
+                    numberLbl3 = numberLbl;
+                }
+                [backBtn addSubview:numberLbl];
                 
+                UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 25, SCREEN_WIDTH/2, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
+                nameLbl.text = ary[i];
+                [backBtn addSubview:nameLbl];
             }
-            if (i == 1) {
-                numberLbl2 = numberLbl;
-            }
-            if (i == 2) {
-                numberLbl3 = numberLbl;
-            }
-            [backBtn addSubview:numberLbl];
             
-            UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 25, SCREEN_WIDTH/3, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
-            nameLbl.text = ary[i];
-            [backBtn addSubview:nameLbl];
+        }else
+        {
+            NSArray *ary = @[@"我的消息",@"我的关注",@"我的申请"];
+            for (int i = 0; i < 3; i ++) {
+                UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+                backBtn.frame = CGRectMake(i % 3 * (SCREEN_WIDTH/3), _headImage.yy + 20, SCREEN_WIDTH/3, 42);
+                backBtn.tag = i;
+                [backBtn addTarget:self action:@selector(backBtnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+                [self addSubview:backBtn];
+                
+                UILabel *numberLbl = [UILabel labelWithFrame:CGRectMake(0, 0, SCREEN_WIDTH/3, 25) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(18) textColor:kWhiteColor];
+                if (i == 0) {
+                    numberLbl1 = numberLbl;
+                    
+                    pointView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/3/2 + 15, _headImage.yy + 21, 6, 6)];
+                    pointView.backgroundColor = kHexColor(@"#FF4D4D");
+                    kViewBorderRadius(pointView, 3, 1, kWhiteColor);
+                    pointView.hidden = YES;
+                    [self addSubview:pointView];
+                    
+                }
+                if (i == 1) {
+                    numberLbl2 = numberLbl;
+                }
+                if (i == 2) {
+                    numberLbl3 = numberLbl;
+                }
+                [backBtn addSubview:numberLbl];
+                
+                UILabel *nameLbl = [UILabel labelWithFrame:CGRectMake(0, 25, SCREEN_WIDTH/3, 16.5) textAligment:(NSTextAlignmentCenter) backgroundColor:kClearColor font:Font(12) textColor:kWhiteColor];
+                nameLbl.text = ary[i];
+                [backBtn addSubview:nameLbl];
+            }
         }
+        
+        
+        
  
         
         

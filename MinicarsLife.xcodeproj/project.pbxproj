@@ -12,6 +12,10 @@
 		1F1B75F0230AAA9A0031FB0D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F1B75EF230AAA9A0031FB0D /* libsqlite3.0.tbd */; };
 		1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */; };
 		1F2536B122BCC65700E67433 /* 1080.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F2536B022BCC65600E67433 /* 1080.png */; };
+		1F65B20D2383FE760080A27D /* CustomShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F65B20C2383FE760080A27D /* CustomShareView.m */; };
+		1F65B214238402500080A27D /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F65B2112384024F0080A27D /* README.txt */; };
+		1F65B215238402500080A27D /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F65B2132384024F0080A27D /* libWeChatSDK.a */; };
+		1F65B218238403700080A27D /* TLWXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F65B217238403700080A27D /* TLWXManager.m */; };
 		1F8056802371CB4E00A14BE9 /* TelephoneView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F80567F2371CB4E00A14BE9 /* TelephoneView.m */; };
 		1F8056832371D1EC00A14BE9 /* ConsultingZoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056822371D1EC00A14BE9 /* ConsultingZoneVC.m */; };
 		1F8056892372A18F00A14BE9 /* MyApplicationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8056882372A18F00A14BE9 /* MyApplicationVC.m */; };
@@ -549,6 +553,15 @@
 		1F1C96AB22E86E57006B629C /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
 		1F1C96AC22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		1F2536B022BCC65600E67433 /* 1080.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1080.png; sourceTree = "<group>"; };
+		1F65B20B2383FE750080A27D /* CustomShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomShareView.h; sourceTree = "<group>"; };
+		1F65B20C2383FE760080A27D /* CustomShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomShareView.m; sourceTree = "<group>"; };
+		1F65B20F2384024F0080A27D /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		1F65B2102384024F0080A27D /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		1F65B2112384024F0080A27D /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		1F65B2122384024F0080A27D /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		1F65B2132384024F0080A27D /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		1F65B216238403700080A27D /* TLWXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLWXManager.h; sourceTree = "<group>"; };
+		1F65B217238403700080A27D /* TLWXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLWXManager.m; sourceTree = "<group>"; };
 		1F80567E2371CB4E00A14BE9 /* TelephoneView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TelephoneView.h; sourceTree = "<group>"; };
 		1F80567F2371CB4E00A14BE9 /* TelephoneView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TelephoneView.m; sourceTree = "<group>"; };
 		1F8056812371D1EC00A14BE9 /* ConsultingZoneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConsultingZoneVC.h; sourceTree = "<group>"; };
@@ -1496,6 +1509,7 @@
 				1FA54D6322393A4F0077FE54 /* QALSDK.framework in Frameworks */,
 				7A0F8FA0211BDE6E00BA8358 /* CoreVideo.framework in Frameworks */,
 				7A0F8F9C211BDE6300BA8358 /* CoreMedia.framework in Frameworks */,
+				1F65B215238402500080A27D /* libWeChatSDK.a in Frameworks */,
 				1FA54D6522393A4F0077FE54 /* QAVSDK.framework in Frameworks */,
 				1FA54D6022393A4F0077FE54 /* ImSDK.framework in Frameworks */,
 				1FA54DC022393A500077FE54 /* ILiveLogReport.framework in Frameworks */,
@@ -1541,6 +1555,18 @@
 				7A8A5CD920E6183A002D9A48 /* GoodsDetails商品详情 */,
 			);
 			path = "废弃";
+			sourceTree = "<group>";
+		};
+		1F65B20E2384024F0080A27D /* WeChatSDK1.8.6.1 */ = {
+			isa = PBXGroup;
+			children = (
+				1F65B20F2384024F0080A27D /* WXApi.h */,
+				1F65B2102384024F0080A27D /* WXApiObject.h */,
+				1F65B2112384024F0080A27D /* README.txt */,
+				1F65B2122384024F0080A27D /* WechatAuthSDK.h */,
+				1F65B2132384024F0080A27D /* libWeChatSDK.a */,
+			);
+			path = WeChatSDK1.8.6.1;
 			sourceTree = "<group>";
 		};
 		1F8056842372A15800A14BE9 /* MyApplication */ = {
@@ -3331,6 +3357,7 @@
 		7A8A5AC120E35905002D9A48 /* MinicarsLife */ = {
 			isa = PBXGroup;
 			children = (
+				1F65B20E2384024F0080A27D /* WeChatSDK1.8.6.1 */,
 				1F1B75F1230AAAB50031FB0D /* MinicarsLife.entitlements */,
 				1F1B75EB230AAA150031FB0D /* libXG-SDK.a */,
 				1F1B75EA230AAA150031FB0D /* XGPush.h */,
@@ -3452,6 +3479,10 @@
 		7A8A5B0420E35A06002D9A48 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F65B20B2383FE750080A27D /* CustomShareView.h */,
+				1F65B20C2383FE760080A27D /* CustomShareView.m */,
+				1F65B216238403700080A27D /* TLWXManager.h */,
+				1F65B217238403700080A27D /* TLWXManager.m */,
 				7A3CBD9F20F3228B00D795E5 /* HomeTableView.h */,
 				7A3CBDA020F3228B00D795E5 /* HomeTableView.m */,
 				7A8A5C4320E4838C002D9A48 /* HomeHeaderView.h */,
@@ -4520,7 +4551,7 @@
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Siri = {
 								enabled = 0;
@@ -4630,6 +4661,7 @@
 				1FA54D8F22393A500077FE54 /* ear_10.png in Resources */,
 				1FA54DB522393A500077FE54 /* cloth_0.png in Resources */,
 				1FA54DB422393A500077FE54 /* head.mp4 in Resources */,
+				1F65B214238402500080A27D /* README.txt in Resources */,
 				1FA54DA322393A500077FE54 /* ear_21.png in Resources */,
 				1FA54D8922393A500077FE54 /* tooth_8.png in Resources */,
 				1FA54D7522393A500077FE54 /* tooth_7.png in Resources */,
@@ -4759,6 +4791,7 @@
 				7A22CE2220EE37300010059D /* CarLoansHaveBeenThroughVC.m in Sources */,
 				7A0F8FC3211BDF3600BA8358 /* FaceToFaceSignVC.m in Sources */,
 				7AB29D2820FC34680014FCB3 /* QNUploadOption.m in Sources */,
+				1F65B218238403700080A27D /* TLWXManager.m in Sources */,
 				7A3CBDFF20F4AE3100D795E5 /* ShareButton.m in Sources */,
 				1F8056AA2372E21600A14BE9 /* PlatCarVideoCell.m in Sources */,
 				36E3A37F223B3BBD00B26F4F /* RightHeaderCell.m in Sources */,
@@ -4774,6 +4807,7 @@
 				363B612C223B8F8500585061 /* NewsInfoVC.m in Sources */,
 				1F1C96AD22E86E58006B629C /* UICollectionViewLeftAlignedLayout.m in Sources */,
 				7A3CBE0020F4AE3100D795E5 /* ShareView.m in Sources */,
+				1F65B20D2383FE760080A27D /* CustomShareView.m in Sources */,
 				36E3A38A223B3CD100B26F4F /* MessageInfoVC.m in Sources */,
 				7A22CDAB20ECC41F0010059D /* AccountSettingsVC.m in Sources */,
 				B885CB5D2171F693001A1258 /* FilterView.m in Sources */,
@@ -5304,6 +5338,7 @@
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MinicarsLife",
+					"$(PROJECT_DIR)/MinicarsLife/WeChatSDK1.8.6.1",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.MinicarsLife;
@@ -5358,6 +5393,7 @@
 					"$(PROJECT_DIR)/MinicarsLife/ILiveSDK/BeautySDK/Pitu",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MinicarsLife",
+					"$(PROJECT_DIR)/MinicarsLife/WeChatSDK1.8.6.1",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cdkj.MinicarsLife;

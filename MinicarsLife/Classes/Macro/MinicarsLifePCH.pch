@@ -10,6 +10,7 @@
 #define MinicarsLifePCH_pch
 
 #import <UIKit/UIKit.h>
+#import "WXApi.h"
 #import "LoginViewController.h"
 #import "CategoryPCH.pch"
 #import "CustomUIPHC.pch"

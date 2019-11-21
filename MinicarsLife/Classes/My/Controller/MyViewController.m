@@ -203,17 +203,35 @@
     topLbl.text = @"我的工具";
     [backView addSubview:topLbl];
     
-    NSArray *ary = @[@"面签工具",@"玩车视频",@"玩车资讯",@"经典车型",@"分期购车",@"玩转售后",@"优质车行",@"计算器"];
-    for (int i = 0; i < 8 ; i ++) {
-        UIButton *btn = [UIButton buttonWithTitle:ary[i] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:12];
-        btn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, topLbl.yy + 15 + i / 4 * 75, SCREEN_WIDTH/4, 65);
-        [btn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
-            [button setImage:kImage(ary[i]) forState:(UIControlStateNormal)];
-        }];
-        [btn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
-        btn.tag = i;
-        [backView addSubview:btn];
+    NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
+    if ([ISSHELVES isEqualToString:@"1"]) {
+        
+        NSArray *ary = @[@"面签工具",@"玩车视频",@"玩车资讯",@"经典车型"];
+        for (int i = 0; i < 4 ; i ++) {
+            UIButton *btn = [UIButton buttonWithTitle:ary[i] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:12];
+            btn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, topLbl.yy + 15 + i / 4 * 75, SCREEN_WIDTH/4, 65);
+            [btn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
+                [button setImage:kImage(ary[i]) forState:(UIControlStateNormal)];
+            }];
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            btn.tag = i;
+            [backView addSubview:btn];
+        }
+    }else
+    {
+        NSArray *ary = @[@"面签工具",@"玩车视频",@"玩车资讯",@"经典车型",@"分期购车",@"玩转售后",@"优质车行",@"计算器"];
+        for (int i = 0; i < 8 ; i ++) {
+            UIButton *btn = [UIButton buttonWithTitle:ary[i] titleColor:kHexColor(@"#666666") backgroundColor:kClearColor titleFont:12];
+            btn.frame = CGRectMake(i % 4 * SCREEN_WIDTH/4, topLbl.yy + 15 + i / 4 * 75, SCREEN_WIDTH/4, 65);
+            [btn SG_imagePositionStyle:(SGImagePositionStyleTop) spacing:5 imagePositionBlock:^(UIButton *button) {
+                [button setImage:kImage(ary[i]) forState:(UIControlStateNormal)];
+            }];
+            [btn addTarget:self action:@selector(btnClick:) forControlEvents:(UIControlEventTouchUpInside)];
+            btn.tag = i;
+            [backView addSubview:btn];
+        }
     }
+    
     
 }
 

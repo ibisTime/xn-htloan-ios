@@ -9,7 +9,9 @@
 #import "NewsInfoVC.h"
 #import "NewsModel.h"
 #import "CarInfoVC.h"
-@interface NewsInfoVC ()<UIWebViewDelegate>{
+#import "CustomShareView.h"
+#import "TLWXManager.h"
+@interface NewsInfoVC ()<UIWebViewDelegate,CustomShareViewDelegate>{
     UIView * view;
     UIImageView *iconImg;
     UILabel *nameLbl;
@@ -22,6 +24,7 @@
 @property (nonatomic,strong) UILabel * timelab;
 @property (nonatomic,strong) NewsModel * model;
 @property (nonatomic,strong)NSArray *newstagDataAry;
+@property (nonatomic,strong)CustomShareView *shareView;
 @end
 
 @implementation NewsInfoVC
@@ -113,9 +116,95 @@
     } failure:^(NSError *error) {
         
     }];
-   
+    
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+    
+    //    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
+    [self.RightButton setImage:kImage(@"分享白色") forState:UIControlStateNormal];
+    [self.RightButton addTarget:self action:@selector(addShareView) forControlEvents:(UIControlEventTouchUpInside)];
 }
 
+
+- (void)addShareView
+{
+    NSArray *shareAry = @[@{@"image":@"wechat",
+                            @"title":@"微信"},
+                          @{@"image":@"timeline_small",
+                            @"title":@"朋友圈"}];
+    
+    _shareView = [[CustomShareView alloc] init];
+    
+    _shareView.alpha = 0;
+    _shareView.delegate = self;
+    [_shareView setShareAry:shareAry delegate:self];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_shareView];
+    
+    [_shareView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.width.mas_equalTo(kScreenWidth);
+        make.height.mas_equalTo(kScreenHeight);
+    }];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        _shareView.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+//    BaseWeakSelf;
+    _shareView.cancleBlock = ^(){
+        
+//        [weakSelf removeFromSuperview];
+    };
+    
+}
+
+-(void)customShareViewButtonAction:(CustomShareView *)shareView title:(NSString *)title
+{
+    if ([title isEqualToString:@"微信"]) {
+        [TLWXManager wxShareWebPageWithScene:WXSceneSession
+                                       title:@"分享"
+                                        desc:@""
+                                         url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/articleDetail?code=%@",self.code]];
+        [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
+            
+            if (isSuccess) {
+                
+                [TLAlert alertWithSucces:@"分享成功"];
+            } else {
+                
+                [TLAlert alertWithError:@"分享失败"];
+            }
+        };
+    }
+    else
+    {
+        [TLWXManager wxShareWebPageWithScene:WXSceneTimeline
+                                       title:@"分享"
+                                        desc:@""
+                                         url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/articleDetail?code=%@",self.code]];
+        [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
+            
+            if (isSuccess) {
+                
+                [TLAlert alertWithSucces:@"分享成功"];
+            } else {
+                
+                [TLAlert alertWithError:@"分享失败"];
+            }
+        };
+    }
+    
+
+    
+}
 
 
 

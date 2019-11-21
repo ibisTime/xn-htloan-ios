@@ -35,8 +35,6 @@
     http.code = @"630047";
     http.showView = self.view;
     http.parameters[@"key"] = _ckey;
-
-
     [http postWithSuccess:^(id responseObject) {
         [_webView loadHTMLString:responseObject[@"data"][@"cvalue"] baseURL:nil];
     } failure:^(NSError *error) {

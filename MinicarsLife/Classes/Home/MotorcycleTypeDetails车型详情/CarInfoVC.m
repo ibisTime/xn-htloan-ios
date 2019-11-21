@@ -21,7 +21,9 @@
 #import "NewsCell.h"
 #import "ClassifyInfoCell.h"
 #import "NewsInfoVC.h"
-@interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate>
+#import "CustomShareView.h"
+#import "TLWXManager.h"
+@interface CarInfoVC ()<HW3DBannerViewDelegate,UITableViewDelegate,UITableViewDataSource,RefreshDelegate,AskMoneyClickDelegate,BackToHomeDelegate,CustomShareViewDelegate>
 {
     CallNowView * callNowView;
     DeployFirstCell *deployFirstCell;
@@ -38,7 +40,7 @@
 @property (nonatomic,strong) NSArray * nameArray;
 
 @property (nonatomic , strong)NSArray *dataArray;
-
+@property (nonatomic , strong)CustomShareView *shareView;
 @property (nonatomic , strong)NSMutableArray <CarModel *>*CarModelsCars;
 @property (nonatomic , strong)NSMutableArray <NewsModel *>*NewsModels;
 @property (nonatomic , strong)CarModel *dealersModel;
@@ -173,12 +175,10 @@
     [self.view addSubview:self.bottomview];
     
     
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
-    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
-    self.RightButton.titleLabel.font = Font(16);
-    [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-50, 30, 50, 50)];
-//    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
+    UIView *rightView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 88, 44)];
+    
+    [self.RightButton setFrame:CGRectMake(0, 0, 44, 44)];
+    //    [self.RightButton setTitle:@"搜索" forState:UIControlStateNormal];
     [self.RightButton setImage:kImage(@"详情收藏-未点击") forState:UIControlStateNormal];
     [self.RightButton setImage:kImage(@"详情收藏-点击") forState:UIControlStateSelected];
     if ([self.CarModel.isCollect isEqualToString:@"1"]){
@@ -187,16 +187,107 @@
     if ([USERXX isBlankString:[USERDEFAULTS objectForKey:USER_ID]] == YES) {
         self.RightButton.hidden = YES;
     }
-
+    
     [self.RightButton addTarget:self action:@selector(collectclick) forControlEvents:(UIControlEventTouchUpInside)];
+    [rightView addSubview:self.RightButton];
     
     
+    UIButton *shareBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    shareBtn.frame = CGRectMake(44, 0, 44, 44);
+    [shareBtn setImage:kImage(@"分享白色") forState:(UIControlStateNormal)];
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:(UIControlEventTouchUpInside)];
+    [rightView addSubview:shareBtn];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:rightView]];
+
     callNowView = [[CallNowView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-kNavigationBarHeight)];
     callNowView.carmodel = self.CarModel;
     callNowView.delegate = self;
     [self.view addSubview:callNowView];
     
 }
+
+
+
+-(void)shareBtnClick{
+    NSArray *shareAry = @[@{@"image":@"wechat",
+                            @"title":@"微信"},
+                          @{@"image":@"timeline_small",
+                            @"title":@"朋友圈"}];
+    
+    _shareView = [[CustomShareView alloc] init];
+    
+    _shareView.alpha = 0;
+    _shareView.delegate = self;
+    [_shareView setShareAry:shareAry delegate:self];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_shareView];
+    
+    [_shareView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.width.mas_equalTo(kScreenWidth);
+        make.height.mas_equalTo(kScreenHeight);
+    }];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        _shareView.alpha = 1;
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    //    BaseWeakSelf;
+    _shareView.cancleBlock = ^(){
+        
+        //        [weakSelf removeFromSuperview];
+    };
+    
+}
+
+-(void)customShareViewButtonAction:(CustomShareView *)shareView title:(NSString *)title
+{
+    if ([title isEqualToString:@"微信"]) {
+        [TLWXManager wxShareWebPageWithScene:WXSceneSession
+                                       title:@"分享"
+                                        desc:@""
+                                         url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/vehicleDetail?code=%@",self.CarModel.code]];
+        [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
+            
+            if (isSuccess) {
+                
+                [TLAlert alertWithSucces:@"分享成功"];
+            } else {
+                
+                [TLAlert alertWithError:@"分享失败"];
+            }
+        };
+    }
+    else
+    {
+        [TLWXManager wxShareWebPageWithScene:WXSceneTimeline
+                                       title:@"分享"
+                                        desc:@""
+                                         url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/vehicleDetail?code=%@",self.CarModel.code]];
+        [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
+            
+            if (isSuccess) {
+                
+                [TLAlert alertWithSucces:@"分享成功"];
+            } else {
+                
+                [TLAlert alertWithError:@"分享失败"];
+            }
+        };
+    }
+    
+    
+    
+}
+
+
 -(void)collectclick{
     if ([self.CarModel.isCollect isEqualToString:@"0"]) {
         TLNetworking * http = [[TLNetworking alloc]init];

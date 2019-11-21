@@ -45,37 +45,77 @@
 
     self.view.backgroundColor = [UIColor whiteColor];
     
-    TLNetworking *http = [TLNetworking new];
-    //    http.isUploadToken = NO;
+    
+    
+    TLNetworking * http = [[TLNetworking alloc]init];
     http.code = @"630047";
-    http.parameters[@"key"] = @"app_start_pic";
-    [TLProgressHUD dismiss];
+    http.showView = self.view;
+    http.parameters[@"key"] = @"is_register";
+    http.parameters[@"type"] = @"i";
     [http postWithSuccess:^(id responseObject) {
+        NSString *cvalue = responseObject[@"data"][@"cvalue"];
         
+        [[NSUserDefaults standardUserDefaults]setObject:cvalue forKey:@"ISSHELVES"];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            if ([self.cvalue isEqualToString:@"1"]) {
+//                UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+//                [self.RightButton setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
+//                self.navigationItem.rightBarButtonItems = @[negativeSpacer, [[UIBarButtonItem alloc] initWithCustomView:self.RightButton]];
+//                self.RightButton.titleLabel.font = Font(16);
+//                [self.RightButton setFrame:CGRectMake(SCREEN_WIDTH-50, 30, 50, 50)];
+//                [self.RightButton setTitle:@"注册" forState:(UIControlStateNormal)];
+//                self.RightButton.tag = 102;
+//                [self.RightButton addTarget:self action:@selector(buttonMethodClick:) forControlEvents:(UIControlEventTouchUpInside)];
+//            }
+//        });
+        
+        
+        
+        TLNetworking *http1 = [TLNetworking new];
+        //    http.isUploadToken = NO;
+        http1.code = @"630047";
+        http1.parameters[@"key"] = @"app_start_pic";
         [TLProgressHUD dismiss];
-        
-        NSMutableArray *picAry = [NSMutableArray array];
-        NSDictionary *dic = responseObject[@"data"];
-        NSArray *imgAry = [dic[@"cvalue"] componentsSeparatedByString:@"||"];
-        for (int i = 0; i < imgAry.count; i ++) {
-            [picAry addObject:[imgAry[i] convertImageUrl]];
-        }
-        if (imgAry.count == 0) {
+        [http1 postWithSuccess:^(id responseObject) {
+            
+            [TLProgressHUD dismiss];
+            
+            NSMutableArray *picAry = [NSMutableArray array];
+            NSDictionary *dic = responseObject[@"data"];
+            NSArray *imgAry = [dic[@"cvalue"] componentsSeparatedByString:@"||"];
+            for (int i = 0; i < imgAry.count; i ++) {
+                [picAry addObject:[imgAry[i] convertImageUrl]];
+            }
+            if (imgAry.count == 0) {
+                [self cancelButtonAction];
+            }
+            
+            self.imageArray = picAry;
+            [self createScrollView];
+            [self createPageControl];
+            [self createCancelButton];
+            
+            // 加载完毕开始倒计时
+            [self startTimer];
+            
+        } failure:^(NSError *error) {
+            [TLProgressHUD dismiss];
             [self cancelButtonAction];
-        }
-
-        self.imageArray = picAry;
-        [self createScrollView];
-        [self createPageControl];
-        [self createCancelButton];
+        }];
         
-        // 加载完毕开始倒计时
-        [self startTimer];
         
-    } failure:^(NSError *error) {
-        [TLProgressHUD dismiss];
-        [self cancelButtonAction];
+        
+        
+        
+    }failure:^(NSError *error) {
+        
     }];
+    
+    
+    
+    
+    
+    
     
 }
 
