@@ -12,7 +12,7 @@
 //新疆正式
 #define APPURL @"http://39.104.89.43:2601/forward-service/api"
 //研发
-//#define APPURL @"http://120.26.6.213:2401/forward-service//api"
+//#define APPURL @"http://47.99.80.106:2401/forward-service//api"
 //测试
 //#define APPURL @"http://112.124.25.207:2401/forward-service/api"
 //线上

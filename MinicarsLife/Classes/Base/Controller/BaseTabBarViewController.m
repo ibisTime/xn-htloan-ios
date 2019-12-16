@@ -30,7 +30,7 @@
 }
 - (void)createTabBar{
     NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
-    if ([ISSHELVES isEqualToString:@"1"]) {
+    if ([ISSHELVES isEqualToString:ISSHELVESSTR]) {
         [self createControllerWithTitle1:@"玩汽车" image:@"玩汽车-未点击" selectedimage:@"玩汽车-点击" className:[HomeViewController class]];
         [self createControllerWithTitle1:@"玩售后" image:@"玩售后-未点击" selectedimage:@"玩售后-点击" className:[AfterSaleVC class]];
         [self createControllerWithTitle1:@"玩会员" image:@"玩会员-未点击"selectedimage:@"玩会员-点击" className:[MyViewController class]];
@@ -69,7 +69,7 @@
     
     
     NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
-    if ([ISSHELVES isEqualToString:@"1"]) {
+    if ([ISSHELVES isEqualToString:ISSHELVESSTR]) {
         if (viewController ==self.viewControllers[2]) {
             if([USERXX user].isLogin == NO) {
                 LoginViewController *vc = [[LoginViewController alloc]init];

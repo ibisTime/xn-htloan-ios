@@ -105,7 +105,7 @@
     [self.image sd_setImageWithURL:[NSURL URLWithString:[carmodel.pic convertImageUrl]] placeholderImage:kImage(@"default_pic")];
     
 
-    self.titlelab.text = [NSString stringWithFormat:@"%@ %@ %@",carmodel.brandName,carmodel.seriesName,carmodel.name];
+    self.titlelab.text = [NSString stringWithFormat:@"%@",carmodel.name];
     self.titlelab.frame = CGRectMake(125 + 15, 15, SCREEN_WIDTH - 155, 30);
     [self.titlelab sizeToFit];
     
@@ -141,39 +141,40 @@
             break;
     }
     
-    NSArray  *array = [carmodel.configName componentsSeparatedByString:@"  "];
+    self.v1.frame = CGRectMake(15, 111.5, SCREEN_WIDTH - 30, 1);
+//    NSArray  *array = [carmodel.configName componentsSeparatedByString:@"  "];
 //    self.tagsView.dataA = array;
 //    [self.contentView layoutIfNeeded];
     
-    NSMutableArray *ary = [NSMutableArray array];
-    for (int i = 0; i < array.count; i ++) {
-        if (![array[i] isEqualToString:@""]) {
-            [ary addObject:array[i]];
-        }
-    }
-    
-    
-    
-    if (ary.count > 0) {
-        
-        
-        JKSmallLabels *jkSmallLabels = [[JKSmallLabels new]createSmallLabelGroupNames:ary withlabelFont:12 withlabelTextColor:kHexColor(@"#666666") withlabelBackgroundColor:kHexColor(@"#F0F0F0") withMaxWidth:SCREEN_WIDTH - 30 withInsideHorizontalSpace:10 withInsideVerticalSpace:6 withOuterHorizontalSpace:10 withOuterVerticalSpace:10];
-        //    self.
-        jkSmallLabels.x = 15;
-        jkSmallLabels.y = 82.5 + 25;
-        //    jkSmallLabels.backgroundColor = kHexColor(@"#F0F0F0");
-        kViewRadius(jkSmallLabels, 12.5);
-        jkSmallLabels.JKSmallLabelClick = ^(NSInteger tag)
-        {
-            NSLog(@"tag=%ld",(long)tag);
-        };
-        [self addSubview:jkSmallLabels];
-        
-        self.v1.frame = CGRectMake(15, jkSmallLabels.yy + 15, SCREEN_WIDTH - 30, 1);
-    }else
-    {
-        self.v1.frame = CGRectMake(15, self.moneylab.yy + 15, SCREEN_WIDTH - 30, 1);
-    }
+//    NSMutableArray *ary = [NSMutableArray array];
+//    for (int i = 0; i < array.count; i ++) {
+//        if (![array[i] isEqualToString:@""]) {
+//            [ary addObject:array[i]];
+//        }
+//    }
+//
+//
+//
+//    if (ary.count > 0) {
+//
+//
+//        JKSmallLabels *jkSmallLabels = [[JKSmallLabels new]createSmallLabelGroupNames:ary withlabelFont:12 withlabelTextColor:kHexColor(@"#666666") withlabelBackgroundColor:kHexColor(@"#F0F0F0") withMaxWidth:SCREEN_WIDTH - 30 withInsideHorizontalSpace:10 withInsideVerticalSpace:6 withOuterHorizontalSpace:10 withOuterVerticalSpace:10];
+//        //    self.
+//        jkSmallLabels.x = 15;
+//        jkSmallLabels.y = 82.5 + 25;
+//        //    jkSmallLabels.backgroundColor = kHexColor(@"#F0F0F0");
+//        kViewRadius(jkSmallLabels, 12.5);
+//        jkSmallLabels.JKSmallLabelClick = ^(NSInteger tag)
+//        {
+//            NSLog(@"tag=%ld",(long)tag);
+//        };
+//        [self addSubview:jkSmallLabels];
+//
+//        
+//    }else
+//    {
+//        self.v1.frame = CGRectMake(15, self.moneylab.yy + 15, SCREEN_WIDTH - 30, 1);
+//    }
 //    self.contentlab.text = carmodel.configName;
 //    self.contentlab.frame = CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0);
 //    [self.contentlab sizeToFit];

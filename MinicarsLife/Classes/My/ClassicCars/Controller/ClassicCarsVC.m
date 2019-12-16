@@ -26,7 +26,21 @@
     self.title = @"经典车型";
     
     [self.view addSubview:self.collection];
-    [self PopularModels];
+    
+    [self DownRefresh];
+//    [self PopularModels];
+}
+
+#pragma mark -- 下拉刷新
+- (void)DownRefresh
+{
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(PopularModels)];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+    header.stateLabel.hidden = YES;
+    _collection.mj_header = header;
+    [_collection.mj_header beginRefreshing];
+    
 }
 
 -(UICollectionView *)collection{
@@ -68,13 +82,14 @@
     http2.parameters[@"start"] = @"0";
     http2.parameters[@"limit"] = @"100";
     http2.parameters[@"orderDir"] = @"asc";
+    
     [http2 postWithSuccess:^(id responseObject) {
         self.carsModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
 //        self.tableView.carsModels = self.carsModels;
         [self.collection reloadData];
-        
+        [self.collection.mj_header endRefreshing];
     } failure:^(NSError *error) {
-        
+        [self.collection.mj_header endRefreshing];
     }];
 }
 

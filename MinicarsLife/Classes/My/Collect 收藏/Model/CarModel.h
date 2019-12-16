@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CarModel : NSObject
-
+@property (nonatomic,copy) NSString * carConfig;
 @property (nonatomic,copy) NSString * createDatetime;
 @property (nonatomic,strong) NSDictionary * carDealer;
 @property (nonatomic,copy) NSString * isHighQuality;

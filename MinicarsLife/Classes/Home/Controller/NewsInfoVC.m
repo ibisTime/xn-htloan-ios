@@ -170,7 +170,7 @@
 {
     if ([title isEqualToString:@"微信"]) {
         [TLWXManager wxShareWebPageWithScene:WXSceneSession
-                                       title:@"分享"
+                                       title:self.model.title
                                         desc:@""
                                          url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/articleDetail?code=%@",self.code]];
         [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
@@ -187,7 +187,7 @@
     else
     {
         [TLWXManager wxShareWebPageWithScene:WXSceneTimeline
-                                       title:@"分享"
+                                       title:self.model.title
                                         desc:@""
                                          url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/articleDetail?code=%@",self.code]];
         [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {

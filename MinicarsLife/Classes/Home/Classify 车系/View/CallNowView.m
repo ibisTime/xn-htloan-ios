@@ -14,7 +14,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        UIView * topview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT - (718.00/1334.00)*SCREEN_HEIGHT)];
+        UIView * topview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,SCREEN_HEIGHT)];
         topview.alpha = 0.3;
         topview.backgroundColor = kBlackColor;
         [self addSubview:topview];
@@ -142,11 +142,11 @@
     self.describdlab.text = [NSString stringWithFormat:@"%@ 外观:%@ 内饰:%@ %@",[USERXX convertNull:carmodel.version] ,[USERXX convertNull: carmodel.outsideColor],[USERXX convertNull: carmodel.insideColor], [USERXX convertNull:carmodel.fromPlace]];
     
     
-    self.contentlab.text = @"";
-    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
-    for (int i = 0; i < model.count; i++) {
-        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
-    }
+//    self.contentlab.text = @"";
+//    NSMutableArray <DeployModel *> * model =[DeployModel mj_objectArrayWithKeyValuesArray:carmodel.caonfigList];
+//    for (int i = 0; i < model.count; i++) {
+//        self.contentlab.text = [NSString stringWithFormat:@"%@ %@",self.contentlab.text,model[i].config[@"name"]];
+//    }
 }
 -(void)clickask{
     

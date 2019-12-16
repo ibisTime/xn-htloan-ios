@@ -73,7 +73,7 @@
         
         
         NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
-        if ([ISSHELVES isEqualToString:@"1"]) {
+        if ([ISSHELVES isEqualToString:ISSHELVESSTR]) {
             NSArray *ary = @[@"我的消息",@"我的关注"];
             for (int i = 0; i < 2; i ++) {
                 UIButton *backBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];

@@ -55,33 +55,20 @@
         self.describdlab = describe;
         
         UILabel * time = [UILabel labelWithFrame:CGRectMake(img.xx + 15, describe.yy + 5, 74, 16.5) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor3];
-//        time.text = @"2019-03-11";
         [self addSubview:time];
         self.timelab = time;
         
+        
         UILabel * money = [UILabel labelWithFrame:CGRectMake(time.xx + 15, describe.yy + 5, SCREEN_WIDTH - 15 - 15 - time.xx, 22.5) textAligment:(NSTextAlignmentRight) backgroundColor:kClearColor font:Font(16) textColor:kHexColor(@"#028EFF")];
-//        money.text = @"54.9万";
         [self addSubview:money];
         self.moneylab = money;
+
         
-//        UIView * view = [[UIView alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
+        UILabel *view = [[UILabel alloc]initWithFrame:CGRectMake(15, img.yy + 14, SCREEN_WIDTH - 30, 1)];
+        view.backgroundColor = kLineColor;
+//        self.view = view;
+        [self addSubview:view];
         
-        
-        
-//        UILabel *view = [[UILabel alloc]initWithFrame:CGRectMake(15, img.yy + 10, SCREEN_WIDTH - 30, 50)];
-////        view.backgroundColor = kHexColor(@"#F5F5F5");
-////        self.view = view;
-//        [self addSubview:view];
-        
-        UILabel * content = [UILabel labelWithFrame:CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0) textAligment:(NSTextAlignmentLeft) backgroundColor:kClearColor font:Font(12) textColor:kTextColor2];
-        content.numberOfLines = 0;
-//        content.text = @"底挂，2气，6速，冰箱，7座，铝踏，拖钩，中差，18铝，智能卡，主驾电座，前后雾灯，一键启动";
-        
-        [self addSubview:content];
-        
-        
-        
-        self.contentlab = content;
     }
     return self;
 }
@@ -159,9 +146,9 @@
         default:
             break;
     }
-    self.contentlab.frame = CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0);
-    self.contentlab.text = car.configName;
-    [self.contentlab sizeToFit];
+//    self.contentlab.frame = CGRectMake(15, 82.5 + 25, SCREEN_WIDTH - 30, 0);
+//    self.contentlab.text = car.configName;
+//    [self.contentlab sizeToFit];
 }
 
 

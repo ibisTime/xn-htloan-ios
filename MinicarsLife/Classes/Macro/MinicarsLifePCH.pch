@@ -52,6 +52,8 @@
 
 #define randomColor random(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
+#define ISSHELVESSTR @"2"
+
 #define YY @"TheBalanceOf"
 #define JF @"Integral"
 //通知

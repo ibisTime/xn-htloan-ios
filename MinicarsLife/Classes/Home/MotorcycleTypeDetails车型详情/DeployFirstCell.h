@@ -15,8 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DeployFirstCell : UITableViewCell
 
 @property (nonatomic ,strong)JKSmallLabels *jkSmallLabels;
-@property (nonatomic,strong)NSArray *caonfigList;
-
+@property (nonatomic,strong)NSString *carConfig;
+@property (nonatomic,strong) UILabel * contentlab;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -251,7 +251,7 @@
 {
     if ([title isEqualToString:@"微信"]) {
         [TLWXManager wxShareWebPageWithScene:WXSceneSession
-                                       title:@"分享"
+                                       title:self.CarModel.name
                                         desc:@""
                                          url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/vehicleDetail?code=%@",self.CarModel.code]];
         [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
@@ -268,7 +268,7 @@
     else
     {
         [TLWXManager wxShareWebPageWithScene:WXSceneTimeline
-                                       title:@"分享"
+                                       title:self.CarModel.name
                                         desc:@""
                                          url:[NSString stringWithFormat:@"http://h5.htwt.hichengdai.com/vehicleDetail?code=%@",self.CarModel.code]];
         [TLWXManager manager].wxShare = ^(BOOL isSuccess, int errorCode) {
@@ -432,7 +432,12 @@
         }
         else if (indexPath.row==1) {
             if (self.CarModel.procedure) {
-                cell.contentlab.text = self.CarModel.procedure;
+                if ([self.CarModel.procedure isEqualToString:@"0"]) {
+                    cell.contentlab.text = @"齐全";
+                }else
+                {
+                    cell.contentlab.text = @"不齐全";
+                }
             }
             else
                 cell.contentlab.text = @"暂无";
@@ -456,7 +461,7 @@
             deployFirstCell=[[DeployFirstCell alloc] initWithStyle:UITableViewCellStyleDefault      reuseIdentifier:rid];
         }
         
-        deployFirstCell.caonfigList = self.CarModel.caonfigList;
+        deployFirstCell.carConfig = self.CarModel.carConfig;
         deployFirstCell.selectionStyle = UITableViewCellSelectionStyleNone;
         return deployFirstCell;
     }
@@ -538,7 +543,7 @@
         return 45;
     }
     if (indexPath.section == 3) {
-        return deployFirstCell.jkSmallLabels.yy + 15;
+        return deployFirstCell.contentlab.yy + 10;
     }
     if (indexPath.section == 4) {
         return classifyInfoCell.v1.yy;

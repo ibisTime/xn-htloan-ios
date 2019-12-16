@@ -204,7 +204,7 @@
     [backView addSubview:topLbl];
     
     NSString *ISSHELVES = [[NSUserDefaults standardUserDefaults]objectForKey:@"ISSHELVES"];
-    if ([ISSHELVES isEqualToString:@"1"]) {
+    if ([ISSHELVES isEqualToString:ISSHELVESSTR]) {
         
         NSArray *ary = @[@"面签工具",@"玩车视频",@"玩车资讯",@"经典车型"];
         for (int i = 0; i < 4 ; i ++) {

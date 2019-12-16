@@ -123,7 +123,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return cell.contentlab.yy + 5;
+    return 112.5;
 }
 -(void)confirm:(UIButton *)sender{{
     sender.selected = !sender.selected;
