@@ -61,7 +61,6 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, (SCREEN_WIDTH - 30)/3, (SCREEN_WIDTH - 30)/3 - 5)];
-    
     [img sd_setImageWithURL:[NSURL URLWithString:self.imageArray[indexPath.row]] placeholderImage:kImage(@"default_pic")];
     [cell addSubview:img];
     return cell;

@@ -184,6 +184,7 @@
     [http postWithSuccess:^(id responseObject) {
         self.carmodels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
         [self.collectionView reloadData];
+        
     } failure:^(NSError *error) {
         
     }];

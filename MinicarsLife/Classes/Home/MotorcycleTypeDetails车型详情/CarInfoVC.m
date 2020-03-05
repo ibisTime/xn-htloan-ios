@@ -134,7 +134,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self bannerLoadData];
+
     self.title = self.CarModel.name;
     [self loadData];
     [self reloaddata];
@@ -609,32 +609,6 @@
         return 52.5;
 }
 
-#pragma mark - 获取数据
--(void)bannerLoadData
-{
-    //    MinicarsLifeWeakSelf;
-    TLNetworking *http = [TLNetworking new];
-    http.code = @"805806";
-    http.parameters[@"location"] = @"index_banner";
-    http.showView = self.view;
-    
-    [http postWithSuccess:^(id responseObject) {
-        WGLog(@"%@",responseObject);
-        NSArray *array = responseObject[@"data"];
-        NSMutableArray *muArray = [NSMutableArray array];
-        NSMutableArray *urlArray = [NSMutableArray array];
-        
-        for (int i = 0; i < array.count; i ++) {
-            [muArray addObject:[NSString stringWithFormat:@"%@",[array[i][@"pic"] convertImageUrl]]];
-            [urlArray addObject:[NSString stringWithFormat:@"%@",array[i][@"url"]]];
-            
-        }
-        self.scrollView.data = muArray;
-        
-    } failure:^(NSError *error) {
-        WGLog(@"%@",error);
-    }];
-}
 
 
 - (void)loadData

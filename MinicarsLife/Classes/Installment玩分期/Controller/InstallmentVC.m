@@ -61,6 +61,7 @@
     [self loadData];
     _videoAry = [NSMutableArray array];
     _imgAry = [NSMutableArray array];
+    self.tabBarController.selectedIndex = 2;
 }
 
 -(void)loadData

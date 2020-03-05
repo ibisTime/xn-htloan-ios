@@ -335,15 +335,7 @@
 #pragma mark - 获取数据   资讯
 -(void)getnewsadta{
     MinicarsLifeWeakSelf;
-//    TLPageDataHelper * help = [[TLPageDataHelper alloc]init];
-//    help.code = @"630455";
-//    help.parameters[@"location"] = @"0";
-//    help.parameters[@"status"] = @"1";
-//    help.parameters[@"orderDir" ]=@"asc";
-////    help.parameters[@"orderColumn"] = @"";
-//    [help modelClass:[NewsModel class]];
-//    help.tableView = self.tableview;
-//    help.isCurrency = YES;
+
     [self.tableview addRefreshAction:^{
    
         [weakSelf car_news_tag];
@@ -351,7 +343,7 @@
 
         TLNetworking *http = [TLNetworking new];
         http.code = @"630455";
-        http.parameters[@"location"] = @"1";
+        http.parameters[@"location"] = @"0";
         http.parameters[@"status"] = @"1";
         http.parameters[@"orderDir" ]=@"asc";
         http.parameters[@"start"] = @"1";

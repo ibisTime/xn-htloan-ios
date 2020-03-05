@@ -85,7 +85,6 @@
     
     [http2 postWithSuccess:^(id responseObject) {
         self.carsModels = [CarModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"][@"list"]];
-//        self.tableView.carsModels = self.carsModels;
         [self.collection reloadData];
         [self.collection.mj_header endRefreshing];
     } failure:^(NSError *error) {
